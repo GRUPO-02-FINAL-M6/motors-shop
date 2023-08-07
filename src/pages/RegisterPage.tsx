@@ -1,3 +1,14 @@
+import { Footer } from "../components/Footer";
+import { RegisterForm } from "../components/Form/RegisterForm";
+import { Header } from "../components/Header";
+
 export const RegisterPage = () => {
-  return <h1>Register Page</h1>;
+  return (
+<>
+<Header/>
+   <RegisterForm/> 
+  <Footer/>
+</>
+    
+  )
 };
