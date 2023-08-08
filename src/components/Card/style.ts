@@ -1,11 +1,10 @@
 import { styled } from "styled-components";
 
 export const StyledCard = styled.li`
-  padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  width: 312px;
+  min-width: 90vw;
   height: 350px;
 
   img {
@@ -13,7 +12,6 @@ export const StyledCard = styled.li`
   }
 
   .card-title {
-    font-size: var(--heading---heading-6-600);
     color: var(--grey--scale--grey-1);
     font-family: "Lexend", sans-serif;
     font-weight: 600;
@@ -43,7 +41,7 @@ export const StyledCard = styled.li`
       display: flex;
       gap: 8px;
 
-      h4 {
+      h6 {
         font-size: var(--text--body-2-500);
         color: var(--brand--brand1);
         background-color: var(--brand--brand4);
@@ -64,5 +62,9 @@ export const StyledCard = styled.li`
 
   &:hover {
     cursor: pointer;
+  }
+
+  @media(min-width: 375px){
+    min-width: 70vw;
   }
 `;

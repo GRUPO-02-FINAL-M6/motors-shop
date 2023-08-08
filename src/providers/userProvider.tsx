@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { api } from "../services/api";
+import { useNavigate } from "react-router-dom";
+import jwt_decode from "jwt-decode"
 
 
 interface iUserProviderProps {
@@ -10,6 +12,7 @@ interface iUserProviderProps {
 
 interface iUserContext {
     user: iUser | null
+    setUser: React.Dispatch<React.SetStateAction<iUser | null>>
     login: (payload: iLogin) => Promise<void>
 }
 
@@ -33,7 +36,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
     const [user, setUser] = useState<iUser | null>(null)
     const token: string | null = localStorage.getItem("token")
-    const userId: number = Number(token!.sub)
+    const navigate = useNavigate();
 
     useEffect(() => {
     }, []);
@@ -42,26 +45,27 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         try {
             const response = await api.post("/users/login", payload)
             localStorage.setItem("token", response.data.token)
-            getUser()
-        } catch (error) {
-            if(axios.isAxiosError(error)){
-                toast.error(error.response?.data)
-            };
+            api.defaults.headers.common.Authorization = `Bearer ${token}`;
+            navigate("/dashboard")
+            await getUser()
+        } catch (error: any) {
+            toast.error(error.response.data.message)
         }
     }
     const getUser = async () => {
         try {
+            const decodedToken: any = jwt_decode(token!)
+            const userId = Number(decodedToken.sub)
             const response = await api.get(`/users/${userId}`)
             setUser(response.data)
-        } catch (error) {
-            if(axios.isAxiosError(error)){
-                toast.error(error.response?.data)
-            };
+            console.log(user)
+        } catch (error: any) {
+            toast.error(error.response.data.message)
         }
     }
     
     return (
-        <UserContext.Provider value={{ login, user }}>
+        <UserContext.Provider value={{ login, user, setUser }}>
             {children}
         </UserContext.Provider>
     );
