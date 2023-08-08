@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   HeaderProps,
   ButtonsProps,
@@ -19,17 +19,26 @@ import {
   ImageUp,
   HamburgerIcon,
 } from "./index";
-
+import { UserContext } from "../../providers/userProvider";
+import { useForm } from "react-hook-form";
+import { loginSchema, tLogin } from "./validator";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 const LoginPage: React.FC = () => {
-
   const [menuOpen, setMenuOpen] = useState(false);
-  
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<tLogin>({
+    resolver: zodResolver(loginSchema),
+  });
+
+  const { login, setUser } = useContext(UserContext);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
-
 
   return (
     <Main>
@@ -45,15 +54,29 @@ const LoginPage: React.FC = () => {
       </HeaderProps>
       <PageContainer>
         <FormContainer>
-          <SubTitle>Login</SubTitle>
-          <InputEmail>
-            <Labels htmlFor="email">Email</Labels>
-            <Input type="email" id="email" name="email" placeholder="Digitar Email" />
-          </InputEmail>
-          <Labels htmlFor="password">Senha</Labels>
-          <Input type="password" id="password" name="password" placeholder="Digitar Senha" />
-          <ForgotPasswordLink href="#">Esqueci minha senha</ForgotPasswordLink>
-          <ButtonToEnter>Entrar</ButtonToEnter>
+          <form onSubmit={handleSubmit(login)}>
+            <SubTitle>Login</SubTitle>
+            <InputEmail>
+              <Labels htmlFor="email">Email</Labels>
+              <Input
+                type="email"
+                id="email"
+                placeholder="Digitar Email"
+                {...register("email")}
+              />
+            </InputEmail>
+            <Labels htmlFor="password">Senha</Labels>
+            <Input
+              type="password"
+              id="password"
+              placeholder="Digitar Senha"
+              {...register("password")}
+            />
+            <ForgotPasswordLink href="#">
+              Esqueci minha senha
+            </ForgotPasswordLink>
+            <ButtonToEnter type="submit">Entrar</ButtonToEnter>
+          </form>
           <SignupText>Ainda não possui conta?</SignupText>
           <ButtonToRegister>Cadastrar</ButtonToRegister>
         </FormContainer>

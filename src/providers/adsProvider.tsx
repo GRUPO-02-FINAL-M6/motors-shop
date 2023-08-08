@@ -22,6 +22,7 @@ export interface iAds {
     fuel: string
     createdAt: string
     value: number
+    user: {name: string}
 }
 
 export const AdsContext = createContext({} as iAdsContext)

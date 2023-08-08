@@ -1,11 +1,10 @@
 import { styled } from "styled-components";
 
 export const StyledCard = styled.li`
-  padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  width: 312px;
+  min-width: 90vw;
   height: 350px;
 
   img {
@@ -13,7 +12,6 @@ export const StyledCard = styled.li`
   }
 
   .card-title {
-    font-size: var(--heading---heading-6-600);
     color: var(--grey--scale--grey-1);
     font-family: "Lexend", sans-serif;
     font-weight: 600;
@@ -36,36 +34,6 @@ export const StyledCard = styled.li`
     color: var(--grey--scale--grey-2);
   }
 
-  .card-ads-owner {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .card-ads-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    width: 16px;
-    height: 16px;
-    padding: 16px;
-    color: white;
-    font-size: var(--text--body-2-500);
-    background-color: var(--brand--brand1);
-    font-family: "Inter", sans-serif;
-    font-weight: 500;
-  }
-
-  .card-ads-name {
-    color: var(--grey--scale--grey-2);
-    font-family: "Inter", sans-serif;
-    font-size: var(--text--body-2-500);
-    font-weight: 500;
-    line-height: 24px;
-    letter-spacing: 0em;
-    text-align: left;
-  }
-
   .card-bottom {
     font-family: "Inter", sans-serif;
 
@@ -73,7 +41,7 @@ export const StyledCard = styled.li`
       display: flex;
       gap: 8px;
 
-      h4 {
+      h6 {
         font-size: var(--text--body-2-500);
         color: var(--brand--brand1);
         background-color: var(--brand--brand4);
@@ -94,5 +62,9 @@ export const StyledCard = styled.li`
 
   &:hover {
     cursor: pointer;
+  }
+
+  @media(min-width: 375px){
+    min-width: 70vw;
   }
 `;

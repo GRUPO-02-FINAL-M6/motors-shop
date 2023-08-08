@@ -1,77 +1,72 @@
-// import { createContext, useEffect, useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import { api } from "../services/api";
+import axios from "axios";
+import React, { createContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import { api } from "../services/api";
+import { useNavigate } from "react-router-dom";
+import jwt_decode from "jwt-decode"
 
-// export const UserContext = createContext({});
 
-// export const UserProvider = ({ children }) => {
-//   const [user, setUser] = useState(null);
-//   const [loading, setLoading] = useState(false);
+interface iUserProviderProps {
+    children: React.ReactNode
+}
 
-//   const currentPath = window.location.pathname;
+interface iUserContext {
+    user: iUser | null
+    setUser: React.Dispatch<React.SetStateAction<iUser | null>>
+    login: (payload: iLogin) => Promise<void>
+}
 
-//   useEffect(() => {
-//     const token = localStorage.getItem("@TOKEN");
-//     const userId = localStorage.getItem("@USERID");
+export interface iUser {
+    id: number
+    name: string
+    email: string
+    contact: string
+    createdAt: string
+    deletedAt: string
+}
 
-//     const userLoad = async () => {
-//       try {
-//         setLoading(true);
-//         const { data } = await api.get(`/users/${userId}`, {
-//           headers: {
-//             Authorization: `Bearer ${token}`,
-//           },
-//         });
-//         setUser(data);
-//         navigate(currentPath);
-//       } catch (error) {
-//         console.log(error);
-//         localStorage.removeItem("@TOKEN");
-//         localStorage.removeItem("@USERID");
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
+interface iLogin {
+    email: string
+    password: string
+}
 
-//     if (token && userId) {
-//       userLoad();
-//     }
-//   }, []);
+export const UserContext = createContext({} as iUserContext)
 
-//   const navigate = useNavigate();
+export const UserProvider = ({ children }: iUserProviderProps) => {
 
-//   const userLogin = async (formData: any) => {
-//     try {
-//       const { data } = await api.post("/login", formData);
-//       setUser(data.user);
-//       localStorage.setItem("@TOKEN", data.accessToken);
-//       localStorage.setItem("@USERID", data.user.id);
-//       navigate("/scraplist");
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
+    const [user, setUser] = useState<iUser | null>(null)
+    const token: string | null = localStorage.getItem("token")
+    const navigate = useNavigate();
 
-//   const userRegister = async (formData: any) => {
-//     try {
-//       await api.post("/users", formData);
-//       console.log("Cadastro realizado com sucesso!");
-//       navigate("/");
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
+    useEffect(() => {
+    }, []);
 
-//   const userLogout = () => {
-//     setUser(null);
-//     localStorage.removeItem("@TOKEN");
-//     localStorage.removeItem("@USERID");
-//   };
-
-//   return (
-//     <UserContext.Provider
-//       value={{ user, userLogin, userRegister, userLogout, loading }}>
-//       {children}
-//     </UserContext.Provider>
-//   );
-// };
+    const login = async (payload: iLogin) => {
+        try {
+            const response = await api.post("/users/login", payload)
+            localStorage.setItem("token", response.data.token)
+            api.defaults.headers.common.Authorization = `Bearer ${token}`;
+            navigate("/dashboard")
+            await getUser()
+        } catch (error: any) {
+            toast.error(error.response.data.message)
+        }
+    }
+    const getUser = async () => {
+        try {
+            const decodedToken: any = jwt_decode(token!)
+            const userId = Number(decodedToken.sub)
+            const response = await api.get(`/users/${userId}`)
+            setUser(response.data)
+            console.log(user)
+        } catch (error: any) {
+            toast.error(error.response.data.message)
+        }
+    }
+    
+    return (
+        <UserContext.Provider value={{ login, user, setUser }}>
+            {children}
+        </UserContext.Provider>
+    );
+};
