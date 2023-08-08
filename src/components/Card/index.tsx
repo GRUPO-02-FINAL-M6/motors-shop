@@ -19,8 +19,8 @@ export const Card = ({ads}: CardProps) => {
       <UserIcon name={ads.user.name}/>
       <div className="card-bottom">
         <div>
-          <h4>{Number(ads.km).toLocaleString("pt-br") + " km"}</h4>
-          <h4>{ads.year}</h4>
+          <h6>{Number(ads.km).toLocaleString("pt-br") + " km"}</h6>
+          <h6>{ads.year}</h6>
         </div>
         <h2>{Number(ads.value).toLocaleString("pt-br", {style: "currency", currency: "BRL"})}</h2>
       </div>
