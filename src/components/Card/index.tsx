@@ -1,4 +1,5 @@
 import { iAds } from "../../providers/adsProvider";
+import { UserIcon } from "../User-icon";
 import { StyledCard } from "./style";
 
 interface CardProps {
@@ -6,7 +7,7 @@ interface CardProps {
 }
 
 export const Card = ({ads}: CardProps) => {
-  
+
   return (
     <StyledCard>
       <img
@@ -15,10 +16,7 @@ export const Card = ({ads}: CardProps) => {
       />
       <h2 className="card-title">{ads.name}</h2>
       <p className="card-description">{ads.description}</p>
-      <div className="card-ads-owner">
-        <div className="card-ads-icon">JG</div>
-        <h3 className="card-ads-name">José Gabriel</h3>
-      </div>
+      <UserIcon name={ads.user.name}/>
       <div className="card-bottom">
         <div>
           <h4>{Number(ads.km).toLocaleString("pt-br") + " km"}</h4>
