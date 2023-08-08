@@ -45,6 +45,12 @@ export const HomePage = () => {
             ))}
           </ul>
         </AdsSectionStyled>
+        <div>
+          <button>botão de filtros</button>
+              <h3>1 de 2</h3>
+            <button>próxima página</button>
+        </div>
+
       </MainStyled>
     </>
   );
