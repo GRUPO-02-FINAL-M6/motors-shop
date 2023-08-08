@@ -1,5 +1,5 @@
 import { UseFormRegisterReturn } from 'react-hook-form';
-import { StyledTextField } from '..';
+import { StyledTextField } from './style';
 
 
 
