@@ -1,8 +1,7 @@
 import { styled } from "styled-components";
 
 export const StyledCard = styled.li`
-
-
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -49,7 +48,7 @@ export const StyledCard = styled.li`
     border-radius: 50%;
     width: 16px;
     height: 16px;
-    padding: 8px;
+    padding: 16px;
     color: white;
     font-size: var(--text--body-2-500);
     background-color: var(--brand--brand1);
