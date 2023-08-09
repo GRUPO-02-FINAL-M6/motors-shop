@@ -20,6 +20,8 @@ export const HomePage = () => {
   };
   return (
     <>
+
+    
       <HeaderProps menuOpen={menuStatus}>
         <img src="../../src/assets/logo.svg" alt="" />
         <ButtonsProps menuOpen={menuStatus}>
