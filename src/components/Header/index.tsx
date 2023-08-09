@@ -1,5 +1,6 @@
 import logo from '../../assets/logo.svg'
 import { StyledContainer } from '../../styles/grid'
+import { ButtonRegister } from '../Buttons'
 import { StyledHeader } from './style'
 
 export const Header = () => {
@@ -11,7 +12,7 @@ export const Header = () => {
                         <nav>
                             <div className='buttons'>
                             <button type='button' className='btnLogin'>Fazer Login</button>
-                            <button type='button' className='btnRegister'>Cadastrar</button>
+                            <ButtonRegister/>
                             </div>
                         </nav>
                 </div>
