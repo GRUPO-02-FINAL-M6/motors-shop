@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import Input from "../Input";
 import { StyledDivRegister } from "./style";
+import { ComplementsInputs } from "../Input/ComplementsInput";
 
 interface IRegisterUser {
   name: string;
@@ -77,119 +78,106 @@ export const RegisterForm = () => {
   };
 
   return (
-    <StyledDivRegister>
+    <StyledDivRegister onSubmit={handleSubmit(registerUser)}>
       <h1>Cadastro</h1>
 
+      <p>Informações pessoais</p>
 
-    <p>Informações pessoais</p>
-      <form onSubmit={handleSubmit(registerUser)}>
-        <Input
-          label="name"
-          type="text"
-          placeholder="Ex: Samuel Leão"
-          register={register("name")}
-          error={errors.name?.message}
-        />
-        <Input
-          label="email"
-          type="text"
-          placeholder="Ex: samuel@kenzie.com.br"
-          register={register("email")}
-          error={errors.email?.message}
-        />
-        <Input
-          label="cpf"
-          type="text"
-          placeholder="000.000.000-00"
-          register={register("cpf")}
-          error={errors.cpf?.message}
-        />
-        <Input
-          label="telephone"
-          type="text"
-          placeholder="(00) 00000-0000"
-          register={register("telephone")}
-          error={errors.telephone?.message}
-        />
-        <Input
-          label="birthday"
-          type="date"
-          placeholder="00/00/0000"
-          register={register("birthday")}
-          error={errors.birthday?.message}
-        />
-        <Input
-          label="description"
-          type="text"
-          placeholder="Digitar descrição"
-          register={register("description")}
-          error={errors.description?.message}
-        />
-        <Input
-          label="cep"
-          type="text"
-          placeholder="00000-000"
-          register={register("cep")}
-          error={errors.cep?.message}
-        />
-        <Input
-          label="state"
-          type="text"
-          placeholder="Digitar estado"
-          register={register("state")}
-          error={errors.state?.message}
-        />
-        <Input
-          label="city"
-          type="text"
-          placeholder="Digitar cidade"
-          register={register("city")}
-          error={errors.city?.message}
-        />
-        <Input
-          label="road"
-          type="text"
-          placeholder="Digitar rua"
-          register={register("road")}
-          error={errors.road?.message}
-        />
-        <Input
-          label="number"
-          type="text"
-          placeholder="Digitar número"
-          register={register("number")}
-          error={errors.number?.message}
-        />
-        <Input
-          label="complement"
-          type="text"
-          placeholder="Ex: apart 307"
-          register={register("complement")}
-          error={errors.complement?.message}
-        />
-        <span>Tipo de conta</span>
-        <div className="buttons">
-          <button type="button">Comprador</button>
-          <button type="button">Anunciante</button>
-        </div>
+      <Input
+        label="Nome"
+        type="text"
+        placeholder="Ex: Samuel Leão"
+        register={register("name")}
+        error={errors.name?.message}
+      />
+      <Input
+        label="Email"
+        type="text"
+        placeholder="Ex: samuel@kenzie.com.br"
+        register={register("email")}
+        error={errors.email?.message}
+      />
+      <Input
+        label="CPF"
+        type="text"
+        placeholder="000.000.000-00"
+        register={register("cpf")}
+        error={errors.cpf?.message}
+      />
+      <Input
+        label="Celular"
+        type="text"
+        placeholder="(00) 00000-0000"
+        register={register("telephone")}
+        error={errors.telephone?.message}
+      />
+      <Input
+        label="Data de nascimento"
+        type="date"
+        placeholder="00/00/0000"
+        register={register("birthday")}
+        error={errors.birthday?.message}
+      />
+      <Input
+        label="Descrição"
+        type="text"
+        placeholder="Digitar descrição"
+        register={register("description")}
+        error={errors.description?.message}
+      />
+      <Input
+        label="CEP"
+        type="text"
+        placeholder="00000-000"
+        register={register("cep")}
+        error={errors.cep?.message}
+      />
+      <Input
+        label="Estado"
+        type="text"
+        placeholder="Digitar estado"
+        register={register("state")}
+        error={errors.state?.message}
+      />
+      <Input
+        label="Cidade"
+        type="text"
+        placeholder="Digitar cidade"
+        register={register("city")}
+        error={errors.city?.message}
+      />
+      <Input
+        label="Rua"
+        type="text"
+        placeholder="Digitar rua"
+        register={register("road")}
+        error={errors.road?.message}
+      />
+      
+      <ComplementsInputs/>
+      
+      <span>Tipo de conta</span>
+      <div className="buttons">
+        <button type="button">Comprador</button>
+        <button type="button">Anunciante</button>
+      </div>
 
-        <Input
-          label="Crie uma senha"
-          type="password"
-          placeholder="Crie uma senha"
-          register={register("password")}
-          error={errors.password?.message}
-        />
-        <Input
-          label="Confirmar senha"
-          type="password"
-          placeholder="Confirme a senha"
-          register={register("passwordConfirmation")}
-          error={errors.passwordConfirmation?.message}
-        />
+      <Input
+        label="Crie uma senha"
+        type="password"
+        placeholder="Crie uma senha"
+        register={register("password")}
+        error={errors.password?.message}
+      />
+      <Input
+        label="Confirmar senha"
+        type="password"
+        placeholder="Confirme a senha"
+        register={register("passwordConfirmation")}
+        error={errors.passwordConfirmation?.message}
+      />
 
-        <button type="submit">Cadastrar</button>
-      </form>
+      <button type="submit">Cadastrar</button>
     </StyledDivRegister>
   );
 };

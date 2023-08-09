@@ -1,36 +1,81 @@
-// import { ButtonType1, ButtonType10, ButtonType2, ButtonType3, ButtonType4, ButtonType5, ButtonType6, ButtonType7, ButtonType8, ButtonType9 } from "./style";
+import { StyledButtonAdvertiser, StyledButtonBuy, StyledButtonBuyer, StyledButtonCanceled, StyledButtonComment, StyledButtonCreateAds, StyledButtonDeleteAds, StyledButtonDeleteProfile, StyledButtonEdit, StyledButtonFinishRegister, StyledButtonGoForLogin, StyledButtonRegister, StyledButtonSaveUpdate, StyledButtonSeeDetails, StyledButtonViewAds, StyledButtonViewAllAds, StyledClearFilters, StyledFilters, StyledYesButtonDeleteAds } from "./style";
 
-// export const Button = ()=>{
-//     const type= 'button5'
-//     if (type=='button1'){
-//         return <ButtonType1>Text Button</ButtonType1>;
-//     }
-//     else if( type=='button2'){
-//         return<ButtonType2>Text Button</ButtonType2>;
-//     }
-//     else if( type=='button3'){
-//         return<ButtonType3>Text Button</ButtonType3>;
-//     }
-//     else if( type=='button4'){
-//         return<ButtonType4>Text Button</ButtonType4>;
-//     }
-//     else if( type=='button5'){
-//         return<ButtonType5>Text Button</ButtonType5>;
-//     }
-//     else if( type=='button6'){
-//         return<ButtonType6>Text Button</ButtonType6>;
-//     }
-//     else if( type=='button7'){
-//         return<ButtonType7>Text Button</ButtonType7>;
-//     }
+export const ButtonViewAds = ()=>{
+    return <StyledButtonViewAds>Ver anúncios</StyledButtonViewAds>;
+  
+}
 
-//     else if( type=='button8'){
-//         return<ButtonType8>Text Button</ButtonType8>;
-//     }
-//     else if( type=='button9'){
-//         return<ButtonType9>Text Button</ButtonType9>;
-//     }
-//     else if( type=='button10'){
-//         return<ButtonType10>Text Button</ButtonType10>;
-//     }
-// }
+export const ButtonClearFilters = ()=>{
+    return<StyledClearFilters>Limpar filtros</StyledClearFilters>;
+}
+
+export const ButtonFilters = ()=>{
+    return<StyledFilters>Filtros</StyledFilters>;
+}
+
+export const ButtonRegister = ()=>{
+    return<StyledButtonRegister>Cadastrar</StyledButtonRegister>;
+}
+
+export const ButtonViewAllAds = ()=>{
+    return<StyledButtonViewAllAds>Ver todos anúncios</StyledButtonViewAllAds>;
+}
+
+export const ButtonComment= ()=>{
+    return<StyledButtonComment>Comentar</StyledButtonComment>;
+}
+
+export const ButtonBuy= ()=>{
+    return<StyledButtonBuy>Comprar</StyledButtonBuy>;
+}
+
+export const ButtonGoForLogin= ()=>{
+    return<StyledButtonGoForLogin>Ir para o login</StyledButtonGoForLogin>;
+}
+
+export const ButtonFinishRegister= ()=>{
+    return<StyledButtonFinishRegister>Finalizar cadastro</StyledButtonFinishRegister>;
+}
+
+export const ButtonBuyer= ()=>{
+    return<StyledButtonBuyer>Comprador</StyledButtonBuyer>;
+}
+
+
+export const ButtonAdvertiser= ()=>{
+    return<StyledButtonAdvertiser>Anunciante</StyledButtonAdvertiser>;
+}
+
+export const ButtonCreateAdvertiser= ()=>{
+    return<StyledButtonCreateAds>Criar anúncio</StyledButtonCreateAds>;
+}
+
+
+
+export const ButtonEdit= ()=>{
+    return<StyledButtonEdit>Editar</StyledButtonEdit>;
+}
+
+export const ButtonSeeDetails= ()=>{
+    return<StyledButtonSeeDetails>Ver detalhes</StyledButtonSeeDetails>;
+}
+
+export const ButtonDeleteAds= ()=>{
+    return<StyledButtonDeleteAds>Excluir anúncio</StyledButtonDeleteAds>;
+}
+
+export const ButtonSaveUpdateAds= ()=>{
+    return<StyledButtonSaveUpdate>Excluir anúncio</StyledButtonSaveUpdate>;
+}
+
+export const ButtonCanceled= ()=>{
+    return<StyledButtonCanceled>Cancelar</StyledButtonCanceled>;
+}
+
+export const ButtonDeleteProfile= ()=>{
+    return<StyledButtonDeleteProfile>Excluir Perfil</StyledButtonDeleteProfile>;
+}
+
+export const ButtonYesDeleteAds= ()=>{
+    return<StyledYesButtonDeleteAds>Sim, excluir anúncio</StyledYesButtonDeleteAds>;
+}
