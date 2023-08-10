@@ -56,7 +56,13 @@ export const ButtonRegister = styled.button`
   width: 133px;
   height: 48px;
   font-size: 16px;
-  color:var(--grey--scale--grey-0);
+  color: var(--grey--scale--grey-0);
+  transition: background-color 0.3s, color 0.3s; 
+
+  &:hover {
+    background-color: var( --grey--scale--grey-0);
+    color: var(--grey--scale--grey-10);
+  }
 
   @media (max-width: 768px) {
     width: 100%;
