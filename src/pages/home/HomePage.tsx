@@ -10,10 +10,13 @@ import {
 import { Card } from "../../components/Card";
 import { AdsSectionStyled, MainStyled } from "./style";
 import imagem from "../../assets/Photo.svg";
+import { ButtonFilters } from "../../components/Buttons";
+import { useNavigate } from "react-router-dom";
 
 export const HomePage = () => {
   const [menuStatus, setMenuStatus] = useState(false);
   const { ads } = useContext(AdsContext);
+  const navigate = useNavigate()
 
   const toggleMenu = () => {
     setMenuStatus(!menuStatus);
@@ -25,8 +28,8 @@ export const HomePage = () => {
       <HeaderProps menuOpen={menuStatus}>
         <img src="../../src/assets/logo.svg" alt="" />
         <ButtonsProps menuOpen={menuStatus}>
-          <ButtonLogin>Fazer Login</ButtonLogin>
-          <ButtonRegister>Cadastrar</ButtonRegister>
+          <ButtonLogin onClick={() => navigate("login")}>Fazer Login</ButtonLogin>
+          <ButtonRegister onClick={() => navigate("register")}>Cadastrar</ButtonRegister>
         </ButtonsProps>
         <HamburgerIcon onClick={toggleMenu}>
           {menuStatus ? <h2>X</h2> : <h2>☰</h2>}
@@ -34,25 +37,34 @@ export const HomePage = () => {
       </HeaderProps>
       <MainStyled>
         <div className="background">
-          {/* <div>
+          <div>
             <h4>Motors Shop</h4>
             <h2>A melhor plataforma de anúncios de carros no país</h2>
-          </div> */}
+          </div>
           <img src={imagem} alt="background image" />
         </div>
         <AdsSectionStyled>
-          <ul>
-            {ads.map((ads) => (
-              <Card ads={ads} key={ads.id} />
-            ))}
-          </ul>
+            {
+              ads.length > 0 ? (
+                <ul>
+                  {
+                    ads.map((ads) => (
+                      <Card ads={ads} key={ads.id} />
+                    ))
+                  }
+                </ul>
+              ) : (
+                <div id="empty">
+                  <h2>Ainda não há anúncios cadastrados...</h2>
+                </div>
+              )
+            }
         </AdsSectionStyled>
-        <div>
-          <button>botão de filtros</button>
+        <div id="main-bottom">
+          <ButtonFilters/>
               <h3>1 de 2</h3>
-            <button>próxima página</button>
+            <button id="next-page">Seguinte</button>
         </div>
-
       </MainStyled>
     </>
   );
