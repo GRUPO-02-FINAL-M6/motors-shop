@@ -7,9 +7,9 @@ interface IStyledContainerProps {
 export const StyledContainer = styled.div<IStyledContainerProps>`
   width: 100%;
   max-width: ${({ containerWidth }) =>
-    containerWidth ? containerWidth : 1000}px;
+    containerWidth ? containerWidth : 100}%;
   margin: 0 auto;
-  padding: 10px;
+
 `;
 
 export const StyledGridBox = styled.div`
