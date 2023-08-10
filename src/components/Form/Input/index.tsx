@@ -1,5 +1,5 @@
 import { UseFormRegisterReturn } from 'react-hook-form';
-import { StyledTextField } from '..';
+import { StyledContainerInput } from './style';
 
 
 
@@ -12,16 +12,18 @@ interface IInputProps {
 
 }
 
-const Input = ({label,register,error,type}:IInputProps) => {
+const Input = ({label,register,error,type, placeholder}:IInputProps) => {
  
   return (
-    <fieldset>
-      <StyledTextField label={label}type={type} {...register}/>
+
+    <StyledContainerInput>
+      <label>{label}</label>
+      <input placeholder={placeholder} type={type} {...register}/>
       
       <p >{error && error}</p>
       {error?<p>{error.message}</p>:null}
       
-    </fieldset>
+    </StyledContainerInput>
   );
 };
 
