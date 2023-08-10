@@ -67,4 +67,10 @@ export const StyledCard = styled.li`
   @media(min-width: 375px){
     min-width: 70vw;
   }
+
+  @media(min-width: 768px){
+    min-width: 40vw;
+    max-width: 40vw;
+  }
+
 `;
