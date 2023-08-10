@@ -92,6 +92,12 @@ export const ButtonToRegister = styled.button`
   @media (max-width: 768px) {
     width: 100%;
   }
+
+  &:hover {
+        background-color: var(--grey--scale--grey-0);
+        color: var(--grey--scale--grey-10);
+      }
+
   
 `;
 

@@ -2,7 +2,7 @@ import { useState } from "react";
 import logo from "../../assets/logo.svg";
 import { StyledContainer } from "../../styles/grid";
 import { HamburgerIcon, StyledHeader } from "./style";
-import { LoginButtons } from "../Button/LoginButton";
+import { LoginButtons } from "../Button";
 
 
 export const Header = () => {

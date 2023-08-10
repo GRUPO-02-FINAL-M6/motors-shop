@@ -1,3 +1,6 @@
+
+ // Importe o useHistory
+import { useNavigate } from "react-router-dom";
 import {
   ButtonToEnter,
   ButtonToRegister,
@@ -11,6 +14,13 @@ import {
 } from "./style";
 
 export const LoginForm = () => {
+
+  const navigate = useNavigate(); 
+
+  const handleRegisterClick = () => {
+    navigate("/register"); 
+  };
+
   return (
     <FormContainer>
       <SubTitle>Login</SubTitle>
@@ -29,11 +39,12 @@ export const LoginForm = () => {
         id="password"
         name="password"
         placeholder="Digitar Senha"
+        required
       />
       <ForgotPasswordLink href="#">Esqueci minha senha</ForgotPasswordLink>
-      <ButtonToEnter>Entrar</ButtonToEnter>
+      <ButtonToEnter type="submit">Entrar</ButtonToEnter>
       <SignupText>Ainda não possui conta?</SignupText>
-      <ButtonToRegister>Cadastrar</ButtonToRegister>
+      <ButtonToRegister onClick={handleRegisterClick}>Cadastrar</ButtonToRegister>
     </FormContainer>
   );
 };
