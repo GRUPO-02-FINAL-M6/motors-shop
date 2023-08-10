@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface StyledHeader {
+  menuOpen: boolean;
+}
+
 export const StyledHeader = styled.header`
 
   .flexGrid {
@@ -8,8 +12,9 @@ export const StyledHeader = styled.header`
     justify-content: space-between;
     gap: 20px;
     background-color: var(--grey--scale--grey-10);
-    padding: 45px 59px 45px 59px;
+    padding: 25px 25px 25px 25px;
     justify-content: space-between;
+    width:100%;
 
 
     .logo {
@@ -56,9 +61,6 @@ export const StyledHeader = styled.header`
           border-radius: 3px;
 
 
-
-
-
         }
     .nav {
       display: flex;
@@ -78,5 +80,14 @@ export const StyledHeader = styled.header`
     .nav {
       flex-direction: column;
     }
+  }
+`;
+
+export const HamburgerIcon = styled.div`
+  display: none;
+  cursor: pointer;
+  @media (max-width: 768px) {
+  display: block;
+  font-size:16px;
   }
 `;
