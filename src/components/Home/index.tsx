@@ -5,7 +5,7 @@ export const Home = () => {
     return(
         <StyledDivHome>
             <div>
-                <p>Marca</p>
+                <p>${Marca}</p>
                 <span>Teste</span>
             </div>
          
