@@ -1,11 +1,11 @@
-import { Home } from "../../components/Home";
+import { Filter } from "../../components/Filter";
 
 export const DashBoardPage = () => {
 
   return (
     <>
     <h1>DashBoard Page</h1>
-    <Home/>
+    <Filter/>
     </>
   );
 };
