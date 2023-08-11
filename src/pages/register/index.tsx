@@ -12,17 +12,12 @@ export const RegisterPage = () => {
     <>
        <Header /> 
       <StyledMain>
-        <ButtonRegister/>
-        <ButtonViewAllAds/>
-        <ButtonComment/>
-        <ButtonBuy/>
+        <RegisterForm/>
       </StyledMain>
        <Footer /> 
-     <ButtonDeleteAds/>
-     <ButtonSaveUpdateAds/>
-    <ButtonCanceled/>
-    <ButtonDeleteProfile/>
-    <ButtonYesDeleteAds/>
+     
+   
+   
 
     </>
   );

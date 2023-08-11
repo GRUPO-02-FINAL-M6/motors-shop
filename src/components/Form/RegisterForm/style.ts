@@ -37,4 +37,26 @@ export const StyledDivRegister = styled.form`
     grid-template-columns: 200px 200px;
 
   }
+  span{
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-bottom:20px;
+
+  }
+
+  .buttons{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom:20px;
+
+  }
+  .divBtnReegister{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;

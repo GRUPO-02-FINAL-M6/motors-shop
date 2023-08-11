@@ -5,6 +5,7 @@ import { z } from "zod";
 import Input from "../Input";
 import { StyledDivRegister } from "./style";
 import { ComplementsInputs } from "../Input/ComplementsInput";
+import { ButtonAdvertiser, ButtonBuyer, ButtonFinishRegister } from "../../Buttons";
 
 interface IRegisterUser {
   name: string;
@@ -158,26 +159,28 @@ export const RegisterForm = () => {
       
       <span>Tipo de conta</span>
       <div className="buttons">
-        <button type="button">Comprador</button>
-        <button type="button">Anunciante</button>
+      <ButtonBuyer/> <ButtonAdvertiser/>
       </div>
 
       <Input
-        label="Crie uma senha"
+        label="Senha"
         type="password"
-        placeholder="Crie uma senha"
+        placeholder="Digitar senha"
         register={register("password")}
         error={errors.password?.message}
       />
       <Input
         label="Confirmar senha"
         type="password"
-        placeholder="Confirme a senha"
+        placeholder="Digitar senha"
         register={register("passwordConfirmation")}
         error={errors.passwordConfirmation?.message}
       />
+      <div className="divBtnReegister">
+      <ButtonFinishRegister/>
 
-      <button type="submit">Cadastrar</button>
+      </div>
+
     </StyledDivRegister>
   );
 };

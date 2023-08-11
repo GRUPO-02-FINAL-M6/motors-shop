@@ -1,16 +1,15 @@
-import "dotenv/config";
 import { useContext, useState } from "react"
 import { ButtonClearFilters } from "../Buttons"
 import { StyledDivHome } from "./style"
 import FilterValuesRange from "../FilterValuesRange";
 import { AdsContext } from "../../providers/adsProvider";
 import { Brand } from "./Brand";
-
 import axios from "axios";
 import { Model } from "./Model";
 import { Color } from "./Color";
 import { Year } from "./Year";
 import { Fuel } from "./Fuel";
+import { api } from "../../services/api";
 
 export const Filter = async () => {
 
@@ -32,7 +31,7 @@ export const Filter = async () => {
       }
     const filters = async (filterParams: iFilterParams) => {
         try {
-          const response = await axios.get(process.env.API_URL! + "/filters", {
+          const response = await api.get( "/filters", {
             params: filterParams,
           });
       
