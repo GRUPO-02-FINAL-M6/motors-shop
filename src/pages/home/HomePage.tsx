@@ -16,12 +16,21 @@ import { Filter } from "../../components/Filter";
 
 export const HomePage = () => {
   const [menuStatus, setMenuStatus] = useState(false);
-  const { ads } = useContext(AdsContext);
+  const {
+    ads,
+    goToNextPage,
+    goToPreviousPage,
+    nextPage,
+    previousPage,
+    currentPage,
+  } = useContext(AdsContext);
   const navigate = useNavigate();
 
   const toggleMenu = () => {
     setMenuStatus(!menuStatus);
   };
+
+  useEffect(() => {}, [ads]);
 
   return (
     <>
@@ -69,8 +78,30 @@ export const HomePage = () => {
         </section>
         <div id="main-bottom">
           <ButtonFilters />
-          <h3>1 de 2</h3>
-          <button id="next-page">Seguinte</button>
+          <h3>{currentPage} de X páginas</h3>
+          <div id="pages-btns">
+          {previousPage ? (
+            <button id="previous-page" onClick={() => goToPreviousPage()}>
+              Anterior
+            </button>
+          ) : (
+            <button
+              id="previous-page-disabled"
+              disabled={true}
+            >
+              Anterior
+            </button>
+          )}
+          {nextPage ? (
+            <button id="next-page" onClick={() => goToNextPage()}>
+              Próxima
+            </button>
+          ) : (
+            <button id="next-page-disabled" disabled={true}>
+              Próxima
+            </button>
+          )}
+          </div>
         </div>
       </MainStyled>
     </>
