@@ -1,32 +1,16 @@
 import { useForm } from "react-hook-form";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useContext, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import Input from "../Input";
 import { StyledDivRegister } from "./style";
 import { ComplementsInputs } from "../Input/ComplementsInput";
 import { ButtonAdvertiser, ButtonBuyer, ButtonFinishRegister } from "../../Buttons";
+import { UserContext } from "../../../providers/userProvider";
 
-interface IRegisterUser {
-  name: string;
-  email: string;
-  cpf: string;
-  telephone: string;
-  birthday: string;
-  description: string;
-  cep: string;
-  state: string;
-  city: string;
-  road: string;
-  number: string;
-  complement: string;
-  password: string;
-  passwordConfirmation: string;
-}
 
-interface IRegisterProps {
-  setUsers: Dispatch<SetStateAction<IRegisterUser[]>>;
-}
+
+
 
 const registerUserSchema = z.object({
   name: z.string().min(1, "O nome é obrigatório"),
@@ -48,13 +32,13 @@ const registerUserSchema = z.object({
   number: z.string().min(1, "O número deve ser obrigatório"),
   complement: z.string().min(1, "O complemento deve ser obrigatório"),
   password: z.string().min(8, "A senha deve conter no mínimo 8 caracteres"),
-  passwordConfirmation: z
-    .string()
-    .min(8, "Confirme a sua senha por favor.")
-    .refine((value, data) => value === data.password, {
-      message: "As senhas não coincidem",
-      path: ["passwordConfirmation"],
-    }),
+  // passwordConfirmation: z
+  //   .string()
+  //   .min(8, "Confirme a sua senha por favor.")
+  //   .refine((value, data) => value === data.password, {
+  //     message: "As senhas não coincidem",
+  //     path: ["passwordConfirmation"],
+  //   }),
 });
 type TRegisterUser = z.infer<typeof registerUserSchema>;
 
@@ -67,16 +51,16 @@ export const RegisterForm = () => {
   } = useForm<TRegisterUser>({
     resolver: zodResolver(registerUserSchema),
   });
+  const {registerUser} = useContext(UserContext)
 
   const [formSubmitError, setFormSubmitError] = useState("");
 
-  const registerUser = (data: TRegisterUser) => {
-    console.log(data);
-    // const newData = [...prevUsers, data]
+  // const registerUsers = (data: TRegisterUser) => {
+  //   const newData = [...setUsers, data]
 
-    // setUsers(prevUsers => [...prevUsers, data]);
-    // reset();
-  };
+  //   setUsers(prevUsers => [...prevUsers, data]);
+  //   reset();
+  // };
 
   return (
     <StyledDivRegister onSubmit={handleSubmit(registerUser)}>
@@ -88,7 +72,7 @@ export const RegisterForm = () => {
         label="Nome"
         type="text"
         placeholder="Ex: Samuel Leão"
-        register={register("name")}
+        register= {register("name")}
         error={errors.name?.message}
       />
       <Input
@@ -155,7 +139,7 @@ export const RegisterForm = () => {
         error={errors.road?.message}
       />
       
-      <ComplementsInputs/>
+      <ComplementsInputs register1={register("number")} register2={register("complement")}/>
       
       <span>Tipo de conta</span>
       <div className="buttons">
@@ -169,15 +153,15 @@ export const RegisterForm = () => {
         register={register("password")}
         error={errors.password?.message}
       />
-      <Input
+      {/* <Input
         label="Confirmar senha"
         type="password"
         placeholder="Digitar senha"
         register={register("passwordConfirmation")}
         error={errors.passwordConfirmation?.message}
-      />
+      /> */}
       <div className="divBtnReegister">
-      <ButtonFinishRegister/>
+        <ButtonFinishRegister/>
 
       </div>
 

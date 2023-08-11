@@ -158,6 +158,7 @@ export const StyledButtonFinishRegister = styled.button`
   font-weight: 600;
   letter-spacing: 0em;
   text-align: left;
+  
 
   &:hover {
     color: var(--brand--brand1);

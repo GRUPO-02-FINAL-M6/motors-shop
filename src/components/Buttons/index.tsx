@@ -34,7 +34,7 @@ export const ButtonGoForLogin= ()=>{
 }
 
 export const ButtonFinishRegister= ()=>{
-    return<StyledButtonFinishRegister>Finalizar cadastro</StyledButtonFinishRegister>;
+    return<StyledButtonFinishRegister type="submit">Finalizar cadastro</StyledButtonFinishRegister>;
 }
 
 export const ButtonBuyer= ()=>{
