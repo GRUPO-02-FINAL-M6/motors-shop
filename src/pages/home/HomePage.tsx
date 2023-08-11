@@ -23,6 +23,7 @@ export const HomePage = () => {
     nextPage,
     previousPage,
     currentPage,
+    totalPages,
   } = useContext(AdsContext);
   const navigate = useNavigate();
 
@@ -78,29 +79,30 @@ export const HomePage = () => {
         </section>
         <div id="main-bottom">
           <ButtonFilters />
-          <h3>{currentPage} de X páginas</h3>
+          <div id="pages">
+            <h3 id="current-page">{currentPage}</h3>
+            <h3 className="total-pages">de</h3>
+            <h3 className="total-pages">{totalPages}</h3>
+          </div>
           <div id="pages-btns">
-          {previousPage ? (
-            <button id="previous-page" onClick={() => goToPreviousPage()}>
-              Anterior
-            </button>
-          ) : (
-            <button
-              id="previous-page-disabled"
-              disabled={true}
-            >
-              Anterior
-            </button>
-          )}
-          {nextPage ? (
-            <button id="next-page" onClick={() => goToNextPage()}>
-              Próxima
-            </button>
-          ) : (
-            <button id="next-page-disabled" disabled={true}>
-              Próxima
-            </button>
-          )}
+            {previousPage ? (
+              <button id="previous-page" onClick={() => goToPreviousPage()}>
+                Anterior
+              </button>
+            ) : (
+              <button id="previous-page-disabled" disabled={true}>
+                Anterior
+              </button>
+            )}
+            {nextPage ? (
+              <button id="next-page" onClick={() => goToNextPage()}>
+                Próxima
+              </button>
+            ) : (
+              <button id="next-page-disabled" disabled={true}>
+                Próxima
+              </button>
+            )}
           </div>
         </div>
       </MainStyled>
