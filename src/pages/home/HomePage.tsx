@@ -12,6 +12,7 @@ import { AdsSectionStyled, MainStyled } from "./style";
 import imagem from "../../assets/Photo.svg";
 import { ButtonFilters } from "../../components/Buttons";
 import { useNavigate } from "react-router-dom";
+import { Filter } from "../../components/Filter";
 
 export const HomePage = () => {
   const [menuStatus, setMenuStatus] = useState(false);
@@ -23,6 +24,8 @@ export const HomePage = () => {
   };
   return (
     <>
+       {/* <Filter/>  */}
+    
       <HeaderProps menuOpen={menuStatus}>
         <img src="../../src/assets/logo.svg" alt="" />
         <ButtonsProps menuOpen={menuStatus}>
