@@ -90,6 +90,10 @@ export const MainStyled = styled.main`
     letter-spacing: 0em;
     text-align: center;
     color: var(--grey--scale--grey-3);
+
+    &{
+      cursor: not-allowed;
+    }
   }
 
   @media (min-width: 1024px) {
