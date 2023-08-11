@@ -30,10 +30,10 @@ export const HomePage = () => {
       <HeaderProps menuOpen={menuStatus}>
         <img src="../../src/assets/logo.svg" alt="" />
         <ButtonsProps menuOpen={menuStatus}>
-          <ButtonLogin onClick={() => navigate("login")}>
+          <ButtonLogin onClick={() => navigate("/login")}>
             Fazer Login
           </ButtonLogin>
-          <ButtonRegister onClick={() => navigate("register")}>
+          <ButtonRegister onClick={() => navigate("/register")}>
             Cadastrar
           </ButtonRegister>
         </ButtonsProps>
