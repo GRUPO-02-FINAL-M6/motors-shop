@@ -31,7 +31,7 @@ export const Filter = async () => {
       }
     const filters = async (filterParams: iFilterParams) => {
         try {
-          const response = await api.get( "/filters", {
+          const response = await api.get(process.env.API_URL! + "/filters", {
             params: filterParams,
           });
       

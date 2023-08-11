@@ -22,7 +22,7 @@ export const Card = ({ads}: CardProps) => {
           <h6>{Number(ads.km).toLocaleString("pt-br") + " km"}</h6>
           <h6>{ads.year}</h6>
         </div>
-        <h2>{Number(ads.value).toLocaleString("pt-br", {style: "currency", currency: "BRL"})}</h2>
+        <h2>{Number(ads.price).toLocaleString("pt-br", {style: "currency", currency: "BRL"})}</h2>
       </div>
     </StyledCard>
   );

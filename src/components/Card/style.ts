@@ -21,7 +21,6 @@ export const StyledCard = styled.li`
   }
 
   .card-description {
-    font-size: var(--text--body-2-400);
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
@@ -42,7 +41,6 @@ export const StyledCard = styled.li`
       gap: 8px;
 
       h6 {
-        font-size: var(--text--body-2-500);
         color: var(--brand--brand1);
         background-color: var(--brand--brand4);
         border-radius: 4px;
@@ -50,7 +48,6 @@ export const StyledCard = styled.li`
       }
 
       h2 {
-        font-size: var(--heading---heading-7-500);
         color: var(--grey--scale--grey-1);
       }
     }
@@ -71,6 +68,13 @@ export const StyledCard = styled.li`
   @media(min-width: 768px){
     min-width: 40vw;
     max-width: 40vw;
+    height: 60vh;
   }
 
+  @media(min-width: 1024px){
+    min-width: 30%;
+    max-width: 30%;
+    height: 400px;
+    
+  }
 `;

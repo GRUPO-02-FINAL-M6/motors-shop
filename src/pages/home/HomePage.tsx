@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AdsContext } from "../../providers/adsProvider";
 import {
   ButtonLogin,
@@ -16,21 +16,35 @@ import { useNavigate } from "react-router-dom";
 
 export const HomePage = () => {
   const [menuStatus, setMenuStatus] = useState(false);
-  const { ads } = useContext(AdsContext);
-  const navigate = useNavigate()
+  const {
+    ads,
+    goToNextPage,
+    goToPreviousPage,
+    nextPage,
+    previousPage,
+    currentPage,
+  } = useContext(AdsContext);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setMenuStatus(!menuStatus);
   };
+
+  useEffect(() => {}, [ads]);
+
   return (
     <>
-       {/* <Filter/>  */}
-    
+      {/* <Filter/>  */}
+
       <HeaderProps menuOpen={menuStatus}>
         <img src="../../src/assets/logo.svg" alt="" />
         <ButtonsProps menuOpen={menuStatus}>
-          <ButtonLogin onClick={() => navigate("login")}>Fazer Login</ButtonLogin>
-          <ButtonRegister onClick={() => navigate("register")}>Cadastrar</ButtonRegister>
+          <ButtonLogin onClick={() => navigate("/login")}>
+            Fazer Login
+          </ButtonLogin>
+          <ButtonRegister onClick={() => navigate("/register")}>
+            Cadastrar
+          </ButtonRegister>
         </ButtonsProps>
         <HamburgerIcon onClick={toggleMenu}>
           {menuStatus ? <h2>X</h2> : <h2>☰</h2>}
@@ -44,27 +58,50 @@ export const HomePage = () => {
           </div>
           <img src={imagem} alt="background image" />
         </div>
-        <AdsSectionStyled>
-            {
-              ads.length > 0 ? (
-                <ul>
-                  {
-                    ads.map((ads) => (
-                      <Card ads={ads} key={ads.id} />
-                    ))
-                  }
-                </ul>
-              ) : (
-                <div id="empty">
-                  <h2>Ainda não há anúncios cadastrados...</h2>
-                </div>
-              )
-            }
-        </AdsSectionStyled>
+        <section id="main-section">
+          <div>
+            <h1>FILTRO AQUI...</h1>
+          </div>
+          <AdsSectionStyled>
+            {ads.length > 0 ? (
+              <ul>
+                {ads.map((ads) => (
+                  <Card ads={ads} key={ads.id} />
+                ))}
+              </ul>
+            ) : (
+              <div id="empty">
+                <h2>Ainda não há anúncios cadastrados...</h2>
+              </div>
+            )}
+          </AdsSectionStyled>
+        </section>
         <div id="main-bottom">
-          <ButtonFilters/>
-              <h3>1 de 2</h3>
-            <button id="next-page">Seguinte</button>
+          <ButtonFilters />
+          <h3>{currentPage} de X páginas</h3>
+          <div id="pages-btns">
+          {previousPage ? (
+            <button id="previous-page" onClick={() => goToPreviousPage()}>
+              Anterior
+            </button>
+          ) : (
+            <button
+              id="previous-page-disabled"
+              disabled={true}
+            >
+              Anterior
+            </button>
+          )}
+          {nextPage ? (
+            <button id="next-page" onClick={() => goToNextPage()}>
+              Próxima
+            </button>
+          ) : (
+            <button id="next-page-disabled" disabled={true}>
+              Próxima
+            </button>
+          )}
+          </div>
         </div>
       </MainStyled>
     </>
