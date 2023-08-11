@@ -12,6 +12,7 @@ import { AdsSectionStyled, MainStyled } from "./style";
 import imagem from "../../assets/Photo.svg";
 import { ButtonFilters } from "../../components/Buttons";
 import { useNavigate } from "react-router-dom";
+import { Filter } from "../../components/Filter";
 
 export const HomePage = () => {
   const [menuStatus, setMenuStatus] = useState(false);
@@ -63,6 +64,7 @@ export const HomePage = () => {
               <h3>1 de 2</h3>
             <button id="next-page">Seguinte</button>
         </div>
+        <Filter /> 
       </MainStyled>
     </>
   );

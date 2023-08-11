@@ -9,6 +9,8 @@ interface iAdsProviderProps {
 
 interface iAdsContext {
     ads: iAds[]
+    setAds: React.Dispatch<React.SetStateAction<iAds[]>>
+    filterAds: (filter: string) => Promise<void>
 }
 
 export interface iAds {
@@ -22,7 +24,8 @@ export interface iAds {
     fuel: string
     createdAt: string
     value: number
-    user: {name: string}
+    user: { name: string }
+
 }
 
 export const AdsContext = createContext({} as iAdsContext)
@@ -39,14 +42,26 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
             const response = await api.get("/advertisement");
             setAds(response.data);
         } catch (error) {
-            if(axios.isAxiosError(error)){
+            if (axios.isAxiosError(error)) {
                 toast.error(error.response?.data)
             };
         }
     };
-    
+
+    const filterAds = async (filter: string) => {
+
+        try {
+            const response = await api.get(`/advertisement?name=`);
+            setAds(response.data);
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                toast.error(error.response?.data)
+            };
+        }
+    };
+
     return (
-        <AdsContext.Provider value={{ ads }}>
+        <AdsContext.Provider value={{ ads, setAds, filterAds }}>
             {children}
         </AdsContext.Provider>
     );

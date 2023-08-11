@@ -1406,10 +1406,10 @@
   resolved "https://registry.npmjs.org/@popperjs/core/-/core-2.11.8.tgz"
   integrity sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==
 
-"@remix-run/router@1.7.2":
-  version "1.7.2"
-  resolved "https://registry.npmjs.org/@remix-run/router/-/router-1.7.2.tgz"
-  integrity sha512-7Lcn7IqGMV+vizMPoEl5F0XDshcdDYtMI6uJLQdQz5CfZAwy3vvGKYSUk789qndt5dEC4HfSjviSYlSoHGL2+A==
+"@remix-run/router@1.8.0":
+  version "1.8.0"
+  resolved "https://registry.npmjs.org/@remix-run/router/-/router-1.8.0.tgz"
+  integrity sha512-mrfKqIHnSZRyIzBcanNJmVQELTnX+qagEDlcKO90RgRBVOZGSGvZKeDihTRfWcqoDn5N/NkUcwWTccnpN18Tfg==
 
 "@types/hoist-non-react-statics@*":
   version "3.3.1"
@@ -1423,6 +1423,11 @@
   version "7.0.12"
   resolved "https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.12.tgz"
   integrity sha512-Hr5Jfhc9eYOQNPYO5WLDq/n4jqijdHNlDXjuAQkkt+mWdQR+XJToOHrsD4cPaMXpn6KO7y2+wM8AZEs8VpBLVA==
+
+"@types/node@^20.4.9", "@types/node@>= 14":
+  version "20.4.9"
+  resolved "https://registry.npmjs.org/@types/node/-/node-20.4.9.tgz"
+  integrity sha512-8e2HYcg7ohnTUbHk8focoklEQYvemQmu9M/f43DZVx43kHn0tE3BY/6gSDxS7k0SprtS0NHvj+L80cGLnoOUcQ==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -1911,6 +1916,11 @@ dom-helpers@^5.0.1:
     "@babel/runtime" "^7.8.7"
     csstype "^3.0.2"
 
+dotenv@^16.3.1:
+  version "16.3.1"
+  resolved "https://registry.npmjs.org/dotenv/-/dotenv-16.3.1.tgz"
+  integrity sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==
+
 electron-to-chromium@^1.4.477:
   version "1.4.485"
   resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.485.tgz"
@@ -2377,6 +2387,13 @@ json5@^2.2.2:
   resolved "https://registry.npmjs.org/json5/-/json5-2.2.3.tgz"
   integrity sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==
 
+jsx-runtime@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/jsx-runtime/-/jsx-runtime-1.2.0.tgz"
+  integrity sha512-iCxmRTlUAWmXwHZxN0JSx/T7eRi0SkKAskE0lp+j4W1mzdNp49ja/9QI2ZmlggPM95RqnDw5ioYjw0EcvpIClw==
+  dependencies:
+    object-assign "^3.0.0"
+
 jwt-decode@^3.1.2:
   version "3.1.2"
   resolved "https://registry.npmjs.org/jwt-decode/-/jwt-decode-3.1.2.tgz"
@@ -2508,6 +2525,14 @@ normalize-path@^3.0.0, normalize-path@~3.0.0:
   resolved "https://registry.npmjs.org/normalize-path/-/normalize-path-3.0.0.tgz"
   integrity sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==
 
+<<<<<<< HEAD
+=======
+object-assign@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.npmjs.org/object-assign/-/object-assign-3.0.0.tgz"
+  integrity sha512-jHP15vXVGeVh1HuaA2wY6lxk+whK/x4KBG88VXeRma7CCun7iGD5qPc4eYykQ9sdQvg8jkwFKsSxHln2ybW3xQ==
+
+>>>>>>> 9b90bb960f41a7d900c7b2f2a328b9b8b1c82601
 object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.npmjs.org/object-assign/-/object-assign-4.1.1.tgz"
@@ -2684,20 +2709,20 @@ react-refresh@^0.14.0:
   resolved "https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz"
   integrity sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==
 
-react-router-dom@^6.14.2:
-  version "6.14.2"
-  resolved "https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.14.2.tgz"
-  integrity sha512-5pWX0jdKR48XFZBuJqHosX3AAHjRAzygouMTyimnBPOLdY3WjzUSKhus2FVMihUFWzeLebDgr4r8UeQFAct7Bg==
+react-router-dom@^6.15.0:
+  version "6.15.0"
+  resolved "https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.15.0.tgz"
+  integrity sha512-aR42t0fs7brintwBGAv2+mGlCtgtFQeOzK0BM1/OiqEzRejOZtpMZepvgkscpMUnKb8YO84G7s3LsHnnDNonbQ==
   dependencies:
-    "@remix-run/router" "1.7.2"
-    react-router "6.14.2"
+    "@remix-run/router" "1.8.0"
+    react-router "6.15.0"
 
-react-router@6.14.2:
-  version "6.14.2"
-  resolved "https://registry.npmjs.org/react-router/-/react-router-6.14.2.tgz"
-  integrity sha512-09Zss2dE2z+T1D03IheqAFtK4UzQyX8nFPWx6jkwdYzGLXd5ie06A6ezS2fO6zJfEb/SpG6UocN2O1hfD+2urQ==
+react-router@6.15.0:
+  version "6.15.0"
+  resolved "https://registry.npmjs.org/react-router/-/react-router-6.15.0.tgz"
+  integrity sha512-NIytlzvzLwJkCQj2HLefmeakxxWHWAP+02EGqWEZy+DgfHHKQMUoBBjUQLOtFInBMhWtb3hiUy6MfFgwLjXhqg==
   dependencies:
-    "@remix-run/router" "1.7.2"
+    "@remix-run/router" "1.8.0"
 
 react-toastify@^9.1.3:
   version "9.1.3"
