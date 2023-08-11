@@ -73,6 +73,15 @@ export const MainStyled = styled.main`
     text-align: center;
     color: var(--brand--brand2);
   }
+
+  @media (min-width: 1024px) {
+    #main-section{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+  }
 `;
 
 export const AdsSectionStyled = styled.section`
@@ -81,19 +90,28 @@ export const AdsSectionStyled = styled.section`
   ul {
     padding: 1rem;
     display: flex;
+    justify-content: first baseline;
     gap: 0.5rem;
     overflow: scroll;
-    
   }
 
   #empty {
-      display: flex;
-      justify-content: center;
-      padding: 5rem 0 5rem 0;
+    display: flex;
+    justify-content: center;
+    padding: 5rem 0 5rem 0;
   }
+
   @media (min-width: 375px) {
     ul {
       gap: 1rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    width: 65vw;
+    ul {
+      width: 100%;
+      flex-wrap: wrap;
     }
   }
 `;
