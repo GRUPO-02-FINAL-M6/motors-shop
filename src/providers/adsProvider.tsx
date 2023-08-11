@@ -11,6 +11,14 @@ interface iAdsContext {
   ads: iAds[];
   setAds: React.Dispatch<React.SetStateAction<iAds[]>>;
   filterAds: (filter: string) => Promise<void>;
+  createAds: (
+    payload: iAdsRequest
+  ) => Promise<AxiosResponse<any, any> | undefined>;
+  goToNextPage: () => Promise<void>;
+  goToPreviousPage: () => Promise<void>;
+  nextPage: string | null;
+  previousPage: string | null;
+  currentPage: number
 }
 
 export interface iAds {
@@ -20,10 +28,12 @@ export interface iAds {
   description: string;
   year: number;
   km: number;
-  images: string[];
   fuel: string;
+  price: number;
+  color: string;
+  priceFipe: number;
+  images: string[];
   createdAt: string;
-  value: number;
   user: { name: string };
 }
 
@@ -44,6 +54,9 @@ export const AdsContext = createContext({} as iAdsContext);
 
 export const AdsProvider = ({ children }: iAdsProviderProps) => {
   const [ads, setAds] = useState<iAds[]>([]);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [nextPage, setNextPage] = useState<string | null>(null);
+  const [previousPage, setpreviousPage] = useState<string | null>(null);
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -53,16 +66,46 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
   const getAds = async () => {
     try {
       const response = await api.get("/advertisement");
-      setAds(response.data);
+      setAds(response.data.ads);
+      setNextPage(response.data.nextPage);
+      setpreviousPage(response.data.previousPage);
     } catch (error: any) {
       toast.error(error.response.data.message);
+    }
+  };
+
+  const goToNextPage = async () => {
+    if (nextPage) {
+      try {
+        const response = await api.get(`${nextPage}`);
+        setAds(response.data.ads);
+        setNextPage(response.data.nextPage);
+        setpreviousPage(response.data.previousPage);
+        setCurrentPage(currentPage + 1)
+      } catch (error: any) {
+        toast.error(error.response.data.message);
+      }
+    }
+  };
+
+  const goToPreviousPage = async () => {
+    if (previousPage) {
+      try {
+        const response = await api.get(`${previousPage}`);
+        setAds(response.data.ads);
+        setNextPage(response.data.nextPage);
+        setpreviousPage(response.data.previousPage);
+        setCurrentPage(currentPage - 1)
+      } catch (error: any) {
+        toast.error(error.response.data.message);
+      }
     }
   };
 
   const filterAds = async (filter: string) => {
     try {
       const response = await api.get(`/advertisement?name=`);
-      setAds(response.data);
+      setAds(response.data.ads);
     } catch (error: any) {
       toast.error(error.response?.data.message);
     }
@@ -96,14 +139,26 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
       const response = await api.post("/advertisement", payload, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      return response;
+      return response.data;
     } catch (error: any) {
       toast.error(error.response.data.message);
     }
   };
 
   return (
-    <AdsContext.Provider value={{ ads, setAds, filterAds }}>
+    <AdsContext.Provider
+      value={{
+        ads,
+        setAds,
+        filterAds,
+        createAds,
+        goToNextPage,
+        goToPreviousPage,
+        nextPage,
+        previousPage,
+        currentPage
+      }}
+    >
       {children}
     </AdsContext.Provider>
   );
