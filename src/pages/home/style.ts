@@ -52,6 +52,10 @@ export const MainStyled = styled.main`
       width: 170%;
       position: absolute;
       z-index: -1;
+
+      @media (min-width: 1024px) {
+        width: auto;
+      }
     }
   }
 
@@ -61,6 +65,22 @@ export const MainStyled = styled.main`
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+  }
+
+  #pages {
+    display: flex;
+    gap: 8px;
+    font-family: "Lexend";
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: var(--grey--scale--grey-3);
+
+    .total-pages{
+      color: var(--grey--scale--grey-4);
+    }
   }
 
   #pages-btns {
@@ -91,7 +111,7 @@ export const MainStyled = styled.main`
     text-align: center;
     color: var(--grey--scale--grey-3);
 
-    &{
+    & {
       cursor: not-allowed;
     }
   }
