@@ -12,36 +12,21 @@ import { AdsSectionStyled, MainStyled } from "./style";
 import imagem from "../../assets/Photo.svg";
 import { ButtonFilters } from "../../components/Buttons";
 import { useNavigate } from "react-router-dom";
+import { Filter } from "../../components/Filter";
 
 export const HomePage = () => {
   const [menuStatus, setMenuStatus] = useState(false);
-  const { ads, createAds } = useContext(AdsContext);
+  const { ads } = useContext(AdsContext);
   const navigate = useNavigate();
 
   const toggleMenu = () => {
     setMenuStatus(!menuStatus);
   };
 
-  const x = {
-    name: "bolt ev premier 203cv (elétricO)",
-    brand: "chevrolet",
-    color: "branco",
-    description:
-      "Um dos carros que fez a fama da Hyundai no Brasil está de volta em nova geração. O Hyundai Azera 2020 começa a ser vendido pela importadora oficial Caoa, que cumpre assim a promessa de trazê-lo no 1º semestre deste ano. Chega em versão única com motor 3.0 V6 de 261 cv, câmbio automático de 8 marchas e o nada modesto preço de R$ 269.900.",
-    km: 50000,
-    fuel: "Gasolina / Etanol",
-    price: 40000,
-    createdAt: "2023-08-08",
-    images: [
-      "https://www.autocenterguapore.com.br/carros/b8800e3389102ed2867c71c1510032b5-thumbjpeg-hyundai-i30-8974161-1000-750-70.jpg",
-      "https://www.autocenterguapore.com.br/carros/75cac425ef0d005436ed1ed451b749f4-thumbjpeg-hyundai-i30-8974161-1000-750-70.jpg",
-    ],
-    year: 2022,
-    modelCar: "Hyundai",
-  };
-
   return (
     <>
+      {/* <Filter/>  */}
+
       <HeaderProps menuOpen={menuStatus}>
         <img src="../../src/assets/logo.svg" alt="" />
         <ButtonsProps menuOpen={menuStatus}>
@@ -65,7 +50,9 @@ export const HomePage = () => {
           <img src={imagem} alt="background image" />
         </div>
         <section id="main-section">
-          <div><h1>FILTRO AQUI...</h1></div>
+          <div>
+            <h1>FILTRO AQUI...</h1>
+          </div>
           <AdsSectionStyled>
             {ads.length > 0 ? (
               <ul>
@@ -83,9 +70,7 @@ export const HomePage = () => {
         <div id="main-bottom">
           <ButtonFilters />
           <h3>1 de 2</h3>
-          <button id="next-page" onClick={() => createAds(x)}>
-            Seguinte
-          </button>
+          <button id="next-page">Seguinte</button>
         </div>
       </MainStyled>
     </>
