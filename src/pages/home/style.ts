@@ -150,10 +150,11 @@ export const AdsSectionStyled = styled.section`
   }
 
   @media (min-width: 1024px) {
-    width: 65vw;
+    width: 70vw;
     ul {
       width: 100%;
       flex-wrap: wrap;
+      overflow: auto;
     }
   }
 `;
