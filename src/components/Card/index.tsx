@@ -1,8 +1,7 @@
 import { iAds } from "../../providers/adsProvider";
 import { UserIcon } from "../User-icon";
 import { StyledCard } from "./style";
-import card404 from "../../assets/card-404.png";
-import { Carousel } from "../Carousel";
+import card404 from "../../assets/card-404.jpg";
 
 interface CardProps {
   ads: iAds;

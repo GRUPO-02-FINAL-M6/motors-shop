@@ -7,7 +7,7 @@ import { RegisterPage } from "../pages/register";
 export const RoutesMain = () => {
   return (
     <Routes>
-      <Route path="/HomePage" element={<HomePage />} />
+      <Route path="/" element={<HomePage />} />
       <Route path="/Login" element={<LoginPage />} />
       <Route path="/Register" element={<RegisterPage />} />
       <Route path="/DashBoard" element={<DashBoardPage />} />

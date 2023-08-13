@@ -30,7 +30,7 @@ export const ButtonBuy= ()=>{
 }
 
 export const ButtonGoForLogin= ()=>{
-    return<StyledButtonGoForLogin>Ir para o login</StyledButtonGoForLogin>;
+    return<StyledButtonGoForLogin>Fazer login</StyledButtonGoForLogin>;
 }
 
 export const ButtonFinishRegister= ()=>{

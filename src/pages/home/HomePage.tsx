@@ -1,21 +1,12 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { AdsContext } from "../../providers/adsProvider";
-import {
-  ButtonLogin,
-  ButtonRegister,
-  ButtonsProps,
-  HamburgerIcon,
-  HeaderProps,
-} from "../LoginPage";
 import { Card } from "../../components/Card";
 import { AdsSectionStyled, MainStyled } from "./style";
 import imagem from "../../assets/Photo.svg";
 import { ButtonFilters } from "../../components/Buttons";
-import { useNavigate } from "react-router-dom";
-import { Filter } from "../../components/Filter";
+import { Header } from "../../components/Header";
 
 export const HomePage = () => {
-  const [menuStatus, setMenuStatus] = useState(false);
   const {
     ads,
     goToNextPage,
@@ -25,7 +16,6 @@ export const HomePage = () => {
     currentPage,
     totalPages,
   } = useContext(AdsContext);
-  const navigate = useNavigate();
 
   const targetRef = useRef<HTMLDivElement>(null);
 
@@ -35,29 +25,11 @@ export const HomePage = () => {
     }
   };
 
-  const toggleMenu = () => {
-    setMenuStatus(!menuStatus);
-  };
-  
-  useEffect(() => {
-  }, [ads]);
+  useEffect(() => {}, [ads]);
+
   return (
     <>
-      {/* <Filter/>  */}
-      <HeaderProps menuOpen={menuStatus}>
-        <img src="../../src/assets/logo.svg" alt="" />
-        <ButtonsProps menuOpen={menuStatus}>
-          <ButtonLogin onClick={() => navigate("/login")}>
-            Fazer Login
-          </ButtonLogin>
-          <ButtonRegister onClick={() => navigate("/register")}>
-            Cadastrar
-          </ButtonRegister>
-        </ButtonsProps>
-        <HamburgerIcon onClick={toggleMenu}>
-          {menuStatus ? <h2>X</h2> : <h2>☰</h2>}
-        </HamburgerIcon>
-      </HeaderProps>
+      <Header />
       <MainStyled>
         <div className="background">
           <div>
