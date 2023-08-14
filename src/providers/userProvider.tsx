@@ -51,6 +51,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
             toast.error(error.response.data.message)
         }
     }
+    
     const getUser = async () => {
         try {
             const decodedToken: any = jwt_decode(token!)

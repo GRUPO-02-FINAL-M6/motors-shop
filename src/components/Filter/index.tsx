@@ -1,5 +1,4 @@
-// import "dotenv/config";
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import { ButtonClearFilters } from "../Buttons"
 import { StyledFilterList } from "./style"
 import { FilterTopics } from "./Filter";
@@ -7,23 +6,43 @@ import { api } from "../../services/api";
 import { FilterContext } from "../../providers/filterProvider";
 import FilterValuesRange from "../FilterValuesRange";
 
-export const Filter = () => {
+import axios from "axios";
+import { Model } from "./Model";
+import { Color } from "./Color";
+import { Year } from "./Year";
+import { Fuel } from "./Fuel";
+import { api } from "../../services/api";
 
   // const [minValuePrice, setMinValue] = useState(2000);
   // const [maxValuePrice, setMaxValue] = useState(4000);
   // const { ads, setAds } = useContext(AdsContext);
 
 
-  // interface iFilterParams {
-  //   name?: string;
-  //   brand?: string;
-  //   year?: number;
-  //   color?: string;
-  //   fuel?: string;
-  //   model?: string;
-  //   minValuePrice?: number;
-  //   maxValuePrice?: number;
-  // }
+    interface iFilterParams {
+        name?: string;
+        brand?: string;
+        year?: number;
+        color?: string;
+        fuel?: string;
+        model?: string;
+        minValuePrice?: number;
+        maxValuePrice?:number;
+        
+      }
+    const filters = async (filterParams: iFilterParams) => {
+        try {
+          const response = await api.get(process.env.API_URL! + "/filters", {
+            params: filterParams,
+          });
+      
+          return response.data;
+      
+        } catch (error) {
+          console.error('Erro ao buscar anúncios:', error);
+          throw error; 
+        }
+      };
+    
 
   const { filters, setFilters } = useContext(FilterContext);
 
