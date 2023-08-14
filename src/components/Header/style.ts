@@ -35,11 +35,12 @@ export const StyledHeaderDiv = styled.div`
 
     #header-btns{
       display: none;
-
+      
       div{
         display: flex;
         align-items: center;
         gap: 8px;
+        
       }
       @media(min-width: 1024px){
         display: block;
