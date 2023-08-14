@@ -45,6 +45,7 @@ interface iRegisterUser {
     number: string;
     complement: string;
     password: string;
+    typeCount: string;
     
   }
 
@@ -88,7 +89,8 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
             const response = await api.post(`/users`,payload)
             navigate("/login")
         } catch (error: any) {
-            toast.error(error.response.data.message)
+            // toast.error(error.response.data.message)
+            console.log(error)
         }
     }
 

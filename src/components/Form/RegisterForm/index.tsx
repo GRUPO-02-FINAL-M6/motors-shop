@@ -22,7 +22,7 @@ const registerUserSchema = z.object({
     .string()
     .min(11, "O CPF deve conter 11 dígitos")
     .max(11, "O CPF deve conter 11 dígitos"),
-  telephone: z.string().min(10, "O telefone deve conter 10 dígitos"),
+  contact: z.string().min(10, "O telefone deve conter 10 dígitos"),
   birthday: z.string(),
   description: z.string().min(1, "A descrição deve ser obrigatória"),
   cep: z.string().min(8, "O CEP deve conter 8 dígitos"),
@@ -31,6 +31,7 @@ const registerUserSchema = z.object({
   road: z.string().min(1, "A rua deve ser obrigatória"),
   number: z.string().min(1, "O número deve ser obrigatório"),
   complement: z.string().min(1, "O complemento deve ser obrigatório"),
+  typeCount: z.string().optional(),
   password: z.string().min(8, "A senha deve conter no mínimo 8 caracteres"),
   // passwordConfirmation: z
   //   .string()
@@ -52,18 +53,20 @@ export const RegisterForm = () => {
     resolver: zodResolver(registerUserSchema),
   });
   const {registerUser} = useContext(UserContext)
+  const [typeCount, setTypeCount] =useState("buyer")
 
   const [formSubmitError, setFormSubmitError] = useState("");
+  const createDataUser = (data: any) => {
 
-  // const registerUsers = (data: TRegisterUser) => {
-  //   const newData = [...setUsers, data]
+    const newData= {...data, typeCount:typeCount}
 
-  //   setUsers(prevUsers => [...prevUsers, data]);
-  //   reset();
-  // };
+    registerUser(newData);
+    // reset();
+  };
+  
 
   return (
-    <StyledDivRegister onSubmit={handleSubmit(registerUser)}>
+    <StyledDivRegister onSubmit={handleSubmit(createDataUser)}>
       <h1>Cadastro</h1>
 
       <p>Informações pessoais</p>
@@ -93,7 +96,7 @@ export const RegisterForm = () => {
         label="Celular"
         type="text"
         placeholder="(00) 00000-0000"
-        register={register("telephone")}
+        register={register("contact")}
         error={errors.telephone?.message}
       />
       <Input
@@ -143,7 +146,10 @@ export const RegisterForm = () => {
       
       <span>Tipo de conta</span>
       <div className="buttons">
-      <ButtonBuyer/> <ButtonAdvertiser/>
+
+      <ButtonBuyer onClick={()=>{setTypeCount("buyer")}} /> 
+      <ButtonAdvertiser onClick={()=>{setTypeCount("advertiser")}}/>
+
       </div>
 
       <Input
@@ -161,7 +167,8 @@ export const RegisterForm = () => {
         error={errors.passwordConfirmation?.message}
       /> */}
       <div className="divBtnReegister">
-        <ButtonFinishRegister/>
+        {/* <ButtonFinishRegister type="submit"/> */}
+        <button type="submit">Cadastrar</button>
 
       </div>
 
