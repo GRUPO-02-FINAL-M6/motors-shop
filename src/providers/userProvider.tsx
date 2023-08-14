@@ -10,10 +10,12 @@ interface iUserProviderProps {
     children: React.ReactNode
 }
 
+
 interface iUserContext {
     user: iUser | null
     setUser: React.Dispatch<React.SetStateAction<iUser | null>>
     login: (payload: iLogin) => Promise<void>
+    registerUser: (payload: iRegisterUser) => Promise<void>
 }
 
 export interface iUser {
@@ -29,6 +31,23 @@ interface iLogin {
     email: string
     password: string
 }
+interface iRegisterUser {
+    name: string;
+    email: string;
+    cpf: string;
+    telephone: string;
+    birthday: string;
+    description: string;
+    cep: string;
+    state: string;
+    city: string;
+    road: string;
+    number: string;
+    complement: string;
+    password: string;
+    typeCount: string;
+    
+  }
 
 export const UserContext = createContext({} as iUserContext)
 
@@ -59,14 +78,27 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
             const userId = Number(decodedToken.sub)
             const response = await api.get(`/users/${userId}`)
             setUser(response.data)
-            console.log(user)
         } catch (error: any) {
             toast.error(error.response.data.message)
         }
     }
     
+    
+    const registerUser = async (payload:any) => {
+        try {
+            const response = await api.post(`/users`,payload)
+            navigate("/login")
+        } catch (error: any) {
+            // toast.error(error.response.data.message)
+            console.log(error)
+        }
+    }
+
+
+    
+    
     return (
-        <UserContext.Provider value={{ login, user, setUser }}>
+        <UserContext.Provider value={{ login, user, setUser, registerUser }}>
             {children}
         </UserContext.Provider>
     );

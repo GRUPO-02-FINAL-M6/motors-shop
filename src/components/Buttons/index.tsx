@@ -34,16 +34,16 @@ export const ButtonGoForLogin= ()=>{
 }
 
 export const ButtonFinishRegister= ()=>{
-    return<StyledButtonFinishRegister>Finalizar cadastro</StyledButtonFinishRegister>;
+    return<StyledButtonFinishRegister type="submit">Finalizar cadastro</StyledButtonFinishRegister>;
 }
 
-export const ButtonBuyer= ()=>{
-    return<StyledButtonBuyer>Comprador</StyledButtonBuyer>;
+export const ButtonBuyer= ({...res})=>{
+    return<StyledButtonBuyer {...res} type="button" >Comprador</StyledButtonBuyer>;
 }
 
 
-export const ButtonAdvertiser= ()=>{
-    return<StyledButtonAdvertiser>Anunciante</StyledButtonAdvertiser>;
+export const ButtonAdvertiser= ({...res})=>{
+    return<StyledButtonAdvertiser {...res}  type="button" >Anunciante</StyledButtonAdvertiser>;
 }
 
 export const ButtonCreateAdvertiser= ()=>{

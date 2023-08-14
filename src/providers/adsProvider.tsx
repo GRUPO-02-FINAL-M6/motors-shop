@@ -69,9 +69,7 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
   const [advertiser, setAdvertiser] = useState<iAdvertiserProfile | null>(null);
   const token = localStorage.getItem("token");
 
-  useEffect(() => {
-    getAds();
-  }, []);
+  
 
   const getAds = async () => {
     try {
@@ -84,6 +82,10 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
       toast.error(error.response.data.message);
     }
   };
+  useEffect(() => {
+    getAds();
+
+  }, []);
 
   const goToNextPage = async () => {
     if (nextPage) {

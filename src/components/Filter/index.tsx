@@ -4,7 +4,6 @@ import { StyledDivHome } from "./style"
 import FilterValuesRange from "../FilterValuesRange";
 import { AdsContext } from "../../providers/adsProvider";
 import { Brand } from "./Brand";
-
 import axios from "axios";
 import { Model } from "./Model";
 import { Color } from "./Color";

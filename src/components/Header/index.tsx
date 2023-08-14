@@ -1,9 +1,9 @@
-import logo from '../../assets/logo.svg'
 import { StyledContainer } from '../../styles/grid'
 import { ButtonRegister } from '../Buttons'
 import { StyledHeader } from './style'
 
 export const Header = () => {
+    const logo = './public/logo.svg'
     return(
         <StyledHeader>
             <StyledContainer>
