@@ -3,12 +3,16 @@ import { styled } from "styled-components";
 export const StyledCard = styled.li`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 16px;
   min-width: 90vw;
+  max-width: 90vw;
   height: 350px;
 
   img {
+    min-height: 40%;
     max-height: 40%;
+    object-fit: fill;
   }
 
   .card-title {
@@ -55,6 +59,13 @@ export const StyledCard = styled.li`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media(min-width: 1024px){
+      font-size: 11px;
+    }
+    @media(min-width: 1440px){
+      font-size: 16px;
+    }
   }
 
   &:hover {

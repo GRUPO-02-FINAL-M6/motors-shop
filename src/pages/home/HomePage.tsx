@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { AdsContext } from "../../providers/adsProvider";
 import {
   ButtonLogin,
@@ -27,11 +27,20 @@ export const HomePage = () => {
   } = useContext(AdsContext);
   const navigate = useNavigate();
 
+  const targetRef = useRef<HTMLDivElement>(null);
+
+  const handleButtonClick = () => {
+    if (targetRef.current) {
+      targetRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const toggleMenu = () => {
     setMenuStatus(!menuStatus);
   };
-
-  useEffect(() => {}, [ads]);
+  
+  useEffect(() => {
+  }, [ads]);
 
   return (
     <>
@@ -63,7 +72,7 @@ export const HomePage = () => {
           <div>
             <h1>FILTRO AQUI...</h1>
           </div>
-          <AdsSectionStyled>
+          <AdsSectionStyled ref={targetRef}>
             {ads.length > 0 ? (
               <ul>
                 {ads.map((ads) => (
@@ -84,7 +93,7 @@ export const HomePage = () => {
             <h3 className="total-pages">de</h3>
             <h3 className="total-pages">{totalPages}</h3>
           </div>
-          <div id="pages-btns">
+          <div id="pages-btns" onClick={handleButtonClick}>
             {previousPage ? (
               <button id="previous-page" onClick={() => goToPreviousPage()}>
                 Anterior

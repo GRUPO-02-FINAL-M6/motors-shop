@@ -286,8 +286,6 @@ export const StyledFilters = styled.button`
   &:hover {
     color: var(--brand--brand1);
     background-color: var(--brand--brand4);
-    width: 270px;
-    height: 40px;
     text-align: center;
     font-size: 12px;
     display: flex;

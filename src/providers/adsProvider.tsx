@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 import { api, apiFipe } from "../services/api";
 import { toast } from "react-toastify";
 import axios, { AxiosResponse } from "axios";
+import { iUser } from "./userProvider";
 
 interface iAdsProviderProps {
   children: React.ReactNode;
@@ -20,6 +21,7 @@ interface iAdsContext {
   previousPage: string | null;
   currentPage: number;
   totalPages: number | null;
+  getAdvertiserProfile: (id: number) => Promise<void>;
 }
 
 export interface iAds {
@@ -51,6 +53,11 @@ export interface iAdsRequest {
   priceFipe: number;
 }
 
+export interface iAdvertiserProfile {
+  user: iUser;
+  ads: iAds[];
+}
+
 export const AdsContext = createContext({} as iAdsContext);
 
 export const AdsProvider = ({ children }: iAdsProviderProps) => {
@@ -59,6 +66,7 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
   const [nextPage, setNextPage] = useState<string | null>(null);
   const [previousPage, setPreviousPage] = useState<string | null>(null);
   const [totalPages, setTotalPages] = useState<number | null>(null);
+  const [advertiser, setAdvertiser] = useState<iAdvertiserProfile | null>(null);
   const token = localStorage.getItem("token");
 
   
@@ -69,7 +77,7 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
       setAds(response.data.ads);
       setNextPage(response.data.nextPage);
       setPreviousPage(response.data.previousPage);
-      setTotalPages(response.data.maxPages)
+      setTotalPages(response.data.maxPages);
     } catch (error: any) {
       toast.error(error.response.data.message);
     }
@@ -152,6 +160,15 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
     }
   };
 
+  const getAdvertiserProfile = async (id: number) => {
+    try {
+      const response = await api.get(`/user/${id}`);
+      setAdvertiser(response.data);
+    } catch (error: any) {
+      toast.error(error.response.data.message);
+    }
+  };
+  
   return (
     <AdsContext.Provider
       value={{
@@ -165,6 +182,7 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
         previousPage,
         currentPage,
         totalPages,
+        getAdvertiserProfile,
       }}
     >
       {children}
