@@ -1,31 +1,16 @@
 import { useForm } from "react-hook-form";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useContext, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import Input from "../Input";
 import { StyledDivRegister } from "./style";
 import { ComplementsInputs } from "../Input/ComplementsInput";
+import { ButtonAdvertiser, ButtonBuyer, ButtonFinishRegister } from "../../Buttons";
+import { UserContext } from "../../../providers/userProvider";
 
-interface IRegisterUser {
-  name: string;
-  email: string;
-  cpf: string;
-  telephone: string;
-  birthday: string;
-  description: string;
-  cep: string;
-  state: string;
-  city: string;
-  road: string;
-  number: string;
-  complement: string;
-  password: string;
-  passwordConfirmation: string;
-}
 
-interface IRegisterProps {
-  setUsers: Dispatch<SetStateAction<IRegisterUser[]>>;
-}
+
+
 
 const registerUserSchema = z.object({
   name: z.string().min(1, "O nome é obrigatório"),
@@ -37,7 +22,7 @@ const registerUserSchema = z.object({
     .string()
     .min(11, "O CPF deve conter 11 dígitos")
     .max(11, "O CPF deve conter 11 dígitos"),
-  telephone: z.string().min(10, "O telefone deve conter 10 dígitos"),
+  contact: z.string().min(10, "O telefone deve conter 10 dígitos"),
   birthday: z.string(),
   description: z.string().min(1, "A descrição deve ser obrigatória"),
   cep: z.string().min(8, "O CEP deve conter 8 dígitos"),
@@ -46,14 +31,15 @@ const registerUserSchema = z.object({
   road: z.string().min(1, "A rua deve ser obrigatória"),
   number: z.string().min(1, "O número deve ser obrigatório"),
   complement: z.string().min(1, "O complemento deve ser obrigatório"),
+  typeCount: z.string().optional(),
   password: z.string().min(8, "A senha deve conter no mínimo 8 caracteres"),
-  passwordConfirmation: z
-    .string()
-    .min(8, "Confirme a sua senha por favor.")
-    .refine((value, data) => value === data.password, {
-      message: "As senhas não coincidem",
-      path: ["passwordConfirmation"],
-    }),
+  // passwordConfirmation: z
+  //   .string()
+  //   .min(8, "Confirme a sua senha por favor.")
+  //   .refine((value, data) => value === data.password, {
+  //     message: "As senhas não coincidem",
+  //     path: ["passwordConfirmation"],
+  //   }),
 });
 type TRegisterUser = z.infer<typeof registerUserSchema>;
 
@@ -66,19 +52,21 @@ export const RegisterForm = () => {
   } = useForm<TRegisterUser>({
     resolver: zodResolver(registerUserSchema),
   });
+  const {registerUser} = useContext(UserContext)
+  const [typeCount, setTypeCount] =useState("buyer")
 
   const [formSubmitError, setFormSubmitError] = useState("");
+  const createDataUser = (data: any) => {
 
-  const registerUser = (data: TRegisterUser) => {
-    console.log(data);
-    // const newData = [...prevUsers, data]
+    const newData= {...data, typeCount:typeCount}
 
-    // setUsers(prevUsers => [...prevUsers, data]);
+    registerUser(newData);
     // reset();
   };
+  
 
   return (
-    <StyledDivRegister onSubmit={handleSubmit(registerUser)}>
+    <StyledDivRegister onSubmit={handleSubmit(createDataUser)}>
       <h1>Cadastro</h1>
 
       <p>Informações pessoais</p>
@@ -87,7 +75,7 @@ export const RegisterForm = () => {
         label="Nome"
         type="text"
         placeholder="Ex: Samuel Leão"
-        register={register("name")}
+        register= {register("name")}
         error={errors.name?.message}
       />
       <Input
@@ -108,7 +96,7 @@ export const RegisterForm = () => {
         label="Celular"
         type="text"
         placeholder="(00) 00000-0000"
-        register={register("telephone")}
+        register={register("contact")}
         error={errors.telephone?.message}
       />
       <Input
@@ -154,30 +142,36 @@ export const RegisterForm = () => {
         error={errors.road?.message}
       />
       
-      <ComplementsInputs/>
+      <ComplementsInputs register1={register("number")} register2={register("complement")}/>
       
       <span>Tipo de conta</span>
       <div className="buttons">
-        <button type="button">Comprador</button>
-        <button type="button">Anunciante</button>
+
+      <ButtonBuyer onClick={()=>{setTypeCount("buyer")}} /> 
+      <ButtonAdvertiser onClick={()=>{setTypeCount("advertiser")}}/>
+
       </div>
 
       <Input
-        label="Crie uma senha"
+        label="Senha"
         type="password"
-        placeholder="Crie uma senha"
+        placeholder="Digitar senha"
         register={register("password")}
         error={errors.password?.message}
       />
-      <Input
+      {/* <Input
         label="Confirmar senha"
         type="password"
-        placeholder="Confirme a senha"
+        placeholder="Digitar senha"
         register={register("passwordConfirmation")}
         error={errors.passwordConfirmation?.message}
-      />
+      /> */}
+      <div className="divBtnReegister">
+        {/* <ButtonFinishRegister type="submit"/> */}
+        <button type="submit">Cadastrar</button>
 
-      <button type="submit">Cadastrar</button>
+      </div>
+
     </StyledDivRegister>
   );
 };

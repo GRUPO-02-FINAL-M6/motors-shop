@@ -5,7 +5,8 @@ import { FilterTopics } from "./Filter";
 import { api } from "../../services/api";
 import { FilterContext } from "../../providers/filterProvider";
 import FilterValuesRange from "../FilterValuesRange";
-
+import { AdsContext } from "../../providers/adsProvider";
+import { Brand } from "./Brand";
 import axios from "axios";
 import { Model } from "./Model";
 import { Color } from "./Color";
