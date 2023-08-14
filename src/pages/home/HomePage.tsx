@@ -4,7 +4,9 @@ import { Card } from "../../components/Card";
 import { AdsSectionStyled, MainStyled } from "./style";
 import imagem from "../../assets/Photo.svg";
 import { ButtonFilters } from "../../components/Buttons";
+import { useNavigate } from "react-router-dom";
 import { Header } from "../../components/Header";
+// import { Filter } from "../../components/Filter";
 
 export const HomePage = () => {
   const {

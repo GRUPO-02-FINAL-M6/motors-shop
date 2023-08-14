@@ -35,12 +35,29 @@ export const StyledHeaderDiv = styled.div`
 
     #header-btns{
       display: none;
+      margin-right: 24px;
       
       div{
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 8px;
         
+        #desktop-menu{
+          position: absolute;
+          bottom: -90%;
+          right: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          gap: 16px;
+          height: 100%;
+          width: 12vw;
+          background-color: white;
+          z-index: 2;
+          border-radius: 7px;
+        }
       }
       @media(min-width: 1024px){
         display: block;

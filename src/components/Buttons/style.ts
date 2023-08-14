@@ -142,7 +142,7 @@ export const StyledButtonGoForLogin = styled.button`
 `;
 
 export const StyledButtonFinishRegister = styled.button`
-  width: 287px;
+  width: 400px;
   height: 48px;
   padding: 12px 20px 12px 20px;
   border-radius: 4px;
@@ -158,6 +158,7 @@ export const StyledButtonFinishRegister = styled.button`
   font-weight: 600;
   letter-spacing: 0em;
   text-align: left;
+  
 
   &:hover {
     color: var(--brand--brand1);
@@ -173,7 +174,7 @@ export const StyledButtonFinishRegister = styled.button`
 `;
 
 export const StyledButtonBuyer = styled.button`
-  width: 139px;
+  width: 190px;
   height: 48px;
   padding: 12px 20px 12px 20px;
   border-radius: 4px;
@@ -204,14 +205,14 @@ export const StyledButtonBuyer = styled.button`
 `;
 
 export const StyledButtonAdvertiser = styled.button`
-  width: 139px;
+  width:190px;
   height: 48px;
   padding: 12px 20px 12px 20px;
   border-radius: 4px;
-  border: var(--grey--scale--grey-4);
+  border: 1.5px solid var(--grey--scale--grey-4);
   gap: 10px;
-  color: var(--grey--scale--grey-10);
-  background-color: var(--grey--scale--grey-0);
+  color: var(--grey--scale--grey-1);
+  background-color: var(--colors--fixed--white-fixed);
   display: flex;
   align-items: center;
   justify-content: center;

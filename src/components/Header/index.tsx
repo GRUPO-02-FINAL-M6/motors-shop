@@ -1,19 +1,25 @@
 import { useState, useContext, useEffect } from "react";
-import logo from "../../assets/logo.svg";
+import logo from "../../assets/Logo.svg";
 import { HeaderLinksStyled, StyledHeader, StyledHeaderDiv } from "./style";
 import { TfiClose, TfiMenu } from "react-icons/tfi";
 import { ButtonGoForLogin, ButtonRegister } from "../Buttons";
 import { UserContext } from "../../providers/userProvider";
 import { useNavigate } from "react-router-dom";
 import { UserIcon } from "../User-icon";
+import {FiLogOut} from "react-icons/fi"
 
 export const Header = () => {
   const [menuStatus, setMenuStatus] = useState(false);
+  const [desktopMenuStatus, setDesktopMenuStatus] = useState(false);
   const token = localStorage.getItem("token");
-  const { logout, getMyProfile, user } = useContext(UserContext);
+  const { logout, user, getMyProfile } = useContext(UserContext);
   const navigate = useNavigate();
 
   useEffect(() => {
+    const getUser = async () => {
+      await getMyProfile();
+    };
+    getUser();
   }, []);
 
   return (
@@ -22,8 +28,16 @@ export const Header = () => {
         <div id="header-nav">
           <img src={logo} alt="motors shop" />
           <div id="header-btns">
-            {token ? (
-              <UserIcon name={"José Gabriel"}/>
+            {user ? (
+              <div onClick={() => setDesktopMenuStatus(!desktopMenuStatus)}>
+                <UserIcon name={user!.name} />
+                {desktopMenuStatus ? (
+                  <div id="desktop-menu">
+                    <button>PERFIL</button>
+                    <button onClick={logout}>LOGOUT <FiLogOut/></button>
+                  </div>
+                ) : null}
+              </div>
             ) : (
               <div>
                 <div onClick={() => navigate("/login")}>
