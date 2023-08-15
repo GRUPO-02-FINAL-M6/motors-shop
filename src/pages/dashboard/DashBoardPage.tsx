@@ -1,4 +1,5 @@
 import { Filter } from "../../components/Filter";
+import { ModalCreateAds } from "../../components/Modal/ModalCreateAds";
 
 export const DashBoardPage = () => {
 
