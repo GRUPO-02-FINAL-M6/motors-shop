@@ -8,6 +8,25 @@ export const StyledCard = styled.li`
   min-width: 90vw;
   max-width: 90vw;
   height: 350px;
+  position: relative;
+
+  #stamp {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 16px;
+    height: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: var(--random--random8);
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0em;
+  }
 
   img {
     min-height: 40%;
@@ -60,10 +79,10 @@ export const StyledCard = styled.li`
     justify-content: space-between;
     align-items: center;
 
-    @media(min-width: 1024px){
+    @media (min-width: 1024px) {
       font-size: 11px;
     }
-    @media(min-width: 1440px){
+    @media (min-width: 1440px) {
       font-size: 16px;
     }
   }
@@ -72,20 +91,19 @@ export const StyledCard = styled.li`
     cursor: pointer;
   }
 
-  @media(min-width: 375px){
+  @media (min-width: 375px) {
     min-width: 70vw;
   }
 
-  @media(min-width: 768px){
+  @media (min-width: 768px) {
     min-width: 40vw;
     max-width: 40vw;
     height: 60vh;
   }
 
-  @media(min-width: 1024px){
+  @media (min-width: 1024px) {
     min-width: 30%;
     max-width: 30%;
     height: 400px;
-    
   }
 `;

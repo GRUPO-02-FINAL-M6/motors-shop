@@ -1,15 +1,22 @@
 import { iAds } from "../../providers/adsProvider";
 import { UserIcon } from "../User-icon";
 import { StyledCard } from "./style";
-import card404 from "../../assets/card-404.png";
+import card404 from "../../assets/card-404.jpg";
 
 interface CardProps {
   ads: iAds;
 }
 
 export const Card = ({ ads }: CardProps) => {
+  const stamp = ads.price <= ads.priceFip * 0.95 ? true : false;
+
   return (
     <StyledCard>
+      {stamp ? (
+        <div id="stamp">
+          <h2>$</h2>
+        </div>
+      ) : null}
       {ads.images.length > 0 ? (
         <img src={ads.images[0]} alt={ads.name} />
       ) : (

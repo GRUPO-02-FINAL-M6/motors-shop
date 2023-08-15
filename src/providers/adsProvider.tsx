@@ -34,7 +34,7 @@ export interface iAds {
   fuel: string;
   price: number;
   color: string;
-  priceFipe: number;
+  priceFip: number;
   images: string[];
   createdAt: string;
   user: { name: string };
