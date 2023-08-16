@@ -2,12 +2,12 @@ import { useContext, useEffect, useRef } from "react";
 import { AdsContext } from "../../providers/adsProvider";
 import { Card } from "../../components/Card";
 import { AdsSectionStyled, MainStyled } from "./style";
-import imagem from "../../assets/Photo.svg";
+// import imagem from "../../assets/Photo.svg";
 import { ButtonFilters } from "../../components/Buttons";
-import { useNavigate } from "react-router-dom";
+
 import { Header } from "../../components/Header";
 // import { Filter } from "../../components/Filter";
-
+const imagem = "/public/Photo.svg";
 export const HomePage = () => {
   const {
     ads,
@@ -41,7 +41,7 @@ export const HomePage = () => {
           <img src={imagem} alt="background image" />
         </div>
         <section id="main-section">
-          <div>
+          <div className="base-color-filter-area">
             <h1>FILTRO AQUI...</h1>
           </div>
           <AdsSectionStyled ref={targetRef}>

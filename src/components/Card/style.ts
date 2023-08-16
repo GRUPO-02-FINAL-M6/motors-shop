@@ -5,10 +5,10 @@ export const StyledCard = styled.li`
   flex-direction: column;
   justify-content: space-between;
   gap: 16px;
-  min-width: 90vw;
-  max-width: 90vw;
+  max-width: 280px;
   height: 350px;
   position: relative;
+  border-radius: 6px;
 
   #stamp {
     position: absolute;
@@ -29,8 +29,8 @@ export const StyledCard = styled.li`
   }
 
   img {
-    min-height: 40%;
-    max-height: 40%;
+    min-height: 45%;
+    max-height: 45%;
     object-fit: fill;
   }
 
@@ -91,7 +91,7 @@ export const StyledCard = styled.li`
     cursor: pointer;
   }
 
-  @media (min-width: 375px) {
+  /* @media (min-width: 375px) {
     min-width: 70vw;
   }
 
@@ -102,8 +102,8 @@ export const StyledCard = styled.li`
   }
 
   @media (min-width: 1024px) {
-    min-width: 30%;
+    min-width: 300px;
     max-width: 30%;
     height: 400px;
-  }
+  } */
 `;
