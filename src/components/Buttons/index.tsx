@@ -6,7 +6,7 @@ export const ButtonViewAds = ()=>{
 }
 
 export const ButtonClearFilters = ()=>{
-    return<StyledClearFilters>Limpar filtros</StyledClearFilters>;
+    return <StyledClearFilters className="alingCenter">Limpar filtros</StyledClearFilters>;
 }
 
 export const ButtonFilters = ()=>{

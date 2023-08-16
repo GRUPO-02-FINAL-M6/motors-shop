@@ -54,7 +54,8 @@ export const Filter = () => {
   return (
     <>
       {
-        load ? <p>loading</p> : <StyledFilterList>
+        load ? <p>loading</p> : 
+        <StyledFilterList>
           <FilterTopics name="Marca" data={filters.distinctBrands} set={setBrand}/>
           <FilterTopics name="Modelo" data={filters.distinctModels} set={setModel}/>
           <FilterTopics name="Cor" data={filters.distinctColors} set={setColor}/>
@@ -78,20 +79,7 @@ export const Filter = () => {
             }}/>
           </div>
 
-          {/* <ButtonClearFilters /> */}
-          <button onClick={() => {
-            console.log(brand)
-            console.log(model)
-            console.log(color)
-            console.log(year)
-            console.log(fuel)
-            console.log(minPrice)
-            console.log(maxPrice)
-            console.log(minKm)
-            console.log(maxKm)
-          }}>
-            click
-          </button>
+          <ButtonClearFilters />
 
         </StyledFilterList>
       }

@@ -1,10 +1,8 @@
-import imagem from "../../assets/Photo.svg";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { AdsContext } from "../../providers/adsProvider";
 import { Card } from "../../components/Card";
 import { AdsSectionStyled, MainStyled } from "./style";
 import { ButtonFilters } from "../../components/Buttons";
-import { useNavigate } from "react-router-dom";
 import { Filter } from "../../components/Filter";
 // import { Filter } from "../../components/Filter";
 
@@ -44,9 +42,7 @@ export const HomePage = () => {
           <img src={imagem} alt="background image" />
         </div>
         <section id="main-section">
-          <div className="base-color-filter-area">
-            <h1>FILTRO AQUI...</h1>
-          </div>
+          <Filter /> 
           <AdsSectionStyled ref={targetRef}>
             {ads.length > 0 ? (
               <ul>
@@ -89,7 +85,7 @@ export const HomePage = () => {
             )}
           </div>
         </div>
-        <Filter /> 
+        
       </MainStyled>
     </>
   );
