@@ -86,15 +86,19 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
   };
 
   const getMyProfile = async () => {
-    try {
-      const response = await api.get("/users/profile", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setUser(response.data);
-    } catch (error: any) {
-      toast.error(error.response.data.message);
+    if(token){
+      try {
+        const response = await api.get("/users/profile", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setUser(response.data);
+      } catch (error: any) {
+        setUser(null)
+        localStorage.clear()
+        toast.error("Sessão expirada, realize o login novamente.");
+      }
     }
   };
 

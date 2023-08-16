@@ -65,6 +65,12 @@ export const MainStyled = styled.main`
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+
+    @media(min-width: 1024px){
+      >button{
+        display: none;
+      }
+    }
   }
 
   #pages {
