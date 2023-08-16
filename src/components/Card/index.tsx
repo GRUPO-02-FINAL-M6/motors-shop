@@ -5,7 +5,6 @@ import { StyledCard } from "./style";
 interface CardProps {
   ads: iAds;
 }
-
 export const Card = ({ ads }: CardProps) => {
   const card404 = "../../assets/card-404.jpg";
   const stamp = ads.price <= ads.priceFip * 0.95 ? true : false;

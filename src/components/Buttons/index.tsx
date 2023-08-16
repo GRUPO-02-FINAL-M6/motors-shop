@@ -1,4 +1,4 @@
-import { StyledButtonAdvertiser, StyledButtonBuy, StyledButtonBuyer, StyledButtonCanceled, StyledButtonComment, StyledButtonCreateAds, StyledButtonDeleteAds, StyledButtonDeleteProfile, StyledButtonEdit, StyledButtonFinishRegister, StyledButtonGoForLogin, StyledButtonRegister, StyledButtonSaveUpdate, StyledButtonSeeDetails, StyledButtonViewAds, StyledButtonViewAllAds, StyledClearFilters, StyledFilters, StyledYesButtonDeleteAds } from "./style";
+import { StyledButtonAdsCreateImageGallery, StyledButtonAdvertiser, StyledButtonBuy, StyledButtonBuyer, StyledButtonCanceled, StyledButtonComment, StyledButtonCreateAds, StyledButtonDeleteAds, StyledButtonDeleteProfile, StyledButtonEdit, StyledButtonFinishRegister, StyledButtonGoForLogin, StyledButtonRegister, StyledButtonSaveUpdate, StyledButtonSeeDetails, StyledButtonViewAds, StyledButtonViewAllAds, StyledClearFilters, StyledFilters, StyledYesButtonDeleteAds } from "./style";
 
 export const ButtonViewAds = ()=>{
     return <StyledButtonViewAds>Ver anúncios</StyledButtonViewAds>;
@@ -78,4 +78,8 @@ export const ButtonDeleteProfile= ()=>{
 
 export const ButtonYesDeleteAds= ()=>{
     return<StyledYesButtonDeleteAds>Sim, excluir anúncio</StyledYesButtonDeleteAds>;
+}
+
+export const ButtonAdsCreateImageGallery= ()=>{
+    return<StyledButtonAdsCreateImageGallery>Adicionar campo para imagem da galeria</StyledButtonAdsCreateImageGallery>;
 }
