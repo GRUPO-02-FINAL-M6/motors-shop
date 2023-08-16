@@ -4,7 +4,7 @@ export const UserIconStyled = styled.div`
     display: flex;
     align-items: center;
     gap: 8px;
-  
+    
   .card-ads-icon {
     display: flex;
     justify-content: center;
@@ -28,5 +28,9 @@ export const UserIconStyled = styled.div`
     line-height: 24px;
     letter-spacing: 0em;
     text-align: left;
+  }
+
+  &:hover{
+    cursor: pointer;
   }
 `
