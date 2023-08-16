@@ -1,74 +1,88 @@
-import { useContext, useState } from "react"
+import { useState, useEffect } from "react"
 import { ButtonClearFilters } from "../Buttons"
-import { StyledDivHome } from "./style"
-import FilterValuesRange from "../FilterValuesRange";
-import { AdsContext } from "../../providers/adsProvider";
-import { Brand } from "./Brand";
-import axios from "axios";
-import { Model } from "./Model";
-import { Color } from "./Color";
-import { Year } from "./Year";
-import { Fuel } from "./Fuel";
+import { StyledFilterList } from "./style"
+import { FilterTopics } from "./Filter";
 import { api } from "../../services/api";
+import FilterValuesRange from "../FilterValuesRange";
 
-export const Filter = async () => {
+interface iFiltersParams{
+  minPrice: number,
+  maxPrice: number,
+  distinctBrands: Array<string>,
+  distinctColors: Array<string>,
+  distinctYears: Array<number>,
+  maxKm: number,
+  distinctModels: Array<string>,
+  fuel: {
+    "flex": "Gasolina / Etanol",
+    "hybrido": "Gasolina / Elétrico",
+    "Eletrico": "Elétrico"
+  }
+}
 
-    const [minValuePrice, setMinValue] = useState(2000);
-    const [maxValuePrice, setMaxValue] = useState(4000);
-    const {ads,setAds} = useContext(AdsContext);
 
+export const Filter = () => {
 
-    interface iFilterParams {
-        name?: string;
-        brand?: string;
-        year?: number;
-        color?: string;
-        fuel?: string;
-        model?: string;
-        minValuePrice?: number;
-        maxValuePrice?:number;
-        
+  const [filters, setFilters] = useState({} as iFiltersParams);  
+
+  const [load, setLoad] = useState(true);
+
+  const [brand, setBrand] = useState(null);
+  const [model, setModel] = useState(null);
+  const [color, setColor] = useState(null);
+  const [year, setYear] = useState(null);
+  const [fuel, setFuel] = useState(null);
+  const [minPrice, setMinPrice] = useState(null);
+  const [maxPrice, setMaxPrice] = useState(null);
+  const [minKm, setMinKm] = useState(null);
+  const [maxKm, setMaxKm] = useState(null)
+  
+
+  async function fetchData() {
+    await api.get('/filters')
+      .then(res => {
+        console.log(res.data)
+        setFilters(res.data)
+        setLoad(false)
+      })
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  return (
+    <>
+      {
+        load ? <p>loading</p> : 
+        <StyledFilterList>
+          <FilterTopics name="Marca" data={filters.distinctBrands} set={setBrand}/>
+          <FilterTopics name="Modelo" data={filters.distinctModels} set={setModel}/>
+          <FilterTopics name="Cor" data={filters.distinctColors} set={setColor}/>
+          <FilterTopics name="Ano" data={filters.distinctYears} set={setYear}/>
+          <FilterTopics name="Combustível" data={["Elétrico", "Flex", "Híbrido"]} set={setFuel} />
+
+          <div>
+            <p>Km</p>
+            <FilterValuesRange min={filters.minPrice} max={filters.maxPrice} onChange={({ min, max }) => {
+              setMaxPrice(max)
+              setMinPrice(min)
+            }}
+            />
+          </div>
+
+          <div>
+            <p>Preço</p>
+            <FilterValuesRange min={0} max={filters.maxKm} onChange={({ min, max }) => {
+              setMinKm(min)
+              setMaxKm(max)
+            }}/>
+          </div>
+
+          <ButtonClearFilters />
+
+        </StyledFilterList>
       }
-    const filters = async (filterParams: iFilterParams) => {
-        try {
-          const response = await api.get(process.env.API_URL! + "/filters", {
-            params: filterParams,
-          });
-      
-          return response.data;
-      
-        } catch (error) {
-          console.error('Erro ao buscar anúncios:', error);
-          throw error; 
-        }
-      };
-    
-
-    return (
-        <StyledDivHome>
-           <Brand name="Marca" data={["Ford", "Fiat", "Chevrolet","Honda"]} />
-            <Model name="Modelo" data={["Civic", "Corolla", "Cruze","Fit"]}/>
-            <Color name="Cor" data={["Azul", "Branca", "Prata"]}/>
-            <Year name="Ano" data={["2022", "2021", "2020"]}/>
-            <Fuel name="Combustível" data={["Elétrico", "Flex", "Híbrido"]}/>
-
-
-
-            <div>
-                <p>Km</p>
-                <FilterValuesRange></FilterValuesRange>
-
-
-            </div>
-            <div>
-                <p>Preço</p>
-                <FilterValuesRange></FilterValuesRange>
-            </div>
-
-            <ButtonClearFilters />
-
-        </StyledDivHome>
-
-
-    )
+    </>
+  )
 }
