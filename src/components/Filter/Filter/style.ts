@@ -16,6 +16,8 @@ export const StyledBrand = styled.div `
   }
 
   span {
+    width: fit-content;
+    height: fit-content;
     font-family: Lexend;
     font-size: 20px;
     font-weight: 500;
@@ -23,5 +25,14 @@ export const StyledBrand = styled.div `
     letter-spacing: 0em;
     text-align: left;
     color: #868E96;
+    cursor: pointer;
+
+    transition: 500ms;
+    
+    &:hover{
+      color: var(--brand--brand2)
+    }
   }
+  
+
 `

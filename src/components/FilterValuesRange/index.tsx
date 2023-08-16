@@ -1,72 +1,97 @@
-import React, { useState, useEffect } from 'react';
-import { SliderComponent } from './style';
+import { useCallback, useEffect, useState, useRef } from "react";
+import classnames from "classnames";
+import PropTypes from "prop-types";
+import "./multiRangeSlider.css";
 
-const FilterValuesRange: React.FC = () => {
-    const [minPrice, setMinPrice] = useState(0);
-    const [maxPrice, setMaxPrice] = useState(100000);
-    const [rangeStyle, setRangeStyle] = useState<{ left: string; right: string }>({
-        left: '25%',
-        right: '25%',
-    });
 
-    const priceGap = 2000;
+
+const MultiRangeSlider = ({ min, max, onChange }) => {
+    
+    const [minVal, setMinVal] = useState(min);
+    const [maxVal, setMaxVal] = useState(max);
+    
+    const minValRef = useRef(null);
+    const maxValRef = useRef(null);
+    
+    const range = useRef(null);
+
+    const getPercent = useCallback(
+        (value) => Math.round(((value - min) / (max - min)) * 100),
+        [min, max]
+    );
 
     useEffect(() => {
-        if (maxPrice - minPrice >= priceGap) {
-            setRangeStyle({
-                left: `${(minPrice / 100000) * 100}%`,
-                right: `${95 - (maxPrice / 100000) * 100}%`,
-            });
-        }
-    }, [minPrice, maxPrice]);
+        if (maxValRef.current) {
+            const minPercent = getPercent(minVal);
+            const maxPercent = getPercent(+maxValRef.current.value); // Preceding with '+' converts the value from type string to type number
 
-    const handleMinPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const newMinPrice = parseInt(e.target.value);
-        if (newMinPrice + priceGap <= maxPrice) {
-            setMinPrice(newMinPrice);
+            if (range.current) {
+                range.current.style.left = `${minPercent}%`;
+                range.current.style.width = `${maxPercent - minPercent}%`;
+            }
         }
-    };
+    }, [minVal, getPercent]);
 
-    const handleMaxPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const newMaxPrice = parseInt(e.target.value);
-        if (newMaxPrice - minPrice >= priceGap) {
-            setMaxPrice(newMaxPrice);
+    useEffect(() => {
+        if (minValRef.current) {
+            const minPercent = getPercent(+minValRef.current.value);
+            const maxPercent = getPercent(maxVal);
+
+            if (range.current) {
+                range.current.style.width = `${maxPercent - minPercent}%`;
+            }
         }
-    };
+    }, [maxVal, getPercent]);
+
+    useEffect(() => {
+        onChange({ min: minVal, max: maxVal });
+    }, [minVal, maxVal, onChange]);
 
     return (
-        <SliderComponent className="slider-component">
-            <div>
-                <span>Valor minimo: {minPrice} Valor Maximo: {maxPrice}</span>
-            </div>
+        <div className="container">
+            <input
+                type="range"
+                min={min}
+                max={max}
+                value={minVal}
+                ref={minValRef}
+                onChange={(event) => {
+                    const value = Math.min(+event.target.value, maxVal - 1);
+                    setMinVal(value);
+                    event.target.value = value.toString();
+                }}
+                className={classnames("thumb thumb--zindex-3", {
+                    "thumb--zindex-5": minVal > max - 100
+                })}
+            />
+            <input
+                type="range"
+                min={min}
+                max={max}
+                value={maxVal}
+                ref={maxValRef}
+                onChange={(event) => {
+                    const value = Math.max(+event.target.value, minVal + 1);
+                    setMaxVal(value);
+                    event.target.value = value.toString();
+                }}
+                className="thumb thumb--zindex-4"
+            />
+
             <div className="slider">
-                <div
-                    className="progress"
-                    style={{ left: rangeStyle.left, right: rangeStyle.right }}
-                ></div>
+                <div className="slider__track" />
+                <div ref={range} className="slider__range" />
+                <div className="slider__left-value">{minVal}</div>
+                <div className="slider__right-value">{maxVal}</div>
             </div>
-            <div className="range-input">
-                <input
-                    type="range"
-                    className="range-min"
-                    min="0"
-                    max="100000"
-                    value={minPrice}
-                    step="1000"
-                    onChange={handleMinPriceChange}
-                />
-                <input
-                    type="range"
-                    className="range-max"
-                    min="0"
-                    max="100000"
-                    value={maxPrice}
-                    step="1000"
-                    onChange={handleMaxPriceChange}
-                />
-            </div>
-        </SliderComponent>
+        </div>
     );
 };
 
-export default FilterValuesRange;
+MultiRangeSlider.propTypes = {
+    min: PropTypes.number.isRequired,
+    max: PropTypes.number.isRequired,
+    onChange: PropTypes.func.isRequired
+};
+
+export default MultiRangeSlider;

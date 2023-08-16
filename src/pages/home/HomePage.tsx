@@ -1,3 +1,4 @@
+import imagem from "../../assets/Photo.svg";
 import { useContext, useEffect, useRef, useState } from "react";
 import { AdsContext } from "../../providers/adsProvider";
 import {
@@ -9,9 +10,9 @@ import {
 } from "../LoginPage";
 import { Card } from "../../components/Card";
 import { AdsSectionStyled, MainStyled } from "./style";
-import imagem from "../../assets/Photo.svg";
 import { ButtonFilters } from "../../components/Buttons";
 import { useNavigate } from "react-router-dom";
+import { Filter } from "../../components/Filter";
 // import { Filter } from "../../components/Filter";
 
 export const HomePage = () => {
