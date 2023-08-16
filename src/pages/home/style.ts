@@ -66,8 +66,8 @@ export const MainStyled = styled.main`
     align-items: center;
     gap: 2rem;
 
-    @media(min-width: 1024px){
-      >button{
+    @media (min-width: 1024px) {
+      > button {
         display: none;
       }
     }
@@ -84,7 +84,7 @@ export const MainStyled = styled.main`
     text-align: center;
     color: var(--grey--scale--grey-3);
 
-    .total-pages{
+    .total-pages {
       color: var(--grey--scale--grey-4);
     }
   }
@@ -125,8 +125,9 @@ export const MainStyled = styled.main`
   @media (min-width: 1024px) {
     #main-section {
       display: flex;
+      gap: 100px;
       flex-direction: row;
-      justify-content: space-between;
+      justify-content: center;
       margin-top: 2rem;
     }
   }
@@ -136,11 +137,16 @@ export const AdsSectionStyled = styled.section`
   width: 100vw;
 
   ul {
-    padding: 1rem;
     display: flex;
-    justify-content: first baseline;
-    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    max-width: 100vw;
+    padding: 50px;
     overflow: scroll;
+
+    li {
+      margin-left: 50px;
+    }
   }
 
   #empty {
@@ -156,11 +162,20 @@ export const AdsSectionStyled = styled.section`
   }
 
   @media (min-width: 1024px) {
-    width: 70vw;
+    width: 1000px;
     ul {
       width: 100%;
       flex-wrap: wrap;
       overflow: auto;
+      gap: 30px;
+      li {
+        margin-left: 0;
+      }
+    }
+  }
+  @media (max-width: 1023px) {
+    ul {
+      justify-content: start;
     }
   }
 `;
