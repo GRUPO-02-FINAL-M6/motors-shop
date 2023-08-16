@@ -7,7 +7,7 @@ import { ModalCreateAds } from "../../components/Modal/ModalCreateAds";
 import { ButtonCanceled, ButtonCreateAdvertiser } from "../../components/Buttons";
 import { StyledModalCreateAds } from "../../components/Modal/ModalCreateAds/style";
 import { Input } from "../LoginPage";
-import { RegisterFormAds } from "../../components/Form/FormAds";
+// import { RegisterFormAds } from "../../components/Form/FormAds";
 
 
 

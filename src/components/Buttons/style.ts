@@ -560,3 +560,31 @@ export const StyledYesButtonDeleteAds= styled.button`
   }
 `;
 
+
+export const StyledButtonAdsCreateImageGallery = styled.button`
+  width: 315px;
+  height: 38px;
+  padding: 12px 20px 12px 20px;
+  border-radius: 4px;
+  border: 1.5px;
+  gap: 10px;
+  color:   var(--brand--brand1);
+  background-color: var(--grey--scale--grey-6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  margin-bottom: 10px;
+
+  &:hover {
+    color: var(--brand--brand1);
+    background-color: var(--brand--brand4);
+    width: 315px;
+    height: 36px;
+    text-align: center;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`;
