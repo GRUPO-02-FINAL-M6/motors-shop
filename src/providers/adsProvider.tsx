@@ -34,7 +34,7 @@ export interface iAds {
   fuel: string;
   price: number;
   color: string;
-  priceFipe: number;
+  priceFip: number;
   images: string[];
   createdAt: string;
   user: { name: string };
@@ -69,8 +69,6 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
   const [advertiser, setAdvertiser] = useState<iAdvertiserProfile | null>(null);
   const token = localStorage.getItem("token");
 
-  
-
   const getAds = async () => {
     try {
       const response = await api.get("/advertisement");
@@ -84,7 +82,6 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
   };
   useEffect(() => {
     getAds();
-
   }, []);
 
   const goToNextPage = async () => {
@@ -168,7 +165,7 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
       toast.error(error.response.data.message);
     }
   };
-  
+
   return (
     <AdsContext.Provider
       value={{

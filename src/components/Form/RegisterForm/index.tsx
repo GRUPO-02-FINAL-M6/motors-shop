@@ -12,7 +12,7 @@ import { UserContext } from "../../../providers/userProvider";
 
 
 
-const registerUserSchema = z.object({
+export const registerUserSchema = z.object({
   name: z.string().min(1, "O nome é obrigatório"),
   email: z
     .string()

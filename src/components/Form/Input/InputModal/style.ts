@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
-export const StyledContainerInput = styled.div`
-  width: 400px;
+export const StyledContainerInputModal = styled.div`
   /* max-width: 90%; */
   top: 20px;
   left: 20px;
@@ -21,7 +20,7 @@ export const StyledContainerInput = styled.div`
    }
 
   input {
-    width: 100%;
+    width: 226px;
    height: 48px;
     top: 25px;
     padding: 0px 16px 0px 16px;

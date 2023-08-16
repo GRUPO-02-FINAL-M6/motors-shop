@@ -1,13 +1,6 @@
 import imagem from "../../assets/Photo.svg";
 import { useContext, useEffect, useRef, useState } from "react";
 import { AdsContext } from "../../providers/adsProvider";
-import {
-  ButtonLogin,
-  ButtonRegister,
-  ButtonsProps,
-  HamburgerIcon,
-  HeaderProps,
-} from "../LoginPage";
 import { Card } from "../../components/Card";
 import { AdsSectionStyled, MainStyled } from "./style";
 import { ButtonFilters } from "../../components/Buttons";
@@ -15,8 +8,10 @@ import { useNavigate } from "react-router-dom";
 import { Filter } from "../../components/Filter";
 // import { Filter } from "../../components/Filter";
 
+import { Header } from "../../components/Header";
+// import { Filter } from "../../components/Filter";
+const imagem = "/public/Photo.svg";
 export const HomePage = () => {
-  const [menuStatus, setMenuStatus] = useState(false);
   const {
     ads,
     goToNextPage,
@@ -26,7 +21,6 @@ export const HomePage = () => {
     currentPage,
     totalPages,
   } = useContext(AdsContext);
-  const navigate = useNavigate();
 
   const targetRef = useRef<HTMLDivElement>(null);
 
@@ -36,31 +30,11 @@ export const HomePage = () => {
     }
   };
 
-  const toggleMenu = () => {
-    setMenuStatus(!menuStatus);
-  };
-  
-  useEffect(() => {
-  }, [ads]);
+  useEffect(() => {}, [ads]);
 
   return (
     <>
-      {/* <Filter/>  */}
-
-      <HeaderProps menuOpen={menuStatus}>
-        <img src="../../src/assets/logo.svg" alt="" />
-        <ButtonsProps menuOpen={menuStatus}>
-          <ButtonLogin onClick={() => navigate("/login")}>
-            Fazer Login
-          </ButtonLogin>
-          <ButtonRegister onClick={() => navigate("/register")}>
-            Cadastrar
-          </ButtonRegister>
-        </ButtonsProps>
-        <HamburgerIcon onClick={toggleMenu}>
-          {menuStatus ? <h2>X</h2> : <h2>☰</h2>}
-        </HamburgerIcon>
-      </HeaderProps>
+      <Header />
       <MainStyled>
         <div className="background">
           <div>
@@ -70,7 +44,7 @@ export const HomePage = () => {
           <img src={imagem} alt="background image" />
         </div>
         <section id="main-section">
-          <div>
+          <div className="base-color-filter-area">
             <h1>FILTRO AQUI...</h1>
           </div>
           <AdsSectionStyled ref={targetRef}>

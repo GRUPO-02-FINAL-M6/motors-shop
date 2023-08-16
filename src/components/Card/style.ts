@@ -5,13 +5,32 @@ export const StyledCard = styled.li`
   flex-direction: column;
   justify-content: space-between;
   gap: 16px;
-  min-width: 90vw;
-  max-width: 90vw;
+  max-width: 280px;
   height: 350px;
+  position: relative;
+  border-radius: 6px;
+
+  #stamp {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 16px;
+    height: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: var(--random--random8);
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0em;
+  }
 
   img {
-    min-height: 40%;
-    max-height: 40%;
+    min-height: 45%;
+    max-height: 45%;
     object-fit: fill;
   }
 
@@ -60,10 +79,10 @@ export const StyledCard = styled.li`
     justify-content: space-between;
     align-items: center;
 
-    @media(min-width: 1024px){
+    @media (min-width: 1024px) {
       font-size: 11px;
     }
-    @media(min-width: 1440px){
+    @media (min-width: 1440px) {
       font-size: 16px;
     }
   }
@@ -72,20 +91,19 @@ export const StyledCard = styled.li`
     cursor: pointer;
   }
 
-  @media(min-width: 375px){
+  /* @media (min-width: 375px) {
     min-width: 70vw;
   }
 
-  @media(min-width: 768px){
+  @media (min-width: 768px) {
     min-width: 40vw;
     max-width: 40vw;
     height: 60vh;
   }
 
-  @media(min-width: 1024px){
-    min-width: 30%;
+  @media (min-width: 1024px) {
+    min-width: 300px;
     max-width: 30%;
     height: 400px;
-    
-  }
+  } */
 `;
