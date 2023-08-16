@@ -1,24 +1,23 @@
 import { styled } from "styled-components";
 
-export const StyledYear= styled.div `
+export const StyledBrand = styled.div `
  
-    margin: 15px;
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
+  gap: 7px;
 
-    p {
-    width: 293px;
-    height: 41px;
+  p {
     font-family: Lexend;
     font-size: 28px;
     font-weight: 600;
     line-height: 35px;
     letter-spacing: 0em;
-    margin: 20px;
   }
 
   span {
+    width: fit-content;
+    height: fit-content;
     font-family: Lexend;
     font-size: 20px;
     font-weight: 500;
@@ -26,9 +25,14 @@ export const StyledYear= styled.div `
     letter-spacing: 0em;
     text-align: left;
     color: #868E96;
-    margin: 20px;
+    cursor: pointer;
+
+    transition: 500ms;
+    
+    &:hover{
+      color: var(--brand--brand2)
+    }
   }
-
-
+  
 
 `
