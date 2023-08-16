@@ -48,6 +48,7 @@ export const StyledModalCreateAds = styled.form`
     display: flex;
     flex-direction: row;
     gap: 10px;
+
     divOrganizationForm1 {
       display: flex;
       flex-direction: column;
@@ -88,5 +89,16 @@ export const StyledModalCreateAds = styled.form`
     flex-direction: row;
     gap: 10px;
    justify-content: end;
+  }
+
+  .divOrganization1{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+
+    input{
+      width:226px;
+    }
+
   }
 `;
