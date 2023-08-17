@@ -3,10 +3,9 @@ import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { AdsContext } from "../../../providers/adsProvider";
-import { ButtonCanceled, ButtonCreateAdvertiser } from "../../Buttons";
+import { ButtonAdsCreateImageGallery, ButtonCanceled, ButtonCreateAdvertiser } from "../../Buttons";
 import Input from "../Input";
 import { StyledModalCreateAds } from "./style";
-import { SelectBrand } from "../Select/SelectBrand";
 
 
 
@@ -66,7 +65,6 @@ const createAdsSchema = z.object({
             <select name="" id="">
                 <option value="teste">teste</option>
             </select> */}
-           <SelectBrand/>
         </div>
         <div className="divOrganizationForm">
             <div className="divOrganization1">
@@ -155,8 +153,12 @@ const createAdsSchema = z.object({
           error={errors.imageGaleryTwo?.message}
         />
 
-        {/* <ButtonCanceled/><ButtonCreateAdvertiser/> */}
+      <ButtonAdsCreateImageGallery/>
 
+        <div className="divButtons">
+        <ButtonCanceled/><ButtonCreateAdvertiser/>
+
+        </div>
 
 
 

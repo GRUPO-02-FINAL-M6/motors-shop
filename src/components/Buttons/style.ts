@@ -327,8 +327,9 @@ export const StyledButtonCreateAds = styled.button`
   border-radius: 4px;
   border: 1.5px;
   gap: 10px;
-  border: 1.5px solid var(--brand--brand1);
-  color: var(--brand--brand2);
+  /* border: 1.5px solid var(--brand--brand1); */
+  color: var(--colors--fixed--white-fixed);
+  background-color: var(--brand--brand3);
 
   &:hover {
     color: var(--grey--scale--grey-0);
@@ -414,7 +415,7 @@ export const StyledButtonDeleteAds = styled.button`
   color: var(--grey--scale--grey-2);
   background-color: var(--grey--scale--grey-6);
   font-family: Inter;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 0em;
   text-align: center;
@@ -574,7 +575,7 @@ export const StyledButtonAdsCreateImageGallery = styled.button`
   align-items: center;
   justify-content: center;
   font-size: 14px;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
 
   &:hover {
     color: var(--brand--brand1);

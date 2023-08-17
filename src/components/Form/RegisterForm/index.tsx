@@ -33,6 +33,8 @@ export const registerUserSchema = z.object({
   complement: z.string().min(1, "O complemento deve ser obrigatório"),
   typeCount: z.string().optional(),
   password: z.string().min(8, "A senha deve conter no mínimo 8 caracteres"),
+  telephone: z.number().min(11, "O telefone deve ser obrigatório"),
+
   // passwordConfirmation: z
   //   .string()
   //   .min(8, "Confirme a sua senha por favor.")

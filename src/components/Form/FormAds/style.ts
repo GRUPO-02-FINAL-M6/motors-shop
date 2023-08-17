@@ -101,4 +101,10 @@ export const StyledModalCreateAds = styled.form`
     }
 
   }
+
+  .divButtons{
+    display: flex;
+    gap: 10px;
+    justify-content: end;
+  }
 `;
