@@ -133,7 +133,6 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
       const response = await apiFipe.get(
         `/cars/unique?brand=${brand}&name=${name}&year=${year}&fuel=${fuel}`
       );
-      console.log(response.data.value);
       return response.data.value;
     } catch (error) {
       toast.error("Veículo não encontrado na tabela FIPE");
