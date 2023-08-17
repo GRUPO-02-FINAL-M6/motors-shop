@@ -63,7 +63,7 @@ export const Filter = () => {
           <FilterTopics name="Combustível" data={["Elétrico", "Flex", "Híbrido"]} set={setFuel} />
 
           <div>
-            <p>Km</p>
+            <p>Preço</p>
             <FilterValuesRange min={filters.minPrice} max={filters.maxPrice} onChange={({ min, max }) => {
               setMaxPrice(max)
               setMinPrice(min)
@@ -72,7 +72,7 @@ export const Filter = () => {
           </div>
 
           <div>
-            <p>Preço</p>
+            <p>Km</p>
             <FilterValuesRange min={0} max={filters.maxKm} onChange={({ min, max }) => {
               setMinKm(min)
               setMaxKm(max)
