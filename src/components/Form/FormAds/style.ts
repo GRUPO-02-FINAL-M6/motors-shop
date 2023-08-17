@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 
 export const StyledModalCreateAds = styled.form`
   width: 520px;
-  height: 1154px;
+  height: max-content;
   border-radius: 8px;
   background-color: white;
   display: flex;
@@ -10,10 +10,17 @@ export const StyledModalCreateAds = styled.form`
   padding: 40px;
   /* filter: drop-shadow(2px 2px 10px gray); */
   /* box-shadow: 2px 2px 10px 5px; */
+
+  .containerSelects {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+
   .divTitleBtnClose {
     display: flex;
     justify-content: space-around;
-     h1 {
+    h1 {
       width: 100%;
       height: 30px;
       font-family: Lexend;
@@ -25,11 +32,10 @@ export const StyledModalCreateAds = styled.form`
       margin-bottom: 20px;
     }
 
-    button{
-        width: 12px;
-        height: 12px;
-        color:  #ADB5BD
-
+    button {
+      width: 12px;
+      height: 12px;
+      color: #adb5bd;
     }
   }
 
@@ -42,7 +48,6 @@ export const StyledModalCreateAds = styled.form`
     text-align: left;
     margin-bottom: 20px;
     color: #000000;
-
   }
   .divOrganizationForm {
     display: flex;
@@ -84,25 +89,24 @@ export const StyledModalCreateAds = styled.form`
     justify-content: center;
   }
 
-  .divBtnsModalAds{
+  .divBtnsModalAds {
     display: flex;
     flex-direction: row;
     gap: 10px;
-   justify-content: end;
+    justify-content: end;
   }
 
-  .divOrganization1{
+  .divOrganization1 {
     display: flex;
     flex-direction: column;
     width: 50%;
 
-    input{
-      width:226px;
+    input {
+      width: 226px;
     }
-
   }
 
-  .divButtons{
+  .divButtons {
     display: flex;
     gap: 10px;
     justify-content: end;

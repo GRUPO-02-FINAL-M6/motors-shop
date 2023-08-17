@@ -5,38 +5,37 @@ export const StyledContainerInput = styled.div`
   /* max-width: 90%; */
   top: 20px;
   left: 20px;
-   display: flex;
-   flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-   label{
-     
-      font-family: Inter;
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 17px;
-      letter-spacing: 0em;
-      text-align: left;
-      margin-bottom: 10px;
+  p {
+    color: red;
+  }
 
-   }
+  label {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-bottom: 10px;
+  }
 
   input {
     width: 100%;
-   height: 48px;
+    height: 48px;
     top: 25px;
     padding: 0px 16px 0px 16px;
     border-radius: 4px;
     /* gap: 10px; */
     border: 1.5px solid var(--grey--scale--grey-7);
-    
 
     &:hover {
       border: 1.5px solid #5126ea;
-      background: linear-gradient(0deg, #5126ea, #5126ea); 
-    } 
+      background: linear-gradient(0deg, #5126ea, #5126ea);
+    }
   }
-
-  
 `;
 
 export const StyledTextField = styled.div`
