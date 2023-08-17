@@ -1,33 +1,35 @@
-import { useContext, useState } from "react";
-import { AdsSectionStyled, MainStyled } from "../home/style";
-import { ModalCreateAds } from "../../components/Modal/ModalCreateAds";
-import { RegisterFormAds } from "../../components/Form/FormAds";
-import { UserContext } from "../../providers/userProvider";
+import { useContext } from "react";
+import { Header } from "../../components/Header";
+import {  StyledAdvertiser, StyledProfileDiv } from "./style";
+import { AdsContext } from "../../providers/adsProvider";
+import { ButtonCreateAdvertiser } from "../../components/Buttons";
 
 export const AdvertiserPage = () => {
-  const { modalIsOpen, setModalIsOpen } = useContext(UserContext);
-  // const toggleModal = () => setIsOpen(!isOpen)
+  const { ads } = useContext(AdsContext);
+  console.log(ads);
 
   return (
     <>
-      <h1>header aqui</h1>
-      <section>{/* <AdvertiserCard user={}/> */}</section>
-      <MainStyled>
-        <AdsSectionStyled>
-          {modalIsOpen && (
-            <ModalCreateAds toggleModal={() => setModalIsOpen(true)}>
-              <RegisterFormAds />
-            </ModalCreateAds>
-          )}
-          <button onClick={() => setModalIsOpen(true)}>clique aqui</button>
+      <Header />
+      <StyledAdvertiser>
+        <div></div>
+        <section>
+          <StyledProfileDiv>
 
-          {/* {
-                advertiser.ads.map(ads => (
-                    <Card ads={ads}/>
-                ))
-            } */}
-        </AdsSectionStyled>
-      </MainStyled>
+            <span id='icon'>SM</span>
+            <div>
+            <h2>Sandra</h2> <span id="typeProfile">Anunciante</span>
+              </div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Doloremque, at! Fugiat vel, ipsum suscipit provident illo
+              blanditiis ad incidunt iste doloremque cumque assumenda mollitia
+              voluptates, quae natus. Vitae, voluptatibus pariatur!
+            </p>
+            <ButtonCreateAdvertiser />
+          </StyledProfileDiv>
+        </section>
+      </StyledAdvertiser>
     </>
   );
 };
