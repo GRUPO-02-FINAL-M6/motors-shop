@@ -5,14 +5,14 @@ import "./multiRangeSlider.css";
 
 
 
-const MultiRangeSlider = ({ min, max, onChange }) => {
-    
+const MultiRangeSlider = ({ min, max, onChange }: any) => {
+
     const [minVal, setMinVal] = useState(min);
     const [maxVal, setMaxVal] = useState(max);
-    
+
     const minValRef = useRef(null);
     const maxValRef = useRef(null);
-    
+
     const range = useRef(null);
 
     const getPercent = useCallback(
