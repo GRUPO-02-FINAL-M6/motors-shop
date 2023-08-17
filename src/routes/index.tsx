@@ -12,10 +12,7 @@ export const RoutesMain = () => {
       <Route path="/Login" element={<LoginPage />} />
       <Route path="/Register" element={<RegisterPage />} />
       <Route path="/DashBoard" element={<DashBoardPage />} />
-      <Route
-        path="/Advertiser"
-        element={<AdvertiserPage user={undefined} ads={[]} />}
-      />
+      <Route path="/Advertiser" element={<AdvertiserPage />} />
     </Routes>
   );
 };
