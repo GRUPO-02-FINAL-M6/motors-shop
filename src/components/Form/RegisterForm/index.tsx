@@ -101,6 +101,7 @@ export const RegisterForm = () => {
         register={register("contact")}
         error={errors.telephone?.message}
       />
+      
       <Input
         label="Data de nascimento"
         type="date"
