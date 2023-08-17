@@ -1193,6 +1193,11 @@
 
 "@esbuild/win32-x64@0.18.18":
   version "0.18.18"
+<<<<<<< HEAD
+  resolved "https://registry.npmjs.org/@esbuild/win32-x64/-/win32-x64-0.18.18.tgz"
+  integrity sha512-eTSg/gC3p3tdjj4roDhe5xu94l1s2jMazP8u2FsYO8SEKvSpPOO71EucprDn/IuErDPvTFUhV9lTw5z5WJCRKQ==
+=======
+>>>>>>> 8b84a40d6ca89cf529e7e1ac531a81133f1dcc12
 
 "@eslint-community/eslint-utils@^4.2.0", "@eslint-community/eslint-utils@^4.4.0":
   version "4.4.0"
