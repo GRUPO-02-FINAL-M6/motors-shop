@@ -10,7 +10,6 @@ import { RegisterFormAds } from "../../components/Form/FormAds";
 
 export const AdvertiserPage = () => {
   const { ads } = useContext(AdsContext);
-  console.log(ads);
   const { setModalIsOpen, modalIsOpen } = useContext(UserContext);
 
   return (
@@ -30,13 +29,8 @@ export const AdvertiserPage = () => {
               blanditiis ad incidunt iste doloremque cumque assumenda mollitia
               voluptates, quae natus. Vitae, voluptatibus pariatur!
             </p>
-            <ButtonCreateAdvertiser onClick={()=> setModalIsOpen(true)} />
-          { 
-        
-           modalIsOpen && 
-           <ModalCreateAds>
-              <RegisterFormAds />
-            </ModalCreateAds>}
+            <ButtonCreateAdvertiser onClick={() => setModalIsOpen(true)} />
+            {modalIsOpen && <ModalCreateAds children={<RegisterFormAds />} />}
           </StyledProfileDiv>
           <main>
             <ul>

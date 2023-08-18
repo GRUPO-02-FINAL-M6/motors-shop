@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 
 export const StyledAdvertiser = styled.main`
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,29 +45,22 @@ export const StyledProfileDiv = styled.div`
     height: fit-content;
     background-color: var(--brand--brand1);
     padding: 30px;
-    color:  var(--colors--fixed--white-fixed);
+    color: var(--colors--fixed--white-fixed);
     font-size: 2rem;
-    
   }
-  div{
+  div {
     display: flex;
-    gap:10px;
-    h2{
-        font-size: 1.5rem;
-
+    gap: 10px;
+    h2 {
+      font-size: 1.5rem;
     }
-    #typeProfile{
-        background-color: var(--brand--brand4) ;
-        color: var(--brand--brand1);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 5px;
-
+    #typeProfile {
+      background-color: var(--brand--brand4);
+      color: var(--brand--brand1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 5px;
     }
-
   }
-
-
-
 `;
