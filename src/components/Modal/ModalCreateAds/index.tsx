@@ -10,32 +10,32 @@ interface ModalProps {
 
 export const ModalCreateAds = ({
   children,
-  toggleModal,
+  // toggleModal,
   blockClosing,
 }: ModalProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handleClick = (event: MouseEvent) => {
-      if (!ref.current) {
-        return;
-      }
+  // useEffect(() => {
+    // const handleClick = (event: MouseEvent) => {
+    //   if (!ref.current) {
+    //     return;
+    //   }
 
-      if (!event.target) {
-        return;
-      }
+    //   if (!event.target) {
+    //     return;
+    //   }
 
-      if (!ref.current.contains(event.target as HTMLElement)) {
-        toggleModal();
-      }
-    };
+    //   if (!ref.current.contains(event.target as HTMLElement)) {
+    //     toggleModal();
+    //   }
+    // };
 
-    window.addEventListener("mousedown", handleClick);
+    // window.addEventListener("mousedown", handleClick);
 
-    return () => {
-      window.removeEventListener("mousedown", handleClick);
-    };
-  }, [toggleModal]);
+    // return () => {
+    //   window.removeEventListener("mousedown", handleClick);
+    // };
+  // }, [toggleModal]);
 
   return createPortal(
     <Container>

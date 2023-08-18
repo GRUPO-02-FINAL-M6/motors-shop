@@ -81,9 +81,9 @@ export const ButtonAdvertiser = ({ ...res }) => {
   );
 };
 
-export const ButtonCreateAdvertiser = () => {
+export const ButtonCreateAdvertiser = ({onClick}:{onClick:any}) => {
   return (
-    <StyledButtonCreateAds type="submit">Criar anúncio</StyledButtonCreateAds>
+    <StyledButtonCreateAds onClick={onClick} type="submit">Criar anúncio</StyledButtonCreateAds>
   );
 };
 

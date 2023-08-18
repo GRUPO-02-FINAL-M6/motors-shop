@@ -327,9 +327,9 @@ export const StyledButtonCreateAds = styled.button`
   border-radius: 4px;
   border: 1.5px;
   gap: 10px;
-  /* border: 1.5px solid var(--brand--brand1); */
-  color: var(--colors--fixed--white-fixed);
-  background-color: var(--brand--brand3);
+  border: 1.5px solid var(--brand--brand1);
+  color: var(--brand--brand1);
+  background-color:var(--colors--fixed--white-fixed);
 
   &:hover {
     color: var(--grey--scale--grey-0);
