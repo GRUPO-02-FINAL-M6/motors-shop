@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { api } from "../services/api";
 import { useNavigate } from "react-router-dom";
+import { iAds } from "./adsProvider";
 
 interface iUserProviderProps {
   children: React.ReactNode;
@@ -30,6 +31,7 @@ export interface iUser {
   contact: string;
   createdAt: string;
   deletedAt: string;
+  ads: iAds[]
 }
 
 interface iLogin {
