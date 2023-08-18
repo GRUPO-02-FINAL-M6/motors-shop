@@ -15,12 +15,12 @@ const createAdsSchema = z.object({
   // model: z.string().min(1, "O modelo é obrigatório"),
   // year: z.number().min(4, "O ano deve conter 4 dígitos."),
   km: z.string().min(5, "A kilometragem 5 dígitos."),
-  // fuel: z.number().min(1, "Escolha de 1 a 3 um valor para o combustível."),
+  // fuel: z.string(),
   color: z.string().min(1, "Deve conter a cor do veículo."),
   // priceFipe: z.number().min(5, "O valor da tabela fip é obrigatório!"),
   price: z.string().min(5, "O preço do veículo é obrigatório!"),
   description: z.string().min(1, "A descrição deve ser obrigatória"),
-  coverImage: z.string(),
+  images: z.string(),
 });
 type TRegisterAds = z.infer<typeof createAdsSchema>;
 
@@ -30,7 +30,7 @@ export const RegisterFormAds = () => {
   const {
     register,
     handleSubmit,
-    reset,
+    // reset,
     formState: { errors },
   } = useForm<TRegisterAds>({
     resolver: zodResolver(createAdsSchema),
@@ -38,10 +38,31 @@ export const RegisterFormAds = () => {
   const { createAds } = useContext(AdsContext);
 
   const createDataAds = (data: any) => {
+    delete globalModelSelected.id;
+
+    let fuel = "";
+
+    globalModelSelected.fuel == 1
+      ? (fuel = "Gasolina / Etanol")
+      : "" || globalModelSelected.fuel == 2
+      ? (fuel = "Gasolina / Elétrico")
+      : "" || globalModelSelected.fuel == 3
+      ? (fuel = "Elétrico")
+      : "";
+
+    console.log(data);
+
     const newData = {
-      ...data,
       ...globalModelSelected,
+      ...data,
       priceFipe: globalModelSelected.value,
+      price: Number(data.price),
+      year: Number(globalModelSelected.year),
+      images: [data.images],
+      fuel: fuel,
+      km: Number(data.km),
+      modelCar: globalModelSelected.name,
+      priceFip: globalModelSelected.value,
     };
 
     delete newData.value;
@@ -107,11 +128,11 @@ export const RegisterFormAds = () => {
             value={
               globalModelSelected
                 ? globalModelSelected.fuel == 1
-                  ? "flex"
+                  ? "Gasolina / Etanol"
                   : "" || globalModelSelected.fuel == 2
-                  ? "hybrid"
+                  ? "Gasolina / Elétrico"
                   : "" || globalModelSelected.fuel == 3
-                  ? "elétrico"
+                  ? "Elétrico"
                   : ""
                 : ""
             }
@@ -155,8 +176,8 @@ export const RegisterFormAds = () => {
         label="Imagem"
         type="string"
         placeholder="http://image.com"
-        register={register("coverImage")}
-        error={errors.coverImage?.message}
+        register={register("images")}
+        error={errors.images?.message}
       />
 
       {/* <ButtonAdsCreateImageGallery /> */}
