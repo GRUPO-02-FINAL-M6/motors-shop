@@ -2,7 +2,6 @@ import { styled } from "styled-components";
 
 export const StyledAdvertiser = styled.main`
   width: 100vw;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,7 +18,7 @@ export const StyledAdvertiser = styled.main`
 
     ul {
       display: grid;
-      grid-template-columns: 200px 200px 200px;
+      grid-template-columns: auto;
       gap: 40px;
     }
   }

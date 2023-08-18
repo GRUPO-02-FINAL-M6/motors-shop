@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import { Container } from "./style";
 
 interface ModalProps {
-  toggleModal: () => void;
+  // toggleModal: () => void;
   children: ReactNode;
   blockClosing?: boolean;
 }

@@ -1,6 +1,11 @@
 import { styled } from "styled-components";
 
 export const StyledCard = styled.li`
+
+  //deletar
+  border: 1px solid;
+
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
