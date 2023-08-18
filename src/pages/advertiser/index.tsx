@@ -9,11 +9,7 @@ import { RegisterFormAds } from "../../components/Form/FormAds";
 import { api } from "../../services/api";
 
 export const AdvertiserPage = () => {
-<<<<<<< HEAD
   
-=======
-  const { ads } = useContext(AdsContext);
->>>>>>> 6dc59ed8520d164eba5c4d08c1a004f678073ad8
   const { setModalIsOpen, modalIsOpen } = useContext(UserContext);
 
   const [ads, setAds] = useState([]);
@@ -37,6 +33,7 @@ export const AdvertiserPage = () => {
     })
   })
 
+  // (Arthur Fernandes) Logica para pegar as iniciais do Anunciante...
   // function getInitiations(fullName: string) {
     
   //   const names = fullName.split(' ');
@@ -66,8 +63,13 @@ export const AdvertiserPage = () => {
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum voluptates doloribus tempore autem unde veniam minima tempora totam facere fugiat in voluptatibus maiores, suscipit quo corporis repellat non blanditiis soluta!
             </p>
-            <ButtonCreateAdvertiser onClick={() => setModalIsOpen(true)} />
-            {modalIsOpen && <ModalCreateAds children={<RegisterFormAds />} />}
+            <ButtonCreateAdvertiser onClick={()=> setModalIsOpen(true)} />
+          { 
+        
+           modalIsOpen && 
+           <ModalCreateAds>
+              <RegisterFormAds />
+            </ModalCreateAds>}
           </StyledProfileDiv>
           <main>
             <ul>
