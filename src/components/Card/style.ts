@@ -26,6 +26,7 @@ export const StyledCard = styled.li`
     font-weight: 500;
     line-height: 17px;
     letter-spacing: 0em;
+    border-radius: 3px;
   }
 
   img {

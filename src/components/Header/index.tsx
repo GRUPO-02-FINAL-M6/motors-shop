@@ -33,8 +33,10 @@ export const Header = () => {
                 <UserIcon name={user!.name} />
                 {desktopMenuStatus ? (
                   <div id="desktop-menu">
-                    <button>PERFIL</button>
-                    <button onClick={logout}>LOGOUT <FiLogOut/></button>
+                    <button>Editar perfil</button>
+                    <button>Editar endereço</button>
+                    <button>Meus anúncios</button>
+                    <button onClick={logout}>Sair</button>
                   </div>
                 ) : null}
               </div>
