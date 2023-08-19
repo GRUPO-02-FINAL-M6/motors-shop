@@ -22,6 +22,7 @@ interface iUserContext {
   setBrandSelected: React.Dispatch<React.SetStateAction<string | null>>;
   globalModelSelected: any;
   setglobalModelSelected: any;
+  token: string;
 }
 
 export interface iUser {
@@ -139,6 +140,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         setBrandSelected,
         globalModelSelected,
         setglobalModelSelected,
+        token
       }}
     >
       {children}

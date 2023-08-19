@@ -122,19 +122,18 @@ export const MainStyled = styled.main`
     }
   }
 
-  @media (min-width: 1024px) {
+  @media (max-width: 1024px) {
     #main-section {
       display: flex;
-      gap: 100px;
-      flex-direction: row;
-      justify-content: center;
+      /* gap: 100px; */
+      /* justify-content: center; */
       margin-top: 2rem;
     }
   }
 `;
 
 export const AdsSectionStyled = styled.section`
-  width: 100vw;
+  width: 100%;
 
   ul {
     display: flex;
@@ -161,16 +160,13 @@ export const AdsSectionStyled = styled.section`
     }
   }
 
-  @media (min-width: 1024px) {
-    width: 1000px;
+  @media (max-width: 1024px) {
+    /* width: 1000px; */
     ul {
-      width: 100%;
-      flex-wrap: wrap;
-      overflow: auto;
-      gap: 30px;
-      li {
-        margin-left: 0;
-      }
+      height: 100%;
+      display: grid;
+      grid-template-columns: 400px
+      grid-template-rows: 400px
     }
   }
   @media (max-width: 1023px) {
