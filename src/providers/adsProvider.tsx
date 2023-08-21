@@ -10,6 +10,8 @@ interface iAdsProviderProps {
 
 interface iAdsContext {
   ads: iAds[];
+  setFilterString: React.Dispatch<React.SetStateAction<string>>
+  filterString: string;
   setAds: React.Dispatch<React.SetStateAction<iAds[]>>;
   filterAds: (filter: string) => Promise<void>;
   createAds: (
@@ -67,6 +69,7 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
   const [previousPage, setPreviousPage] = useState<string | null>(null);
   const [totalPages, setTotalPages] = useState<number | null>(null);
   const [advertiser, setAdvertiser] = useState<iAdvertiserProfile | null>(null);
+  const [filterString, setFilterString] = useState("");
   const token = localStorage.getItem("token");
 
   const getAds = async () => {
@@ -87,7 +90,7 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
   const goToNextPage = async () => {
     if (nextPage) {
       try {
-        const response = await api.get(`${nextPage}`);
+        const response = await api.get(`${nextPage}&${filterString}`);        
         setAds(response.data.ads);
         setNextPage(response.data.nextPage);
         setPreviousPage(response.data.previousPage);
@@ -102,7 +105,7 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
   const goToPreviousPage = async () => {
     if (previousPage) {
       try {
-        const response = await api.get(`${previousPage}`);
+        const response = await api.get(`${previousPage}&${filterString}`);
         setAds(response.data.ads);
         setNextPage(response.data.nextPage);
         setPreviousPage(response.data.previousPage);
@@ -116,8 +119,13 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
 
   const filterAds = async (filter: string) => {
     try {
-      const response = await api.get(`/advertisement?name=`);
+      const response = await api.get(`/advertisement?` + filter);
+      console.log(response);
       setAds(response.data.ads);
+      setNextPage(response.data.nextPage);
+      setPreviousPage(response.data.previousPage);
+      setCurrentPage(1);
+      setTotalPages(response.data.maxPages);
     } catch (error: any) {
       toast.error(error.response?.data.message);
     }
@@ -180,6 +188,8 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
         currentPage,
         totalPages,
         getAdvertiserProfile,
+        setFilterString,
+        filterString
       }}
     >
       {children}
