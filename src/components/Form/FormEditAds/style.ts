@@ -14,15 +14,39 @@ export const StyledModalCreateAds = styled.form`
     max-width: 380px;
     width: 85%;
     flex-direction: column;
+   
+    .divOrganizationForm{
+      max-width: 324px;
+      width: 100%;
+    flex-direction: column;
+      
 
-    input {
-      width: fit-content;
-      display: flex;
+      .divOrganization1{
+    flex-direction: column;
+    padding: 5px;
+
+        
+      input {
+         width: 150px;
+         margin-left: 5px;
+         
+
     }
+
+      }
+
+
+    }
+
+ 
 
     .buttonsEdit{
       justify-content: center;
+      display: flex;
+      align-items: center;
     }
+   
+  }
 
   .containerSelects {
     display: flex;
@@ -96,6 +120,12 @@ export const StyledModalCreateAds = styled.form`
     justify-content: space-around;
     margin-bottom: 20px;
   }
+  .buttonsEdit {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    gap: 10px;
+  }
   .divBtnReegister {
     display: flex;
     align-items: center;
@@ -124,12 +154,4 @@ export const StyledModalCreateAds = styled.form`
     gap: 10px;
     justify-content: end;
   }
-
-  .buttonsEdit{
-    display: flex;
-    justify-content: right;
-    gap: 10px;
-    
-  }
-}
 `;

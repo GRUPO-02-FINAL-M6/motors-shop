@@ -27,6 +27,13 @@ export const StyledDivRegister = styled.form`
 
     }
   }
+  .divOrganizationInput{
+    display: flex;
+    flex-direction: row;
+    input{
+        width: 167px;
+    }
+  }
 
   h1 {
     width: 100%;
@@ -66,7 +73,7 @@ export const StyledDivRegister = styled.form`
 
   .buttons {
     display: flex;
-    justify-content: space-evenly;
+   flex-direction: row;
     margin-bottom: 20px;
 
     @media (max-width: 600px) {

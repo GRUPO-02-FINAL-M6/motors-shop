@@ -1,4 +1,5 @@
 import {
+  StyledButton,
   StyledButtonAdsCreateImageGallery,
   StyledButtonAdvertiser,
   StyledButtonBuy,
@@ -14,16 +15,29 @@ import {
   StyledButtonRegister,
   StyledButtonSaveUpdate,
   StyledButtonSeeDetails,
-  StyledButtonViewAds,
-  StyledButtonViewAllAds,
+  // StyledButtonViewAds,
   StyledClearFilters,
   StyledFilters,
   StyledYesButtonDeleteAds,
 } from "./style";
 
-export const ButtonViewAds = () => {
-  return <StyledButtonViewAds>Ver anúncios</StyledButtonViewAds>;
+
+interface iButtonProps{
+  type: "button"|"submit"|"undefined";
+  text:string;
+  classType?:string;
+  onClick?: () => void;
+}
+export const Button = ({text, type, classType, click}:iButtonProps) => {
+  return <StyledButton>
+  <button className={classType}>{text}</button>
+  </StyledButton>
 };
+
+
+
+
+
 
 export const ButtonClearFilters = () => {
   return (
@@ -41,9 +55,9 @@ export const ButtonRegister = () => {
   return <StyledButtonRegister>Cadastrar</StyledButtonRegister>;
 };
 
-export const ButtonViewAllAds = () => {
-  return <StyledButtonViewAllAds>Ver todos anúncios</StyledButtonViewAllAds>;
-};
+// export const ButtonViewAllAds = () => {
+//   return <StyledButtonViewAllAds>Ver todos anúncios</StyledButtonViewAllAds>;
+// };
 
 export const ButtonComment = () => {
   return <StyledButtonComment>Comentar</StyledButtonComment>;
