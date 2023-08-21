@@ -1,102 +1,122 @@
 import { styled } from "styled-components";
 
 export const StyledAdvertiser = styled.div`
-  width: 100vw;
-  min-height: 100vh;
+ 
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
+
   & > div {
     width: 100%;
-    height: 280px;
+    height: 250px;
     background-color: var(--brand--brand1);
   }
-  & section {
+
+  & > section {
     width: 100%;
     display: flex;
-    align-items: center;
     flex-direction: column;
-
-    ul{
-    display: flex;
-    flex-wrap: wrap;
-    width: 60%;
-    gap: 20px;
-    }
+    align-items: center;
   }
-
-
-  @media (max-width: 600px) {
-    height: fit-content;
-    width: 1000px;
-    display: flex;
-
-    ul {
-      display: grid;
-      grid-template-columns: auto auto auto auto;
-      gap: 40px;
-    }
-  }
+ 
 `;
 
 export const StyledProfileDiv = styled.div`
-  /* background: var(--colors--fixed--white-fixed); */
-  background-color: aqua;
-  border: 0.5px solid black;
-  border-radius: 10px;
-  filter: drop-shadow(5px 10px 10px rgba(64, 64, 64, 0.4));
-  max-width: 1240px;
+
   width: 90%;
-  height: 406px;
-  transform: translateY(-10px);
-  position: relative;
-  padding: 30px;
+  max-width: 1240px;
+  height: fit-content;
+  max-height: 406px;
+
   display: flex;
   flex-direction: column;
-  gap: 25px;
 
-  #icon {
-    border-radius: 50%;
-    width: fit-content;
-    height: fit-content;
-    background-color: var(--brand--brand1);
-    padding: 30px;
-    color: var(--colors--fixed--white-fixed);
-    font-size: 2rem;
-  }
-  div {
+  gap: 20px;
+
+  padding: 1rem;
+
+  transform: translateY(-50%);
+
+  background-color: var(--colors--fixed--white-fixed);
+
+  border: 1px solid;
+  border-radius: 10px;
+
+  #profile {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 10px;
-    h2 {
-      font-size: 1.5rem;
-    }
-    #typeProfile {
-      background-color: var(--brand--brand4);
-      color: var(--brand--brand1);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 5px;
-    }
-  }
-  @media (min-width: 1024px) {
-    height: fit-content;
-    width: 1000px;
 
-    ul {
-      width: 100%;
-      flex-wrap: wrap;
-      overflow: auto;
-      gap: 30px;
-      li {
-        margin-left: 0;
+    .name{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    @media (min-width: 768px){
+      align-items: start;
+
+      .name{
+        flex-direction: row;
       }
     }
   }
-  @media (max-width: 1023px) {
-    ul {
-      justify-content: start;
-    }
+
+  #typeProfile{
+    width: fit-content;
+    height: fit-content;
+
+    background-color: var(--brand--brand4);
+
+    color: var(--brand--brand1);
+
+    padding: 3px;
+  }
+
+  .pDescription{
+    overflow: hidden;
+  }
+
+
+  #icon {
+    width: fit-content;
+    height: fit-content;
+    background-color: var(--brand--brand1);
+    color: var(--colors--fixed--white-fixed);  
+    font-size: 2rem;
+    padding: 1rem;
+    border-radius: 100%;
+  }
+
+`;
+
+export const StyledAdsList = styled.ul`
+
+  display: grid;
+  grid-template-columns: auto;
+  gap: 100px;
+
+  transform: translateY(-10%);
+
+  margin-bottom: 10px;
+
+  @media (min-width: 768px){
+    grid-template-columns: auto auto;
+  }
+
+  @media (min-width: 900px){
+    grid-template-columns: auto auto;
+  }
+
+  @media (min-width:  1024px){
+    transform: translateY(-10%);
+    grid-template-columns: auto auto auto;
+    gap: 40px;
+  }
+
+  @media (min-width: 1440px){
+    grid-template-columns: auto auto auto auto;
   }
 `;

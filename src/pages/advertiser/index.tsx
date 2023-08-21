@@ -1,18 +1,19 @@
 import { useContext, useEffect, useState } from "react";
 import { Header } from "../../components/Header";
-import { StyledAdvertiser, StyledProfileDiv } from "./style";
+import { StyledAdsList, StyledAdvertiser, StyledProfileDiv } from "./style";
 import { Button } from "../../components/Buttons";
 import { Card } from "../../components/Card";
 import { UserContext } from "../../providers/userProvider";
 import { ModalCreateAds } from "../../components/Modal/ModalCreateAds";
 import { RegisterFormAds } from "../../components/Form/FormAds";
 import { api } from "../../services/api";
+import { MainStyled } from "../home/style";
 // import { useParams } from "react-router-dom";
 
 
 
 export const AdvertiserPage = () => {
-  
+
   const { setModalIsOpen, modalIsOpen } = useContext(UserContext);
 
   const [ads, setAds] = useState([]);
@@ -40,55 +41,76 @@ export const AdvertiserPage = () => {
     }
   }
 
-  
+
   useEffect(() => {
     api.get(`/users/${id}`, {
-     headers: {
-      'Authorization': `Bearer ${token}`
-     } 
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
     })
-    .then(res => res.data)
-    .then(res => {
-      setAds(res.ads)
-      setUser(res)
-      setLoading(false)
-    })
+      .then(res => res.data)
+      .then(res => {
+        setAds(res.ads)
+        setUser(res)
+        setLoading(false)
+      })
   })
 
   return (
     <>
       <Header />
-      {loading ? "" : 
-      <StyledAdvertiser>
-        <div></div>
-        <section>
-      
+      <MainStyled>
+        {
+          loading ? "" :
 
-          <StyledProfileDiv>
-            <span id="icon">{getInitiations(Advertiser.name)}</span>
-            <div>
-              <h2>{Advertiser.name}</h2> <span id="typeProfile">Anunciante</span>
-            </div>
-            <p className="pDescription">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </p>
-              <Button onClick={() => setModalIsOpen(true)} />
-            {
-              modalIsOpen &&
-              <ModalCreateAds>
-                <RegisterFormAds />
-              </ModalCreateAds>}
-          </StyledProfileDiv>
-            <ul>
-              {ads ?
-                ads.map((ads) => (
-                  <Card ads={ads} key={ads.id} user={Advertiser} />
-                )) :
-                <p>Esse usuario ainda não tem anuncios</p>
-              }
-            </ul>
-        </section>
-      </StyledAdvertiser>}
+            <StyledAdvertiser>
+
+              <div></div>
+
+              <section>
+
+                <StyledProfileDiv>
+
+
+                  <div id="profile">
+                    <span id="icon">{getInitiations(Advertiser.name)}</span>
+                    <div className="name">
+                      <h2>{Advertiser.name}</h2> <span id="typeProfile">Anunciante</span>
+                    </div>
+                  </div>
+
+                  <p className="pDescription">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit rerum laborum ut a cupiditate, eveniet voluptatum eligendi cumque doloribus asperiores laudantium numquam sapiente nostrum beatae suscipit corrupti culpa eius illo. alskjflasdkjfl;sakj
+                  </p>
+
+                  <Button text={"Criar Anuncio"} type={"button"} />
+
+                  {
+                    modalIsOpen &&
+                    <ModalCreateAds>
+                      <RegisterFormAds />
+                    </ModalCreateAds>
+                  }
+
+                </StyledProfileDiv>
+
+                <StyledAdsList>
+
+                  {ads ?
+                    ads.map((ads) => (
+                      <Card ads={ads} key={ads.id} user={Advertiser} />
+                    )) :
+                    <p>Esse usuario ainda não tem anuncios</p>
+                  }
+
+                </StyledAdsList>
+
+              </section>
+
+            </StyledAdvertiser>
+        }
+      </MainStyled>
     </>
   );
 };

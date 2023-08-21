@@ -155,8 +155,12 @@ export const AdsSectionStyled = styled.section`
       grid-template-columns: auto auto;
     }
 
+    @media (min-width: 900px){
+      grid-template-columns: auto auto;
+    }
+
     @media (min-width: 1024px){
-      grid-template-columns: auto auto auto;
+      grid-template-columns: auto auto;
     }
 
     @media (min-width: 1200px){

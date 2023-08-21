@@ -86,9 +86,6 @@ export const HomePage = () => {
         </section>
       </MainStyled>
       <Footer/>
-
-
     </>
-    
   );
 };
