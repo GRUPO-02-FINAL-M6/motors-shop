@@ -23,9 +23,7 @@ export const StyledAdvertiser = styled.div`
     flex-wrap: wrap;
     width: 60%;
     gap: 20px;
-
     }
-    
   }
 
 

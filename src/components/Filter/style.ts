@@ -21,17 +21,12 @@ export const StyledFilterList = styled.div`
     margin: auto;
   }
 
-  @media (max-width: 720px) {
+  @media (max-width: 1024px) {
     display: none;
     position: absolute;
     width: 100%;
     z-index: 10;
     top: 0;
-  }
-
-  @media (max-width: 1024px) {
-    width: 25%;
-    z-index: 10;
   }
 `
 

@@ -23,14 +23,15 @@ import {
 
 
 interface iButtonProps{
-  type: "button"|"submit"|"undefined";
-  text:string;
+  type: "button"|"submit"| undefined | "reset";
+  text: string;
   classType?:string;
-  onClick?: () => void;
+  click?: () => void;
 }
+
 export const Button = ({text, type, classType, click}:iButtonProps) => {
   return <StyledButton>
-  <button className={classType}>{text}</button>
+  <button className={classType} type={type} onClick={click}>{text}</button>
   </StyledButton>
 };
 

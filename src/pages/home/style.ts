@@ -71,16 +71,20 @@ export const MainStyled = styled.main`
     align-items: center;
     gap: 40px;
 
-    @media (max-width: 1024px) {
+    @media (min-width: 1024px) {
       flex-direction: row;
+      align-items: normal;
     }
   }
 
   #main-bottom {
+    width: 100%;
     padding-bottom: 4rem; 
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    margin-top: 100px;
     gap: 2rem;
   }
 
@@ -138,18 +142,31 @@ export const MainStyled = styled.main`
 export const AdsSectionStyled = styled.section`
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
 
   ul {
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
-    gap: 20px;
+    gap: 40px;
 
-    @media (min-width: 1000px){
+    @media (min-width: 768px) {
       grid-template-columns: auto auto;
     }
+
+    @media (min-width: 1024px){
+      grid-template-columns: auto auto auto;
+    }
+
+    @media (min-width: 1200px){
+      grid-template-columns: auto auto auto;
+    }
+
+    @media (min-width: 1456px){
+      grid-template-columns: auto auto auto auto; 
+    }
+    
   }
 
   #empty {

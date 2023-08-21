@@ -525,7 +525,7 @@ export const StyledFilters = styled.button`
     justify-content: center;
   }
 
-  @media (max-width: 1024px){
+  @media (min-width: 1024px){
     display: none;
   }
 `;

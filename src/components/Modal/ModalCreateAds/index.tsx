@@ -1,6 +1,6 @@
 import { ReactNode, useRef } from "react";
 import { createPortal } from "react-dom";
-import { Container } from "./style";
+import { Container } from "../Modal/style";
 
 interface ModalProps {
   // toggleModal: () => void;

@@ -143,7 +143,7 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
 
   const createAds = async (payload: any) => {
     try {
-      const response = await api.post("/advertisement", payload, {
+      await api.post("/advertisement", payload, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setModalIsOpen(null);

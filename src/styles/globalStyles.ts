@@ -64,7 +64,6 @@ export const GlobalStyle = createGlobalStyle`
         --text--body-1-600: 16px;
         --text--body-2-400: 14px;
         --text--body-2-500: 14px;
-
     }
 
 
