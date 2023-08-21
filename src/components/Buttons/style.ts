@@ -1,31 +1,265 @@
 import { styled } from "styled-components";
 
-export const StyledButtonViewAllAds = styled.button`
-  width: 206px;
-  height: 48px;
-  padding: 12px 28px 12px 28px;
-  border-radius: 4px;
-  gap: 10px;
-  border: 1.5px solid var(--grey--scale--grey-0);
-  background-color: var(--grey--scale--grey-0);
-  color: var(--colors--fixed--white-fixed);
-  text-align: center;
-  margin-left: 12px;
-
-  &:hover {
+export const StyledButton = styled.div`
+  button {
+    /* padding: 12px 28px 12px 28px;
+    border-radius: 4px;
+    gap: 10px;
+    border: 1.5px solid var(--grey--scale--grey-0);
+    background-color: var(--grey--scale--grey-0);
     color: var(--colors--fixed--white-fixed);
-    background-color: var(--grey--scale--grey-1);
-    width: 200px;
+    text-align: center;
+
+    &:hover {
+      color: var(--colors--fixed--white-fixed);
+      background-color: var(--grey--scale--grey-1);
+     
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    } */
+  }
+
+  .buttonPublicAds{
+    background-color:  var(--colors--fixed--white-fixed);
+    color:var(--grey--scale--grey-0);
+    border: 1.5px solid var(--grey--scale--grey-4);
+    width: 152px;
+    height: 48px;
+
+    &:hover {
+      background-color: var(--brand--brand1);
+      color: var(--colors--fixed--white-fixed);
+      width: 152px;
+    height: 48px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .buttonNotPublicAds{
+    background-color:  var(--colors--fixed--white-fixed);
+    color:var(--grey--scale--grey-0);
+    border: 1.5px solid var(--grey--scale--grey-4);
+    width: 152px;
+    height: 48px;
+
+    &:hover {
+      background-color: var(--brand--brand1);
+      color: var(--colors--fixed--white-fixed);
+      width: 152px;
+    height: 48px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  .buttonDeleteAds{
+    background-color: var(--grey--scale--grey-5);
+    color:var(--grey--scale--grey-3);
+    width: 152px;
+    height: 48px;
+
+    &:hover {
+      background-color: var(--brand--brand3);
+      color: var(--colors--fixed--white-fixed);
+      width: 152px;
+    height: 48px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .buttonSaveAds{
+    background-color: var(--grey--scale--grey-5);
+    color:var(--grey--scale--grey-3);
+    width: 152px;
+    height: 48px;
+
+    &:hover {
+      background-color: var(--brand--brand3);
+      color: var(--colors--fixed--white-fixed);
+      width: 152px;
+    height: 48px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  .buttonCleanFilter {
+    background-color: var(--brand--brand1);
+    color: var(--colors--fixed--white-fixed);
+    border: none;
+    width: 279px;
+    height: 38px;
+
+    &:hover {
+      background-color: var(--brand--brand4);
+      color: var(--brand--brand1);
+      width: 252px;
+      height: 38px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .buttonCreateAds {
+    background-color: var(--colors--fixed--white-fixed);
+    color: var(--brand--brand1);
+    border: 1.5px solid var(--brand--brand1);
+    width: 160px;
     height: 38px;
     text-align: center;
-    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      background-color: var(--brand--brand4);
+      color: var(--brand--brand1);
+      width: 133px;
+      height: 38px;
+      text-align: center;
+      display: flex;
+      font-size: 10px;
+    }
+  }
+
+  .buttonRegisterFinished {
+    background-color: var(--colors--fixed--white-fixed);
+    color: var(--grey--scale--grey-0);
+    border: 1.5px solid var(--grey--scale--grey-4);
+    width: 100%;
+    height: 48px;
+    
+    @media (max-width: 600px) {
+      width: 250px;
+    }
+
+    &:hover {
+      background-color: var(--brand--brand1);
+      border: none;
+      color: var(--colors--fixed--white-fixed);
+      /* width: 300px; */
+      /* height: 38px; */
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .buttonBuyer {
+    background-color: var(--colors--fixed--white-fixed);
+    color: var(--grey--scale--grey-0);
+    border: 1.5px solid var(--grey--scale--grey-4);
+    width: 160px;
+    height: 48px;
+
+    &:hover {
+      background-color: var(--brand--brand1);
+      border: none;
+      color: var(--colors--fixed--white-fixed);
+      width: 150px;
+      height: 38px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .buttonAdvertiser {
+    background-color: var(--colors--fixed--white-fixed);
+    color: var(--grey--scale--grey-0);
+    border: 1.5px solid var(--grey--scale--grey-4);
+    width: 160px;
+    height: 48px;
+
+    &:hover {
+      background-color: var(--brand--brand1);
+      border: none;
+      color: var(--colors--fixed--white-fixed);
+      width: 150px;
+      height: 38px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    @media (max-width: 600px) {
+      width: 139px;
+    }
+  }
+
+  .buttonMakeLogin {
+    background-color: var(--colors--fixed--white-fixed);
+    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 14px;
+    color: var(--grey--scale--grey-3);
+    width: 133px;
+    height: 48px;
+    border: none;
+
+    &:hover {
+      border: 1.5px solid var(--grey--scale--grey-4);
+      background-color: var(--colors--fixed--white-fixed);
+      color: var(--grey--scale--grey-1);
+      font-size: 10px;
+      width: 130px;
+      height: 48px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
+
+
+  .buttonMakeRegister{
+    background-color: var(--colors--fixed--white-fixed);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--grey--scale--grey-3);
+    width: 133px;
+    height: 48px;
+    border: none;
+
+    &:hover {
+      border: 1.5px solid var(--grey--scale--grey-4);
+      background-color: var(--colors--fixed--white-fixed);
+      color: var(--grey--scale--grey-1);
+      font-size: 14px;
+      width: 130px;
+      height: 48px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+  }
+
+
+  
 `;
-
-
 
 export const StyledButtonViewAds = styled.button`
   font-family: Inter;
@@ -158,7 +392,6 @@ export const StyledButtonFinishRegister = styled.button`
   font-weight: 600;
   letter-spacing: 0em;
   text-align: left;
-  
 
   &:hover {
     color: var(--brand--brand1);
@@ -205,7 +438,7 @@ export const StyledButtonBuyer = styled.button`
 `;
 
 export const StyledButtonAdvertiser = styled.button`
-  width:190px;
+  width: 190px;
   height: 48px;
   padding: 12px 20px 12px 20px;
   border-radius: 4px;
@@ -294,9 +527,6 @@ export const StyledFilters = styled.button`
   }
 `;
 
-
-
-
 export const StyledButtonRegister = styled.button`
   width: 133px;
   height: 48px;
@@ -329,7 +559,7 @@ export const StyledButtonCreateAds = styled.button`
   gap: 10px;
   border: 1.5px solid var(--brand--brand1);
   color: var(--brand--brand1);
-  background-color:var(--colors--fixed--white-fixed);
+  background-color: var(--colors--fixed--white-fixed);
 
   &:hover {
     color: var(--grey--scale--grey-0);
@@ -411,7 +641,7 @@ export const StyledButtonDeleteAds = styled.button`
   align-items: center;
   justify-content: center;
   gap: 10px;
-  border:none;
+  border: none;
   color: var(--grey--scale--grey-2);
   background-color: var(--grey--scale--grey-6);
   font-family: Inter;
@@ -434,7 +664,7 @@ export const StyledButtonDeleteAds = styled.button`
   }
 `;
 
-export const StyledButtonSaveUpdate= styled.button`
+export const StyledButtonSaveUpdate = styled.button`
   width: 159px;
   height: 48px;
   padding: 12px 28px 12px 28px;
@@ -443,9 +673,9 @@ export const StyledButtonSaveUpdate= styled.button`
   align-items: center;
   justify-content: center;
   gap: 10px;
-  border:none;
+  border: none;
   color: var(--colors--fixed--white-fixed);
-  background-color:  var(--brand--brand3);
+  background-color: var(--brand--brand3);
   font-family: Inter;
   font-size: 12px;
   font-weight: 600;
@@ -466,7 +696,7 @@ export const StyledButtonSaveUpdate= styled.button`
   }
 `;
 
-export const StyledButtonCanceled= styled.button`
+export const StyledButtonCanceled = styled.button`
   width: 126px;
   height: 48px;
   padding: 12px 28px 12px 28px;
@@ -475,9 +705,9 @@ export const StyledButtonCanceled= styled.button`
   align-items: center;
   justify-content: center;
   gap: 10px;
-  border:none;
+  border: none;
   color: var(--grey--scale--grey-0);
-  background-color:  var(--grey--scale--grey-6);
+  background-color: var(--grey--scale--grey-6);
   font-family: Inter;
   font-size: 12px;
   font-weight: 600;
@@ -498,7 +728,7 @@ export const StyledButtonCanceled= styled.button`
   }
 `;
 
-export const StyledButtonDeleteProfile= styled.button`
+export const StyledButtonDeleteProfile = styled.button`
   width: 165px;
   height: 48px;
   padding: 12px 28px 12px 28px;
@@ -507,7 +737,7 @@ export const StyledButtonDeleteProfile= styled.button`
   align-items: center;
   justify-content: center;
   gap: 10px;
-  border:none;
+  border: none;
   color: var(--feedback--alert-1);
   background-color: var(--feedback--alert-2);
   font-family: Inter;
@@ -529,7 +759,7 @@ export const StyledButtonDeleteProfile= styled.button`
     flex-direction: row;
   }
 `;
-export const StyledYesButtonDeleteAds= styled.button`
+export const StyledYesButtonDeleteAds = styled.button`
   width: 211px;
   height: 48px;
   padding: 12px 28px 12px 28px;
@@ -538,7 +768,7 @@ export const StyledYesButtonDeleteAds= styled.button`
   align-items: center;
   justify-content: center;
   gap: 10px;
-  border:none;
+  border: none;
   color: var(--feedback--alert-1);
   background-color: var(--feedback--alert-2);
   font-family: Inter;
@@ -561,7 +791,6 @@ export const StyledYesButtonDeleteAds= styled.button`
   }
 `;
 
-
 export const StyledButtonAdsCreateImageGallery = styled.button`
   width: 315px;
   height: 38px;
@@ -569,7 +798,7 @@ export const StyledButtonAdsCreateImageGallery = styled.button`
   border-radius: 4px;
   border: 1.5px;
   gap: 10px;
-  color:   var(--brand--brand1);
+  color: var(--brand--brand1);
   background-color: var(--grey--scale--grey-6);
   display: flex;
   align-items: center;

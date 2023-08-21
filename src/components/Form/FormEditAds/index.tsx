@@ -1,9 +1,9 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { AdsContext } from "../../../providers/adsProvider";
-import { Button, ButtonCanceled, ButtonCreateAdvertiser } from "../../Buttons";
+import { Button} from "../../Buttons";
 import Input from "../Input";
 import { StyledModalCreateAds } from "./style";
 import { UserContext } from "../../../providers/userProvider";
@@ -24,7 +24,7 @@ const createAdsSchema = z.object({
 });
 type TRegisterAds = z.infer<typeof createAdsSchema>;
 
-export const RegisterFormAds = () => {
+export const EditFormAds = () => {
   const { setModalIsOpen, globalModelSelected } = useContext(UserContext);
 
   const {
@@ -54,12 +54,12 @@ export const RegisterFormAds = () => {
   return (
     <StyledModalCreateAds onSubmit={handleSubmit(createDataAds)}>
       <div className="divTitleBtnClose">
-        <h1>Criar anúncio</h1>
+        <h1>Editar anúncio</h1>
         <button type="button" onClick={() => setModalIsOpen(null)}>
           X
         </button>
       </div>
-      <p>Informações pessoais</p>
+      <p>Informações do veículo</p>
       <div className="containerSelects">
         <SelectBrend />
         <SelectModel />
@@ -151,6 +151,12 @@ export const RegisterFormAds = () => {
         register={register("description")}
         error={errors.description?.message}
       />
+      <p>Publicado</p>
+      <div className="buttonsEdit">
+        <Button type={"submit"} text={"Sim"} classType="buttonPublicAds" />
+        <Button type={"submit"} text={"Não"} classType="buttonNotPublicAds" />
+      </div>
+
       <Input
         label="Imagem"
         type="string"
