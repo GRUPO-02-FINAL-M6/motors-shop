@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { AdsContext } from "../../providers/adsProvider";
 import { Card } from "../../components/Card";
 import { AdsSectionStyled, MainStyled } from "./style";
@@ -15,11 +15,19 @@ export const HomePage = () => {
     ads,
     goToNextPage,
     goToPreviousPage,
+    filterAds,
     nextPage,
     previousPage,
     currentPage,
     totalPages,
+    setFilterString,
+    filterString
   } = useContext(AdsContext);
+
+
+  useEffect(() => {
+    filterAds(filterString);
+  }, [filterString])
 
   const targetRef = useRef<HTMLDivElement>(null);
 
@@ -29,7 +37,7 @@ export const HomePage = () => {
     }
   };
 
-  useEffect(() => {}, [ads]);
+  useEffect(() => { }, [ads]);
 
   return (
     <>
@@ -43,7 +51,7 @@ export const HomePage = () => {
           <img src={imagem} alt="background image" />
         </div>
         <section id="main-section">
-          <Filter /> 
+          <Filter setFilter={setFilterString} />
           <AdsSectionStyled ref={targetRef}>
             {ads.length > 0 ? (
               <ul>
@@ -86,7 +94,7 @@ export const HomePage = () => {
             )}
           </div>
         </div>
-        
+
       </MainStyled>
       <Footer/>
 
