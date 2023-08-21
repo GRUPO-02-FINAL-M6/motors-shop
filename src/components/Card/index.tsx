@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { iAds } from "../../providers/adsProvider";
 import { UserIcon } from "../User-icon";
 import { StyledCard } from "./style";
@@ -24,7 +25,7 @@ export const Card = ({ ads, user }: CardProps) => {
       )}
       <h2 className="card-title">{ads.name}</h2>
       <p className="card-description">{ads.description}</p>
-      <UserIcon name={user? user.name : ads.user.name} />
+      <Link id="link" to={`/Advertiser?user=${user? user.name : ads.user.name}`}><UserIcon name={user ? user.name : ads.user.name} /></Link>
       <div className="card-bottom">
         <div>
           <h6>{Number(ads.km).toLocaleString("pt-br") + " km"}</h6>

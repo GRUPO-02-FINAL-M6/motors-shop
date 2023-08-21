@@ -1,6 +1,11 @@
 import { styled } from "styled-components";
 
 export const MainStyled = styled.main`
+  
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
   .background {
     position: relative;
     width: 100vw;
@@ -59,18 +64,24 @@ export const MainStyled = styled.main`
     }
   }
 
+  #main-section{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+
+    @media (max-width: 1024px) {
+      flex-direction: row;
+    }
+  }
+
   #main-bottom {
-    padding: 4rem;
+    padding-bottom: 4rem; 
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
-
-    @media (min-width: 1024px) {
-      > button {
-        display: none;
-      }
-    }
   }
 
   #pages {
@@ -104,7 +115,7 @@ export const MainStyled = styled.main`
     line-height: 30px;
     letter-spacing: 0em;
     text-align: center;
-    color: var(--brand--brand2);
+    color: var(--brand-w-brand2);
   }
 
   #next-page-disabled,
@@ -122,29 +133,22 @@ export const MainStyled = styled.main`
     }
   }
 
-  @media (max-width: 1024px) {
-    #main-section {
-      display: flex;
-      /* gap: 100px; */
-      /* justify-content: center; */
-      margin-top: 2rem;
-    }
-  }
 `;
 
 export const AdsSectionStyled = styled.section`
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   ul {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 100vw;
-    padding: 50px;
-    overflow: scroll;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    gap: 20px;
 
-    li {
-      margin-left: 50px;
+    @media (min-width: 1000px){
+      grid-template-columns: auto auto;
     }
   }
 
@@ -152,26 +156,5 @@ export const AdsSectionStyled = styled.section`
     display: flex;
     justify-content: center;
     padding: 5rem 0 5rem 0;
-  }
-
-  @media (min-width: 375px) {
-    ul {
-      gap: 1rem;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    /* width: 1000px; */
-    ul {
-      height: 100%;
-      display: grid;
-      grid-template-columns: 400px
-      grid-template-rows: 400px
-    }
-  }
-  @media (max-width: 1023px) {
-    ul {
-      justify-content: start;
-    }
   }
 `;

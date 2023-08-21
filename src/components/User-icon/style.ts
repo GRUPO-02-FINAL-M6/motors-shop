@@ -4,7 +4,15 @@ export const UserIconStyled = styled.div`
     display: flex;
     align-items: center;
     gap: 8px;
-    
+  
+  #link{
+    transition: 500ms;
+
+    &:hover{
+      color: var(--brand--brand1);
+    }
+  }
+
   .card-ads-icon {
     display: flex;
     justify-content: center;

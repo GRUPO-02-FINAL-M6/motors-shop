@@ -19,7 +19,7 @@ export const StyledAdvertiser = styled.main`
 
     ul {
       display: grid;
-      grid-template-columns: auto;
+      grid-template-columns: auto auto auto auto;
       gap: 40px;
     }
   }

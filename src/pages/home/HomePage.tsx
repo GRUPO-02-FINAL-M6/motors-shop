@@ -56,9 +56,9 @@ export const HomePage = () => {
               </div>
             )}
           </AdsSectionStyled>
+          <ButtonFilters />
         </section>
         <div id="main-bottom">
-          <ButtonFilters />
           <div id="pages">
             <h3 id="current-page">{currentPage}</h3>
             <h3 className="total-pages">de</h3>

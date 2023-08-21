@@ -275,7 +275,6 @@ export const StyledFilters = styled.button`
   background-color: var(--brand--brand2);
   color: var(--colors--fixed--white-fixed);
   text-align: center;
-  margin-left: 12px;
   width: 279px;
   height: 48px;
   padding: 12px 28px 12px 28px;
@@ -291,6 +290,10 @@ export const StyledFilters = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  @media (max-width: 1024px){
+    display: none;
   }
 `;
 
