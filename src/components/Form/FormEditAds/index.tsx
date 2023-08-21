@@ -1,9 +1,9 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { AdsContext } from "../../../providers/adsProvider";
-import { Button, ButtonCanceled, ButtonCreateAdvertiser } from "../../Buttons";
+import { Button} from "../../Buttons";
 import Input from "../Input";
 import { StyledModalCreateAds } from "./style";
 import { UserContext } from "../../../providers/userProvider";
@@ -15,22 +15,22 @@ const createAdsSchema = z.object({
   // model: z.string().min(1, "O modelo é obrigatório"),
   // year: z.number().min(4, "O ano deve conter 4 dígitos."),
   km: z.string().min(5, "A kilometragem 5 dígitos."),
-  // fuel: z.string(),
+  // fuel: z.number().min(1, "Escolha de 1 a 3 um valor para o combustível."),
   color: z.string().min(1, "Deve conter a cor do veículo."),
   // priceFipe: z.number().min(5, "O valor da tabela fip é obrigatório!"),
   price: z.string().min(5, "O preço do veículo é obrigatório!"),
   description: z.string().min(1, "A descrição deve ser obrigatória"),
-  images: z.string(),
+  coverImage: z.string(),
 });
 type TRegisterAds = z.infer<typeof createAdsSchema>;
 
-export const RegisterFormAds = () => {
+export const EditFormAds = () => {
   const { setModalIsOpen, globalModelSelected } = useContext(UserContext);
 
   const {
     register,
     handleSubmit,
-    // reset,
+    reset,
     formState: { errors },
   } = useForm<TRegisterAds>({
     resolver: zodResolver(createAdsSchema),
@@ -38,31 +38,10 @@ export const RegisterFormAds = () => {
   const { createAds } = useContext(AdsContext);
 
   const createDataAds = (data: any) => {
-    delete globalModelSelected.id;
-
-    let fuel = "";
-
-    globalModelSelected.fuel == 1
-      ? (fuel = "Gasolina / Etanol")
-      : "" || globalModelSelected.fuel == 2
-      ? (fuel = "Gasolina / Elétrico")
-      : "" || globalModelSelected.fuel == 3
-      ? (fuel = "Elétrico")
-      : "";
-
-    console.log(data);
-
     const newData = {
-      ...globalModelSelected,
       ...data,
+      ...globalModelSelected,
       priceFipe: globalModelSelected.value,
-      price: Number(data.price),
-      year: Number(globalModelSelected.year),
-      images: [data.images],
-      fuel: fuel,
-      km: Number(data.km),
-      modelCar: globalModelSelected.name,
-      priceFip: globalModelSelected.value,
     };
 
     delete newData.value;
@@ -75,12 +54,12 @@ export const RegisterFormAds = () => {
   return (
     <StyledModalCreateAds onSubmit={handleSubmit(createDataAds)}>
       <div className="divTitleBtnClose">
-        <h1>Criar anúncio</h1>
+        <h1>Editar anúncio</h1>
         <button type="button" onClick={() => setModalIsOpen(null)}>
           X
         </button>
       </div>
-      <p>Informações pessoais</p>
+      <p>Informações do veículo</p>
       <div className="containerSelects">
         <SelectBrend />
         <SelectModel />
@@ -128,11 +107,11 @@ export const RegisterFormAds = () => {
             value={
               globalModelSelected
                 ? globalModelSelected.fuel == 1
-                  ? "Gasolina / Etanol"
+                  ? "flex"
                   : "" || globalModelSelected.fuel == 2
-                  ? "Gasolina / Elétrico"
+                  ? "hybrid"
                   : "" || globalModelSelected.fuel == 3
-                  ? "Elétrico"
+                  ? "elétrico"
                   : ""
                 : ""
             }
@@ -172,12 +151,18 @@ export const RegisterFormAds = () => {
         register={register("description")}
         error={errors.description?.message}
       />
+      <p>Publicado</p>
+      <div className="buttonsEdit">
+        <Button type={"submit"} text={"Sim"} classType="buttonPublicAds" />
+        <Button type={"submit"} text={"Não"} classType="buttonNotPublicAds" />
+      </div>
+
       <Input
         label="Imagem"
         type="string"
         placeholder="http://image.com"
-        register={register("images")}
-        error={errors.images?.message}
+        register={register("coverImage")}
+        error={errors.coverImage?.message}
       />
 
       {/* <ButtonAdsCreateImageGallery /> */}

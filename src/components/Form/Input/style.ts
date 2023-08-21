@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledContainerInput = styled.div`
-  width: 400px;
+  width: fit-content;
   /* max-width: 90%; */
   top: 20px;
   left: 20px;
@@ -31,10 +31,10 @@ export const StyledContainerInput = styled.div`
     /* gap: 10px; */
     border: 1.5px solid var(--grey--scale--grey-7);
 
-    &:hover {
+    /* &:hover {
       border: 1.5px solid #5126ea;
       background: linear-gradient(0deg, #5126ea, #5126ea);
-    }
+    } */
   }
 `;
 

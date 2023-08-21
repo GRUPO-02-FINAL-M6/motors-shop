@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Header } from "../../components/Header";
 import { StyledAdvertiser, StyledProfileDiv } from "./style";
-import { ButtonCreateAdvertiser } from "../../components/Buttons";
+import { Button } from "../../components/Buttons";
 import { Card } from "../../components/Card";
 import { UserContext } from "../../providers/userProvider";
 import { ModalCreateAds } from "../../components/Modal/ModalCreateAds";
@@ -40,6 +40,7 @@ export const AdvertiserPage = () => {
     }
   }
 
+  
   useEffect(() => {
     api.get(`/users/${id}`, {
      headers: {
@@ -61,22 +62,23 @@ export const AdvertiserPage = () => {
       <StyledAdvertiser>
         <div></div>
         <section>
+      
+
           <StyledProfileDiv>
             <span id="icon">{getInitiations(Advertiser.name)}</span>
             <div>
               <h2>{Advertiser.name}</h2> <span id="typeProfile">Anunciante</span>
             </div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum voluptates doloribus tempore autem unde veniam minima tempora totam facere fugiat in voluptatibus maiores, suscipit quo corporis repellat non blanditiis soluta!
+            <p className="pDescription">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </p>
-            <ButtonCreateAdvertiser onClick={() => setModalIsOpen(true)} />
+              <Button onClick={() => setModalIsOpen(true)} />
             {
               modalIsOpen &&
               <ModalCreateAds>
                 <RegisterFormAds />
               </ModalCreateAds>}
           </StyledProfileDiv>
-          <main>
             <ul>
               {ads ?
                 ads.map((ads) => (
@@ -85,7 +87,6 @@ export const AdvertiserPage = () => {
                 <p>Esse usuario ainda não tem anuncios</p>
               }
             </ul>
-          </main>
         </section>
       </StyledAdvertiser>}
     </>
