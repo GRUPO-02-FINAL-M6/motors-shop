@@ -1,12 +1,17 @@
 import { useContext, useEffect, useState } from "react";
 import { Header } from "../../components/Header";
 import { StyledAdvertiser, StyledProfileDiv } from "./style";
-import { ButtonCreateAdvertiser } from "../../components/Buttons";
+import { AdsContext } from "../../providers/adsProvider";
+import { Button } from "../../components/Buttons";
 import { Card } from "../../components/Card";
 import { UserContext } from "../../providers/userProvider";
 import { ModalCreateAds } from "../../components/Modal/ModalCreateAds";
 import { RegisterFormAds } from "../../components/Form/FormAds";
-import { api } from "../../services/api";
+import { Footer } from "../../components/Footer";
+import { StyledFooter } from "../../components/Footer/style";
+import { EditFormAds } from "../../components/Form/FormEditAds";
+import { RegisterForm } from "../../components/Form/RegisterForm";
+import { EditAddressForm } from "../../components/Form/FormEditAddress";
 
 export const AdvertiserPage = () => {
   
@@ -20,6 +25,7 @@ export const AdvertiserPage = () => {
 
   const id = 3;
 
+  
   useEffect(() => {
     api.get(`/users/${id}`, {
      headers: {
@@ -52,18 +58,25 @@ export const AdvertiserPage = () => {
   return (
     <>
       <Header />
-      <StyledAdvertiser>
-        <div></div>
+      {/* <StyledAdvertiser>
+        <div>#</div>
         <section>
+      
+
           <StyledProfileDiv>
             <span id="icon">SS</span>
             <div>
               <h2>{Advertiser.name}</h2> <span id="typeProfile">Anunciante</span>
             </div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum voluptates doloribus tempore autem unde veniam minima tempora totam facere fugiat in voluptatibus maiores, suscipit quo corporis repellat non blanditiis soluta!
+            <p className="pDescription">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </p>
-            <ButtonCreateAdvertiser onClick={()=> setModalIsOpen(true)} />
+            <Button
+              type={"button"}
+              text={"Criar anúncio"}
+              classType="buttonCreateAds"
+              onClick={()=> setModalIsOpen(true)}
+            />
           { 
         
            modalIsOpen && 
@@ -71,7 +84,13 @@ export const AdvertiserPage = () => {
               <RegisterFormAds />
             </ModalCreateAds>}
           </StyledProfileDiv>
-          <main>
+    
+
+
+
+
+
+
             <ul>
               {ads?
                 ads.map((ads) => (
@@ -80,9 +99,16 @@ export const AdvertiserPage = () => {
                 <p>Esse usuario ainda não tem anuncios</p>
               }
             </ul>
-          </main>
+
+         
         </section>
-      </StyledAdvertiser>
+      
+
+      </StyledAdvertiser> */}
+     {/* <EditFormAds/> */}
+   <EditAddressForm/>
+
+      {/* <Footer/> */}
     </>
   );
 };
