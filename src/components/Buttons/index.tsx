@@ -22,26 +22,30 @@ import {
 } from "./style";
 
 
-interface iButtonProps{
-  type: "button"|"submit"|"undefined";
-  text:string;
-  classType?:string;
-  onClick?: () => void;
+interface iButtonProps {
+  type: "button" | "submit" | undefined | "reset";
+  text: string;
+  classType?: string;
+  click: () => void;
 }
-export const Button = ({text, type, classType, click}:iButtonProps) => {
+export const Button = ({ text, type, classType, click }: iButtonProps) => {
   return <StyledButton>
-  <button className={classType}>{text}</button>
+    <button className={classType} type={type} onClick={() => {
+      click();
+    }}>{text}</button>
   </StyledButton>
 };
 
 
 
+interface IButtonClearFilters {
+  clearFilters: () => void;
+}
 
 
-
-export const ButtonClearFilters = () => {
+export const ButtonClearFilters = ({ clearFilters }: IButtonClearFilters) => {
   return (
-    <StyledClearFilters className="alingCenter">
+    <StyledClearFilters className="alingCenter" onClick={() => { clearFilters }}>
       Limpar filtros
     </StyledClearFilters>
   );
@@ -95,7 +99,7 @@ export const ButtonAdvertiser = ({ ...res }) => {
   );
 };
 
-export const ButtonCreateAdvertiser = ({onClick}:{onClick:any}) => {
+export const ButtonCreateAdvertiser = ({ onClick }: { onClick: any }) => {
   return (
     <StyledButtonCreateAds onClick={onClick} type="submit">Criar anúncio</StyledButtonCreateAds>
   );
