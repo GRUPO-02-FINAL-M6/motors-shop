@@ -25,6 +25,7 @@ export const AdvertiserPage = () => {
 
   const id = 3;
 
+  
   useEffect(() => {
     api.get(`/users/${id}`, {
      headers: {
