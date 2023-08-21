@@ -7,6 +7,7 @@ import { Filter } from "../../components/Filter";
 // import { Filter } from "../../components/Filter";
 
 import { Header } from "../../components/Header";
+import { Footer } from "../../components/Footer";
 // import { Filter } from "../../components/Filter";
 const imagem = "/public/Photo.svg";
 export const HomePage = () => {
@@ -95,6 +96,10 @@ export const HomePage = () => {
         </div>
 
       </MainStyled>
+      <Footer/>
+
+
     </>
+    
   );
 };

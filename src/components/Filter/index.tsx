@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react"
-import { ButtonClearFilters } from "../Buttons"
-import { StyledFilterList } from "./style"
+import { useState, useEffect } from "react";
+import { Button, ButtonClearFilters } from "../Buttons";
+import { StyledFilterList } from "./style";
 import { FilterTopics } from "./Filter";
 import { api } from "../../services/api";
 import FilterValuesRange from "../FilterValuesRange";
@@ -14,10 +14,10 @@ interface iFiltersParams {
   maxKm: number,
   distinctModels: Array<string>,
   fuel: {
-    "flex": "Gasolina / Etanol",
-    "hybrido": "Gasolina / Elétrico",
-    "Eletrico": "Elétrico"
-  }
+    flex: "Gasolina / Etanol";
+    hybrido: "Gasolina / Elétrico";
+    Eletrico: "Elétrico";
+  };
 }
 
 interface IFilterProps {
@@ -32,21 +32,22 @@ export const Filter = ({ setFilter }: IFilterProps) => {
   const [color, setColor] = useState("");
   const [year, setYear] = useState("");
   const [fuel, setFuel] = useState("");
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(0);
   const [minKm, setMinKm] = useState("");
   const [maxKm, setMaxKm] = useState("");
-  
+
   const clearFilter = () => {
     setBrand("");
     setModel("");
     setColor("");
     setYear("");
     setFuel("");
-    setMinPrice(filters.minPrice.toString());
-    setMaxPrice(filters.maxPrice.toString());
+    setMinPrice(filters.minPrice);
+    setMaxPrice(filters.maxPrice);
     setMaxKm("");
     setMinKm("");
+    setFilter("");
   }
 
   useEffect(() => {
@@ -63,8 +64,8 @@ export const Filter = ({ setFilter }: IFilterProps) => {
   }
 
   useEffect(() => {
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -93,11 +94,10 @@ export const Filter = ({ setFilter }: IFilterProps) => {
                 setMaxKm(max)
               }} />
             </div>
-
-            <ButtonClearFilters clearFilter={clearFilter} />
+            <Button click={clearFilter} classType="button" text="Limpar Filtros" type="button" />
 
           </StyledFilterList>
       }
     </>
-  )
-}
+  );
+};

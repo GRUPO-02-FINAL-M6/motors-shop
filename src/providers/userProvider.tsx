@@ -12,9 +12,16 @@ interface iUserContext {
   setUser: React.Dispatch<React.SetStateAction<iUser | null>>;
   login: (payload: iLogin) => Promise<void>;
   registerUser: (payload: iRegisterUser) => Promise<void>;
-  getMyProfile: () => Promise<void>
+  getMyProfile: () => Promise<void>;
   logout: () => Promise<void>;
   loading: boolean;
+  modalIsOpen: boolean | null;
+  setModalIsOpen: React.Dispatch<React.SetStateAction<true | null>>;
+  brandSelected: string | null;
+  setBrandSelected: React.Dispatch<React.SetStateAction<string | null>>;
+  globalModelSelected: any;
+  setglobalModelSelected: any;
+  token: string;
 }
 
 export interface iUser {
@@ -56,6 +63,10 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
   const token: string | null = localStorage.getItem("token");
   const navigate = useNavigate();
 
+  const [modalIsOpen, setModalIsOpen] = useState<null | true>(null);
+  const [brandSelected, setBrandSelected] = useState<string | null>(null);
+  const [globalModelSelected, setglobalModelSelected] = useState<any>(null);
+
   useEffect(() => {
     if (!token) {
       setLoading(false);
@@ -65,14 +76,13 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
     setLoading(false);
   }, []);
 
-
   const login = async (payload: iLogin) => {
     try {
       const response = await api.post("/users/login", payload);
       localStorage.setItem("token", response.data.token);
       api.defaults.headers.common.Authorization = `Bearer ${token}`;
       navigate("/");
-      getMyProfile()
+      getMyProfile();
     } catch (error: any) {
       toast.error(error.response.data.message);
     }
@@ -86,7 +96,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
   };
 
   const getMyProfile = async () => {
-    if(token){
+    if (token) {
       try {
         const response = await api.get("/users/profile", {
           headers: {
@@ -95,8 +105,8 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         });
         setUser(response.data);
       } catch (error: any) {
-        setUser(null)
-        localStorage.clear()
+        setUser(null);
+        localStorage.clear();
         toast.error("Sessão expirada, realize o login novamente.");
       }
     }
@@ -104,17 +114,32 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
   const registerUser = async (payload: any) => {
     try {
-      const response = await api.post(`/users`, payload);
+      await api.post(`/users`, payload);
       navigate("/login");
     } catch (error: any) {
-      // toast.error(error.response.data.message)
+      toast.error(error.response.data.message);
       console.log(error);
     }
   };
 
   return (
     <UserContext.Provider
-      value={{ login, user, setUser, registerUser, logout, loading, getMyProfile }}
+      value={{
+        login,
+        user,
+        setUser,
+        registerUser,
+        logout,
+        loading,
+        getMyProfile,
+        modalIsOpen,
+        setModalIsOpen,
+        brandSelected,
+        setBrandSelected,
+        globalModelSelected,
+        setglobalModelSelected,
+        token
+      }}
     >
       {children}
     </UserContext.Provider>

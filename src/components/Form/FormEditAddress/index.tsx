@@ -45,7 +45,7 @@ export const registerUserSchema = z.object({
 });
 type TRegisterUser = z.infer<typeof registerUserSchema>;
 
-export const RegisterForm = () => {
+export const EditAddressForm = () => {
   const {
     register,
     handleSubmit,
@@ -68,53 +68,14 @@ export const RegisterForm = () => {
 
   return (
     <StyledDivRegister className="formRegister" onSubmit={handleSubmit(createDataUser)}>
-      <h1>Cadastro</h1>
+      <h1>Editar endereço</h1>
 
-      <p>Informações pessoais</p>
+      <p>Informações de endereço</p>
 
-      <Input
-        label="Nome"
-        type="text"
-        placeholder="Ex: Samuel Leão"
-        register= {register("name")}
-        error={errors.name?.message}
-      />
-      <Input
-        label="Email"
-        type="text"
-        placeholder="Ex: samuel@kenzie.com.br"
-        register={register("email")}
-        error={errors.email?.message}
-      />
-      <Input
-        label="CPF"
-        type="text"
-        placeholder="000.000.000-00"
-        register={register("cpf")}
-        error={errors.cpf?.message}
-      />
-      <Input
-        label="Celular"
-        type="text"
-        placeholder="(00) 00000-0000"
-        register={register("contact")}
-        error={errors.telephone?.message}
-      />
-
-      <Input
-        label="Data de nascimento"
-        type="date"
-        placeholder="00/00/0000"
-        register={register("birthday")}
-        error={errors.birthday?.message}
-      />
-      <Input
-        label="Descrição"
-        type="text"
-        placeholder="Digitar descrição"
-        register={register("description")}
-        error={errors.description?.message}
-      />
+     
+     
+     
+    
       <Input
         label="CEP"
         type="text"
@@ -122,6 +83,9 @@ export const RegisterForm = () => {
         register={register("cep")}
         error={errors.cep?.message}
       />
+
+      <div className="divOrganizationInput">
+
       <Input
         label="Estado"
         type="text"
@@ -136,6 +100,8 @@ export const RegisterForm = () => {
         register={register("city")}
         error={errors.city?.message}
       />
+      </div>
+ 
       <Input
         label="Rua"
         type="text"
@@ -146,18 +112,18 @@ export const RegisterForm = () => {
       
       <ComplementsInputs register1={register("number")} register2={register("complement")}/>
       
-      <span>Tipo de conta</span>
+     
       <div className="buttons">
 
       <Button
               type={"submit"}
-              text={"Comprador"}
+              text={"Cancelar"}
               classType="buttonBuyer"
               onClick={()=>{setTypeCount("buyer")}}
       />
         <Button
               type={"submit"}
-              text={"Anunciante"}
+              text={"Salvar alterações"}
               classType="buttonAdvertiser"
               onClick={()=>{setTypeCount("advertiser")}}
       />
@@ -165,30 +131,7 @@ export const RegisterForm = () => {
 
       </div>
 
-      <Input
-        label="Senha"
-        type="password"
-        placeholder="Digitar senha"
-        register={register("password")}
-        error={errors.password?.message}
-      />
-      {/* <Input
-        label="Confirmar senha"
-        type="password"
-        placeholder="Digitar senha"
-        register={register("passwordConfirmation")}
-        error={errors.passwordConfirmation?.message}
-      /> */}
-      <div className="divBtnReegister">
-        {/* <ButtonFinishRegister type="submit"/> */}
-        <Button
-              type={"submit"}
-              text={"Finalizar cadastro"}
-              classType="buttonRegisterFinished"
-            />
-
-      </div>
-
+  
     </StyledDivRegister>
   );
 };

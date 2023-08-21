@@ -1,20 +1,19 @@
-import logo from '../../assets/logoWhite.svg'
-import direitos from '../../assets/direitos.svg'
 
-import { StyledContainer } from '../../styles/grid'
-import { StyledHeader } from './style'
+import { StyledFooter } from "./style";
 
 export const Footer = () => {
-    return(
-        <StyledHeader>
-            <StyledContainer>
-                <div className='flexGrid'>
-                    <img src={logo} className='logo'/>
-                        <img src={direitos} className='logo'/>
-                        <p>.</p>
+    const logo = "/public/logoWhite.svg";
+    // const direitos = "../../assets/direitos.svg";
+  return (
+  
+    <StyledFooter>
+        
 
-                </div>
-            </StyledContainer>
-        </StyledHeader>
-    )
-}
+    <img src={logo} alt="background image" />
+      <h4>© 2022 - Todos os direitos reservados.</h4>
+      <a href="#"></a>
+
+      
+    </StyledFooter>
+  );
+};

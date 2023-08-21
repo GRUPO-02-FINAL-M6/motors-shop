@@ -1,8 +1,8 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { api, apiFipe } from "../services/api";
 import { toast } from "react-toastify";
 import axios, { AxiosResponse } from "axios";
-import { iUser } from "./userProvider";
+import { UserContext, iUser } from "./userProvider";
 
 interface iAdsProviderProps {
   children: React.ReactNode;
@@ -71,6 +71,8 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
   const [advertiser, setAdvertiser] = useState<iAdvertiserProfile | null>(null);
   const [filterString, setFilterString] = useState("");
   const token = localStorage.getItem("token");
+
+  const { setModalIsOpen } = useContext(UserContext);
 
   const getAds = async () => {
     try {
@@ -141,27 +143,21 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
       const response = await apiFipe.get(
         `/cars/unique?brand=${brand}&name=${name}&year=${year}&fuel=${fuel}`
       );
-      console.log(response.data.value);
       return response.data.value;
     } catch (error) {
       toast.error("Veículo não encontrado na tabela FIPE");
     }
   };
 
-  const createAds = async (payload: iAdsRequest) => {
+  const createAds = async (payload: any) => {
     try {
-      payload.priceFipe = await getFipeValue(
-        payload.brand,
-        payload.name,
-        payload.year,
-        3
-      );
       const response = await api.post("/advertisement", payload, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      return response.data;
+      setModalIsOpen(null);
     } catch (error: any) {
-      toast.error(error.response.data.message);
+      console.log(error.response.data.message);
+      toast.error("error.response.data.message");
     }
   };
 
