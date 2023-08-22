@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 
 export const StyledButton = styled.div`
   button {
-    /* padding: 12px 28px 12px 28px;
+    padding: 12px 28px 12px 28px;
     border-radius: 4px;
     gap: 10px;
     border: 1.5px solid var(--grey--scale--grey-0);
@@ -18,7 +18,7 @@ export const StyledButton = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-    } */
+    }
   }
 
   .buttonPublicAds{
@@ -149,8 +149,6 @@ export const StyledButton = styled.div`
       background-color: var(--brand--brand1);
       border: none;
       color: var(--colors--fixed--white-fixed);
-      /* width: 300px; */
-      /* height: 38px; */
       text-align: center;
       display: flex;
       align-items: center;
@@ -216,11 +214,11 @@ export const StyledButton = styled.div`
     height: 48px;
     border: none;
 font-weight: bolder;
-    &:hover {
+&:hover {
       border: 1.5px solid var(--grey--scale--grey-4);
       background-color: var(--colors--fixed--white-fixed);
-      var(--grey--scale--grey-1);
-      font-size: 10px;
+      color: var(--grey--scale--grey-1);
+      font-size: 12px;
       width: 130px;
       height: 48px;
       text-align: center;
@@ -370,9 +368,30 @@ font-weight: bolder;
     }
 
   }
+.buttonPassword{
+  width:200px;
+height: 48px;
+padding: 12px 28px 12px 28px;
+border-radius: 4px;
+border: 1.5px;
+gap: 10px;
+background-color: var(--brand--brand1);
+color: var(--colors--fixed--white-fixed);
+&:hover {
+      background-color: var(--brand--brand3);
+    color: var(--colors--fixed--white-fixed);
+      font-size: 14px;
+      width: 190px;
+      height: 48px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
 
 
+}
 
   
 `;
