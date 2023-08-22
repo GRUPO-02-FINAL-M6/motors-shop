@@ -4,34 +4,35 @@ export const StyledDivRegister = styled.form`
   width: max-content;
   height: 1, 630px;
   border-radius: 4px;
-  background-color: var( --colors--fixed--white-fixed);
+  background-color: var(--colors--fixed--white-fixed);
   display: flex;
   flex-direction: column;
   padding: 40px;
   filter: drop-shadow(2px 2px 10px gray);
-  
+
   /* box-shadow: 2px 2px 10px 5px; */
 
   @media (max-width: 600px) {
-    max-width:380px;
+    max-width: 380px;
     width: 85%;
-      
-   
+
     flex-direction: column;
 
-    input{
+    input {
       width: fit-content;
- display: flex;
-
-
-
+      display: flex;
     }
   }
-  .divOrganizationInput{
+  .divOrganizationInput {
     display: flex;
     flex-direction: row;
-    input{
-        width: 167px;
+    input {
+      width: 167px;
+    }
+    .buttons {
+      display: flex;
+      justify-content: end;
+      background-color: red;
     }
   }
 
@@ -73,19 +74,23 @@ export const StyledDivRegister = styled.form`
 
   .buttons {
     display: flex;
-   flex-direction: row;
-    margin-bottom: 20px;
+    flex-direction: row;
+    background-color: red;
 
     @media (max-width: 600px) {
-  gap:5px
-
+      gap: 5px;
+    }
+    .divBtnReegister {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
-  .divBtnReegister {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+`;
 
-}
-  
+export const StyledDivButtonsEditAddress = styled.div`
+  display: flex;
+  gap: 10px;
+  justify-content: end;
+  margin-top: 20px;
 `;

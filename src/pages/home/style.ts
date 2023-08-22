@@ -122,12 +122,17 @@ export const MainStyled = styled.main`
     }
   }
 
-  @media (max-width: 1024px) {
+  #main-section {
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    /* align-items: end; */
     #main-section {
+      width: fit-content;
       display: flex;
-      /* gap: 100px; */
-      /* justify-content: center; */
-      margin-top: 2rem;
+      flex-direction: row;
+
+     
     }
   }
 `;
@@ -137,8 +142,8 @@ export const AdsSectionStyled = styled.section`
 
   ul {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
     max-width: 100vw;
     padding: 50px;
     overflow: scroll;
@@ -147,6 +152,12 @@ export const AdsSectionStyled = styled.section`
       margin-left: 50px;
     }
   }
+  @media (max-width: 600px) {
+  ul {
+    display: flex;
+    flex-direction: row;
+  }
+}
 
   #empty {
     display: flex;
@@ -165,8 +176,8 @@ export const AdsSectionStyled = styled.section`
     ul {
       height: 100%;
       display: grid;
-      grid-template-columns: 400px
-      grid-template-rows: 400px
+      grid-template-columns: 400px;
+      grid-template-rows: 400px;
     }
   }
   @media (max-width: 1023px) {

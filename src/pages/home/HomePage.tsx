@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef } from "react";
 import { AdsContext } from "../../providers/adsProvider";
 import { Card } from "../../components/Card";
 import { AdsSectionStyled, MainStyled } from "./style";
-import { ButtonFilters } from "../../components/Buttons";
+import { Button } from "../../components/Buttons";
 import { Filter } from "../../components/Filter";
 // import { Filter } from "../../components/Filter";
 
@@ -59,7 +59,7 @@ export const HomePage = () => {
           </AdsSectionStyled>
         </section>
         <div id="main-bottom">
-          <ButtonFilters />
+      
           <div id="pages">
             <h3 id="current-page">{currentPage}</h3>
             <h3 className="total-pages">de</h3>
@@ -86,12 +86,8 @@ export const HomePage = () => {
             )}
           </div>
         </div>
-        
       </MainStyled>
-      <Footer/>
-
-
+      <Footer />
     </>
-    
   );
 };
