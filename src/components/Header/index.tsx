@@ -1,14 +1,13 @@
 import { useState, useContext, useEffect } from "react";
-import logo from "../../assets/Logo.svg";
 import { HeaderLinksStyled, StyledHeader, StyledHeaderDiv } from "./style";
 import { TfiClose, TfiMenu } from "react-icons/tfi";
 import { Button, ButtonGoForLogin, ButtonRegister } from "../Buttons";
 import { UserContext } from "../../providers/userProvider";
 import { useNavigate } from "react-router-dom";
 import { UserIcon } from "../User-icon";
-import {FiLogOut} from "react-icons/fi"
 
 export const Header = () => {
+  const logo = "../../../public/logo.svg";
   const [menuStatus, setMenuStatus] = useState(false);
   const [desktopMenuStatus, setDesktopMenuStatus] = useState(false);
   const token = localStorage.getItem("token");
@@ -35,26 +34,30 @@ export const Header = () => {
                   <div id="desktop-menu">
                     <button>Editar perfil</button>
                     <button>Editar endereço</button>
-                    <button>Meus anúncios</button>
+                    <button onClick={() => navigate("dashboard")}>
+                      Meus anúncios
+                    </button>
                     <button onClick={logout}>Sair</button>
                   </div>
                 ) : null}
               </div>
             ) : (
               <div>
-                <div onClick={() => navigate("/login")}>
+                <div>
                   <Button
-              type={"submit"}
-              text={"Fazer login"}
-              classType="buttonMakeLogin"
-            />
+                    type={"submit"}
+                    text={"Fazer login"}
+                    classType="buttonMakeLogin"
+                    click={() => navigate("/login")}
+                  />
                 </div>
-                <div onClick={() => navigate("/register")}>
-                <Button
-              type={"submit"}
-              text={"Cadastrar"}
-              classType="buttonMakeRegister"
-            />
+                <div>
+                  <Button
+                    type={"submit"}
+                    text={"Cadastrar"}
+                    classType="buttonMakeRegister"
+                    click={() => navigate("/register")}
+                  />
                 </div>
               </div>
             )}

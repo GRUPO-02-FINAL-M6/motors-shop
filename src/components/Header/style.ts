@@ -68,8 +68,6 @@ export const StyledHeaderDiv = styled.div`
             letter-spacing: 0em;
             text-align: left;
             color: var(--grey--scale--grey-2);
-            
-            animation: menu-buttons-desktop .3s linear;
           }
 
           @keyframes drop-menu-desktop {
@@ -156,21 +154,6 @@ export const StyledHeaderDiv = styled.div`
             100% {
               height: 100%;
               opacity: 1;
-            }
-          }
-
-          @keyframes menu-buttons-desktop {
-            0%{
-              align-self: end;
-            }
-            30%{
-              align-self: end;
-            }
-            60%{
-              align-self: center
-            }
-            100%{
-              align-self: start;
             }
           }
 

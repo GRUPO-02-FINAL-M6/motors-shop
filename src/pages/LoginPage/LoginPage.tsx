@@ -23,6 +23,7 @@ import { UserContext } from "../../providers/userProvider";
 import { useForm } from "react-hook-form";
 import { loginSchema, tLogin } from "./validator";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Header } from "../../components/Header";
 
 const LoginPage: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -42,16 +43,7 @@ const LoginPage: React.FC = () => {
 
   return (
     <Main>
-      <HeaderProps menuOpen={menuOpen}>
-        <img src="../../src/assets/logo.svg" alt="" />
-        <ButtonsProps menuOpen={menuOpen}>
-          <ButtonLogin>Fazer Login</ButtonLogin>
-          <ButtonRegister>Cadastrar</ButtonRegister>
-        </ButtonsProps>
-        <HamburgerIcon onClick={toggleMenu}>
-          {menuOpen ? <h2>X</h2> : <h2>☰</h2>}
-        </HamburgerIcon>
-      </HeaderProps>
+      <Header/>
       <PageContainer>
         <FormContainer>
           <form onSubmit={handleSubmit(login)}>
