@@ -1,93 +1,60 @@
-// import { useContext, useEffect, useRef } from "react";
-// import { AdsContext } from "../../providers/adsProvider";
-// import { Card } from "../../components/Card";
-// import { AdsSectionStyled, MainStyled } from "./style";
-// import { Button } from "../../components/Buttons";
-// import { Filter } from "../../components/Filter";
-// // import { Filter } from "../../components/Filter";
+import { useContext, useEffect, useRef } from "react";
+import { AdsContext } from "../../providers/adsProvider";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Header } from "../../components/Header";
+import { Footer } from "../../components/Footer";
+import Input from "../../components/Form/Input";
+import { MainStyled } from "./style";
+import { z } from "zod";
+import { UserContext } from "../../providers/userProvider";
+import { useForm } from "react-hook-form";
+import { Button } from "../../components/Buttons";
 
-// import { Header } from "../../components/Header";
-// import { Footer } from "../../components/Footer";
-// // import { Filter } from "../../components/Filter";
-// const imagem = "/public/Photo.svg";
-// export const recoverPassword = () => {
-//   const {
-//     ads,
-//     goToNextPage,
-//     goToPreviousPage,
-//     nextPage,
-//     previousPage,
-//     currentPage,
-//     totalPages,
-//   } = useContext(AdsContext);
+export const RecoverPassword = () => {
+  const registerUserSchema = z.object({
+    email: z
+      .string()
+      .email("O email deve ser obrigatório e válido")
+      .min(1, "O email deve ser obrigatório"),
+  });
+  type TRegisterUserEmail = z.infer<typeof registerUserSchema>;
 
-//   const targetRef = useRef<HTMLDivElement>(null);
+  const {
+    register,
+    formState: { errors },
+  } = useForm<TRegisterUserEmail>({
+    resolver: zodResolver(registerUserSchema),
+  });
+  const { registerUser } = useContext(UserContext);
 
-//   const handleButtonClick = () => {
-//     if (targetRef.current) {
-//       targetRef.current.scrollIntoView({ behavior: "smooth" });
-//     }
-//   };
+  return (
+    <>
+      <Header />
+      <MainStyled>
+        <div className="containerPassword">
+          <form className="recoverPasswordform">
+            <h2>Recuperação de Senha</h2>
+            <p>Informe o seu email associado à conta para redefinir a senha.</p>
 
-//   useEffect(() => {}, [ads]);
+            <Input
+              label="Email"
+              type="text"
+              placeholder="Ex: samuel@kenzie.com.br"
+              register={register("email")}
+              error={errors.email?.message}
+            />
+                <Button
+              type={"submit"}
+              text={"Enviar"}
+              classType="buttonPassword"
+              onClick={()=>{("")}}
+      />
+          </form>
+        </div>
 
-//   return (
-//     <>
-//       <Header />
-//       <MainStyled>
-//         <div className="background">
-//           <div>
-//             <h4>Motors Shop</h4>
-//             <h2>A melhor plataforma de anúncios de carros no país</h2>
-//           </div>
-//           <img src={imagem} alt="background image" />
-//         </div>
-//         <section id="main-section">
-//           <Filter /> 
-//           <AdsSectionStyled ref={targetRef}>
-//             {ads.length > 0 ? (
-//               <ul>
-//                 {ads.map((ads) => (
-//                   <Card ads={ads} key={ads.id} />
-//                 ))}
-//               </ul>
-//             ) : (
-//               <div id="empty">
-//                 <h2>Ainda não há anúncios cadastrados...</h2>
-//               </div>
-//             )}
-//           </AdsSectionStyled>
-//         </section>
-//         <div id="main-bottom">
-      
-//           <div id="pages">
-//             <h3 id="current-page">{currentPage}</h3>
-//             <h3 className="total-pages">de</h3>
-//             <h3 className="total-pages">{totalPages}</h3>
-//           </div>
-//           <div id="pages-btns" onClick={handleButtonClick}>
-//             {previousPage ? (
-//               <button id="previous-page" onClick={() => goToPreviousPage()}>
-//                 Anterior
-//               </button>
-//             ) : (
-//               <button id="previous-page-disabled" disabled={true}>
-//                 Anterior
-//               </button>
-//             )}
-//             {nextPage ? (
-//               <button id="next-page" onClick={() => goToNextPage()}>
-//                 Próxima
-//               </button>
-//             ) : (
-//               <button id="next-page-disabled" disabled={true}>
-//                 Próxima
-//               </button>
-//             )}
-//           </div>
-//         </div>
-//       </MainStyled>
-//       <Footer />
-//     </>
-//   );
-// };
+        <section id="main-section"></section>
+      </MainStyled>
+      <Footer />
+    </>
+  );
+};

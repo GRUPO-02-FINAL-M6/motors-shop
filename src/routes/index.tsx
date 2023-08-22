@@ -4,6 +4,7 @@ import LoginPage from "../pages/LoginPage/LoginPage";
 import { DashBoardPage } from "../pages/dashboard/DashBoardPage";
 import { RegisterPage } from "../pages/register";
 import { AdvertiserPage } from "../pages/advertiser";
+import { RecoverPassword } from "../pages/recoverPassword";
 
 export const RoutesMain = () => {
   return (
@@ -13,6 +14,8 @@ export const RoutesMain = () => {
       <Route path="/Register" element={<RegisterPage />} />
       <Route path="/DashBoard" element={<DashBoardPage />} />
       <Route path="/Advertiser" element={<AdvertiserPage />} />
+      <Route path="/RecoverPassword" element={<RecoverPassword />} />
+
     </Routes>
   );
 };
