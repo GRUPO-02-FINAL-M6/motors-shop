@@ -6,11 +6,13 @@ import { Card } from "../../components/Card";
 import { UserContext } from "../../providers/userProvider";
 import { ModalCreateAds } from "../../components/Modal/ModalCreateAds";
 import { RegisterFormAds } from "../../components/Form/FormAds";
+import { Footer } from "../../components/Footer";
+import { StyledFooter } from "../../components/Footer/style";
+import { EditFormAds } from "../../components/Form/FormEditAds";
+import { RegisterForm } from "../../components/Form/RegisterForm";
+import { EditAddressForm } from "../../components/Form/FormEditAddress";
 import { api } from "../../services/api";
-import { MainStyled } from "../home/style";
-// import { useParams } from "react-router-dom";
-
-
+import { EditProfileForm } from "../../components/Form/FormEditProfile";
 
 export const AdvertiserPage = () => {
 
@@ -97,12 +99,9 @@ export const AdvertiserPage = () => {
 
                 <StyledAdsList>
 
-                  {ads ?
-                    ads.map((ads) => (
-                      <Card ads={ads} key={ads.id} user={Advertiser} />
-                    )) :
-                    <p>Esse usuario ainda não tem anuncios</p>
-                  }
+      {/* testando */}
+     {/* <EditFormAds/> */}
+   {/* <EditAddressForm/> */}
 
                 </StyledAdsList>
 

@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef } from "react";
 import { AdsContext } from "../../providers/adsProvider";
 import { Card } from "../../components/Card";
 import { AdsSectionStyled, MainStyled } from "./style";
-import { ButtonFilters } from "../../components/Buttons";
+import { Button } from "../../components/Buttons";
 import { Filter } from "../../components/Filter";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
@@ -13,11 +13,19 @@ export const HomePage = () => {
     ads,
     goToNextPage,
     goToPreviousPage,
+    filterAds,
     nextPage,
     previousPage,
     currentPage,
     totalPages,
+    setFilterString,
+    filterString
   } = useContext(AdsContext);
+
+
+  useEffect(() => {
+    filterAds(filterString);
+  }, [filterString])
 
   const targetRef = useRef<HTMLDivElement>(null);
 
@@ -27,7 +35,7 @@ export const HomePage = () => {
     }
   };
 
-  useEffect(() => {}, [ads]);
+  useEffect(() => { }, [ads]);
 
   return (
     <>
@@ -41,8 +49,12 @@ export const HomePage = () => {
           <img src={imagem} alt="background image" />
         </div>
         <section id="main-section">
+<<<<<<< HEAD
           <Filter /> 
           <ButtonFilters />
+=======
+          <Filter setFilter={setFilterString} />
+>>>>>>> dc993a9e3716a0beb9ed434f5f034ed79c240854
           <AdsSectionStyled ref={targetRef}>
             {ads.length > 0 ? (
               <ul>
@@ -84,8 +96,42 @@ export const HomePage = () => {
             </div>
           </AdsSectionStyled>
         </section>
+<<<<<<< HEAD
       </MainStyled>
       <Footer/>
+=======
+        <div id="main-bottom">
+      
+          <div id="pages">
+            <h3 id="current-page">{currentPage}</h3>
+            <h3 className="total-pages">de</h3>
+            <h3 className="total-pages">{totalPages}</h3>
+          </div>
+          <div id="pages-btns" onClick={handleButtonClick}>
+            {previousPage ? (
+              <button id="previous-page" onClick={() => goToPreviousPage()}>
+                Anterior
+              </button>
+            ) : (
+              <button id="previous-page-disabled" disabled={true}>
+                Anterior
+              </button>
+            )}
+            {nextPage ? (
+              <button id="next-page" onClick={() => goToNextPage()}>
+                Próxima
+              </button>
+            ) : (
+              <button id="next-page-disabled" disabled={true}>
+                Próxima
+              </button>
+            )}
+          </div>
+        </div>
+
+      </MainStyled>
+      <Footer />
+>>>>>>> dc993a9e3716a0beb9ed434f5f034ed79c240854
     </>
   );
 };

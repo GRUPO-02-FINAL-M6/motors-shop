@@ -4,28 +4,23 @@ export const StyledDivRegister = styled.form`
   width: max-content;
   height: 1, 630px;
   border-radius: 4px;
-  background-color: var( --colors--fixed--white-fixed);
+  background-color: var(--colors--fixed--white-fixed);
   display: flex;
   flex-direction: column;
   padding: 40px;
-  margin-bottom: 20px;
   filter: drop-shadow(2px 2px 10px gray);
-  
+
   /* box-shadow: 2px 2px 10px 5px; */
 
   @media (max-width: 600px) {
-    max-width:380px;
+    max-width: 380px;
     width: 85%;
-      
-   
+
     flex-direction: column;
 
-    input{
+    input {
       width: fit-content;
- display: flex;
-
-
-
+      display: flex;
     }
   }
 
@@ -71,15 +66,18 @@ export const StyledDivRegister = styled.form`
     margin-bottom: 20px;
 
     @media (max-width: 600px) {
-  gap:5px
-
+      gap: 5px;
+    }
+    .divBtnReegister {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
-  .divBtnReegister {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+`;
 
-}
-  
+export const StyledButtonsEditProfile = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
 `;

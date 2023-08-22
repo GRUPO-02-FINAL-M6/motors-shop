@@ -2,7 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import logo from "../../assets/Logo.svg";
 import { HeaderLinksStyled, StyledHeader, StyledHeaderDiv } from "./style";
 import { TfiClose, TfiMenu } from "react-icons/tfi";
-import { Button, ButtonGoForLogin, ButtonRegister } from "../Buttons";
+import { Button } from "../Buttons";
 import { UserContext } from "../../providers/userProvider";
 import { useNavigate } from "react-router-dom";
 import { UserIcon } from "../User-icon";
@@ -74,10 +74,18 @@ export const Header = () => {
         (!token ? (
           <HeaderLinksStyled>
             <div onClick={() => navigate("/login")}>
-              <ButtonGoForLogin />
+            <Button
+              type={"submit"}
+              text={"Fazer login"}
+              classType="buttonMakeLogin"
+            />
             </div>
             <div onClick={() => navigate("/register")}>
-              <ButtonRegister />
+            <Button
+              type={"submit"}
+              text={"Cadastro"}
+              classType="buttonMakeRegister"
+            />
             </div>
           </HeaderLinksStyled>
         ) : (

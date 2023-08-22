@@ -210,15 +210,16 @@ export const StyledButton = styled.div`
     align-items: center;
     justify-content: center;
     font-size: 14px;
-    color: var(--grey--scale--grey-3);
+
+    color: var(--brand--brand1);
     width: 133px;
     height: 48px;
     border: none;
-
+font-weight: bolder;
     &:hover {
       border: 1.5px solid var(--grey--scale--grey-4);
       background-color: var(--colors--fixed--white-fixed);
-      color: var(--grey--scale--grey-1);
+      var(--grey--scale--grey-1);
       font-size: 10px;
       width: 130px;
       height: 48px;
@@ -237,7 +238,8 @@ export const StyledButton = styled.div`
     align-items: center;
     justify-content: center;
     font-size: 14px;
-    color: var(--grey--scale--grey-3);
+    font-weight: bolder;
+    color: var(--brand--brand1);
     width: 133px;
     height: 48px;
     border: none;
@@ -257,9 +259,124 @@ export const StyledButton = styled.div`
 
   }
 
+  .buttonCanceled{
+    background-color: var(--grey--scale--grey-6);
+    
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--grey--scale--grey-3);
+    width: 133px;
+    height: 48px;
+    border: none;
+
+    &:hover {
+      border: 1.5px solid var(--grey--scale--grey-4);
+      background-color:var(--grey--scale--grey-3);
+      color: var(--grey--scale--grey-1);
+      font-size: 14px;
+      width: 130px;
+      height: 48px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+  }
+
+  .buttonCanceled{
+    background-color: var(--grey--scale--grey-6);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--grey--scale--grey-3);
+    width: 133px;
+    height: 48px;
+    border: none;
+
+    &:hover {
+      border: 1.5px solid var(--grey--scale--grey-1);
+      background-color: var(--brand--brand3);
+    color: var(--colors--fixed--white-fixed);
+      font-size: 14px;
+      width: 130px;
+      height: 48px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+  }
+
+  .buttonDeleteProfile{
+    background-color: var( --feedback--alert-2);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var( --feedback--alert-1);
+    width: 133px;
+    height: 48px;
+    border: none;
+
+    &:hover {
+      border: 1.5px solid var(--grey--scale--grey-4);
+      background-color: var( --feedback--alert-3);
+
+    color: var( --feedback--alert-1);
+      font-size: 14px;
+      width: 130px;
+      height: 48px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+  }
+
+  .buttonSaveEditUpdate{
+    background-color: var(--grey--scale--grey-6);
+    color: var(--grey--scale--grey-3);
+
+
+
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    width: 193px;
+    height: 48px;
+    border: none;
+
+    &:hover {
+      background-color: var(--brand--brand3);
+    color: var(--colors--fixed--white-fixed);
+      font-size: 14px;
+      width: 190px;
+      height: 48px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+  }
+
+
+
 
   
 `;
+<<<<<<< HEAD
 
 export const StyledButtonViewAds = styled.button`
   font-family: Inter;
@@ -821,3 +938,5 @@ export const StyledButtonAdsCreateImageGallery = styled.button`
     justify-content: center;
   }
 `;
+=======
+>>>>>>> dc993a9e3716a0beb9ed434f5f034ed79c240854

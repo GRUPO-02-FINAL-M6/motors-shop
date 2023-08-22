@@ -1,27 +1,10 @@
 import {
   StyledButton,
-  StyledButtonAdsCreateImageGallery,
-  StyledButtonAdvertiser,
-  StyledButtonBuy,
-  StyledButtonBuyer,
-  StyledButtonCanceled,
-  StyledButtonComment,
-  StyledButtonCreateAds,
-  StyledButtonDeleteAds,
-  StyledButtonDeleteProfile,
-  StyledButtonEdit,
-  StyledButtonFinishRegister,
-  StyledButtonGoForLogin,
-  StyledButtonRegister,
-  StyledButtonSaveUpdate,
-  StyledButtonSeeDetails,
-  // StyledButtonViewAds,
-  StyledClearFilters,
-  StyledFilters,
-  StyledYesButtonDeleteAds,
+
 } from "./style";
 
 
+<<<<<<< HEAD
 interface iButtonProps{
   type: "button"|"submit"| undefined | "reset";
   text: string;
@@ -32,110 +15,21 @@ interface iButtonProps{
 export const Button = ({text, type, classType, click}:iButtonProps) => {
   return <StyledButton>
   <button className={classType} type={type} onClick={click}>{text}</button>
+=======
+interface iButtonProps {
+  type: "button" | "submit" | undefined | "reset";
+  text: string;
+  classType?: string;
+  click: () => void;
+}
+export const Button = ({ text, type, classType, click }: iButtonProps) => {
+  return <StyledButton>
+    <button className={classType} type={type} onClick={() => {
+      click();
+    }}>{text}</button>
+>>>>>>> dc993a9e3716a0beb9ed434f5f034ed79c240854
   </StyledButton>
 };
 
 
 
-
-
-
-export const ButtonClearFilters = () => {
-  return (
-    <StyledClearFilters className="alingCenter">
-      Limpar filtros
-    </StyledClearFilters>
-  );
-};
-
-export const ButtonFilters = () => {
-  return <StyledFilters>Filtros</StyledFilters>;
-};
-
-export const ButtonRegister = () => {
-  return <StyledButtonRegister>Cadastrar</StyledButtonRegister>;
-};
-
-// export const ButtonViewAllAds = () => {
-//   return <StyledButtonViewAllAds>Ver todos anúncios</StyledButtonViewAllAds>;
-// };
-
-export const ButtonComment = () => {
-  return <StyledButtonComment>Comentar</StyledButtonComment>;
-};
-
-export const ButtonBuy = () => {
-  return <StyledButtonBuy>Comprar</StyledButtonBuy>;
-};
-
-export const ButtonGoForLogin = () => {
-  return <StyledButtonGoForLogin>Fazer login</StyledButtonGoForLogin>;
-};
-
-export const ButtonFinishRegister = () => {
-  return (
-    <StyledButtonFinishRegister type="submit">
-      Finalizar cadastro
-    </StyledButtonFinishRegister>
-  );
-};
-
-export const ButtonBuyer = ({ ...res }) => {
-  return (
-    <StyledButtonBuyer {...res} type="button">
-      Comprador
-    </StyledButtonBuyer>
-  );
-};
-
-export const ButtonAdvertiser = ({ ...res }) => {
-  return (
-    <StyledButtonAdvertiser {...res} type="button">
-      Anunciante
-    </StyledButtonAdvertiser>
-  );
-};
-
-export const ButtonCreateAdvertiser = ({onClick}:{onClick:any}) => {
-  return (
-    <StyledButtonCreateAds onClick={onClick} type="submit">Criar anúncio</StyledButtonCreateAds>
-  );
-};
-
-export const ButtonEdit = () => {
-  return <StyledButtonEdit>Editar</StyledButtonEdit>;
-};
-
-export const ButtonSeeDetails = () => {
-  return <StyledButtonSeeDetails>Ver detalhes</StyledButtonSeeDetails>;
-};
-
-export const ButtonDeleteAds = () => {
-  return <StyledButtonDeleteAds>Excluir anúncio</StyledButtonDeleteAds>;
-};
-
-export const ButtonSaveUpdateAds = () => {
-  return <StyledButtonSaveUpdate>Excluir anúncio</StyledButtonSaveUpdate>;
-};
-
-export const ButtonCanceled = () => {
-  return <StyledButtonCanceled>Cancelar</StyledButtonCanceled>;
-};
-
-export const ButtonDeleteProfile = () => {
-  return <StyledButtonDeleteProfile>Excluir Perfil</StyledButtonDeleteProfile>;
-};
-
-export const ButtonYesDeleteAds = () => {
-  return (
-    <StyledYesButtonDeleteAds>Sim, excluir anúncio</StyledYesButtonDeleteAds>
-  );
-};
-
-export const ButtonAdsCreateImageGallery = () => {
-  return (
-    <StyledButtonAdsCreateImageGallery>
-      Adicionar campo para imagem da galeria
-    </StyledButtonAdsCreateImageGallery>
-  );
-};
