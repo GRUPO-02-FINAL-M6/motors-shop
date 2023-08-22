@@ -1,16 +1,12 @@
 import { useForm } from "react-hook-form";
-import {  useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import Input from "../Input";
-import { StyledDivRegister } from "./style";
+import { StyledDivButtonsEditAddress, StyledDivRegister } from "./style";
 import { ComplementsInputs } from "../Input/ComplementsInput";
 import { Button } from "../../Buttons";
 import { UserContext } from "../../../providers/userProvider";
-
-
-
-
 
 export const registerUserSchema = z.object({
   name: z.string().min(1, "O nome é obrigatório"),
@@ -54,28 +50,25 @@ export const EditAddressForm = () => {
   } = useForm<TRegisterUser>({
     resolver: zodResolver(registerUserSchema),
   });
-  const {registerUser} = useContext(UserContext)
-  const [typeCount, setTypeCount] =useState("buyer")
+  const { registerUser } = useContext(UserContext);
+  const [typeCount, setTypeCount] = useState("buyer");
 
   const createDataUser = (data: any) => {
-
-    const newData= {...data, typeCount:typeCount}
+    const newData = { ...data, typeCount: typeCount };
 
     registerUser(newData);
     // reset();
   };
-  
 
   return (
-    <StyledDivRegister className="formRegister" onSubmit={handleSubmit(createDataUser)}>
+    <StyledDivRegister
+      className="formRegister"
+      onSubmit={handleSubmit(createDataUser)}
+    >
       <h1>Editar endereço</h1>
 
       <p>Informações de endereço</p>
 
-     
-     
-     
-    
       <Input
         label="CEP"
         type="text"
@@ -85,23 +78,22 @@ export const EditAddressForm = () => {
       />
 
       <div className="divOrganizationInput">
-
-      <Input
-        label="Estado"
-        type="text"
-        placeholder="Digitar estado"
-        register={register("state")}
-        error={errors.state?.message}
-      />
-      <Input
-        label="Cidade"
-        type="text"
-        placeholder="Digitar cidade"
-        register={register("city")}
-        error={errors.city?.message}
-      />
+        <Input
+          label="Estado"
+          type="text"
+          placeholder="Digitar estado"
+          register={register("state")}
+          error={errors.state?.message}
+        />
+        <Input
+          label="Cidade"
+          type="text"
+          placeholder="Digitar cidade"
+          register={register("city")}
+          error={errors.city?.message}
+        />
       </div>
- 
+
       <Input
         label="Rua"
         type="text"
@@ -109,29 +101,30 @@ export const EditAddressForm = () => {
         register={register("road")}
         error={errors.road?.message}
       />
-      
-      <ComplementsInputs register1={register("number")} register2={register("complement")}/>
-      
-     
-      <div className="buttons">
 
-      <Button
-              type={"submit"}
-              text={"Cancelar"}
-              classType="buttonBuyer"
-              onClick={()=>{setTypeCount("buyer")}}
+      <ComplementsInputs
+        register1={register("number")}
+        register2={register("complement")}
       />
+
+      <StyledDivButtonsEditAddress className="buttonsEditAddress">
         <Button
-              type={"submit"}
-              text={"Salvar alterações"}
-              classType="buttonAdvertiser"
-              onClick={()=>{setTypeCount("advertiser")}}
-      />
-     
-
-      </div>
-
-  
+          type={"submit"}
+          text={"Cancelar"}
+          classType="buttonCanceled"
+          onClick={() => {
+            setTypeCount("buyer");
+          }}
+        />
+        <Button
+          type={"submit"}
+          text={"Salvar alterações"}
+          classType="buttonSaveEditUpdate"
+          onClick={() => {
+            setTypeCount("advertiser");
+          }}
+        />
+      </StyledDivButtonsEditAddress>
     </StyledDivRegister>
   );
 };

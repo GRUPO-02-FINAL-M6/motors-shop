@@ -35,8 +35,8 @@ export const StyledComponentDivComplemnts = styled.div`
     }
 
     &:hover {
-      border: 1.5px solid #5126ea;
-      background: linear-gradient(0deg, #5126ea, #5126ea);
+      /* border: 1.5px solid #5126ea;
+      background: linear-gradient(0deg, #5126ea, #5126ea); */
     }
 
   }
