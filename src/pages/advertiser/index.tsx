@@ -12,6 +12,8 @@ import { StyledFooter } from "../../components/Footer/style";
 import { EditFormAds } from "../../components/Form/FormEditAds";
 import { RegisterForm } from "../../components/Form/RegisterForm";
 import { EditAddressForm } from "../../components/Form/FormEditAddress";
+import { api } from "../../services/api";
+import { EditProfileForm } from "../../components/Form/FormEditProfile";
 
 export const AdvertiserPage = () => {
   
@@ -105,8 +107,11 @@ export const AdvertiserPage = () => {
       
 
       </StyledAdvertiser> */}
+
+      {/* testando */}
      {/* <EditFormAds/> */}
-   <EditAddressForm/>
+   {/* <EditAddressForm/> */}
+   <EditProfileForm/>
 
       {/* <Footer/> */}
     </>
