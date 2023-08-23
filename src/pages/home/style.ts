@@ -1,10 +1,13 @@
 import { styled } from "styled-components";
 
 export const MainStyled = styled.main`
-  
+
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
 
   .background {
     position: relative;

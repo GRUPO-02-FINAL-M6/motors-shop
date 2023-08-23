@@ -39,7 +39,7 @@ export interface iAds {
   priceFip: number;
   images: string[];
   createdAt: string;
-  user: { name: string };
+  user: { id: number, name: string };
 }
 
 export interface iAdsRequest {

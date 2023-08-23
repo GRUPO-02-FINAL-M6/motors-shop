@@ -157,43 +157,6 @@ export const ForgotPasswordLink = styled.a`
   margin-top: 5px;
 `;
 
-export const ButtonToEnter = styled.button`
-  background-color: var(--brand--brand1);
-  color: var(--grey--scale--grey-10);
-  width: 100%;
-  height: 48px;
-  border: 2px solid var(--brand--brand1);
-  border-radius: 4px;
-  font-size: 16px;
-  font-weight: 600;
-  margin: 30px 0px 30px 0px;
-
-  &:hover {
-  background-color: var(--brand--brand2);
-}
-  @media (max-width: 768px) {
-    width: 100%;
-
-  }
-`;
-
-export const ButtonToRegister = styled.button`
-  background-color: none;
-  color: var(--grey--scale--grey-0);
-  width: 100%;
-  height: 48px;
-  border: 2px solid var(--grey--scale--grey-4);
-  border-radius: 4px;
-  font-size: 16px;
-  font-weight: 600;
-  margin: 30px 0px 30px 0px;
-
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-  
-`;
-
 export const SignupText = styled.p`
   font-size: 14px;
   text-align: center;

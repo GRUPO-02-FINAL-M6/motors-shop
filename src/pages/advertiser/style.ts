@@ -100,7 +100,6 @@ export const StyledAdsList = styled.ul`
 
   transform: translateY(-10%);
 
-  margin-bottom: 10px;
 
   @media (min-width: 768px){
     grid-template-columns: auto auto;

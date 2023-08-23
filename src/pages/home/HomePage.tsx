@@ -2,7 +2,6 @@ import { useContext, useEffect, useRef } from "react";
 import { AdsContext } from "../../providers/adsProvider";
 import { Card } from "../../components/Card";
 import { AdsSectionStyled, MainStyled } from "./style";
-import { Button } from "../../components/Buttons";
 import { Filter } from "../../components/Filter";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
@@ -39,22 +38,26 @@ export const HomePage = () => {
 
   return (
     <>
+      
       <Header />
+      
       <MainStyled>
+      
         <div className="background">
+      
           <div>
             <h4>Motors Shop</h4>
             <h2>A melhor plataforma de anúncios de carros no país</h2>
           </div>
+      
           <img src={imagem} alt="background image" />
+      
         </div>
+      
         <section id="main-section">
-<<<<<<< HEAD
-          <Filter /> 
-          <ButtonFilters />
-=======
+      
           <Filter setFilter={setFilterString} />
->>>>>>> dc993a9e3716a0beb9ed434f5f034ed79c240854
+      
           <AdsSectionStyled ref={targetRef}>
             {ads.length > 0 ? (
               <ul>
@@ -67,39 +70,10 @@ export const HomePage = () => {
                 <h2>Ainda não há anúncios cadastrados...</h2>
               </div>
             )}
-            <div id="main-bottom">
-              <div id="pages">
-                <h3 id="current-page">{currentPage}</h3>
-                <h3 className="total-pages">de</h3>
-                <h3 className="total-pages">{totalPages}</h3>
-              </div>
-              <div id="pages-btns" onClick={handleButtonClick}>
-                {previousPage ? (
-                  <button id="previous-page" onClick={() => goToPreviousPage()}>
-                    Anterior
-                  </button>
-                ) : (
-                  <button id="previous-page-disabled" disabled={true}>
-                    Anterior
-                  </button>
-                )}
-                {nextPage ? (
-                  <button id="next-page" onClick={() => goToNextPage()}>
-                    Próxima
-                  </button>
-                ) : (
-                  <button id="next-page-disabled" disabled={true}>
-                    Próxima
-                  </button>
-                )}
-              </div>
-            </div>
           </AdsSectionStyled>
+      
         </section>
-<<<<<<< HEAD
-      </MainStyled>
-      <Footer/>
-=======
+      
         <div id="main-bottom">
       
           <div id="pages">
@@ -107,6 +81,7 @@ export const HomePage = () => {
             <h3 className="total-pages">de</h3>
             <h3 className="total-pages">{totalPages}</h3>
           </div>
+      
           <div id="pages-btns" onClick={handleButtonClick}>
             {previousPage ? (
               <button id="previous-page" onClick={() => goToPreviousPage()}>
@@ -127,11 +102,13 @@ export const HomePage = () => {
               </button>
             )}
           </div>
+      
         </div>
 
       </MainStyled>
-      <Footer />
->>>>>>> dc993a9e3716a0beb9ed434f5f034ed79c240854
+      
+      {/* <Footer /> */}
+
     </>
   );
 };
