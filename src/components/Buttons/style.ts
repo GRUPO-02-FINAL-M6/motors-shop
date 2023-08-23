@@ -18,14 +18,6 @@ export const StyledButton = styled.div`
     &:hover {
       color: var(--colors--fixed--white-fixed);
       background-color: var(--grey--scale--grey-1);
-<<<<<<< HEAD
-=======
-     
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
->>>>>>> 0c3058ce779ad1a1de2d9e9a14b85df766bc29ba
     }
   }
 
@@ -260,21 +252,11 @@ export const StyledButton = styled.div`
   .buttonSaveEditUpdate{
     background-color: var(--grey--scale--grey-6);
     color: var(--grey--scale--grey-3);
-
-
-
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    width: 193px;
-    height: 48px;
     border: none;
 
     &:hover {
       background-color: var(--brand--brand3);
-    color: var(--colors--fixed--white-fixed);
+      color: var(--colors--fixed--white-fixed);
       font-size: 14px;
       width: 190px;
       height: 48px;
@@ -285,26 +267,28 @@ export const StyledButton = styled.div`
     }
 
   }
-.buttonPassword{
-  width:200px;
-height: 48px;
-padding: 12px 28px 12px 28px;
-border-radius: 4px;
-border: 1.5px;
-gap: 10px;
-background-color: var(--brand--brand1);
-color: var(--colors--fixed--white-fixed);
-&:hover {
-      background-color: var(--brand--brand3);
+
+  .buttonPassword {
+    width:200px;
+    height: 48px;
+    padding: 12px 28px 12px 28px;
+    border-radius: 4px;
+    border: 1.5px;
+    gap: 10px;
+    background-color: var(--brand--brand1);
     color: var(--colors--fixed--white-fixed);
-      font-size: 14px;
-      width: 190px;
-      height: 48px;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+      &:hover {
+        background-color: var(--brand--brand3);
+        color: var(--colors--fixed--white-fixed);
+        font-size: 14px;
+        width: 190px;
+        height: 48px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+  }
 
   .buttonEnter{
     background-color: var(--brand--brand1);
