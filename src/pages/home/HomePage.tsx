@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { AdsContext } from "../../providers/adsProvider";
 import { Card } from "../../components/Card";
 import { AdsSectionStyled, MainStyled } from "./style";
