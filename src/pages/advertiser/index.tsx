@@ -1,119 +1,121 @@
 import { useContext, useEffect, useState } from "react";
 import { Header } from "../../components/Header";
-import { StyledAdvertiser, StyledProfileDiv } from "./style";
-import { AdsContext } from "../../providers/adsProvider";
+import { StyledAdsList, StyledAdvertiser, StyledProfileDiv } from "./style";
 import { Button } from "../../components/Buttons";
 import { Card } from "../../components/Card";
 import { UserContext } from "../../providers/userProvider";
 import { ModalCreateAds } from "../../components/Modal/ModalCreateAds";
 import { RegisterFormAds } from "../../components/Form/FormAds";
 import { Footer } from "../../components/Footer";
-import { StyledFooter } from "../../components/Footer/style";
 import { EditFormAds } from "../../components/Form/FormEditAds";
-import { RegisterForm } from "../../components/Form/RegisterForm";
-import { EditAddressForm } from "../../components/Form/FormEditAddress";
 import { api } from "../../services/api";
-import { EditProfileForm } from "../../components/Form/FormEditProfile";
+import { MainStyled } from "../home/style";
+import { useParams } from "react-router-dom";
 
 export const AdvertiserPage = () => {
-  
+
   const { setModalIsOpen, modalIsOpen } = useContext(UserContext);
 
   const [ads, setAds] = useState([]);
 
   const [Advertiser, setUser] = useState({})
 
-  const { token } = useContext(UserContext);
+  const { token, user } = useContext(UserContext);
 
-  const id = 3;
+  const { id } = useParams();
 
-  
+  const [loading, setLoading] = useState(true);
+
+  function getInitiations(fullName: string) {
+
+    const names = fullName.split(' ');
+
+    if (names.length === 1) {
+      return names[0][0].toUpperCase() + names[0][1].toUpperCase();
+    } else {
+      let initiations = '';
+      for (let i = 0; i < 2; i++) {
+        initiations += names[i][0].toUpperCase();
+      }
+      return initiations;
+    }
+  }
+
+
   useEffect(() => {
     api.get(`/users/${id}`, {
-     headers: {
-      'Authorization': `Bearer ${token}`
-     } 
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
     })
     .then(res => res.data)
     .then(res => {
       setAds(res.ads)
       setUser(res)
+      setLoading(false)
     })
-  })
 
-  // (Arthur Fernandes) Logica para pegar as iniciais do Anunciante...
-  // function getInitiations(fullName: string) {
-    
-  //   const names = fullName.split(' ');
-
-  //   if (names.length === 1) {
-  //     return names[0][0].toUpperCase();
-  //   } else {
-  //     let initiations = '';
-  //     for (let i =0; i < 2; i++) {
-  //       initiations += names[i][0].toUpperCase();
-  //     }
-  //     return initiations;
-  //   }
-  // }
+    if (user!.id === +id!){
+      setUser(user!)
+    }
+  }, [id, user, token])
 
   return (
     <>
-      <Header />
-      {/* <StyledAdvertiser>
-        <div>#</div>
-        <section>
-      
-
-          <StyledProfileDiv>
-            <span id="icon">SS</span>
-            <div>
-              <h2>{Advertiser.name}</h2> <span id="typeProfile">Anunciante</span>
-            </div>
-            <p className="pDescription">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </p>
-            <Button
-              type={"button"}
-              text={"Criar anúncio"}
-              classType="buttonCreateAds"
-              onClick={()=> setModalIsOpen(true)}
-            />
-          { 
-        
-           modalIsOpen && 
-           <ModalCreateAds>
-              <RegisterFormAds />
-            </ModalCreateAds>}
-          </StyledProfileDiv>
     
+      <Header />
+      <MainStyled>
+        {
+          loading ? "" :
+
+            <StyledAdvertiser>
+
+              <div></div>
+
+              <section>
+
+                <StyledProfileDiv>
 
 
+                  <div id="profile">
+                    <span id="icon">{getInitiations(Advertiser.name)}</span>
+                    <div className="name">
+                      <h2>{Advertiser.name}</h2> <span id="typeProfile">Anunciante</span>
+                    </div>
+                  </div>
 
+                  <p className="pDescription">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit rerum laborum ut a cupiditate, eveniet voluptatum eligendi cumque doloribus asperiores laudantium numquam sapiente nostrum beatae suscipit corrupti culpa eius illo. alskjflasdkjfl;sakj
+                  </p>
 
+                  {
+                    user!.id === +id! ? <Button text={"Criar Anuncio"} type={"button"} click={() => setModalIsOpen(true)} classType="buttonCreateAds" /> : ''
+                  }
 
+                  {
+                    modalIsOpen &&
+                    <ModalCreateAds>
+                      <RegisterFormAds />
+                    </ModalCreateAds>
+                  }
 
-            <ul>
-              {ads?
-                ads.map((ads) => (
-                  <Card ads={ads} key={ads.id} user={Advertiser} />
-                )) :
-                <p>Esse usuario ainda não tem anuncios</p>
-              }
-            </ul>
+                </StyledProfileDiv>
 
-         
-        </section>
-      
+                <StyledAdsList>
+                  {
+                    ads.map((item) => {
+                      return <Card ads={item} user={Advertiser}/>
+                    })
+                  }
 
-      </StyledAdvertiser> */}
+                </StyledAdsList>
 
-      {/* testando */}
-     {/* <EditFormAds/> */}
-   {/* <EditAddressForm/> */}
-   <EditProfileForm/>
+              </section>
 
-      {/* <Footer/> */}
+            </StyledAdvertiser>
+        }
+      </MainStyled>
     </>
   );
 };

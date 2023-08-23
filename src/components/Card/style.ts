@@ -2,23 +2,16 @@ import { styled } from "styled-components";
 
 export const StyledCard = styled.li`
 
-  //deletar
-  border: 1px solid;
-
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 16px;
-  max-width: 280px;
+  max-width: 320px;
   height: 350px;
-  position: relative;
   border-radius: 6px;
 
   #stamp {
     position: absolute;
-    top: 0;
-    right: 0;
     width: 16px;
     height: 27px;
     display: flex;
@@ -97,19 +90,4 @@ export const StyledCard = styled.li`
     cursor: pointer;
   }
 
-  /* @media (min-width: 375px) {
-    min-width: 70vw;
-  }
-
-  @media (min-width: 768px) {
-    min-width: 40vw;
-    max-width: 40vw;
-    height: 60vh;
-  }
-
-  @media (min-width: 1024px) {
-    min-width: 300px;
-    max-width: 30%;
-    height: 400px;
-  } */
 `;

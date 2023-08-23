@@ -2,15 +2,11 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { AdsContext } from "../../providers/adsProvider";
 import { Card } from "../../components/Card";
 import { AdsSectionStyled, MainStyled } from "./style";
-import { Button } from "../../components/Buttons";
 import { Filter } from "../../components/Filter";
-// import { Filter } from "../../components/Filter";
-
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
-import { ModalSuccess } from "../../components/Modal/Modal-success";
-// import { Filter } from "../../components/Filter";
 const imagem = "/public/Photo.svg";
+
 export const HomePage = () => {
   const {
     ads,
@@ -42,17 +38,26 @@ export const HomePage = () => {
 
   return (
     <>
+      
       <Header />
+      
       <MainStyled>
+      
         <div className="background">
+      
           <div>
             <h4>Motors Shop</h4>
             <h2>A melhor plataforma de anúncios de carros no país</h2>
           </div>
+      
           <img src={imagem} alt="background image" />
+      
         </div>
+      
         <section id="main-section">
+      
           <Filter setFilter={setFilterString} />
+      
           <AdsSectionStyled ref={targetRef}>
             {ads.length > 0 ? (
               <ul>
@@ -66,7 +71,9 @@ export const HomePage = () => {
               </div>
             )}
           </AdsSectionStyled>
+      
         </section>
+      
         <div id="main-bottom">
       
           <div id="pages">
@@ -74,6 +81,7 @@ export const HomePage = () => {
             <h3 className="total-pages">de</h3>
             <h3 className="total-pages">{totalPages}</h3>
           </div>
+      
           <div id="pages-btns" onClick={handleButtonClick}>
             {previousPage ? (
               <button id="previous-page" onClick={() => goToPreviousPage()}>
@@ -94,10 +102,13 @@ export const HomePage = () => {
               </button>
             )}
           </div>
+      
         </div>
 
       </MainStyled>
-      <Footer />
+      
+      {/* <Footer /> */}
+
     </>
   );
 };

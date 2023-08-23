@@ -112,7 +112,7 @@ export const EditAddressForm = () => {
           type={"submit"}
           text={"Cancelar"}
           classType="buttonCanceled"
-          onClick={() => {
+          click={() => {
             setTypeCount("buyer");
           }}
         />
@@ -120,7 +120,7 @@ export const EditAddressForm = () => {
           type={"submit"}
           text={"Salvar alterações"}
           classType="buttonSaveEditUpdate"
-          onClick={() => {
+          click={() => {
             setTypeCount("advertiser");
           }}
         />
