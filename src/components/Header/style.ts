@@ -22,6 +22,12 @@ export const StyledHeaderDiv = styled.div`
     align-items: center;
     justify-self: center;
 
+    img{
+      &:hover{
+        cursor: pointer;
+      }
+    }
+    
     .menu {
       width: 48px;
       display: flex;
@@ -31,7 +37,10 @@ export const StyledHeaderDiv = styled.div`
       @media (min-width: 1024px) {
         display: none;
       }
+
+      
     }
+    
 
     #header-btns {
       display: none;

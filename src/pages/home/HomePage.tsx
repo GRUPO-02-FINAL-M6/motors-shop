@@ -8,6 +8,7 @@ import { Filter } from "../../components/Filter";
 
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
+import { ModalSuccess } from "../../components/Modal/Modal-success";
 // import { Filter } from "../../components/Filter";
 const imagem = "/public/Photo.svg";
 export const HomePage = () => {

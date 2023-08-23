@@ -25,7 +25,7 @@ export const Header = () => {
     <StyledHeader>
       <StyledHeaderDiv>
         <div id="header-nav">
-          <img src={logo} alt="motors shop" />
+          <img src={logo} alt="motors shop" onClick={() => navigate("/")}/>
           <div id="header-btns">
             {user ? (
               <div onClick={() => setDesktopMenuStatus(!desktopMenuStatus)}>
@@ -81,6 +81,7 @@ export const Header = () => {
               type={"submit"}
               text={"Fazer login"}
               classType="buttonMakeLogin"
+              click={() => navigate("/login")}
             />
             </div>
             <div onClick={() => navigate("/register")}>
@@ -88,6 +89,7 @@ export const Header = () => {
               type={"submit"}
               text={"Cadastro"}
               classType="buttonMakeRegister"
+              click={() => navigate("/register")}
             />
             </div>
           </HeaderLinksStyled>

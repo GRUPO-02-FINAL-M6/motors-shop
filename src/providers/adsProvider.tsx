@@ -55,6 +55,19 @@ export interface iAdsRequest {
   priceFipe: number;
 }
 
+export interface iAdsUpdate {
+  name?: string;
+  brand?: string;
+  color?: string;
+  description?: string;
+  year?: number;
+  km?: number;
+  images?: string[];
+  fuel?: string;
+  price?: number;
+  priceFipe?: number;
+}
+
 export interface iAdvertiserProfile {
   user: iUser;
   ads: iAds[];
@@ -74,6 +87,10 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
 
   const { setModalIsOpen } = useContext(UserContext);
 
+  useEffect(() => {
+    getAds();
+  }, []);
+
   const getAds = async () => {
     try {
       const response = await api.get("/advertisement");
@@ -85,9 +102,6 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
       toast.error(error.response.data.message);
     }
   };
-  useEffect(() => {
-    getAds();
-  }, []);
 
   const goToNextPage = async () => {
     if (nextPage) {
@@ -151,7 +165,7 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
 
   const createAds = async (payload: any) => {
     try {
-      const response = await api.post("/advertisement", payload, {
+      await api.post("/advertisement", payload, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setModalIsOpen(null);

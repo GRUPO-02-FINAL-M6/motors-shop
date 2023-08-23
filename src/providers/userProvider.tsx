@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import { api } from "../services/api";
 import { useNavigate } from "react-router-dom";
 import { iAds } from "./adsProvider";
+import axios from "axios";
 
 interface iUserProviderProps {
   children: React.ReactNode;
@@ -22,7 +23,9 @@ interface iUserContext {
   setBrandSelected: React.Dispatch<React.SetStateAction<string | null>>;
   globalModelSelected: any;
   setglobalModelSelected: any;
-  token: string;
+  token: string | null;
+  updateUser: (payload: iUpdateUser) => Promise<void>;
+  updateUserAds: (payload: any, adsID: number) => Promise<void>
 }
 
 export interface iUser {
@@ -32,7 +35,7 @@ export interface iUser {
   contact: string;
   createdAt: string;
   deletedAt: string;
-  ads: iAds[]
+  ads: iAds[];
 }
 
 interface iLogin {
@@ -57,10 +60,20 @@ interface iRegisterUser {
   typeCount: string;
 }
 
+interface iUpdateUser {
+  name: string;
+  email: string;
+  cpf: string;
+  contact: string;
+  birthday: string;
+  description: string;
+}
+
 export const UserContext = createContext({} as iUserContext);
 
 export const UserProvider = ({ children }: iUserProviderProps) => {
   const [user, setUser] = useState<iUser | null>(null);
+  const [userAds, setUserAds] = useState<iAds[] | []>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const token: string | null = localStorage.getItem("token");
   const navigate = useNavigate();
@@ -106,6 +119,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
           },
         });
         setUser(response.data);
+        setUserAds(response.data.ads);
       } catch (error: any) {
         setUser(null);
         localStorage.clear();
@@ -114,7 +128,21 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
     }
   };
 
-  const registerUser = async (payload: any) => {
+  const updateUserAds = async (payload: any, adsID: number) => {
+    try {
+      const response = await api.patch(`/advertisement/${adsID}`, payload, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const newList = userAds.filter((ads) => ads.id !== adsID);
+      setUserAds({ ...newList, ...response.data });
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        toast.error(error.response?.data);
+      }
+    }
+  };
+
+  const registerUser = async (payload: iRegisterUser) => {
     try {
       await api.post(`/users`, payload);
       navigate("/login");
@@ -122,6 +150,26 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       toast.error(error.response.data.message);
       console.log(error);
     }
+  };
+
+  const updateUser = async (payload: iUpdateUser) => {
+    try {
+      const response = await api.patch("/users", payload, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setUser(response.data);
+      toast.success("Dados atualizados.");
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        toast.error(error.response?.data);
+      }
+    }
+  };
+
+  const updateUserAddress = async (payload: any) => {
+    try {
+      //aguardando implementação no back
+    } catch (error) {}
   };
 
   return (
@@ -140,7 +188,9 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         setBrandSelected,
         globalModelSelected,
         setglobalModelSelected,
-        token
+        token,
+        updateUser,
+        updateUserAds
       }}
     >
       {children}
