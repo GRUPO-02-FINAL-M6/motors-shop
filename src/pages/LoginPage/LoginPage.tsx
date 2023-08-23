@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import {
   HeaderProps,
   ButtonsProps,
-  ButtonToEnter,
   Main,
   InputEmail,
   PageContainer,
@@ -14,7 +13,6 @@ import {
   ButtonRegister,
   SignupText,
   Labels,
-  ButtonToRegister,
   Footer,
   ImageUp,
   HamburgerIcon,
@@ -23,6 +21,8 @@ import { UserContext } from "../../providers/userProvider";
 import { useForm } from "react-hook-form";
 import { loginSchema, tLogin } from "./validator";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Button } from "../../components/Buttons";
+import { redirect } from "react-router-dom";
 
 const LoginPage: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -75,10 +75,10 @@ const LoginPage: React.FC = () => {
             <ForgotPasswordLink href="#">
               Esqueci minha senha
             </ForgotPasswordLink>
-            <ButtonToEnter type="submit">Entrar</ButtonToEnter>
+            <Button type="submit" classType="buttonEnter" text={"Entrar"} click={() => false}/>
           </form>
           <SignupText>Ainda não possui conta?</SignupText>
-          <ButtonToRegister>Cadastrar</ButtonToRegister>
+          <Button text={"Cadastrar"} type={"submit"} classType="buttonToRegister" click={() => redirect('/register')}/>
         </FormContainer>
       </PageContainer>
       <Footer>

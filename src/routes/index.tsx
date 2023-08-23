@@ -13,6 +13,7 @@ export const RoutesMain = () => {
       <Route path="/Login" element={<LoginPage />} />
       <Route path="/Register" element={<RegisterPage />} />
       <Route path="/DashBoard" element={<DashBoardPage />} />
+      <Route path="/Advertiser/:id" element={<AdvertiserPage />} />
       <Route path="/Advertiser" element={<AdvertiserPage />} />
       <Route path="/RecoverPassword" element={<RecoverPassword />} />
 

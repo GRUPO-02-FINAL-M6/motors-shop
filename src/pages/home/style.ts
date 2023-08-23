@@ -1,6 +1,14 @@
 import { styled } from "styled-components";
 
 export const MainStyled = styled.main`
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+
   .background {
     position: relative;
     width: 100vw;
@@ -59,18 +67,28 @@ export const MainStyled = styled.main`
     }
   }
 
-  #main-bottom {
-    padding: 4rem;
+  #main-section{
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 40px;
 
     @media (min-width: 1024px) {
-      > button {
-        display: none;
-      }
+      flex-direction: row;
+      align-items: normal;
     }
+  }
+
+  #main-bottom {
+    width: 100%;
+    padding-bottom: 4rem; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    gap: 2rem;
   }
 
   #pages {
@@ -104,7 +122,7 @@ export const MainStyled = styled.main`
     line-height: 30px;
     letter-spacing: 0em;
     text-align: center;
-    color: var(--brand--brand2);
+    color: var(--brand-w-brand2);
   }
 
   #next-page-disabled,
@@ -122,35 +140,40 @@ export const MainStyled = styled.main`
     }
   }
 
-  #main-section {
-    width: fit-content;
-    display: flex;
-    flex-direction: row;
-    /* align-items: end; */
-    #main-section {
-      width: fit-content;
-      display: flex;
-      flex-direction: row;
-
-     
-    }
-  }
 `;
 
 export const AdsSectionStyled = styled.section`
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   ul {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    max-width: 100vw;
-    padding: 50px;
-    overflow: scroll;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    gap: 40px;
 
-    li {
-      margin-left: 50px;
+    @media (min-width: 768px) {
+      grid-template-columns: auto auto;
     }
+
+    @media (min-width: 900px){
+      grid-template-columns: auto auto;
+    }
+
+    @media (min-width: 1024px){
+      grid-template-columns: auto auto;
+    }
+
+    @media (min-width: 1200px){
+      grid-template-columns: auto auto auto;
+    }
+
+    @media (min-width: 1456px){
+      grid-template-columns: auto auto auto auto; 
+    }
+    
   }
   @media (max-width: 600px) {
   ul {
@@ -163,26 +186,5 @@ export const AdsSectionStyled = styled.section`
     display: flex;
     justify-content: center;
     padding: 5rem 0 5rem 0;
-  }
-
-  @media (min-width: 375px) {
-    ul {
-      gap: 1rem;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    /* width: 1000px; */
-    ul {
-      height: 100%;
-      display: grid;
-      grid-template-columns: 400px;
-      grid-template-rows: 400px;
-    }
-  }
-  @media (max-width: 1023px) {
-    ul {
-      justify-content: start;
-    }
   }
 `;

@@ -39,7 +39,7 @@ export interface iAds {
   priceFip: number;
   images: string[];
   createdAt: string;
-  user: { name: string };
+  user: { id: number, name: string };
 }
 
 export interface iAdsRequest {
@@ -151,7 +151,7 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
 
   const createAds = async (payload: any) => {
     try {
-      const response = await api.post("/advertisement", payload, {
+      await api.post("/advertisement", payload, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setModalIsOpen(null);

@@ -67,6 +67,18 @@ export const Filter = ({ setFilter }: IFilterProps) => {
     fetchData();
   }, []);
 
+ useEffect(() => {
+  if (brand) {
+    setModel("")
+  }
+ }, [brand])
+
+ useEffect(() => {
+  if (model) {
+    setBrand("")
+  }
+ }, [model])
+
   return (
     <>
       {
@@ -94,7 +106,7 @@ export const Filter = ({ setFilter }: IFilterProps) => {
                 setMaxKm(max)
               }} />
             </div>
-            <Button click={clearFilter} classType="button" text="Limpar Filtros" type="button" />
+            <Button click={clearFilter} classType="buttonCleanFilter" text="Limpar Filtros" type="button" />
 
           </StyledFilterList>
       }
