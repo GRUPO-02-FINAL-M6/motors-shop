@@ -23,6 +23,7 @@ import { loginSchema, tLogin } from "./validator";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "../../components/Buttons";
 import { redirect } from "react-router-dom";
+import { Header } from "../../components/Header";
 
 const LoginPage: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -42,7 +43,7 @@ const LoginPage: React.FC = () => {
 
   return (
     <Main>
-      <Header/>
+      <Header />
       <PageContainer>
         <FormContainer>
           <form onSubmit={handleSubmit(login)}>

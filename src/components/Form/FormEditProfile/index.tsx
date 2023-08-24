@@ -7,6 +7,7 @@ import { ComplementsInputs } from "../Input/ComplementsInput";
 import { Button } from "../../Buttons";
 import { UserContext } from "../../../providers/userProvider";
 import { StyledButtonsEditProfile, StyledDivRegister } from "./style";
+import { AiOutlineClose } from "react-icons/ai";
 
 export const registerUserSchema = z.object({
   name: z.string().min(1, "O nome é obrigatório"),
@@ -21,27 +22,18 @@ export const registerUserSchema = z.object({
   contact: z.string().min(10, "O telefone deve conter 10 dígitos"),
   birthday: z.string(),
   description: z.string().min(1, "A descrição deve ser obrigatória"),
-  cep: z.string().min(8, "O CEP deve conter 8 dígitos"),
-  state: z.string().min(1, "O estado deve ser obrigatório"),
-  city: z.string().min(1, "A cidade deve ser obrigatória"),
-  road: z.string().min(1, "A rua deve ser obrigatória"),
-  number: z.string().min(1, "O número deve ser obrigatório"),
-  complement: z.string().min(1, "O complemento deve ser obrigatório"),
-  typeCount: z.string().optional(),
-  password: z.string().min(8, "A senha deve conter no mínimo 8 caracteres"),
-  telephone: z.number().min(11, "O telefone deve ser obrigatório"),
-
-  // passwordConfirmation: z
-  //   .string()
-  //   .min(8, "Confirme a sua senha por favor.")
-  //   .refine((value, data) => value === data.password, {
-  //     message: "As senhas não coincidem",
-  //     path: ["passwordConfirmation"],
-  //   }),
 });
 type TRegisterUser = z.infer<typeof registerUserSchema>;
 
-export const EditProfileForm = () => {
+interface iModalStatus {
+  modalStatus: boolean;
+  setModalStatus: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const EditProfileForm = ({
+  modalStatus,
+  setModalStatus,
+}: iModalStatus) => {
   const {
     register,
     handleSubmit,
@@ -50,36 +42,31 @@ export const EditProfileForm = () => {
   } = useForm<TRegisterUser>({
     resolver: zodResolver(registerUserSchema),
   });
-  const { registerUser } = useContext(UserContext);
-  const [typeCount, setTypeCount] = useState("buyer");
-
-  const createDataUser = (data: any) => {
-    const newData = { ...data, typeCount: typeCount };
-
-    registerUser(newData);
-    // reset();
-  };
+  const { updateUser, deleteUser, user } = useContext(UserContext);
 
   return (
     <StyledDivRegister
       className="formRegister"
-      onSubmit={handleSubmit(createDataUser)}
+      onSubmit={handleSubmit(updateUser)}
     >
-      <h1>Editar perfil</h1>
+      <div className="form-top">
+        <h1>Editar perfil</h1>
+        <AiOutlineClose />
+      </div>
 
       <p>Informações pessoais</p>
 
       <Input
         label="Nome"
         type="text"
-        placeholder="Ex: Samuel Leão"
+        placeholder={user?.name}
         register={register("name")}
         error={errors.name?.message}
       />
       <Input
         label="Email"
         type="text"
-        placeholder="Ex: samuel@kenzie.com.br"
+        placeholder={user?.email}
         register={register("email")}
         error={errors.email?.message}
       />
@@ -93,9 +80,9 @@ export const EditProfileForm = () => {
       <Input
         label="Celular"
         type="text"
-        placeholder="(00) 00000-0000"
+        placeholder={user?.contact}
         register={register("contact")}
-        error={errors.telephone?.message}
+        error={errors.contact?.message}
       />
 
       <Input
@@ -114,30 +101,28 @@ export const EditProfileForm = () => {
       />
 
       <StyledButtonsEditProfile className="buttonsEditProfile">
-        <Button
-          type={"submit"}
-          text={"Cancelar"}
-          classType="buttonCanceled"
-          onClick={() => {
-            setTypeCount("buyer");
-          }}
-        />
-        <Button
-          type={"submit"}
-          text={"Excluir Perfil"}
-          classType="buttonDeleteProfile"
-          onClick={() => {
-            setTypeCount("advertiser");
-          }}
-        />
-        <Button
-          type={"submit"}
-          text={"Salvar alterações"}
-          classType="buttonSaveEditUpdate"
-          onClick={() => {
-            setTypeCount("advertiser");
-          }}
-        />
+        <div className="btns-top">
+          <Button
+            type={"button"}
+            text={"Cancelar"}
+            classType="buttonCanceled"
+            click={() => setModalStatus(false)}
+          />
+          <Button
+            type={"button"}
+            text={"Excluir Perfil"}
+            classType="buttonDeleteProfile"
+            click={() => deleteUser()}
+          />
+        </div>
+        <div className="btns-bottom">
+          <Button
+            type={"submit"}
+            text={"Salvar alterações"}
+            classType="buttonSaveEditUpdate"
+            click={() =>{}}
+          />
+        </div>
       </StyledButtonsEditProfile>
     </StyledDivRegister>
   );
