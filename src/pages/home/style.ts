@@ -5,7 +5,7 @@ export const MainStyled = styled.main`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  height: 100vh;
+  height: fit-content;
   width: 100vw;
   position: relative;
 

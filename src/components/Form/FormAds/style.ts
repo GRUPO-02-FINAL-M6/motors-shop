@@ -23,6 +23,7 @@ export const StyledModalCreateAds = styled.form`
     .buttonsEdit{
       justify-content: center;
     }
+  }
 
   .containerSelects {
     display: flex;
