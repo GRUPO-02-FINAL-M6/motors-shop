@@ -4,7 +4,7 @@ import { Card } from "../../components/Card";
 import { AdsSectionStyled, MainStyled } from "./style";
 import { Filter } from "../../components/Filter";
 import { Header } from "../../components/Header";
-import { Footer } from "../../components/Footer";
+import { Footer } from "../LoginPage/style";
 const imagem = "/public/Photo.svg";
 import { AiOutlineArrowDown } from 'react-icons/ai';
 
@@ -39,7 +39,6 @@ export const HomePage = () => {
 
   return (
     <>
-      
       <Header />
       
       <MainStyled>
@@ -107,7 +106,6 @@ export const HomePage = () => {
 
       </MainStyled>
       
-      {/* <Footer /> */}
 
     </>
   );

@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const StyledButton = styled.div`
+export const StyledButton = styled.button`
   button {
     padding: 12px 28px 12px 28px;
     border-radius: 4px;
@@ -20,39 +20,38 @@ export const StyledButton = styled.div`
       background-color: var(--grey--scale--grey-1);
     }
   }
-
-  .buttonPublicAds{
+  
+  .buttonPublicAds {
     background-color: var(--colors--fixed--white-fixed);
     color: var(--grey--scale--grey-0);
     border: 1.5px solid var(--grey--scale--grey-4);
 
-
     &:hover {
       background-color: var(--brand--brand1);
     }
   }
 
-  .buttonNotPublicAds{
-    background-color:  var(--colors--fixed--white-fixed);
-    color:var(--grey--scale--grey-0);
+  .buttonNotPublicAds {
+    background-color: var(--colors--fixed--white-fixed);
+    color: var(--grey--scale--grey-0);
     border: 1.5px solid var(--grey--scale--grey-4);
 
     &:hover {
       background-color: var(--brand--brand1);
     }
   }
-  .buttonDeleteAds{
+  .buttonDeleteAds {
     background-color: var(--grey--scale--grey-5);
-    color:var(--grey--scale--grey-3);
+    color: var(--grey--scale--grey-3);
 
     &:hover {
       background-color: var(--brand--brand3);
     }
   }
 
-  .buttonSaveAds{
+  .buttonSaveAds {
     background-color: var(--grey--scale--grey-5);
-    color:var(--grey--scale--grey-3);
+    color: var(--grey--scale--grey-3);
     width: 152px;
     height: 48px;
 
@@ -93,7 +92,7 @@ export const StyledButton = styled.div`
     border: 1.5px solid var(--grey--scale--grey-4);
     width: 100%;
     height: 48px;
-    
+
     @media (max-width: 600px) {
       width: 250px;
     }
@@ -144,7 +143,6 @@ export const StyledButton = styled.div`
       justify-content: center;
     }
 
-
     @media (max-width: 600px) {
       width: 139px;
     }
@@ -177,8 +175,7 @@ export const StyledButton = styled.div`
     }
   }
 
-
-  .buttonMakeRegister{
+  .buttonMakeRegister {
     background-color: var(--colors--fixed--white-fixed);
     text-align: center;
     display: flex;
@@ -194,10 +191,9 @@ export const StyledButton = styled.div`
     &:hover {
       background-color: var(--brand--brand2);
     }
-
   }
 
-  .buttonCanceled{
+  .buttonCanceled {
     background-color: var(--grey--scale--grey-6);
     text-align: center;
     display: flex;
@@ -212,7 +208,7 @@ export const StyledButton = styled.div`
     &:hover {
       border: 1.5px solid var(--grey--scale--grey-1);
       background-color: var(--brand--brand3);
-    color: var(--colors--fixed--white-fixed);
+      color: var(--colors--fixed--white-fixed);
       font-size: 14px;
       width: 130px;
       height: 48px;
@@ -221,26 +217,25 @@ export const StyledButton = styled.div`
       align-items: center;
       justify-content: center;
     }
-
   }
 
-  .buttonDeleteProfile{
-    background-color: var( --feedback--alert-2);
+  .buttonDeleteProfile {
+    background-color: var(--feedback--alert-2);
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 14px;
-    color: var( --feedback--alert-1);
+    color: var(--feedback--alert-1);
     width: 133px;
     height: 48px;
     border: none;
 
     &:hover {
       border: 1.5px solid var(--grey--scale--grey-4);
-      background-color: var( --feedback--alert-3);
+      background-color: var(--feedback--alert-3);
 
-    color: var( --feedback--alert-1);
+      color: var(--feedback--alert-1);
       font-size: 14px;
       width: 130px;
       height: 48px;
@@ -249,10 +244,9 @@ export const StyledButton = styled.div`
       align-items: center;
       justify-content: center;
     }
-
   }
 
-  .buttonSaveEditUpdate{
+  .buttonSaveEditUpdate {
     background-color: var(--grey--scale--grey-6);
     color: var(--grey--scale--grey-3);
     border: none;
@@ -268,11 +262,10 @@ export const StyledButton = styled.div`
       align-items: center;
       justify-content: center;
     }
-
   }
 
   .buttonPassword {
-    width:200px;
+    width: 200px;
     height: 48px;
     padding: 12px 28px 12px 28px;
     border-radius: 4px;
@@ -280,22 +273,22 @@ export const StyledButton = styled.div`
     gap: 10px;
     background-color: var(--brand--brand1);
     color: var(--colors--fixed--white-fixed);
-      &:hover {
-        background-color: var(--brand--brand3);
-        color: var(--colors--fixed--white-fixed);
-        font-size: 14px;
-        width: 190px;
-        height: 48px;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
+    &:hover {
+      background-color: var(--brand--brand3);
+      color: var(--colors--fixed--white-fixed);
+      font-size: 14px;
+      width: 190px;
+      height: 48px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
-  .buttonEnter{
+  .buttonEnter {
     background-color: var(--brand--brand1);
-    width: 100%;
+    width: 286px;
     border: 2px solid var(--brand--brand1);
     font-weight: 600;
     margin: 30px 0px 30px 0px;
@@ -305,14 +298,13 @@ export const StyledButton = styled.div`
     }
   }
 
-  .buttonToRegister{
-    background-color: transparent;
+  .buttonToRegister {
+    background-color: var(--colors--fixed--white-fixed);
+    border: 1px solid var(--grey--scale--grey-4);
+
     color: var(--grey--scale--grey-0);
-    width: 100%;
+    width: 286px;
     font-weight: 600;
     margin: 30px 0px 30px 0px;
-
   }
-
-  
 `;

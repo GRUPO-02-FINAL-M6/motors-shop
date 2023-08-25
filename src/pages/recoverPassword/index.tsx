@@ -1,12 +1,11 @@
-import { useContext, useEffect, useRef } from "react";
-import { AdsContext } from "../../providers/adsProvider";
+// import { useContext} from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import Input from "../../components/Form/Input";
 import { MainStyled } from "./style";
 import { z } from "zod";
-import { UserContext } from "../../providers/userProvider";
+// import { UserContext } from "../../providers/userProvider";
 import { useForm } from "react-hook-form";
 import { Button } from "../../components/Buttons";
 
@@ -25,7 +24,7 @@ export const RecoverPassword = () => {
   } = useForm<TRegisterUserEmail>({
     resolver: zodResolver(registerUserSchema),
   });
-  const { registerUser } = useContext(UserContext);
+  // const { registerUser } = useContext(UserContext);
 
   return (
     <>

@@ -2,7 +2,13 @@ import styled from "styled-components";
 
 export const StyledHeader = styled.header`
   position: relative;
+<<<<<<< HEAD
   background-color: white;
+=======
+  width: 100vw;
+
+  
+>>>>>>> bca16d264415df6af8b62c887c62b9c8f738cc77
 `;
 
 export const StyledHeaderDiv = styled.div`
@@ -21,6 +27,12 @@ export const StyledHeaderDiv = styled.div`
     align-items: center;
     justify-self: center;
 
+    img{
+      &:hover{
+        cursor: pointer;
+      }
+    }
+    
     .menu {
       width: 48px;
       display: flex;
@@ -30,7 +42,10 @@ export const StyledHeaderDiv = styled.div`
       @media (min-width: 1024px) {
         display: none;
       }
+
+      
     }
+    
 
     #header-btns {
       display: none;
@@ -67,8 +82,6 @@ export const StyledHeaderDiv = styled.div`
             letter-spacing: 0em;
             text-align: left;
             color: var(--grey--scale--grey-2);
-            
-            animation: menu-buttons-desktop .3s linear;
           }
 
           @keyframes drop-menu-desktop {
@@ -155,21 +168,6 @@ export const StyledHeaderDiv = styled.div`
             100% {
               height: 100%;
               opacity: 1;
-            }
-          }
-
-          @keyframes menu-buttons-desktop {
-            0%{
-              align-self: end;
-            }
-            30%{
-              align-self: end;
-            }
-            60%{
-              align-self: center
-            }
-            100%{
-              align-self: start;
             }
           }
 

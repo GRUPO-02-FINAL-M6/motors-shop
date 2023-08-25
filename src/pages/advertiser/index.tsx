@@ -7,7 +7,7 @@ import { UserContext } from "../../providers/userProvider";
 import { ModalCreateAds } from "../../components/Modal/ModalCreateAds";
 import { RegisterFormAds } from "../../components/Form/FormAds";
 import { Footer } from "../../components/Footer";
-import { EditFormAds } from "../../components/Form/FormEditAds";
+// import { EditFormAds } from "../../components/Form/FormEditAds";
 import { api } from "../../services/api";
 import { MainStyled } from "../home/style";
 import { useParams } from "react-router-dom";
@@ -116,6 +116,7 @@ export const AdvertiserPage = () => {
             </StyledAdvertiser>
         }
       </MainStyled>
+      <Footer/>
     </>
   );
 };

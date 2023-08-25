@@ -23,6 +23,7 @@ import { loginSchema, tLogin } from "./validator";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "../../components/Buttons";
 import { redirect } from "react-router-dom";
+import { Header } from "../../components/Header";
 
 const LoginPage: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -42,16 +43,7 @@ const LoginPage: React.FC = () => {
 
   return (
     <Main>
-      <HeaderProps menuOpen={menuOpen}>
-        <img src="../../src/assets/logo.svg" alt="" />
-        <ButtonsProps menuOpen={menuOpen}>
-          <ButtonLogin>Fazer Login</ButtonLogin>
-          <ButtonRegister>Cadastrar</ButtonRegister>
-        </ButtonsProps>
-        <HamburgerIcon onClick={toggleMenu}>
-          {menuOpen ? <h2>X</h2> : <h2>☰</h2>}
-        </HamburgerIcon>
-      </HeaderProps>
+      <Header />
       <PageContainer>
         <FormContainer>
           <form onSubmit={handleSubmit(login)}>
@@ -75,7 +67,7 @@ const LoginPage: React.FC = () => {
             <ForgotPasswordLink href="/recoverPassword">
               Esqueci minha senha
             </ForgotPasswordLink>
-            <Button type="submit" classType="buttonEnter" text={"Entrar"} click={() => false}/>
+            <Button type="submit" classType="buttonEnter" text={"Entrar"} click={() => {}}/>
           </form>
           <SignupText>Ainda não possui conta?</SignupText>
           <Button text={"Cadastrar"} type={"submit"} classType="buttonToRegister" click={() => redirect('/register')}/>
@@ -93,3 +85,4 @@ const LoginPage: React.FC = () => {
 };
 
 export default LoginPage;
+

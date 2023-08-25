@@ -9,19 +9,18 @@ export const StyledDivRegister = styled.form`
   flex-direction: column;
   padding: 40px;
   filter: drop-shadow(2px 2px 10px gray);
+  gap: 37px;
 
   /* box-shadow: 2px 2px 10px 5px; */
 
-  @media (max-width: 600px) {
-    max-width: 380px;
-    width: 85%;
+  .form-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-    flex-direction: column;
-
-    input {
-      width: fit-content;
-      display: flex;
-    }
+  >div{
+    width: 100%;
   }
 
   h1 {
@@ -33,7 +32,6 @@ export const StyledDivRegister = styled.form`
     line-height: 30px;
     letter-spacing: 0em;
     text-align: left;
-    margin-bottom: 20px;
   }
 
   p {
@@ -74,10 +72,20 @@ export const StyledDivRegister = styled.form`
       justify-content: center;
     }
   }
+
 `;
 
 export const StyledButtonsEditProfile = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
   gap: 5px;
+  .btns-top {
+    gap: 5px;
+    display: flex;
+  }
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+  }
 `;
