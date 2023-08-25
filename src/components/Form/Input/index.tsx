@@ -3,10 +3,10 @@ import { StyledContainerInput } from "./style";
 
 interface IInputProps {
   label: string;
-  register: UseFormRegisterReturn<string>;
+  register?: UseFormRegisterReturn<string>;
   placeholder?: string;
   error?: any;
-  type: "text" | "password" | "email" | "number" | "date" | "string";
+  type?: "text" | "password" | "email" | "number" | "date" | "string";
   disabled?: boolean;
   value?: string | number;
 }
@@ -19,6 +19,7 @@ const Input = ({
   placeholder,
   disabled,
   value,
+  
 }: IInputProps) => {
   return (
     <StyledContainerInput>
