@@ -38,7 +38,6 @@ export const HomePage = () => {
 
   return (
     <>
-      
       <Header />
       
       <MainStyled>

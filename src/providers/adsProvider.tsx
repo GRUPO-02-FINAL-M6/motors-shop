@@ -14,9 +14,7 @@ interface iAdsContext {
   filterString: string;
   setAds: React.Dispatch<React.SetStateAction<iAds[]>>;
   filterAds: (filter: string) => Promise<void>;
-  createAds: (
-    payload: iAdsRequest
-  ) => Promise<AxiosResponse<any, any> | undefined>;
+  createAds: (payload: any) => Promise<void>
   goToNextPage: () => Promise<void>;
   goToPreviousPage: () => Promise<void>;
   nextPage: string | null;
@@ -55,6 +53,19 @@ export interface iAdsRequest {
   priceFipe: number;
 }
 
+export interface iAdsUpdate {
+  name?: string;
+  brand?: string;
+  color?: string;
+  description?: string;
+  year?: number;
+  km?: number;
+  images?: string[];
+  fuel?: string;
+  price?: number;
+  priceFipe?: number;
+}
+
 export interface iAdvertiserProfile {
   user: iUser;
   ads: iAds[];
@@ -74,6 +85,10 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
 
   const { setModalIsOpen } = useContext(UserContext);
 
+  useEffect(() => {
+    getAds();
+  }, []);
+
   const getAds = async () => {
     try {
       const response = await api.get("/advertisement");
@@ -85,9 +100,6 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
       toast.error(error.response.data.message);
     }
   };
-  useEffect(() => {
-    getAds();
-  }, []);
 
   const goToNextPage = async () => {
     if (nextPage) {
