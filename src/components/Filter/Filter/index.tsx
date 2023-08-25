@@ -10,9 +10,11 @@ export const FilterTopics: React.FC<FilterProps> = ({ name, data, set }) => {
     return (
         <StyledBrand>
             <p>{name}</p>
-            {data.map((item) => (<span onClick={() => {
-                set(item)
-            }}>{item}</span>))}
+            {
+                data.map((item) => {
+                    return <span onClick={() => {set(item)}}>{item}</span>
+                })
+            }
         </StyledBrand>
     )
 }

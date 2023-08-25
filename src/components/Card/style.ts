@@ -7,8 +7,10 @@ export const StyledCard = styled.li`
   justify-content: space-between;
   gap: 16px;
   max-width: 320px;
+  width: 320px;
   height: 350px;
   border-radius: 6px;
+  position: relative;
 
   #stamp {
     position: absolute;
@@ -30,7 +32,7 @@ export const StyledCard = styled.li`
   img {
     min-height: 45%;
     max-height: 45%;
-    object-fit: fill;
+    object-fit: scale-dow;
   }
 
   .card-title {
@@ -43,13 +45,14 @@ export const StyledCard = styled.li`
   }
 
   .card-description {
+    height: 200px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     overflow: hidden;
+    text-overflow: ellipsis;
     font-family: "Inter", sans-serif;
     font-weight: 400;
-    line-height: 24px;
     letter-spacing: 0em;
     text-align: left;
     color: var(--grey--scale--grey-2);

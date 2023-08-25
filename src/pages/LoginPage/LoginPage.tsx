@@ -72,7 +72,7 @@ const LoginPage: React.FC = () => {
               placeholder="Digitar Senha"
               {...register("password")}
             />
-            <ForgotPasswordLink href="#">
+            <ForgotPasswordLink href="/recoverPassword">
               Esqueci minha senha
             </ForgotPasswordLink>
             <Button type="submit" classType="buttonEnter" text={"Entrar"} click={() => false}/>
