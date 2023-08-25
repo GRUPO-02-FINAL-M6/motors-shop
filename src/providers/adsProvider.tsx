@@ -14,9 +14,7 @@ interface iAdsContext {
   filterString: string;
   setAds: React.Dispatch<React.SetStateAction<iAds[]>>;
   filterAds: (filter: string) => Promise<void>;
-  createAds: (
-    payload: iAdsRequest
-  ) => Promise<AxiosResponse<any, any> | undefined>;
+  createAds: (payload: any) => Promise<void>
   goToNextPage: () => Promise<void>;
   goToPreviousPage: () => Promise<void>;
   nextPage: string | null;

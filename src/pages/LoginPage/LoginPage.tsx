@@ -67,7 +67,7 @@ const LoginPage: React.FC = () => {
             <ForgotPasswordLink href="#">
               Esqueci minha senha
             </ForgotPasswordLink>
-            <Button type="submit" classType="buttonEnter" text={"Entrar"} click={() => false}/>
+            <Button type="submit" classType="buttonEnter" text={"Entrar"} click={() => {}}/>
           </form>
           <SignupText>Ainda não possui conta?</SignupText>
           <Button text={"Cadastrar"} type={"submit"} classType="buttonToRegister" click={() => redirect('/register')}/>
