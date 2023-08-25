@@ -1,14 +1,17 @@
 import { styled } from "styled-components";
 
 export const StyledFilterList = styled.div`
-  width: 454px;
-  /* border: 2px solid black; */
-  padding: 20px;
+  width: 400px;
+  height: 100%;
+  padding-left: 20px;
   display: flex;
   flex-direction: column;
-margin-top: 20px;
-  gap: 30px;
+  gap: 10px;
   background-color: var(--colors--fixed--white-fixed);
+
+  overflow: scroll;
+
+  position: relative;
 
   .divBtnCleanFilter{
     display: flex;
@@ -19,6 +22,19 @@ margin-top: 20px;
 
   .alingCenter{
     margin: auto;
+  }
+
+  .range{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px 0;
+  }
+
+  & div > p {
+    font-size: 1.5rem;
+    font-weight: 600;
+
   }
 
   @media (max-width: 1024px) {
