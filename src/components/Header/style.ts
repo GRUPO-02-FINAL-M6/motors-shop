@@ -2,13 +2,8 @@ import styled from "styled-components";
 
 export const StyledHeader = styled.header`
   position: relative;
-<<<<<<< HEAD
   background-color: white;
-=======
   width: 100vw;
-
-  
->>>>>>> bca16d264415df6af8b62c887c62b9c8f738cc77
 `;
 
 export const StyledHeaderDiv = styled.div`
