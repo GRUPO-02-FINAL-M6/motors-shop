@@ -4,6 +4,8 @@ export const StyledHeader = styled.header`
   background-color: white;
   position: relative;
   width: 100vw;
+
+  
 `;
 
 export const StyledHeaderDiv = styled.div`
