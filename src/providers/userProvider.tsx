@@ -179,6 +179,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       toast.error(error.response.data.message)
     }
   }
+  
   const updateUserAddress = async (payload: any) => {
     try {
       //aguardando implementação no back
