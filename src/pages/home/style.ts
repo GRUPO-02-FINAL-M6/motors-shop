@@ -4,75 +4,61 @@ export const MainStyled = styled.main`
 
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  height: 100vh;
-  width: 100vw;
   position: relative;
 
   .background {
-    position: relative;
-    width: 100vw;
-    height: 86vh;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.29) 0%, #000000 100%);
+    height: 910px !important;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+    position: relative;
+    background-image: url('../../../public/home_cover.jpg');
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 
-    div {
+    & > div{
+
+      width: fit-content;
+
+      font-size: 1.5rem;
+      color: var(--colors--fixed--white-fixed);
+      
+      margin: 100px 0;
+
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: justify;
-      position: absolute;
-      top: 16px;
 
-      font-family: "Lexend";
-      color: white;
-      font-size: 32px;
-      font-weight: 500;
-      line-height: 40px;
-      letter-spacing: 0em;
       text-align: center;
 
-      h4 {
-        font-family: Lexend;
-        font-size: 32px;
-        font-weight: 500;
-        line-height: 40px;
-        letter-spacing: 0em;
-        text-align: center;
-        margin-bottom: 1rem;
+      @media (min-width: 600px){
+        margin: 100px 50px;
       }
 
-      h2 {
-        font-family: Lexend;
-        font-size: 24px;
-        font-weight: 500;
-        line-height: 30px;
-        letter-spacing: 0em;
-        text-align: center;
+      @media (min-width: 768px){
+        font-size: 2rem;
+        text-align: start;
       }
-    }
 
-    img {
-      width: 170%;
-      position: absolute;
-      z-index: -1;
-
-      @media (min-width: 1024px) {
-        width: auto;
+      @media (min-width: 1920px){
+        font-size: 2rem;
       }
+      
+
     }
   }
+ 
 
   #main-section{
     width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 40px;
+    margin-top: 50px;
+
 
     @media (min-width: 1024px) {
       flex-direction: row;
@@ -144,15 +130,20 @@ export const MainStyled = styled.main`
 
 export const AdsSectionStyled = styled.section`
   width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  overflow: scroll;
+
 
   ul {
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
     gap: 40px;
+
 
     @media (min-width: 768px) {
       grid-template-columns: auto auto;
@@ -175,12 +166,6 @@ export const AdsSectionStyled = styled.section`
     }
     
   }
-  @media (max-width: 600px) {
-  ul {
-    display: flex;
-    flex-direction: row;
-  }
-}
 
   #empty {
     display: flex;

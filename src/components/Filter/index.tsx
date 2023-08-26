@@ -84,13 +84,14 @@ export const Filter = ({ setFilter }: IFilterProps) => {
       {
         load ? <p>loading</p> :
           <StyledFilterList>
+            <Button click={clearFilter} classType="buttonCleanFilter" text="Limpar Filtros" type="button" />
             <FilterTopics name="Marca" data={filters.distinctBrands} set={setBrand} />
             <FilterTopics name="Modelo" data={filters.distinctModels} set={setModel} />
             <FilterTopics name="Cor" data={filters.distinctColors} set={setColor} />
             <FilterTopics name="Ano" data={filters.distinctYears} set={setYear} />
             <FilterTopics name="Combustível" data={["Elétrico", "Flex", "Híbrido"]} set={setFuel} />
 
-            <div>
+            <div className="range">
               <p>Preço</p>
               <FilterValuesRange min={filters.minPrice} max={filters.maxPrice} onChange={({ min, max }) => {
                 setMaxPrice(max)
@@ -99,14 +100,14 @@ export const Filter = ({ setFilter }: IFilterProps) => {
               />
             </div>
 
-            <div>
+            <div className="range">
               <p>Km</p>
               <FilterValuesRange min={0} max={filters.maxKm} onChange={({ min, max }) => {
                 setMinKm(min)
                 setMaxKm(max)
               }} />
             </div>
-            <Button click={clearFilter} classType="buttonCleanFilter" text="Limpar Filtros" type="button" />
+            
 
           </StyledFilterList>
       }
