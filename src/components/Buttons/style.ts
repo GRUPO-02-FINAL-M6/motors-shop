@@ -65,6 +65,9 @@ export const StyledButton = styled.button`
     border: none;
     width: 279px;
     height: 38px;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
 
     &:hover {
       background-color: var(--brand--brand4);

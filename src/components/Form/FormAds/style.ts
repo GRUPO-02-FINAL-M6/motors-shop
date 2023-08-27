@@ -132,5 +132,5 @@ export const StyledModalCreateAds = styled.form`
     gap: 10px;
     
   }
-}
+
 `;

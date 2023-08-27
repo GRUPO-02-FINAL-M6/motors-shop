@@ -6,6 +6,7 @@ import { Filter } from "../../components/Filter";
 import { Header } from "../../components/Header";
 import { Footer } from "../LoginPage/style";
 const imagem = "/public/Photo.svg";
+import { AiOutlineArrowDown } from 'react-icons/ai';
 
 export const HomePage = () => {
   const {
@@ -49,8 +50,6 @@ export const HomePage = () => {
             <h2>A melhor plataforma de anúncios de carros no país</h2>
           </div>
       
-          <img src={imagem} alt="background image" />
-      
         </div>
       
         <section id="main-section">
@@ -69,40 +68,41 @@ export const HomePage = () => {
                 <h2>Ainda não há anúncios cadastrados...</h2>
               </div>
             )}
+            <div id="main-bottom">
+
+              <div id="pages">
+                <h3 id="current-page">{currentPage}</h3>
+                <h3 className="total-pages">de</h3>
+                <h3 className="total-pages">{totalPages}</h3>
+              </div>
+
+              <div id="pages-btns" onClick={handleButtonClick}>
+                {previousPage ? (
+                  <button id="previous-page" onClick={() => goToPreviousPage()}>
+                    Anterior
+                  </button>
+                ) : (
+                  <button id="previous-page-disabled" disabled={true}>
+                    Anterior
+                  </button>
+                )}
+                {nextPage ? (
+                  <button id="next-page" onClick={() => goToNextPage()}>
+                    Próxima
+                  </button>
+                ) : (
+                  <button id="next-page-disabled" disabled={true}>
+                    Próxima
+                  </button>
+                )}
+              </div>
+
+            </div>
           </AdsSectionStyled>
       
         </section>
       
-        <div id="main-bottom">
-      
-          <div id="pages">
-            <h3 id="current-page">{currentPage}</h3>
-            <h3 className="total-pages">de</h3>
-            <h3 className="total-pages">{totalPages}</h3>
-          </div>
-      
-          <div id="pages-btns" onClick={handleButtonClick}>
-            {previousPage ? (
-              <button id="previous-page" onClick={() => goToPreviousPage()}>
-                Anterior
-              </button>
-            ) : (
-              <button id="previous-page-disabled" disabled={true}>
-                Anterior
-              </button>
-            )}
-            {nextPage ? (
-              <button id="next-page" onClick={() => goToNextPage()}>
-                Próxima
-              </button>
-            ) : (
-              <button id="next-page-disabled" disabled={true}>
-                Próxima
-              </button>
-            )}
-          </div>
-      
-        </div>
+        
 
       </MainStyled>
       
