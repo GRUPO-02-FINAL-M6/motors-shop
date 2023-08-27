@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import {  useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import Input from "../Input";
@@ -7,10 +7,6 @@ import { StyledDivRegister } from "./style";
 import { ComplementsInputs } from "../Input/ComplementsInput";
 import { Button } from "../../Buttons";
 import { UserContext } from "../../../providers/userProvider";
-
-
-
-
 
 export const registerUserSchema = z.object({
   name: z.string().min(1, "O nome é obrigatório"),
@@ -33,7 +29,7 @@ export const registerUserSchema = z.object({
   complement: z.string().min(1, "O complemento deve ser obrigatório"),
   typeCount: z.string().optional(),
   password: z.string().min(8, "A senha deve conter no mínimo 8 caracteres"),
-  telephone: z.number().min(11, "O telefone deve ser obrigatório"),
+
 
   // passwordConfirmation: z
   //   .string()
@@ -54,21 +50,22 @@ export const RegisterForm = () => {
   } = useForm<TRegisterUser>({
     resolver: zodResolver(registerUserSchema),
   });
-  const {registerUser} = useContext(UserContext)
-  const [typeCount, setTypeCount] =useState("buyer")
+  const { registerUser } = useContext(UserContext);
+  const [typeCount, setTypeCount] = useState("buyer");
 
   const createDataUser = (data: any) => {
-
-    const newData= {...data, typeCount:typeCount}
+   
+    const newData = { ...data, typeCount: typeCount };
 
     registerUser(newData);
     // reset();
   };
-  
 
   return (
-    <StyledDivRegister className="formRegister" onSubmit={handleSubmit(createDataUser)}>
-      
+    <StyledDivRegister
+      className="formRegister"
+      onSubmit={handleSubmit(createDataUser)}
+    >
       <h1>Cadastro</h1>
 
       <p>Informações pessoais</p>
@@ -77,7 +74,7 @@ export const RegisterForm = () => {
         label="Nome"
         type="text"
         placeholder="Ex: Samuel Leão"
-        register= {register("name")}
+        register={register("name")}
         error={errors.name?.message}
       />
       <Input
@@ -96,10 +93,10 @@ export const RegisterForm = () => {
       />
       <Input
         label="Celular"
-        type="text"
+        type="number"
         placeholder="(00) 00000-0000"
         register={register("contact")}
-        error={errors.telephone?.message}
+        error={errors.contact?.message}
       />
 
       <Input
@@ -144,26 +141,33 @@ export const RegisterForm = () => {
         register={register("road")}
         error={errors.road?.message}
       />
-      
-      <ComplementsInputs register1={register("number")} register2={register("complement")}/>
-      
+
+      <ComplementsInputs
+        register1={register("number")}
+        register2={register("complement")}
+      />
+     <div>
+     {errors.number?.message && errors.number?.message}
+     {errors.complement?.message && errors.complement?.message}
+     </div>
       <span>Tipo de conta</span>
       <div className="buttons">
-
-      <Button
-              type={"submit"}
-              text={"Comprador"}
-              classType="buttonBuyer"
-              onClick={()=>{setTypeCount("buyer")}}
-      />
         <Button
-              type={"submit"}
-              text={"Anunciante"}
-              classType="buttonAdvertiser"
-              onClick={()=>{setTypeCount("advertiser")}}
-      />
-     
-
+          type={"button"}
+          text={"Comprador"}
+          classType="buttonBuyer"
+         click={() => {
+            setTypeCount("buyer");
+          }}
+        />
+        <Button
+          type={"button"}
+          text={"Anunciante"}
+          classType="buttonAdvertiser"
+          click={() => {
+            setTypeCount("advertiser");
+          }}
+        />
       </div>
 
       <Input
@@ -183,13 +187,12 @@ export const RegisterForm = () => {
       <div className="divBtnReegister">
         {/* <ButtonFinishRegister type="submit"/> */}
         <Button
-              type={"submit"}
-              text={"Finalizar cadastro"}
-              classType="buttonRegisterFinished"
-            />
-
+          type={"submit"}
+          text={"Finalizar cadastro"}
+          classType="buttonRegisterFinished"
+          click={()=>{}}
+        />
       </div>
-
     </StyledDivRegister>
   );
 };

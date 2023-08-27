@@ -23,6 +23,7 @@ export const StyledModalCreateAds = styled.form`
     .buttonsEdit{
       justify-content: center;
     }
+  }
 
   .containerSelects {
     display: flex;
@@ -131,5 +132,5 @@ export const StyledModalCreateAds = styled.form`
     gap: 10px;
     
   }
-}
+
 `;
