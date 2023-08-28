@@ -1,11 +1,10 @@
 import { styled } from "styled-components";
 
 export const MainStyled = styled.main`
-
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  height: fit-content;
+  min-height: 100vh;
   width: 100vw;
   position: relative;
 background-color: red;
@@ -14,19 +13,18 @@ background-color: red;
     display: flex;
     flex-direction: column;
     position: relative;
-    background-image: url('../../../public/home_cover.jpg');
+    background-image: url("../../../public/home_cover.jpg");
     background-position: 50% 50%;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
 
-    & > div{
-
+    & > div {
       width: fit-content;
 
       font-size: 1.5rem;
       color: var(--colors--fixed--white-fixed);
-      
+
       margin: 100px 0;
 
       display: flex;
@@ -35,25 +33,22 @@ background-color: red;
 
       text-align: center;
 
-      @media (min-width: 600px){
+      @media (min-width: 600px) {
         margin: 100px 50px;
       }
 
-      @media (min-width: 768px){
+      @media (min-width: 768px) {
         font-size: 2rem;
         text-align: start;
       }
 
-      @media (min-width: 1920px){
+      @media (min-width: 1920px) {
         font-size: 2rem;
       }
-      
-
     }
   }
- 
 
-  #main-section{
+  #main-section {
     width: 100%;
     height: max-content;
     display: flex;
@@ -61,7 +56,6 @@ background-color: red;
     align-items: center;
     gap: 40px;
     margin-top: 50px;
-
 
     @media (min-width: 1024px) {
       flex-direction: row;
@@ -71,7 +65,7 @@ background-color: red;
 
   #main-bottom {
     width: 100%;
-    padding-bottom: 4rem; 
+    padding-bottom: 4rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -128,7 +122,6 @@ background-color: red;
       cursor: not-allowed;
     }
   }
-
 `;
 
 export const AdsSectionStyled = styled.section`
@@ -140,34 +133,31 @@ export const AdsSectionStyled = styled.section`
 
   overflow: scroll;
 
-
   ul {
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
     gap: 40px;
 
-
     @media (min-width: 768px) {
       grid-template-columns: auto auto;
     }
 
-    @media (min-width: 900px){
+    @media (min-width: 900px) {
       grid-template-columns: auto auto;
     }
 
-    @media (min-width: 1024px){
+    @media (min-width: 1024px) {
       grid-template-columns: auto auto;
     }
 
-    @media (min-width: 1200px){
+    @media (min-width: 1200px) {
       grid-template-columns: auto auto auto;
     }
 
-    @media (min-width: 1456px){
-      grid-template-columns: auto auto auto auto; 
+    @media (min-width: 1456px) {
+      grid-template-columns: auto auto auto auto;
     }
-    
   }
 
   #empty {

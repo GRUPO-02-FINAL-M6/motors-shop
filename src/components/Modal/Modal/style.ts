@@ -6,6 +6,7 @@ export const Container = styled.section`
   width: 100vw;
 
 
+  min-height: 100%;
   position: fixed;
   height: max-content;
 
