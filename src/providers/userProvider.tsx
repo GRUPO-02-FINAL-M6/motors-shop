@@ -25,8 +25,8 @@ interface iUserContext {
   setglobalModelSelected: any;
   token: string | null;
   updateUser: (payload: iUpdateUser) => Promise<void>;
-  updateUserAds: (payload: any, adsID: number) => Promise<void>
-  deleteUser: () => Promise<void>
+  updateUserAds: (payload: any, adsID: number) => Promise<void>;
+  deleteUser: () => Promise<void>;
 }
 
 export interface iUser {
@@ -149,7 +149,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       navigate("/login");
     } catch (error: any) {
       toast.error(error.response.data.message);
-      console.log(error);
+      console.log(error.response.data.message);
     }
   };
 
@@ -170,15 +170,15 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
   const deleteUser = async () => {
     try {
       await api.delete("/users", {
-        headers: {Authorization: `Bearer ${token}`}
-      })
-      setUser(null)
-      localStorage.clear()
-      toast.info("Sua conta foi excluída 😞")
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setUser(null);
+      localStorage.clear();
+      toast.info("Sua conta foi excluída 😞");
     } catch (error: any) {
-      toast.error(error.response.data.message)
+      toast.error(error.response.data.message);
     }
-  }
+  };
   const updateUserAddress = async (payload: any) => {
     try {
       //aguardando implementação no back
@@ -204,7 +204,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         token,
         updateUser,
         updateUserAds,
-        deleteUser
+        deleteUser,
       }}
     >
       {children}
