@@ -11,11 +11,13 @@ import { Footer } from "../../components/Footer";
 import { api } from "../../services/api";
 import { MainStyled } from "../home/style";
 import { useParams } from "react-router-dom";
+import { AdsContext } from "../../providers/adsProvider";
 
 export const AdvertiserPage = () => {
   const { setModalIsOpen, modalIsOpen } = useContext(UserContext);
+  const { adsUser, setAdsUser } = useContext(AdsContext);
 
-  const [ads, setAds] = useState([]);
+  // const [ads, setAds] = useState([]);
 
   const [Advertiser, setUser] = useState({});
 
@@ -49,7 +51,7 @@ export const AdvertiserPage = () => {
         })
         .then((res) => res.data)
         .then((res) => {
-          setAds(res.ads);
+          setAdsUser(res.ads);
           setUser(res);
           setLoading(false);
         });
@@ -62,7 +64,7 @@ export const AdvertiserPage = () => {
         setUser(user);
       }
     }
-  }, []);
+  }, [adsUser]);
 
   return (
     <>
@@ -112,7 +114,7 @@ export const AdvertiserPage = () => {
               </StyledProfileDiv>
 
               <StyledAdsList>
-                {ads.map((item) => {
+                {adsUser.map((item) => {
                   return <Card ads={item} user={Advertiser} />;
                 })}
               </StyledAdsList>
