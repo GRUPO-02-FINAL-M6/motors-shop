@@ -2,6 +2,8 @@ import { createGlobalStyle } from "styled-components";
 
 export const ResetStyle = createGlobalStyle`
 
+
+
 * {
 
     margin: 0;

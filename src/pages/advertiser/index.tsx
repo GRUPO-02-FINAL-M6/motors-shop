@@ -17,8 +17,6 @@ export const AdvertiserPage = () => {
   const { setModalIsOpen, modalIsOpen } = useContext(UserContext);
   const { adsUser, setAdsUser } = useContext(AdsContext);
 
-  // const [ads, setAds] = useState([]);
-
   const [Advertiser, setUser] = useState({});
 
   const { token, user } = useContext(UserContext);
@@ -64,7 +62,7 @@ export const AdvertiserPage = () => {
         setUser(user);
       }
     }
-  }, [adsUser]);
+  }, []);
 
   return (
     <>
