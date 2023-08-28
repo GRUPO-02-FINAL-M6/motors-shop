@@ -50,8 +50,6 @@ export const RegisterFormAds = () => {
       ? (fuel = "Elétrico")
       : "";
 
-    console.log(data);
-
     const newData = {
       ...globalModelSelected,
       ...data,
@@ -65,6 +63,7 @@ export const RegisterFormAds = () => {
       priceFip: globalModelSelected.value,
     };
 
+    console.log(newData);
     delete newData.value;
 
     createAds(newData);
