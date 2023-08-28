@@ -1,4 +1,11 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, {
+  Dispatch,
+  SetStateAction,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { api, apiFipe } from "../services/api";
 import { toast } from "react-toastify";
 import axios, { AxiosResponse } from "axios";
@@ -10,11 +17,11 @@ interface iAdsProviderProps {
 
 interface iAdsContext {
   ads: iAds[];
-  setFilterString: React.Dispatch<React.SetStateAction<string>>
+  setFilterString: React.Dispatch<React.SetStateAction<string>>;
   filterString: string;
   setAds: React.Dispatch<React.SetStateAction<iAds[]>>;
   filterAds: (filter: string) => Promise<void>;
-  createAds: (payload: any) => Promise<void>
+  createAds: (payload: any) => Promise<void>;
   goToNextPage: () => Promise<void>;
   goToPreviousPage: () => Promise<void>;
   nextPage: string | null;
@@ -22,6 +29,8 @@ interface iAdsContext {
   currentPage: number;
   totalPages: number | null;
   getAdvertiserProfile: (id: number) => Promise<void>;
+  adsUser: iAds[];
+  setAdsUser: Dispatch<SetStateAction<never[]>>;
 }
 
 export interface iAds {
@@ -37,7 +46,7 @@ export interface iAds {
   priceFip: number;
   images: string[];
   createdAt: string;
-  user: { id: number, name: string };
+  user: { id: number; name: string };
 }
 
 export interface iAdsRequest {
@@ -83,6 +92,8 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
   const [filterString, setFilterString] = useState("");
   const token = localStorage.getItem("token");
 
+  const [adsUser, setAdsUser] = useState([]);
+
   const { setModalIsOpen } = useContext(UserContext);
 
   useEffect(() => {
@@ -104,7 +115,7 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
   const goToNextPage = async () => {
     if (nextPage) {
       try {
-        const response = await api.get(`${nextPage}&${filterString}`);        
+        const response = await api.get(`${nextPage}&${filterString}`);
         setAds(response.data.ads);
         setNextPage(response.data.nextPage);
         setPreviousPage(response.data.previousPage);
@@ -163,9 +174,11 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
 
   const createAds = async (payload: any) => {
     try {
-      await api.post("/advertisement", payload, {
+      const newAds = await api.post("/advertisement", payload, {
         headers: { Authorization: `Bearer ${token}` },
       });
+      console.log(newAds);
+
       setModalIsOpen(null);
     } catch (error: any) {
       console.log(error.response.data.message);
@@ -197,7 +210,9 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
         totalPages,
         getAdvertiserProfile,
         setFilterString,
-        filterString
+        filterString,
+        adsUser,
+        setAdsUser,
       }}
     >
       {children}

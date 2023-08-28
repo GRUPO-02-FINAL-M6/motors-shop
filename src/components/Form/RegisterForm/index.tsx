@@ -30,7 +30,6 @@ export const registerUserSchema = z.object({
   typeCount: z.string().optional(),
   password: z.string().min(8, "A senha deve conter no mínimo 8 caracteres"),
 
-
   // passwordConfirmation: z
   //   .string()
   //   .min(8, "Confirme a sua senha por favor.")
@@ -54,7 +53,6 @@ export const RegisterForm = () => {
   const [typeCount, setTypeCount] = useState("buyer");
 
   const createDataUser = (data: any) => {
-   
     const newData = { ...data, typeCount: typeCount };
 
     registerUser(newData);
@@ -146,17 +144,17 @@ export const RegisterForm = () => {
         register1={register("number")}
         register2={register("complement")}
       />
-     <div>
-     {errors.number?.message && errors.number?.message}
-     {errors.complement?.message && errors.complement?.message}
-     </div>
+      <div>
+        {errors.number?.message && errors.number?.message}
+        {errors.complement?.message && errors.complement?.message}
+      </div>
       <span>Tipo de conta</span>
       <div className="buttons">
         <Button
           type={"button"}
           text={"Comprador"}
           classType="buttonBuyer"
-         click={() => {
+          click={() => {
             setTypeCount("buyer");
           }}
         />
@@ -190,7 +188,7 @@ export const RegisterForm = () => {
           type={"submit"}
           text={"Finalizar cadastro"}
           classType="buttonRegisterFinished"
-          click={()=>{}}
+          click={() => {}}
         />
       </div>
     </StyledDivRegister>

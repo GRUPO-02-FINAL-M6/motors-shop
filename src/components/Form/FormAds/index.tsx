@@ -43,14 +43,12 @@ export const RegisterFormAds = () => {
     let fuel = "";
 
     globalModelSelected.fuel == 1
-      ? (fuel = "Gasolina / Etanol")
+      ? (fuel = "Flex")
       : "" || globalModelSelected.fuel == 2
-      ? (fuel = "Gasolina / Elétrico")
+      ? (fuel = "Híbrido")
       : "" || globalModelSelected.fuel == 3
       ? (fuel = "Elétrico")
       : "";
-
-    console.log(data);
 
     const newData = {
       ...globalModelSelected,
@@ -65,8 +63,8 @@ export const RegisterFormAds = () => {
       priceFip: globalModelSelected.value,
     };
 
+    console.log(newData);
     delete newData.value;
-    console.log(newData, "@@@@@@@@@@@");
 
     createAds(newData);
     // reset();
@@ -182,8 +180,16 @@ export const RegisterFormAds = () => {
 
       {/* <ButtonAdsCreateImageGallery /> */}
       <div className="buttonsEdit">
-        <Button type={"submit"} text={"Excluir anúncio"} classType="buttonDeleteAds" />
-        <Button type={"submit"} text={"Salvar alterações"} classType="buttonSaveAds" />
+        <Button
+          type={"submit"}
+          text={"Excluir anúncio"}
+          classType="buttonDeleteAds"
+        />
+        <Button
+          type={"submit"}
+          text={"Salvar alterações"}
+          classType="buttonSaveAds"
+        />
       </div>
     </StyledModalCreateAds>
   );
