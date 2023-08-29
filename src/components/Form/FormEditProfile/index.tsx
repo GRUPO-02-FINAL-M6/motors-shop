@@ -51,7 +51,7 @@ export const EditProfileForm = ({
     >
       <div className="form-top">
         <h1>Editar perfil</h1>
-        <AiOutlineClose />
+        {/* <AiOutlineClose /> */}
       </div>
 
       <p>Informações pessoais</p>

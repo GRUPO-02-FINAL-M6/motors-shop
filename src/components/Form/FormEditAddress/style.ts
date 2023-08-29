@@ -32,7 +32,7 @@ export const StyledDivRegister = styled.form`
     .buttons {
       display: flex;
       justify-content: end;
-      background-color: red;
+      
     }
   }
 
@@ -75,7 +75,6 @@ export const StyledDivRegister = styled.form`
   .buttons {
     display: flex;
     flex-direction: row;
-    background-color: red;
 
     @media (max-width: 600px) {
       gap: 5px;

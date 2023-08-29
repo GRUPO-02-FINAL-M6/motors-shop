@@ -8,6 +8,7 @@ export const StyledModalCreateAds = styled.form`
   display: flex;
   flex-direction: column;
   padding: 40px;
+  
   /* filter: drop-shadow(2px 2px 10px gray); */
   /* box-shadow: 2px 2px 10px 5px; */
   @media (max-width: 600px) {

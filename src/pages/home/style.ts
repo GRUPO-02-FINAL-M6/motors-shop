@@ -7,7 +7,6 @@ export const MainStyled = styled.main`
   min-height: 100vh;
   width: 100vw;
   position: relative;
-
   .background {
     height: 910px !important;
     display: flex;
@@ -50,7 +49,7 @@ export const MainStyled = styled.main`
 
   #main-section {
     width: 100%;
-    height: 100vh;
+    height: max-content;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -4,7 +4,6 @@ import { StyledAdsList, StyledAdvertiser, StyledProfileDiv } from "./style";
 import { Button } from "../../components/Buttons";
 import { Card } from "../../components/Card";
 import { UserContext } from "../../providers/userProvider";
-import { ModalCreateAds } from "../../components/Modal/ModalCreateAds";
 import { RegisterFormAds } from "../../components/Form/FormAds";
 import { Footer } from "../../components/Footer";
 // import { EditFormAds } from "../../components/Form/FormEditAds";
@@ -12,22 +11,17 @@ import { api } from "../../services/api";
 import { MainStyled } from "../home/style";
 import { useParams } from "react-router-dom";
 import { AdsContext } from "../../providers/adsProvider";
-
+import { Modal } from "../../components/Modal/Modal";
 export const AdvertiserPage = () => {
-  const { setModalIsOpen, modalIsOpen } = useContext(UserContext);
   const { adsUser, setAdsUser } = useContext(AdsContext);
 
   const [Advertiser, setUser] = useState({});
-
   const { token, user } = useContext(UserContext);
-
   const { id } = useParams();
-
   const [loading, setLoading] = useState(true);
-
+  const [ modalIsOpen,setModalIsOpen] = useState(false)
   function getInitiations(fullName: string) {
     const names = fullName.split(" ");
-
     if (names.length === 1) {
       return names[0][0].toUpperCase() + names[0][1].toUpperCase();
     } else {
@@ -38,7 +32,6 @@ export const AdvertiserPage = () => {
       return initiations;
     }
   }
-
   useEffect(() => {
     const getUser = async () => {
       api
@@ -54,9 +47,7 @@ export const AdvertiserPage = () => {
           setLoading(false);
         });
     };
-
     getUser();
-
     if (user && id) {
       if (user.id === +id) {
         setUser(user);
@@ -73,7 +64,6 @@ export const AdvertiserPage = () => {
         ) : (
           <StyledAdvertiser>
             <div></div>
-
             <section>
               <StyledProfileDiv>
                 <div id="profile">
@@ -83,7 +73,6 @@ export const AdvertiserPage = () => {
                     <span id="typeProfile">Anunciante</span>
                   </div>
                 </div>
-
                 <p className="pDescription">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem
                   ipsum dolor sit amet consectetur adipisicing elit. Impedit
@@ -92,7 +81,6 @@ export const AdvertiserPage = () => {
                   nostrum beatae suscipit corrupti culpa eius illo.
                   alskjflasdkjfl;sakj
                 </p>
-
                 {user!.id === +id! ? (
                   <Button
                     text={"Criar Anuncio"}
@@ -103,14 +91,12 @@ export const AdvertiserPage = () => {
                 ) : (
                   ""
                 )}
-
-                {modalIsOpen && (
-                  <ModalCreateAds>
+                {modalIsOpen ?(
+                  <Modal toggleModal={setModalIsOpen}>
                     <RegisterFormAds />
-                  </ModalCreateAds>
-                )}
+                  </Modal>
+                ): ""}
               </StyledProfileDiv>
-
               <StyledAdsList>
                 {adsUser.map((item) => {
                   return <Card ads={item} user={Advertiser} />;
