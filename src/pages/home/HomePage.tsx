@@ -1,10 +1,9 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { AdsContext } from "../../providers/adsProvider";
 import { Card } from "../../components/Card";
 import { AdsSectionStyled, MainStyled } from "./style";
 import { Filter } from "../../components/Filter";
 import { Header } from "../../components/Header";
-import { Footer } from "../LoginPage/style";
 const imagem = "/public/Photo.svg";
 import { AiOutlineArrowDown } from 'react-icons/ai';
 
@@ -19,13 +18,12 @@ export const HomePage = () => {
     currentPage,
     totalPages,
     setFilterString,
-    filterString
+    filterString,
   } = useContext(AdsContext);
-
 
   useEffect(() => {
     filterAds(filterString);
-  }, [filterString])
+  }, [filterString]);
 
   const targetRef = useRef<HTMLDivElement>(null);
 
@@ -35,27 +33,24 @@ export const HomePage = () => {
     }
   };
 
-  useEffect(() => { }, [ads]);
+  useEffect(() => {}, [ads]);
 
   return (
     <>
       <Header />
-      
+
       <MainStyled>
-      
         <div className="background">
-      
           <div>
             <h4>Motors Shop</h4>
             <h2>A melhor plataforma de anúncios de carros no país</h2>
           </div>
       
         </div>
-      
+
         <section id="main-section">
-      
           <Filter setFilter={setFilterString} />
-      
+
           <AdsSectionStyled ref={targetRef}>
             {ads.length > 0 ? (
               <ul>
@@ -105,8 +100,6 @@ export const HomePage = () => {
         
 
       </MainStyled>
-      
-
     </>
   );
 };

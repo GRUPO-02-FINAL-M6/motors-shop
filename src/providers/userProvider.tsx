@@ -48,9 +48,10 @@ interface iRegisterUser {
   name: string;
   email: string;
   cpf: string;
-  telephone: string;
+  contact: string;
   birthday: string;
   description: string;
+  is_seller: boolean,
   cep: string;
   state: string;
   city: string;
@@ -58,7 +59,6 @@ interface iRegisterUser {
   number: string;
   complement: string;
   password: string;
-  typeCount: string;
 }
 
 interface iUpdateUser {
