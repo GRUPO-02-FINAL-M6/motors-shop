@@ -10,13 +10,9 @@ export const RegisterPage = () => {
     <>
       <Header />
       <StyledMain>
-        <RegisterForm/>
+        <RegisterForm />
       </StyledMain>
-       <Footer /> 
-     
-   
-   
-
+      <Footer />
     </>
   );
 };
