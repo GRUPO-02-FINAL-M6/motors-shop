@@ -7,7 +7,6 @@ export const MainStyled = styled.main`
   min-height: 100vh;
   width: 100vw;
   position: relative;
-background-color: red;
   .background {
     height: 910px !important;
     display: flex;

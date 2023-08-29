@@ -9,8 +9,6 @@ export const Container = styled.section`
   min-height: 100%;
   position: fixed;
   height: max-content;
-
-
   display: flex;
   justify-content: center;
 
@@ -19,8 +17,15 @@ export const Container = styled.section`
     padding: 20px;
     box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.25);
     width: max-content;
+    position: relative;
+
+    & > button{
+      position: absolute;
+      top: 50px;
+      right: 50px;
+      z-index: 10;
+    }
 
 
-    /* background-color: red; */
   }
 `;
