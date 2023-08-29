@@ -14,6 +14,7 @@ import { AdsContext } from "../../providers/adsProvider";
 import { Modal } from "../../components/Modal/Modal";
 export const AdvertiserPage = () => {
   const { adsUser, setAdsUser } = useContext(AdsContext);
+
   const [Advertiser, setUser] = useState({});
   const { token, user } = useContext(UserContext);
   const { id } = useParams();
@@ -53,6 +54,7 @@ export const AdvertiserPage = () => {
       }
     }
   }, []);
+
   return (
     <>
       <Header />
