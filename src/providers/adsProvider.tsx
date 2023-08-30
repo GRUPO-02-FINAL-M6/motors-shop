@@ -197,7 +197,7 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
     }
   };
 
-  const editAds = async (id: number, payload: iAdsUpdate){
+  const editAds = async (id: number, payload: iAdsUpdate) => {
     try {
       const response = await api.patch(`/advertisement/${id}`, payload, {
         headers: {Authorization: `Bearer ${token}`}
@@ -207,7 +207,7 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
     }
   }
 
-  const deleteAds = async(id: number){
+  const deleteAds = async(id: number) => {
     try {
       await api.delete(`/advertisement/${id}`, {
         headers: {Authorization: `Bearer ${token}`}
