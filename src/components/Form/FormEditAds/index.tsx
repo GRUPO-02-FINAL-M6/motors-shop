@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { AdsContext } from "../../../providers/adsProvider";
@@ -9,6 +9,8 @@ import { StyledModalCreateAds } from "./style";
 import { UserContext } from "../../../providers/userProvider";
 import { SelectBrend } from "../SelectBrand";
 import { SelectModel } from "../SelectModel";
+import { Modal } from "../../Modal/Modal";
+import { DeleteModalAds } from "../FormDeleteAds";
 
 const createAdsSchema = z.object({
   // brand: z.string().min(1, "A marca é obrigatória"),
@@ -26,7 +28,7 @@ type TRegisterAds = z.infer<typeof createAdsSchema>;
 
 export const EditFormAds = () => {
   const { setModalIsOpen, globalModelSelected } = useContext(UserContext);
-
+  const [modalIsOpenDeleteAds, setModalIsOpenDeleteAds] = useState(false);
   const {
     register,
     handleSubmit,
@@ -45,7 +47,6 @@ export const EditFormAds = () => {
     };
 
     delete newData.value;
-    console.log(newData, "@@@@@@@@@@@");
 
     createAds(newData);
     // reset();
@@ -53,6 +54,14 @@ export const EditFormAds = () => {
 
   return (
     <StyledModalCreateAds onSubmit={handleSubmit(createDataAds)}>
+      {modalIsOpenDeleteAds && (
+        <Modal toggleModal={() => setModalIsOpenDeleteAds(false)}>
+          <DeleteModalAds
+            modalStatus={modalIsOpenDeleteAds}
+            setModalStatus={setModalIsOpenDeleteAds}
+          />
+        </Modal>
+      )}
       <div className="divTitleBtnClose">
         <h1>Editar anúncio</h1>
         <button type="button" onClick={() => setModalIsOpen(null)}>
@@ -185,7 +194,8 @@ export const EditFormAds = () => {
         <Button
           type={"submit"}
           text={"Excluir anúncio"}
-          classType="buttonDeleteAdsEdit"
+          classType="buttonDeleteAdsModalEdit"
+          click={() => setModalIsOpenDeleteAds(true)}
         />
         <Button
           type={"submit"}

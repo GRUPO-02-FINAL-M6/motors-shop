@@ -64,6 +64,21 @@ export const StyledButton = styled.div`
     }
   }
 
+  .buttonDeleteAdsModalEdit {
+    background-color: var(--grey--scale--grey-5);
+    color: var(--grey--scale--grey-1);
+
+    border: none;
+
+    &:hover {
+      background-color: var(--grey--scale--grey-4);
+    color: var(--grey--scale--grey-2);
+
+
+
+    }
+  }
+
   .buttonSaveAds {
     background-color: var(--grey--scale--grey-5);
     color: var(--grey--scale--grey-3);

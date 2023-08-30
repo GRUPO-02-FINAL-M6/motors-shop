@@ -16,7 +16,7 @@ export const DeleteModalAds = () => {
         <Button
           type={"submit"}
           text={"Sim, excluir anúncio"}
-          classType="buttonDeleteAds"
+          classType="buttonDeleteAdsEdit"
         />
       </div>
     </StyledModalDeleteAds>
