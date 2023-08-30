@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const StyledModalCreateAds = styled.form`
+export const StyledModalUpdateAds = styled.form`
   width: 520px;
   height: max-content;
   border-radius: 8px;

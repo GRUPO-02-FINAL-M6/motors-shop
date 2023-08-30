@@ -207,7 +207,8 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
     }
   }
 
-  const deleteAds = async(id: number) => {
+  const deleteAds = async(adsId) => {
+    const id = adsId.id
     try {
       await api.delete(`/advertisement/${id}`, {
         headers: {Authorization: `Bearer ${token}`}

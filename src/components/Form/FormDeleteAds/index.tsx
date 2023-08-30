@@ -1,31 +1,11 @@
+import { useContext } from "react";
 import { Button } from "../../Buttons";
 import { StyledModalDeleteAds } from "./style";
+import { AdsContext } from "../../../providers/adsProvider";
 
-export const DeleteModalAds = () => {
-  //   const {
-  //     register,
-  //     handleSubmit,
-  //     reset,
-  //     formState: { errors },
-  //   } = useForm<TRegisterAds>({
-  //     resolver: zodResolver(createAdsSchema),
-  //   });
-  //   const { createAds } = useContext(AdsContext);
-
-  //   const createDataAds = (data: any) => {
-  //     const newData = {
-  //       ...data,
-  //       ...globalModelSelected,
-  //       priceFipe: globalModelSelected.value,
-  //     };
-
-  //     delete newData.value;
-  //     console.log(newData, "@@@@@@@@@@@");
-
-  //     createAds(newData);
-  //     // reset();
-  //   };
-
+export const DeleteModalAds = (adsId ) => {
+ const{deleteAds}= useContext(AdsContext)
+ // deletar por id (prop) 
   return (
     <StyledModalDeleteAds>
       <h1>Excluir anúncio</h1>
@@ -39,7 +19,8 @@ export const DeleteModalAds = () => {
         <Button
           type={"submit"}
           text={"Sim, excluir anúncio"}
-          classType="buttonDeleteAds"
+          classType="buttonDeleteAdsEdit"
+          click={() => deleteAds(adsId)}
         />
       </div>
     </StyledModalDeleteAds>
