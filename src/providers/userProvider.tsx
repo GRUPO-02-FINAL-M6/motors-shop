@@ -147,6 +147,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
     try {
       await api.post(`/users`, payload);
       navigate("/login");
+      toast.success("Conta criada com sucesso!")
     } catch (error: any) {
       toast.error(error.response.data.message);
       console.log(error.response.data.message);

@@ -2,14 +2,18 @@ import styled from "styled-components";
 
 export const StyledDivRegister = styled.form`
   width: max-content;
-  height: 1, 630px;
+  max-width: 100vw;
+  max-height: 100vh;
   border-radius: 4px;
+  padding: 40px;
   background-color: var(--colors--fixed--white-fixed);
   display: flex;
   flex-direction: column;
-  padding: 40px;
   filter: drop-shadow(2px 2px 10px gray);
 
+  div{
+    width: 100%;
+  }
   /* box-shadow: 2px 2px 10px 5px; */
 
   @media (max-width: 600px) {
@@ -32,7 +36,6 @@ export const StyledDivRegister = styled.form`
     .buttons {
       display: flex;
       justify-content: end;
-      
     }
   }
 
@@ -90,6 +93,9 @@ export const StyledDivRegister = styled.form`
 export const StyledDivButtonsEditAddress = styled.div`
   display: flex;
   gap: 10px;
-  justify-content: end;
   margin-top: 20px;
+  div{
+    display: flex;
+    justify-content: center;
+  }
 `;
