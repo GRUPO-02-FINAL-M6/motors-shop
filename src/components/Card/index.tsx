@@ -51,6 +51,9 @@ export const Card = ({ ads, user }: CardProps) => {
         <div>
           <h6>{Number(ads.km).toLocaleString("pt-br") + " km"}</h6>
           <h6>{ads.year}</h6>
+          
+          
+
         </div>
       
         <h2>
@@ -60,6 +63,12 @@ export const Card = ({ ads, user }: CardProps) => {
           })}
       
         </h2>
+        <div className="buttonsCard">
+
+          
+          <button>Editar</button>
+          <button>Ver detalhes</button>
+          </div>
       </div>
 
       {/* <Button text={"Editar"} type={"button"} classType="buttonDeleteAds"/> */}

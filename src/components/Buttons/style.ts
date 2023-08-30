@@ -25,9 +25,14 @@ export const StyledButton = styled.div`
     background-color: var(--colors--fixed--white-fixed);
     color: var(--grey--scale--grey-0);
     border: 1.5px solid var(--grey--scale--grey-4);
+    width: 228px;
 
     &:hover {
       background-color: var(--brand--brand1);
+    }
+
+      @media (max-width: 600px) {
+      width: 89px;
     }
   }
 
@@ -35,29 +40,40 @@ export const StyledButton = styled.div`
     background-color: var(--colors--fixed--white-fixed);
     color: var(--grey--scale--grey-0);
     border: 1.5px solid var(--grey--scale--grey-4);
+    width: 228px;
+
 
     &:hover {
       background-color: var(--brand--brand1);
     }
+    
+    @media (max-width: 600px) {
+      width: 89px;
+    }
   }
   .buttonDeleteAds {
-    background-color: var(--grey--scale--grey-5);
-    color: var(--grey--scale--grey-3);
+    background-color: var(--feedback--alert-2);
+    color: var(--feedback--alert-1);
+    border: none;
 
     &:hover {
-      background-color: var(--brand--brand3);
+      background-color: var(--feedback--alert-3);
+     color: var(--feedback--alert-1);
+
+
     }
   }
 
   .buttonSaveAds {
     background-color: var(--grey--scale--grey-5);
     color: var(--grey--scale--grey-3);
-    width: 152px;
+    width: 193px;
     height: 48px;
 
     &:hover {
       background-color: var(--brand--brand3);
     }
+    
   }
   .buttonCleanFilter {
     background-color: var(--brand--brand1);

@@ -101,5 +101,17 @@ export const StyledCard = styled.li`
   &:hover {
     cursor: pointer;
   }
+  .buttonsCard{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+    button{
+      border: 1.5px solid var(--grey--scale--grey-0);
+      border-radius: 4px;
+
+    }
+  }
 
 `;

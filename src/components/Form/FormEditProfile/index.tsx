@@ -25,7 +25,7 @@ export const registerUserSchema = z.object({
 });
 type TRegisterUser = z.infer<typeof registerUserSchema>;
 
-interface iModalStatus {
+export interface iModalStatus {
   modalStatus: boolean;
   setModalStatus: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -51,7 +51,7 @@ export const EditProfileForm = ({
     >
       <div className="form-top">
         <h1>Editar perfil</h1>
-        <AiOutlineClose />
+        {/* <AiOutlineClose /> */}
       </div>
 
       <p>Informações pessoais</p>
@@ -102,12 +102,7 @@ export const EditProfileForm = ({
 
       <StyledButtonsEditProfile className="buttonsEditProfile">
         <div className="btns-top">
-          <Button
-            type={"button"}
-            text={"Cancelar"}
-            classType="buttonCanceled"
-            click={() => setModalStatus(false)}
-          />
+         
           <Button
             type={"button"}
             text={"Excluir Perfil"}
