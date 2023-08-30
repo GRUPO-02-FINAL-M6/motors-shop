@@ -51,7 +51,7 @@ export const StyledButton = styled.div`
       width: 89px;
     }
   }
-  .buttonDeleteAds {
+  .buttonDeleteAdsEdit {
     background-color: var(--feedback--alert-2);
     color: var(--feedback--alert-1);
     border: none;

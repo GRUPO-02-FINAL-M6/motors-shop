@@ -37,7 +37,7 @@ export const Header = () => {
       )}
       {modalIsOpenEditAddress && (
         <Modal toggleModal={() => setModalIsOpenEditAddress(false)}>
-          <DeleteModalAds />
+          <EditAddressForm />
         </Modal>
       )}
       <StyledHeaderDiv>

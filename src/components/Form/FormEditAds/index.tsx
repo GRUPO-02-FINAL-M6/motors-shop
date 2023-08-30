@@ -185,7 +185,7 @@ export const EditFormAds = () => {
         <Button
           type={"submit"}
           text={"Excluir anúncio"}
-          classType="buttonDeleteAds"
+          classType="buttonDeleteAdsEdit"
         />
         <Button
           type={"submit"}
