@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import Input from "../Input";
@@ -7,7 +7,6 @@ import { StyledDivRegister } from "./style";
 import { ComplementsInputs } from "../Input/ComplementsInput";
 import { Button } from "../../Buttons";
 import { UserContext } from "../../../providers/userProvider";
-import Select from "react-select"
 
 export const registerUserSchema = z.object({
   name: z.string().min(1, "O nome é obrigatório"),
@@ -175,7 +174,7 @@ export const RegisterForm = () => {
       <div >
       <span>Tipo de conta</span>
         <select id="" {...register("is_seller")} onChange={(event) => {handleChange(event)}}>
-          <option value="false">Comprador</option>
+          <option value="false">Cliente</option>
           <option value="true">Anunciante</option>
         </select>
       </div>
