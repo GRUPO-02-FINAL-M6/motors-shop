@@ -5,7 +5,7 @@ import { z } from "zod";
 import { AdsContext } from "../../../providers/adsProvider";
 import { Button } from "../../Buttons";
 import Input from "../Input";
-import { StyledModalCreateAds } from "./style";
+import { StyledModalCreateAds, StyledModalUpdateAds } from "./style";
 import { UserContext } from "../../../providers/userProvider";
 import { SelectBrend } from "../SelectBrand";
 import { SelectModel } from "../SelectModel";
@@ -27,6 +27,7 @@ const createAdsSchema = z.object({
 type TRegisterAds = z.infer<typeof createAdsSchema>;
 
 export const EditFormAds = () => {
+  const adsId =19
   const { setModalIsOpen, globalModelSelected } = useContext(UserContext);
 
   const [modalIsOpenDeleteAds, setModalIsOpenDeleteAds] = useState(false);
@@ -42,14 +43,17 @@ export const EditFormAds = () => {
   const { editAds} = useContext(AdsContext);
   //receber o id
 
-
+const updateAds = (e:any) =>{
+  console.log(e)
+}
   return (
-    <StyledModalCreateAds onSubmit={handleSubmit(createDataAds)}>
+    <StyledModalUpdateAds onSubmit={handleSubmit((e) => updateAds(e))}>
       {modalIsOpenDeleteAds && (
         <Modal toggleModal={() => setModalIsOpenDeleteAds(false)}>
           <DeleteModalAds
-            modalStatus={modalIsOpenDeleteAds}
-            setModalStatus={setModalIsOpenDeleteAds}
+            // modalStatus={modalIsOpenDeleteAds}
+            // setModalStatus={setModalIsOpenDeleteAds}
+            id={adsId}
           />
         </Modal>
       )}
@@ -194,6 +198,6 @@ export const EditFormAds = () => {
           classType="buttonSaveAds"
         />
       </div>
-    </StyledModalCreateAds>
+    </StyledModalUpdateAds>
   );
 };
