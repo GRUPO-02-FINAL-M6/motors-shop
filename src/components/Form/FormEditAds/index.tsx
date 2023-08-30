@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { AdsContext } from "../../../providers/adsProvider";
-import { Button} from "../../Buttons";
+import { Button } from "../../Buttons";
 import Input from "../Input";
 import { StyledModalCreateAds } from "./style";
 import { UserContext } from "../../../providers/userProvider";
@@ -158,7 +158,22 @@ export const EditFormAds = () => {
       </div>
 
       <Input
-        label="Imagem"
+        label="Imagem da capa"
+        type="string"
+        placeholder="http://image.com"
+        register={register("coverImage")}
+        error={errors.coverImage?.message}
+      />
+
+      <Input
+        label="1º Imagem da galeria"
+        type="string"
+        placeholder="http://image.com"
+        register={register("coverImage")}
+        error={errors.coverImage?.message}
+      />
+      <Input
+        label="2º Imagem da galeria"
         type="string"
         placeholder="http://image.com"
         register={register("coverImage")}
@@ -167,8 +182,16 @@ export const EditFormAds = () => {
 
       {/* <ButtonAdsCreateImageGallery /> */}
       <div className="buttonsEdit">
-        <Button type={"submit"} text={"Excluir anúncio"} classType="buttonDeleteAds" />
-        <Button type={"submit"} text={"Salvar alterações"} classType="buttonSaveAds" />
+        <Button
+          type={"submit"}
+          text={"Excluir anúncio"}
+          classType="buttonDeleteAds"
+        />
+        <Button
+          type={"submit"}
+          text={"Salvar alterações"}
+          classType="buttonSaveAds"
+        />
       </div>
     </StyledModalCreateAds>
   );

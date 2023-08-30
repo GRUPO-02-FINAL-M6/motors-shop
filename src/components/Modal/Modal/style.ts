@@ -18,6 +18,8 @@ export const Container = styled.section`
     box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.25);
     width: max-content;
     position: relative;
+  height: max-content;
+
 
     & > button{
       position: absolute;

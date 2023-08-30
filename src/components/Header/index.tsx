@@ -11,6 +11,8 @@ import { ModalCreateAds } from "../Modal/ModalCreateAds";
 import { EditProfileForm } from "../Form/FormEditProfile";
 import { EditAddressForm } from "../Form/FormEditAddress";
 import { Modal } from "../Modal/Modal";
+import { EditFormAds } from "../Form/FormEditAds";
+import { DeleteModalAds } from "../Form/FormDeleteAds";
 export const Header = () => {
   const logo = "../../../public/logo.svg";
   const [menuStatus, setMenuStatus] = useState(false);
@@ -30,12 +32,12 @@ export const Header = () => {
     <StyledHeader>
       {modalIsOpenEditProfile && (
         <Modal toggleModal={() => setModalIsOpenEditProfile(false)}>
-          <EditProfileForm modalStatus={modalIsOpenEditProfile} setModalStatus={setModalIsOpenEditProfile}/>
+          <EditFormAds modalStatus={modalIsOpenEditProfile} setModalStatus={setModalIsOpenEditProfile}/>
         </Modal>
       )}
       {modalIsOpenEditAddress && (
         <Modal toggleModal={() => setModalIsOpenEditAddress(false)}>
-          <EditAddressForm />
+          <DeleteModalAds />
         </Modal>
       )}
       <StyledHeaderDiv>

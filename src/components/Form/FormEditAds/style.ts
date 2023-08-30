@@ -40,11 +40,7 @@ export const StyledModalCreateAds = styled.form`
 
  
 
-    .buttonsEdit{
-      justify-content: center;
-      display: flex;
-      align-items: center;
-    }
+  
    
   }
 
@@ -125,6 +121,8 @@ export const StyledModalCreateAds = styled.form`
     flex-direction: row;
     margin-bottom: 20px;
     gap: 10px;
+    align-items: center;
+    justify-content: center;
   }
   .divBtnReegister {
     display: flex;
