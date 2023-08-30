@@ -1,8 +1,12 @@
+import { useContext } from "react";
 import { Button } from "../../Buttons";
 import { StyledModalDeleteAds } from "./style";
+import { AdsContext } from "../../../providers/adsProvider";
 
 export const DeleteModalAds = () => {
- 
+ const{deleteAds}= useContext(AdsContext)
+ // deletar por id (prop) 
+
   return (
     <StyledModalDeleteAds>
       <h1>Excluir anúncio</h1>
@@ -17,6 +21,7 @@ export const DeleteModalAds = () => {
           type={"submit"}
           text={"Sim, excluir anúncio"}
           classType="buttonDeleteAdsEdit"
+          // click={() => deleteAds()}
         />
       </div>
     </StyledModalDeleteAds>

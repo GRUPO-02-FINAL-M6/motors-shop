@@ -28,6 +28,7 @@ type TRegisterAds = z.infer<typeof createAdsSchema>;
 
 export const EditFormAds = () => {
   const { setModalIsOpen, globalModelSelected } = useContext(UserContext);
+
   const [modalIsOpenDeleteAds, setModalIsOpenDeleteAds] = useState(false);
   const {
     register,
@@ -37,20 +38,10 @@ export const EditFormAds = () => {
   } = useForm<TRegisterAds>({
     resolver: zodResolver(createAdsSchema),
   });
-  const { createAds } = useContext(AdsContext);
 
-  const createDataAds = (data: any) => {
-    const newData = {
-      ...data,
-      ...globalModelSelected,
-      priceFipe: globalModelSelected.value,
-    };
+  const { editAds} = useContext(AdsContext);
+  //receber o id
 
-    delete newData.value;
-
-    createAds(newData);
-    // reset();
-  };
 
   return (
     <StyledModalCreateAds onSubmit={handleSubmit(createDataAds)}>
