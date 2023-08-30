@@ -31,6 +31,8 @@ interface iAdsContext {
   getAdvertiserProfile: (id: number) => Promise<void>;
   adsUser: iAds[];
   setAdsUser: Dispatch<SetStateAction<never[]>>;
+  editAds: (id: number, payload: iAdsUpdate) => Promise<void>
+  deleteAds: (id: number) => Promise<void>
 }
 
 export interface iAds {
@@ -195,6 +197,26 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
     }
   };
 
+  const editAds = async (id: number, payload: iAdsUpdate) => {
+    try {
+      const response = await api.patch(`/advertisement/${id}`, payload, {
+        headers: {Authorization: `Bearer ${token}`}
+      })
+    } catch (error: any) {
+      toast(error.response.data.message)
+    }
+  }
+
+  const deleteAds = async(id: number) => {
+    try {
+      await api.delete(`/advertisement/${id}`, {
+        headers: {Authorization: `Bearer ${token}`}
+      })
+    } catch (error: any) {
+      toast(error.response.data.message)
+    }
+  }
+
   return (
     <AdsContext.Provider
       value={{
@@ -213,6 +235,8 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
         filterString,
         adsUser,
         setAdsUser,
+        editAds,
+        deleteAds
       }}
     >
       {children}
