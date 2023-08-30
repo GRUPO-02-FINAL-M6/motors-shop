@@ -13,6 +13,7 @@ import { EditAddressForm } from "../Form/FormEditAddress";
 import { Modal } from "../Modal/Modal";
 import { EditFormAds } from "../Form/FormEditAds";
 import { DeleteModalAds } from "../Form/FormDeleteAds";
+
 export const Header = () => {
   const logo = "../../../public/logo.svg";
   const [menuStatus, setMenuStatus] = useState(false);
@@ -22,22 +23,27 @@ export const Header = () => {
   const [modalIsOpenEditAddress, setModalIsOpenEditAddress] = useState(false);
   const { logout, user, getMyProfile } = useContext(UserContext);
   const navigate = useNavigate();
+
   useEffect(() => {
     const getUser = async () => {
       await getMyProfile();
     };
     getUser();
   }, []);
+
   return (
     <StyledHeader>
       {modalIsOpenEditProfile && (
         <Modal toggleModal={() => setModalIsOpenEditProfile(false)}>
-          <EditFormAds modalStatus={modalIsOpenEditProfile} setModalStatus={setModalIsOpenEditProfile}/>
+          <EditFormAds
+            modalStatus={modalIsOpenEditProfile}
+            setModalStatus={setModalIsOpenEditProfile}
+          />
         </Modal>
       )}
       {modalIsOpenEditAddress && (
         <Modal toggleModal={() => setModalIsOpenEditAddress(false)}>
-          <DeleteModalAds />
+          <EditAddressForm />
         </Modal>
       )}
       <StyledHeaderDiv>
@@ -57,9 +63,11 @@ export const Header = () => {
                     <button onClick={() => setModalIsOpenEditAddress(true)}>
                       Editar endereço
                     </button>
-                    <button>
-                      <Link go={`/Advertiser/${user.id}`}>Meus anúncios</Link>
-                    </button>
+                    {user.is_seller && (
+                      <button>
+                        <Link go={`/advertiser/${user.id}`}>Meus anúncios</Link>
+                      </button>
+                    )}
                     <button onClick={logout}>Sair</button>
                   </div>
                 ) : null}
@@ -116,8 +124,15 @@ export const Header = () => {
           </HeaderLinksStyled>
         ) : (
           <HeaderLinksStyled>
-            <button onClick={() => navigate("/dashboard")}>Perfil</button>
+            <button onClick={() => navigate("/dashboard")}>
+              Editar Perfil
+            </button>
             <button>Editar endereço</button>
+            {user?.is_seller && (
+              <button onClick={() => navigate(`/advertiser/${user.id}`)}>
+                Meus Anúncios
+              </button>
+            )}
             <button onClick={logout}>Sair</button>
           </HeaderLinksStyled>
         ))}

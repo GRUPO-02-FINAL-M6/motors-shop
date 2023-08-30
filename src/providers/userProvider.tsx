@@ -34,6 +34,8 @@ export interface iUser {
   name: string;
   email: string;
   contact: string;
+  description: string;
+  is_seller: boolean;
   createdAt: string;
   deletedAt: string;
   ads: iAds[];
@@ -51,7 +53,7 @@ interface iRegisterUser {
   contact: string;
   birthday: string;
   description: string;
-  is_seller: boolean,
+  is_seller: boolean;
   cep: string;
   state: string;
   city: string;
@@ -147,7 +149,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
     try {
       await api.post(`/users`, payload);
       navigate("/login");
-      toast.success("Conta criada com sucesso!")
+      toast.success("Conta criada com sucesso!");
     } catch (error: any) {
       toast.error(error.response.data.message);
       console.log(error.response.data.message);
