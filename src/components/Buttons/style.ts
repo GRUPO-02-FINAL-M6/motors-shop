@@ -51,7 +51,7 @@ export const StyledButton = styled.div`
       width: 89px;
     }
   }
-  .buttonDeleteAds {
+  .buttonDeleteAdsEdit {
     background-color: var(--feedback--alert-2);
     color: var(--feedback--alert-1);
     border: none;
@@ -59,6 +59,21 @@ export const StyledButton = styled.div`
     &:hover {
       background-color: var(--feedback--alert-3);
      color: var(--feedback--alert-1);
+
+
+    }
+  }
+
+  .buttonDeleteAdsModalEdit {
+    background-color: var(--grey--scale--grey-5);
+    color: var(--grey--scale--grey-1);
+
+    border: none;
+
+    &:hover {
+      background-color: var(--grey--scale--grey-4);
+    color: var(--grey--scale--grey-2);
+
 
 
     }

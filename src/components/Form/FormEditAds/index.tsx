@@ -1,14 +1,16 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { AdsContext } from "../../../providers/adsProvider";
 import { Button } from "../../Buttons";
 import Input from "../Input";
-import { StyledModalCreateAds } from "./style";
+import { StyledModalCreateAds, StyledModalUpdateAds } from "./style";
 import { UserContext } from "../../../providers/userProvider";
 import { SelectBrend } from "../SelectBrand";
 import { SelectModel } from "../SelectModel";
+import { Modal } from "../../Modal/Modal";
+import { DeleteModalAds } from "../FormDeleteAds";
 
 const createAdsSchema = z.object({
   // brand: z.string().min(1, "A marca é obrigatória"),
@@ -25,8 +27,10 @@ const createAdsSchema = z.object({
 type TRegisterAds = z.infer<typeof createAdsSchema>;
 
 export const EditFormAds = () => {
+  const adsId =19
   const { setModalIsOpen, globalModelSelected } = useContext(UserContext);
 
+  const [modalIsOpenDeleteAds, setModalIsOpenDeleteAds] = useState(false);
   const {
     register,
     handleSubmit,
@@ -35,24 +39,24 @@ export const EditFormAds = () => {
   } = useForm<TRegisterAds>({
     resolver: zodResolver(createAdsSchema),
   });
-  const { createAds } = useContext(AdsContext);
 
-  const createDataAds = (data: any) => {
-    const newData = {
-      ...data,
-      ...globalModelSelected,
-      priceFipe: globalModelSelected.value,
-    };
+  const { editAds} = useContext(AdsContext);
+  //receber o id
 
-    delete newData.value;
-    console.log(newData, "@@@@@@@@@@@");
-
-    createAds(newData);
-    // reset();
-  };
-
+const updateAds = (e:any) =>{
+  console.log(e)
+}
   return (
-    <StyledModalCreateAds onSubmit={handleSubmit(createDataAds)}>
+    <StyledModalUpdateAds onSubmit={handleSubmit((e) => updateAds(e))}>
+      {modalIsOpenDeleteAds && (
+        <Modal toggleModal={() => setModalIsOpenDeleteAds(false)}>
+          <DeleteModalAds
+            // modalStatus={modalIsOpenDeleteAds}
+            // setModalStatus={setModalIsOpenDeleteAds}
+            id={adsId}
+          />
+        </Modal>
+      )}
       <div className="divTitleBtnClose">
         <h1>Editar anúncio</h1>
         <button type="button" onClick={() => setModalIsOpen(null)}>
@@ -185,7 +189,8 @@ export const EditFormAds = () => {
         <Button
           type={"submit"}
           text={"Excluir anúncio"}
-          classType="buttonDeleteAds"
+          classType="buttonDeleteAdsModalEdit"
+          click={() => setModalIsOpenDeleteAds(true)}
         />
         <Button
           type={"submit"}
@@ -193,6 +198,6 @@ export const EditFormAds = () => {
           classType="buttonSaveAds"
         />
       </div>
-    </StyledModalCreateAds>
+    </StyledModalUpdateAds>
   );
 };
