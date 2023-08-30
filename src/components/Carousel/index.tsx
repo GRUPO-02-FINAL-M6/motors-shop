@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { CarouselStyled } from "./style";
-import {AiOutlineArrowLeft, AiOutlineArrowRight} from "react-icons/ai"
+
+import { BsArrowLeftCircle, BsArrowRightCircle } from 'react-icons/bs';
+
 
 interface iImageList {
   images: [];
@@ -30,15 +32,17 @@ export const Carousel = ({ images }: iImageList) => {
 
   return (
     <CarouselStyled>
-      {imagesList.length > 1 ? (
-        <>
-          <span id="prev" onClick={previous}><AiOutlineArrowLeft/></span>
-          <img src={imagesList[current]} alt="" />
-          <span id="next" onClick={next}><AiOutlineArrowRight/></span>
-        </>
-      ) : (
-        <img src={imagesList[current]} alt="" />
-      )}
+     {
+        images.length > 1 && <span className="prev" onClick={previous}>
+          <BsArrowLeftCircle size={30} />
+        </span>
+     }
+      <img src={imagesList[current]} alt="" />
+     {
+        images.length > 1 && <span className="next" onClick={next}>
+          <BsArrowRightCircle size={30} />
+        </span>
+     }
     </CarouselStyled>
   );
 };

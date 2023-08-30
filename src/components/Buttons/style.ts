@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const StyledButton = styled.button`
+export const StyledButton = styled.div`
   button {
     padding: 12px 28px 12px 28px;
     border-radius: 4px;
@@ -105,22 +105,12 @@ export const StyledButton = styled.button`
   }
 
   .buttonBuyer {
-    background-color: var(--colors--fixed--white-fixed);
-    color: var(--grey--scale--grey-0);
-    border: 1.5px solid var(--grey--scale--grey-4);
-    width: 160px;
-    height: 48px;
+    padding: 10px 20px;
+    border: none;
+    background-color: var(--brand--brand1);
 
-    &:hover {
-      background-color: var(--brand--brand1);
-      border: none;
-      color: var(--colors--fixed--white-fixed);
-      width: 150px;
-      height: 38px;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    &:hover{
+      background-color: var(--brand--brand2)
     }
   }
 

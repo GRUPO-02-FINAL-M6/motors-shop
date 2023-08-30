@@ -27,16 +27,18 @@ export const Card = ({ ads, user }: CardProps) => {
         :
         null
       }
-      {
-        ads.images.length > 0 ? 
-        (
-          <img src={ads.images[0]} alt={ads.name} />
-        )
-        :
-        (
-          <img src={card404} alt={ads.name} />
-        )
-      }
+     <div className="image">
+        {
+          ads.images.length > 0 ?
+            (
+              <img src={ads.images[0]} alt={ads.name} />
+            )
+            :
+            (
+              <img src={card404} alt={ads.name} />
+            )
+        }
+     </div>
       
       <h2 className="card-title">{ads.name}</h2>
       

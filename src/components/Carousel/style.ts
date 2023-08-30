@@ -2,37 +2,41 @@ import { styled } from "styled-components";
 
 export const CarouselStyled = styled.div`
   position: relative;
+
   width: 100%;
+  height: 100%;
 
-  #prev {
+  max-height: 100%;
+  max-width: 100%;
+
+  & span {
     position: absolute;
-    top: 50%;
-    color: white;
-    background-color: rgba(4, 4, 4, 0.49);
 
-    &:hover {
-      background-color: rgba(4, 4, 4);
-      transform: scale(1.2);
+    border: none;
+    border-radius: 100%;
+    
+    width: fit-content;
+
+
+    display: flex;
+    justify-content: center;
+
+    z-index: 10;
+
+    &:active{
+      background-color: rgba(11,11,11,0.8);
+      color: white;
     }
   }
 
-  #next {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    color: white;
-    background-color: rgba(4, 4, 4, 0.49);
-
-    &:hover {
-      background-color: rgba(4, 4, 4);
-      transform: scale(1.2);
-    }
+  .prev {
+    left: 1px;
+    top: 45%;
   }
 
-  img {
-    width: 100%;
-    min-height: 100%;
-    max-height: 100%;
-    object-fit: contain;
+  .next {
+    right: 1px;
+    top: 45%;
   }
+
 `;

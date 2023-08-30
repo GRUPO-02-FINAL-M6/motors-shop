@@ -69,7 +69,6 @@ export const GlobalStyle = createGlobalStyle`
             display: none;
         }
 
-        box-sizing: border-box;
     }
 
 
