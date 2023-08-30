@@ -1,14 +1,15 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { AdsContext } from "../../../providers/adsProvider";
-import { Button, ButtonCanceled, ButtonCreateAdvertiser } from "../../Buttons";
+import { Button } from "../../Buttons";
 import Input from "../Input";
 import { StyledModalCreateAds } from "./style";
 import { UserContext } from "../../../providers/userProvider";
 import { SelectBrend } from "../SelectBrand";
 import { SelectModel } from "../SelectModel";
+import { iModalStatus } from "../FormEditProfile";
 
 const createAdsSchema = z.object({
   // brand: z.string().min(1, "A marca é obrigatória"),
@@ -24,7 +25,10 @@ const createAdsSchema = z.object({
 });
 type TRegisterAds = z.infer<typeof createAdsSchema>;
 
-export const RegisterFormAds = () => {
+export const RegisterFormAds = ({
+  modalStatus,
+  setModalStatus,
+}: iModalStatus) => {
   const { setModalIsOpen, globalModelSelected } = useContext(UserContext);
 
   const {
@@ -74,9 +78,9 @@ export const RegisterFormAds = () => {
     <StyledModalCreateAds onSubmit={handleSubmit(createDataAds)}>
       <div className="divTitleBtnClose">
         <h1>Criar anúncio</h1>
-        <button type="button" onClick={() => setModalIsOpen(null)}>
+        {/* <button type="button" onClick={() => setModalIsOpen(null)}>
           X
-        </button>
+        </button> */}
       </div>
       <p>Informações pessoais</p>
       <div className="containerSelects">
@@ -180,16 +184,14 @@ export const RegisterFormAds = () => {
 
       {/* <ButtonAdsCreateImageGallery /> */}
       <div className="buttonsEdit">
+   
         <Button
           type={"submit"}
-          text={"Excluir anúncio"}
-          classType="buttonDeleteAds"
-        />
-        <Button
-          type={"submit"}
-          text={"Salvar alterações"}
+          text={"Criar anúncio"}
           classType="buttonSaveAds"
+          click={() => setModalIsOpen(null)}
         />
+        {/* <button type="button" onClick={()=>setModalIsOpen(null)}>teste</button> */}
       </div>
     </StyledModalCreateAds>
   );
