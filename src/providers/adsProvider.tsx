@@ -147,7 +147,6 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
   const filterAds = async (filter: string) => {
     try {
       const response = await api.get(`/advertisement?` + filter);
-      console.log(response);
       setAds(response.data.ads);
       setNextPage(response.data.nextPage);
       setPreviousPage(response.data.previousPage);

@@ -50,24 +50,22 @@ export const RegisterForm = () => {
     resolver: zodResolver(registerUserSchema),
   });
   const { registerUser } = useContext(UserContext);
-  const options = [{value: false, label: "Comprador"}, {value: true, label: "Anunciante"}]
-  const [is_seller, setIs_seller] = useState<boolean>(false)
+  const [is_seller, setIs_seller] = useState<boolean>(false);
 
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>{
-    if(event.target.value == "false"){
-      setIs_seller(false)
-    }else{
-      setIs_seller(true)
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.value == "false") {
+      setIs_seller(false);
+    } else {
+      setIs_seller(true);
     }
-  }
+  };
 
   const handleRegisterForm = (payload: any) => {
-    const newData = {...payload, is_seller}
-    console.log(newData)
-    registerUser(newData)
-  }
-  
+    const newData = { ...payload, is_seller };
+    console.log(newData);
+    registerUser(newData);
+  };
+
   return (
     <StyledDivRegister
       className="formRegister"
@@ -168,12 +166,18 @@ export const RegisterForm = () => {
         register2={register("complement")}
       />
       <div>
-        {errors.number?.message && errors.number?.message}
-        {errors.complement?.message && errors.complement?.message}
+        {<p>{errors.number?.message && errors.number?.message}</p>}
+        {<p>{errors.complement?.message && errors.complement?.message}</p>}
       </div>
-      <div >
-      <span>Tipo de conta</span>
-        <select id="" {...register("is_seller")} onChange={(event) => {handleChange(event)}}>
+
+      <div className="account-type">
+        <span>Tipo de conta</span>
+        <select
+          {...register("is_seller")}
+          onChange={(event) => {
+            handleChange(event);
+          }}
+        >
           <option value="false">Cliente</option>
           <option value="true">Anunciante</option>
         </select>

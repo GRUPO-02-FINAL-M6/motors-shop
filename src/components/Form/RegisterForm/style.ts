@@ -11,14 +11,19 @@ export const StyledDivRegister = styled.form`
   margin-bottom: 20px;
   filter: drop-shadow(2px 2px 10px gray);
   gap: 6px;
-  /* box-shadow: 2px 2px 10px 5px; */
 
-  select{
-    width: 100%;
-    padding: 8px;
-    border-radius: 8px;
-    border: 1px solid grey;
+  .account-type {
+    display: flex;
+    flex-direction: column;
+    max-width: 258px;
+    select {
+      max-width: 100%;
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid grey;
+    }
   }
+
   @media (max-width: 600px) {
     max-width: 380px;
     width: 85%;
@@ -26,7 +31,7 @@ export const StyledDivRegister = styled.form`
     flex-direction: column;
 
     input {
-      width: fit-content;
+      width: 100%;
       display: flex;
     }
   }
@@ -74,11 +79,6 @@ export const StyledDivRegister = styled.form`
 
     @media (max-width: 600px) {
       gap: 5px;
-    }
-    .divBtnReegister {
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
   }
 `;
