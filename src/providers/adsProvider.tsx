@@ -85,13 +85,21 @@ export interface iAdvertiserProfile {
 export const AdsContext = createContext({} as iAdsContext);
 
 export const AdsProvider = ({ children }: iAdsProviderProps) => {
+  
   const [ads, setAds] = useState<iAds[]>([]);
+  
   const [currentPage, setCurrentPage] = useState<number>(1);
+  
   const [nextPage, setNextPage] = useState<string | null>(null);
+  
   const [previousPage, setPreviousPage] = useState<string | null>(null);
+  
   const [totalPages, setTotalPages] = useState<number | null>(null);
+  
   const [advertiser, setAdvertiser] = useState<iAdvertiserProfile | null>(null);
+  
   const [filterString, setFilterString] = useState("");
+  
   const token = localStorage.getItem("token");
 
   const [adsUser, setAdsUser] = useState([]);

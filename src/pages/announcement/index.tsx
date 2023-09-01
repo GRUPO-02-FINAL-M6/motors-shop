@@ -128,8 +128,19 @@ export const Announcement = () => {
           
         </div>
 
-        <div className="container">
+        <div className="commentContainer">
           <Comments className="content"/>
+
+          <div className="content">
+            <div className="commentsBox">
+              <div className="user">
+                <span>{getInitiations("Arthur Fernandes")}</span>
+                <p>Arthur Fernandes</p>
+              </div>
+              <input type="text" />
+              <Button text={"Comentar"} classType="" type="button" click={() => false}/>
+            </div>
+          </div>
         </div>
 
       </StyledMain>

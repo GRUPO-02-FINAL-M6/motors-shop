@@ -23,6 +23,9 @@ export const CarouselStyled = styled.div`
 
     z-index: 10;
 
+    color: var(--brand--brand1);
+    
+
     &:active{
       background-color: rgba(11,11,11,0.8);
       color: white;
