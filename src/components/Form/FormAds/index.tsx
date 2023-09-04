@@ -187,7 +187,10 @@ export const RegisterFormAds = ({
           type={"submit"}
           text={"Criar anúncio"}
           classType="buttonSaveAds"
+
           click={() => {}}
+
+
         />
         {/* <button type="button" onClick={() => setModalIsOpen(null)}>
           teste
