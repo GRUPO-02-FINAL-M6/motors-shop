@@ -8,7 +8,6 @@ Na página de anunciante, conterá informações do anunciante  num card sobrepo
 
 As tecnologias utilizadas  foram JavaScript, React. As bibliotecas foram hookform/resolvers para validar os registros feitos através dos formulários nas páginas de cadastro, login e nos modais. Styled-component para a estilização dos componentes. Axios para a funcionalidade/integração da api,react-dom, react-icons para os icones utilizados como o x de fechar modal. O react-router-dom para proteção das rotas criadas das páginas. O react-toastify para sinalizar quando alguma requisição e solicitada como criar, deletar ou atualizar. O zod para validação do schema no formulário.
 
-
 <!-- Instalação e configuração: Forneça instruções claras sobre como configurar e executar o projeto em um novo ambiente de desenvolvimento. Inclua requisitos de sistema, comandos para instalar dependências e quaisquer configurações adicionais necessárias. -->
  Para executar este projeto é importante que o usuário disponha de uma máquina a qual contenha uma ide, como por exemplo o visual studio code. No terminal instale o comando npm i, e posteriormente rode o npm run dev.
 
