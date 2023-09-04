@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { CarouselStyled } from "./style";
 
 import { BsArrowLeftCircle, BsArrowRightCircle } from 'react-icons/bs';

@@ -66,8 +66,7 @@ export const RegisterFormAds = ({
       modelCar: globalModelSelected.name,
       priceFip: globalModelSelected.value,
     };
-
-    console.log(newData);
+    
     delete newData.value;
 
     createAds(newData);

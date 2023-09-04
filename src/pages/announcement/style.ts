@@ -2,16 +2,14 @@ import styled from "styled-components";
 
 export const StyledMain = styled.div`
   
-
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - 150px);
-  position: relative;
 
   gap: 50px;
 
-  
+  position: relative;
 
+  align-items: center;
 
   .greenCover {
     width: 100vw;
@@ -20,6 +18,11 @@ export const StyledMain = styled.div`
     border-radius: 0%;
 
     background-color: var(--brand--brand1);
+  }
+
+  .moveUp{
+    position: absolute;
+    top: 40px;
   }
 
   // Conteudo geral
@@ -33,15 +36,23 @@ export const StyledMain = styled.div`
     flex-direction: column;
     align-items: center;
 
-    gap: 20px
+    gap: 20px;
+
+    @media (min-width: 768px) {
+      width: 80%;
+    }
+
+    @media (min-width: 1024px){
+      flex-direction: row;
+    }
+
+
   }
 
   // DIVS
   .content { 
     background-color: var(--colors--fixed--white-fixed);
     width: 90%;
-    height: fit-content;
-    min-height: 200px;
     display: flex;
     flex-direction: column;
     border-radius: 4px;
@@ -58,10 +69,8 @@ export const StyledMain = styled.div`
     align-items: center;
     gap: 20px;
   
-    .imagem {
-
-      max-height: 200px;
-      display: flex;
+    & .imagem {
+      height: 300px;
       justify-content: center;
       align-items: center;
 
@@ -140,14 +149,11 @@ export const StyledMain = styled.div`
         grid-template-rows: calc(auto + 10px) calc(auto + 10px);
         gap: 5px;
 
-      
         & li{
           width: 100%;
         }
 
       }
-
-
 
       & img{
         width: 100%;
@@ -155,14 +161,16 @@ export const StyledMain = styled.div`
     }
   }
 
-  
-  
+  .commentContainer{
+    width: 40%;
+    flex-direction: column;
+  }
 `;
 
 
 
 export const StyledProfileDiv = styled.div`
-  width: 90%;
+  width: 100%;
   max-width: 1240px;
   height: fit-content;
   max-height: 406px;
@@ -180,6 +188,7 @@ export const StyledProfileDiv = styled.div`
 
 
   #profile {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -191,14 +200,6 @@ export const StyledProfileDiv = styled.div`
       flex-direction: column;
       align-items: center;
       gap: 10px;
-    }
-
-    @media (min-width: 768px) {
-      align-items: start;
-
-      .name {
-        flex-direction: row;
-      }
     }
   }
 

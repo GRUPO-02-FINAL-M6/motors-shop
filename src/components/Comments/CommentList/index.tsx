@@ -1,14 +1,11 @@
 import { BsDot } from 'react-icons/bs';
-import { getInitiations, randomColor } from '../../utils';
+import { getInitiations, randomColor } from '../../../utils';
 import { StyledComments, StyledCommentsList, Comment } from './styled';
 
 
 
 
 export const Comments = ({...res}) => {
-  
-  console.log(randomColor())
-
   return (
     <StyledComments {...res}>
       <h2>Comentários</h2>

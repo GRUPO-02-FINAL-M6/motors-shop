@@ -4,7 +4,8 @@ import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { StyledMain, StyledProfileDiv } from "./style";
 import { useNavigate } from 'react-router-dom';
-import { Comments } from '../../components/Comments';
+import { Comments } from '../../components/Comments/CommentList';
+import { CommentBox } from "../../components/Comments/CommentBox";
 
 export const Announcement = () => {
 
@@ -128,19 +129,10 @@ export const Announcement = () => {
           
         </div>
 
-        <div className="commentContainer">
+        <div className="container commentContainer">
           <Comments className="content"/>
 
-          <div className="content">
-            <div className="commentsBox">
-              <div className="user">
-                <span>{getInitiations("Arthur Fernandes")}</span>
-                <p>Arthur Fernandes</p>
-              </div>
-              <input type="text" />
-              <Button text={"Comentar"} classType="" type="button" click={() => false}/>
-            </div>
-          </div>
+          <CommentBox className="content"/>
         </div>
 
       </StyledMain>
