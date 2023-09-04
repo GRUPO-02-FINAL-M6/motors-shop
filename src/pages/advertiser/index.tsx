@@ -15,15 +15,14 @@ import { Modal } from "../../components/Modal/Modal";
 import { getInitiations } from "../../utils";
 
 export const AdvertiserPage = () => {
-  const { adsUser, setAdsUser } = useContext(AdsContext);
-
+  const { adsUser, setAdsUser, modalIsOpen, setModalIsOpen } =
+    useContext(AdsContext);
+  // const [modalIsOpen, setModalIsOpen] = useState(false);
   const [Advertiser, setUser] = useState({});
   const { token, user } = useContext(UserContext);
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
-  const [ modalIsOpen,setModalIsOpen] = useState(false);
-  
-  
+
   useEffect(() => {
     const getUser = async () => {
       api
@@ -83,11 +82,14 @@ export const AdvertiserPage = () => {
                 ) : (
                   ""
                 )}
-                {modalIsOpen ?(
-                  <Modal toggleModal={setModalIsOpen}>
+
+                {modalIsOpen ? (
+                  <Modal toggleModal={() => setModalIsOpen(false)}>
                     <RegisterFormAds />
                   </Modal>
-                ): ""}
+                ) : (
+                  ""
+                )}
               </StyledProfileDiv>
               <StyledAdsList>
                 {adsUser.map((item) => {
