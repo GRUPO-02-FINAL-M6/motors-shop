@@ -59,9 +59,7 @@ const updateAds = (e:any) =>{
       )}
       <div className="divTitleBtnClose">
         <h1>Editar anúncio</h1>
-        <button type="button" onClick={() => setModalIsOpen(null)}>
-          X
-        </button>
+     
       </div>
       <p>Informações do veículo</p>
       <div className="containerSelects">
