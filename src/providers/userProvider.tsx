@@ -96,6 +96,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
   const login = async (payload: iLogin) => {
     try {
+      console.log(payload)
       const response = await api.post("/users/login", payload);
       localStorage.setItem("token", response.data.token);
       api.defaults.headers.common.Authorization = `Bearer ${token}`;

@@ -12,6 +12,8 @@ import { MainStyled } from "../home/style";
 import { useParams } from "react-router-dom";
 import { AdsContext } from "../../providers/adsProvider";
 import { Modal } from "../../components/Modal/Modal";
+import { getInitiations } from "../../utils";
+
 export const AdvertiserPage = () => {
   const { adsUser, setAdsUser } = useContext(AdsContext);
 
@@ -19,23 +21,13 @@ export const AdvertiserPage = () => {
   const { token, user } = useContext(UserContext);
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
-  const [ modalIsOpen,setModalIsOpen] = useState(false)
-  function getInitiations(fullName: string) {
-    const names = fullName.split(" ");
-    if (names.length === 1) {
-      return names[0][0].toUpperCase() + names[0][1].toUpperCase();
-    } else {
-      let initiations = "";
-      for (let i = 0; i < 2; i++) {
-        initiations += names[i][0].toUpperCase();
-      }
-      return initiations;
-    }
-  }
+  const [ modalIsOpen,setModalIsOpen] = useState(false);
+  
+  
   useEffect(() => {
     const getUser = async () => {
       api
-        .get(`/users/${id}`, {
+        .get(`/users/profile/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

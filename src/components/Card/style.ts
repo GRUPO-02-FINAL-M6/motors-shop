@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import { AiOutlineArrowDown } from 'react-icons/ai';
 
 export const StyledCard = styled.li`
 
@@ -11,6 +12,8 @@ export const StyledCard = styled.li`
   height: 350px;
   border-radius: 6px;
   position: relative;
+
+  /* border: 1px solid; */
 
   #stamp {
     position: absolute;
@@ -29,11 +32,17 @@ export const StyledCard = styled.li`
     border-radius: 3px;
   }
 
-  img {
-    min-height: 45%;
-    max-height: 45%;
-    object-fit: scale-dow;
+  .image{
+    width: 100%;
+    height: 200px;
+
+
+    & img {
+      width: 100%;
+      height: 100%;
+    }
   }
+
 
   .card-title {
     color: var(--grey--scale--grey-1);
