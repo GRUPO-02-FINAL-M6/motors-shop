@@ -29,7 +29,7 @@ export const RegisterFormAds = ({
   modalStatus,
   setModalStatus,
 }: iModalStatus) => {
-  const { setModalIsOpen, globalModelSelected } = useContext(UserContext);
+  const { globalModelSelected } = useContext(UserContext);
 
   const {
     register,
@@ -39,7 +39,7 @@ export const RegisterFormAds = ({
   } = useForm<TRegisterAds>({
     resolver: zodResolver(createAdsSchema),
   });
-  const { createAds } = useContext(AdsContext);
+  const { createAds, modalIsOpen, setModalIsOpen } = useContext(AdsContext);
 
   const createDataAds = (data: any) => {
     delete globalModelSelected.id;
@@ -66,7 +66,7 @@ export const RegisterFormAds = ({
       modelCar: globalModelSelected.name,
       priceFip: globalModelSelected.value,
     };
-    
+
     delete newData.value;
 
     createAds(newData);
@@ -183,14 +183,15 @@ export const RegisterFormAds = ({
 
       {/* <ButtonAdsCreateImageGallery /> */}
       <div className="buttonsEdit">
-   
         <Button
           type={"submit"}
           text={"Criar anúncio"}
           classType="buttonSaveAds"
-          click={() => setModalIsOpen(null)}
+          click={() => {}}
         />
-        {/* <button type="button" onClick={()=>setModalIsOpen(null)}>teste</button> */}
+        {/* <button type="button" onClick={() => setModalIsOpen(null)}>
+          teste
+        </button> */}
       </div>
     </StyledModalCreateAds>
   );

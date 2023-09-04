@@ -31,8 +31,10 @@ interface iAdsContext {
   getAdvertiserProfile: (id: number) => Promise<void>;
   adsUser: iAds[];
   setAdsUser: Dispatch<SetStateAction<never[]>>;
-  editAds: (id: number, payload: iAdsUpdate) => Promise<void>
-  deleteAds: (id: number) => Promise<void>
+  editAds: (id: number, payload: iAdsUpdate) => Promise<void>;
+  deleteAds: (id: number) => Promise<void>;
+  modalIsOpen: boolean;
+  setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface iAds {
@@ -85,26 +87,25 @@ export interface iAdvertiserProfile {
 export const AdsContext = createContext({} as iAdsContext);
 
 export const AdsProvider = ({ children }: iAdsProviderProps) => {
-  
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
   const [ads, setAds] = useState<iAds[]>([]);
-  
+
   const [currentPage, setCurrentPage] = useState<number>(1);
-  
+
   const [nextPage, setNextPage] = useState<string | null>(null);
-  
+
   const [previousPage, setPreviousPage] = useState<string | null>(null);
-  
+
   const [totalPages, setTotalPages] = useState<number | null>(null);
-  
+
   const [advertiser, setAdvertiser] = useState<iAdvertiserProfile | null>(null);
-  
+
   const [filterString, setFilterString] = useState("");
-  
+
   const token = localStorage.getItem("token");
 
   const [adsUser, setAdsUser] = useState([]);
-
-  const { setModalIsOpen } = useContext(UserContext);
 
   useEffect(() => {
     getAds();
@@ -187,9 +188,8 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
       const newAds = await api.post("/advertisement", payload, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      console.log(newAds);
-
-      setModalIsOpen(null);
+      setAdsUser([...adsUser, newAds.data]);
+      setModalIsOpen(false);
     } catch (error: any) {
       console.log(error.response.data.message);
       toast.error("error.response.data.message");
@@ -208,23 +208,23 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
   const editAds = async (id: number, payload: iAdsUpdate) => {
     try {
       const response = await api.patch(`/advertisement/${id}`, payload, {
-        headers: {Authorization: `Bearer ${token}`}
-      })
+        headers: { Authorization: `Bearer ${token}` },
+      });
     } catch (error: any) {
-      toast(error.response.data.message)
+      toast(error.response.data.message);
     }
-  }
+  };
 
-  const deleteAds = async(adsId) => {
-    const id = adsId.id
+  const deleteAds = async (adsId) => {
+    const id = adsId.id;
     try {
       await api.delete(`/advertisement/${id}`, {
-        headers: {Authorization: `Bearer ${token}`}
-      })
+        headers: { Authorization: `Bearer ${token}` },
+      });
     } catch (error: any) {
-      toast(error.response.data.message)
+      toast(error.response.data.message);
     }
-  }
+  };
 
   return (
     <AdsContext.Provider
@@ -245,7 +245,9 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
         adsUser,
         setAdsUser,
         editAds,
-        deleteAds
+        deleteAds,
+        modalIsOpen,
+        setModalIsOpen,
       }}
     >
       {children}
