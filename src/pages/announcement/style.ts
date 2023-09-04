@@ -32,9 +32,10 @@ export const StyledMain = styled.div`
 
     transform: translateY(-450px);
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+
+    position: relative;
+
 
     gap: 20px;
 
@@ -43,7 +44,7 @@ export const StyledMain = styled.div`
     }
 
     @media (min-width: 1024px){
-      flex-direction: row;
+      grid-template-columns: auto auto;
     }
 
 
@@ -133,6 +134,40 @@ export const StyledMain = styled.div`
     flex-direction: column;
     align-items: center;
 
+    gap: 20px;
+
+    @media (min-width: 1024px) {
+      transform: translateY(-136px);
+      position: sticky;
+      top: 10px;
+    }
+
+    @media (min-width: 1114px) {
+      transform: translateY(-121px);
+      top: 580px;
+    }
+
+    @media (min-width: 1280px) {
+      transform: translateY(-98px);
+      top: 560px;
+    }
+
+    @media (min-width: 1440px) {
+      transform: translateY(-66px);
+      top: 520px;
+    }
+
+    @media (min-width: 1900px) {
+      transform: translateY(-23px);
+      top: 480px;
+    }
+
+    @media (min-width: 2560px){
+      transform: translateY(30px);
+      top: 430px;
+    }
+
+
     .pictures{
 
       display: flex;
@@ -161,9 +196,13 @@ export const StyledMain = styled.div`
     }
   }
 
-  .commentContainer{
-    width: 40%;
+  .commentsSection{
+    width: 100%;
+
+    display: flex;
     flex-direction: column;
+    align-items: center;
+
   }
 `;
 
