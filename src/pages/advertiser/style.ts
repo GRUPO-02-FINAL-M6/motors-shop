@@ -8,6 +8,7 @@ export const StyledAdvertiser = styled.div`
     width: 100%;
     height: 250px;
     background-color: var(--brand--brand1);
+
   }
 
   & > section {
@@ -15,6 +16,7 @@ export const StyledAdvertiser = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* background-color: red; */
   }
 `;
 
@@ -23,6 +25,7 @@ export const StyledProfileDiv = styled.div`
   max-width: 1240px;
   height: fit-content;
   max-height: 406px;
+  background-color: red;
 
   display: flex;
   flex-direction: column;

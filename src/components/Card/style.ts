@@ -1,15 +1,14 @@
 import { styled } from "styled-components";
-import { AiOutlineArrowDown } from 'react-icons/ai';
+import { AiOutlineArrowDown } from "react-icons/ai";
 
 export const StyledCard = styled.li`
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 16px;
   max-width: 320px;
   width: 320px;
-  height: 350px;
+  height: max-content;
   border-radius: 6px;
   position: relative;
 
@@ -32,17 +31,15 @@ export const StyledCard = styled.li`
     border-radius: 3px;
   }
 
-  .image{
+  .image {
     width: 100%;
     height: 200px;
-
 
     & img {
       width: 100%;
       height: 100%;
     }
   }
-
 
   .card-title {
     color: var(--grey--scale--grey-1);
@@ -54,7 +51,6 @@ export const StyledCard = styled.li`
   }
 
   .card-description {
-    height: 200px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
@@ -65,30 +61,41 @@ export const StyledCard = styled.li`
     letter-spacing: 0em;
     text-align: left;
     color: var(--grey--scale--grey-2);
+    word-spacing: nowrap;
   }
 
   .card-bottom {
     font-family: "Inter", sans-serif;
+    display: flex;
+    flex-direction: column;
 
-    div {
+    > div {
       display: flex;
-      gap: 8px;
+      gap: 5px;
+      align-items: center;
+      justify-content: space-between;
 
-      h6 {
-        color: var(--brand--brand1);
-        background-color: var(--brand--brand4);
-        border-radius: 4px;
-        padding: 8px;
+      div {
+        display: flex;
+        gap: 5px;
       }
+      div {
+        h6 {
+          color: var(--brand--brand1);
+          background-color: var(--brand--brand4);
+          border-radius: 4px;
+          padding: 8px;
+        }
 
-      h2 {
-        color: var(--grey--scale--grey-1);
+        h2 {
+          color: var(--grey--scale--grey-1);
+        }
       }
     }
 
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    /* align-items: center; */
 
     @media (min-width: 1024px) {
       font-size: 11px;
@@ -101,17 +108,19 @@ export const StyledCard = styled.li`
   &:hover {
     cursor: pointer;
   }
-  .buttonsCard{
+  .buttonsCard {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    max-width:max-content;
     flex-direction: row;
+    margin-top: 10px;
 
-    button{
+    button {
       border: 1.5px solid var(--grey--scale--grey-0);
       border-radius: 4px;
-
+      padding:8px 15px;
+      font-weight: 600;
+      
     }
   }
-
 `;

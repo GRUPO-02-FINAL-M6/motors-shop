@@ -122,7 +122,7 @@ export const Announcement = () => {
                 alskjflasdkjfl;sakj
               </p>
 
-              <Button text={"Ver todos os anuncios"} type={"button"} click={() => navigate('/advertiser/1')} />
+              <Button text={"Ver todos os anuncios"} type={"button"} click={() => navigate('/advertiser/{id}')} />
             </StyledProfileDiv>
             
           </section>

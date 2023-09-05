@@ -26,10 +26,8 @@ const createAdsSchema = z.object({
 });
 type TRegisterAds = z.infer<typeof createAdsSchema>;
 
-export const EditFormAds = () => {
-  const adsId =19
+export const EditFormAds = ({adsId}) => {
   const { setModalIsOpen, globalModelSelected } = useContext(UserContext);
-
   const [modalIsOpenDeleteAds, setModalIsOpenDeleteAds] = useState(false);
   const {
     register,
@@ -43,9 +41,37 @@ export const EditFormAds = () => {
   const { editAds} = useContext(AdsContext);
   //receber o id
 
-const updateAds = (e:any) =>{
-  console.log(e)
-}
+  const updateAds = (data: any) => {
+    delete globalModelSelected.id;
+
+    let fuel = "";
+
+    globalModelSelected.fuel == 1
+      ? (fuel = "Flex")
+      : "" || globalModelSelected.fuel == 2
+      ? (fuel = "Híbrido")
+      : "" || globalModelSelected.fuel == 3
+      ? (fuel = "Elétrico")
+      : "";
+
+    const newData = {
+      ...globalModelSelected,
+      ...data,
+      priceFipe: globalModelSelected.value,
+      price: Number(data.price),
+      year: Number(globalModelSelected.year),
+      images: [data.images],
+      fuel: fuel,
+      km: Number(data.km),
+      modelCar: globalModelSelected.name,
+      priceFip: globalModelSelected.value,
+    };
+
+    delete newData.value;
+
+    editAds(newData,adsId);
+    // reset();
+  };
   return (
     <StyledModalUpdateAds onSubmit={handleSubmit((e) => updateAds(e))}>
       {modalIsOpenDeleteAds && (

@@ -20,7 +20,6 @@ export const HomePage = () => {
     setFilterString,
     filterString,
   } = useContext(AdsContext);
-
   useEffect(() => {
     filterAds(filterString);
   }, [filterString]);
@@ -55,7 +54,8 @@ export const HomePage = () => {
             {ads.length > 0 ? (
               <ul>
                 {ads.map((ads) => (
-                  <Card ads={ads} key={ads.id} />
+                  <Card ads={ads} key={ads.id} 
+                   />
                 ))}
               </ul>
             ) : (
