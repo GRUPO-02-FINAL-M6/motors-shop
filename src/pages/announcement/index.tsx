@@ -122,19 +122,21 @@ export const Announcement = () => {
                 alskjflasdkjfl;sakj
               </p>
 
-              <Button text={"Ver todos os anuncios"} type={"button"} click={() => navigate('/advertiser/1')} />
+              <Button text={"Ver todos os anuncios"} type={"button"} click={() => navigate(`/advertiser/${user.id}`)} />
             </StyledProfileDiv>
             
           </section>
           
+          <section className="commentsSection">
+          
+            <Comments className="content" />
+
+            <CommentBox className="content" />
+
+          </section>
+          
         </div>
-
-        <div className="container commentContainer">
-          <Comments className="content"/>
-
-          <CommentBox className="content"/>
-        </div>
-
+       
       </StyledMain>
       
       <Footer />
