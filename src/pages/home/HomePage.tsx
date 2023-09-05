@@ -1,11 +1,11 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { AdsContext } from "../../providers/adsProvider";
 import { Card } from "../../components/Card";
 import { AdsSectionStyled, MainStyled } from "./style";
 import { Filter } from "../../components/Filter";
 import { Header } from "../../components/Header";
 const imagem = "/public/Photo.svg";
-import { AiOutlineArrowDown } from 'react-icons/ai';
+import { AiOutlineArrowDown } from "react-icons/ai";
 
 export const HomePage = () => {
   const {
@@ -19,8 +19,8 @@ export const HomePage = () => {
     totalPages,
     setFilterString,
     filterString,
+    getAds,
   } = useContext(AdsContext);
-
   useEffect(() => {
     filterAds(filterString);
   }, [filterString]);
@@ -32,27 +32,26 @@ export const HomePage = () => {
       targetRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
-
-  useEffect(() => {}, [ads]);
+  useEffect(() => {
+   
+  }, [ads]);
 
   return (
     <>
       <Header />
-
       <MainStyled>
         <div className="background">
           <div>
             <h4>Motors Shop</h4>
             <h2>A melhor plataforma de anúncios de carros no país</h2>
           </div>
-      
         </div>
 
         <section id="main-section">
           <Filter setFilter={setFilterString} />
 
           <AdsSectionStyled ref={targetRef}>
-            {ads.length > 0 ? (
+            {ads.length > 0 && ads ? (
               <ul>
                 {ads.map((ads) => (
                   <Card ads={ads} key={ads.id} />
@@ -64,7 +63,6 @@ export const HomePage = () => {
               </div>
             )}
             <div id="main-bottom">
-
               <div id="pages">
                 <h3 id="current-page">{currentPage}</h3>
                 <h3 className="total-pages">de</h3>
@@ -91,14 +89,9 @@ export const HomePage = () => {
                   </button>
                 )}
               </div>
-
             </div>
           </AdsSectionStyled>
-      
         </section>
-      
-        
-
       </MainStyled>
     </>
   );

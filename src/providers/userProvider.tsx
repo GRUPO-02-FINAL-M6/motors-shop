@@ -110,7 +110,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
   const logout = async () => {
     setUser(null);
     localStorage.clear();
-    navigate("/");
+    navigate("/login");
     toast.info("Sessão encerrada!");
   };
 

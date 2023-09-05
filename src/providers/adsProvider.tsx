@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 import axios, { AxiosResponse } from "axios";
 import { UserContext, iUser } from "./userProvider";
 
+
 interface iAdsProviderProps {
   children: React.ReactNode;
 }
@@ -31,10 +32,13 @@ interface iAdsContext {
   getAdvertiserProfile: (id: number) => Promise<void>;
   adsUser: iAds[];
   setAdsUser: Dispatch<SetStateAction<never[]>>;
-  editAds: (id: number, payload: iAdsUpdate) => Promise<void>;
+  editAds: ( payload: iAdsUpdate, id:number) => Promise<void>;
   deleteAds: (id: number) => Promise<void>;
   modalIsOpen: boolean;
   setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  adsVisualization: iAds[] | null;
+  setAdsVisualization:React.Dispatch<React.SetStateAction<iAds[] | null>>;
+  getAds:any;
 }
 
 export interface iAds {
@@ -106,6 +110,7 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
   const token = localStorage.getItem("token");
 
   const [adsUser, setAdsUser] = useState([]);
+  const [adsVisualization, setAdsVisualization] = useState<iAds[]|null>([])
 
   useEffect(() => {
     getAds();
@@ -205,11 +210,16 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
     }
   };
 
-  const editAds = async (id: number, payload: iAdsUpdate) => {
+  const editAds = async (payload: any, id:number) => {
     try {
-      const response = await api.patch(`/advertisement/${id}`, payload, {
+    console.log(payload)
+      const response = await api.patch(`/advertisement/${id}`, {...payload, id:id}, {
         headers: { Authorization: `Bearer ${token}` },
       });
+      console.log(response.data)
+      setModalIsOpen(false)
+      const newList = ads.map((e)=>{e.id==id})
+      console.log (newList)
     } catch (error: any) {
       toast(error.response.data.message);
     }
@@ -248,6 +258,9 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
         deleteAds,
         modalIsOpen,
         setModalIsOpen,
+        adsVisualization, 
+        setAdsVisualization,
+        getAds
       }}
     >
       {children}
