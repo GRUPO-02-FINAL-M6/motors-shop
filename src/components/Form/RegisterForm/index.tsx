@@ -50,24 +50,42 @@ export const RegisterForm = () => {
     resolver: zodResolver(registerUserSchema),
   });
   const { registerUser } = useContext(UserContext);
-  const options = [{value: false, label: "Comprador"}, {value: true, label: "Anunciante"}]
-  const [is_seller, setIs_seller] = useState<boolean>(false)
+  const options = [
+    { value: false, label: "Comprador" },
+    { value: true, label: "Anunciante" },
+  ];
+  const [is_seller, setIs_seller] = useState<boolean>(false);
 
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>{
-    if(event.target.value == "false"){
-      setIs_seller(false)
-    }else{
-      setIs_seller(true)
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.value == "false") {
+      setIs_seller(false);
+    } else {
+      setIs_seller(true);
     }
-  }
+  };
 
   const handleRegisterForm = (payload: any) => {
-    const newData = {...payload, is_seller}
-    console.log(newData)
-    registerUser(newData)
-  }
-  
+    const newData: any = {
+      birthday: payload.birthday,
+      contact: payload.contact,
+      cpf: payload.cpf,
+      description: payload.description,
+      email: payload.email,
+      is_seller: Boolean(payload.is_seller),
+      name: payload.name,
+      password: payload.password,
+      address: {
+        cep: payload.cep,
+        state: payload.state,
+        city: payload.city,
+        street: payload.road,
+        number: Number(payload.number),
+        complement: payload.complement,
+      },
+    };
+    registerUser(newData);
+  };
+
   return (
     <StyledDivRegister
       className="formRegister"
@@ -171,9 +189,15 @@ export const RegisterForm = () => {
         {errors.number?.message && errors.number?.message}
         {errors.complement?.message && errors.complement?.message}
       </div>
-      <div >
-      <span>Tipo de conta</span>
-        <select id="" {...register("is_seller")} onChange={(event) => {handleChange(event)}}>
+      <div>
+        <span>Tipo de conta</span>
+        <select
+          id=""
+          {...register("is_seller")}
+          onChange={(event) => {
+            handleChange(event);
+          }}
+        >
           <option value="false">Cliente</option>
           <option value="true">Anunciante</option>
         </select>
