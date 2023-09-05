@@ -20,6 +20,7 @@ export const Comments = ({...res}) => {
           </span>
           <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae qui placeat dignissimos voluptatibus, saepe hic recusandae vitae dolor, illo fuga atque accusamus est impedit accusantium laborum maiores corrupti quidem aliquam.</p>
         </Comment>
+        
         <Comment $primary={randomColor()}>
           <span className="user">
             <span className="icon">{getInitiations("Marcos Antônio")}</span>
@@ -29,6 +30,7 @@ export const Comments = ({...res}) => {
           </span>
           <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae qui placeat dignissimos voluptatibus, saepe hic recusandae vitae dolor, illo fuga atque accusamus est impedit accusantium laborum maiores corrupti quidem aliquam.</p>
         </Comment>
+        
         <Comment $primary={randomColor()}>
           <span className="user">
             <span className="icon">{getInitiations("Camila Silva")}</span>
