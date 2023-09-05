@@ -10,44 +10,26 @@ import { EditFormAds } from "../Form/FormEditAds";
 
 interface CardProps {
   ads: iAds;
-  userAds?: any;
+  user?: any;
 }
-export const Card = ({ ads, userAds }: CardProps) => {
+
+
+export const Card = ({ ads, user }: CardProps) => {
   const card404 = "../../assets/card-404.jpg";
   const stamp = ads.price <= ads.priceFip * 0.95 ? true : false;
 
-  const [buttons, setButtons] = useState(false);
-  // console.log(ads.user.id)
-  // console.log(user==ads.user.id)
-  const { user } = useContext(UserContext);
-  const [userIsOwner, setUserIsOwner] = useState(false);
   const { modalIsOpen, setModalIsOpen } = useContext(AdsContext);
 
 
 
 
-  useEffect(()=>{
-
-    if (user ) {
-      console.log("1 if @@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-
-      if (user.id == ads.user.id) {
-        setUserIsOwner(true);
-        console.log("2 if @@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-      }
-    }
-  
-
-  },[])
-
 
   return (
+
     <StyledCard>
-      {modalIsOpen  && (
+      {modalIsOpen && (
         <Modal toggleModal={() => setModalIsOpen(false)}>
           <EditFormAds adsId={ads.id} />
-           
-        
         </Modal>
       )}
       {stamp ? (
@@ -88,9 +70,15 @@ export const Card = ({ ads, userAds }: CardProps) => {
           </h2>
         </div>
 
-        {userIsOwner && (
+        {user?.id && (
           <div className="buttonsCard">
-            <button onClick={()=>{setModalIsOpen(true)}}>Editar</button>
+            <button
+              onClick={() => {
+                setModalIsOpen(true);
+              }}
+            >
+              Editar
+            </button>
             <button>Ver detalhes</button>
           </div>
         )}

@@ -36,8 +36,9 @@ interface iAdsContext {
   deleteAds: (id: number) => Promise<void>;
   modalIsOpen: boolean;
   setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  adsVisualization: iAds[] | null,
-  setAdsVisualization:React.Dispatch<React.SetStateAction<iAds[] | null>>
+  adsVisualization: iAds[] | null;
+  setAdsVisualization:React.Dispatch<React.SetStateAction<iAds[] | null>>;
+  getAds:any;
 }
 
 export interface iAds {
@@ -211,14 +212,14 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
 
   const editAds = async (payload: any, id:number) => {
     try {
-      console.log(id)
-      console.log(payload)
-
-      
+    console.log(payload)
       const response = await api.patch(`/advertisement/${id}`, {...payload, id:id}, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      console.log(response,"aqui está editando")
+      console.log(response.data)
+      setModalIsOpen(false)
+      const newList = ads.map((e)=>{e.id==id})
+      console.log (newList)
     } catch (error: any) {
       toast(error.response.data.message);
     }
@@ -258,7 +259,8 @@ export const AdsProvider = ({ children }: iAdsProviderProps) => {
         modalIsOpen,
         setModalIsOpen,
         adsVisualization, 
-        setAdsVisualization
+        setAdsVisualization,
+        getAds
       }}
     >
       {children}

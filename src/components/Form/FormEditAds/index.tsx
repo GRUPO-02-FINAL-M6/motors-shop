@@ -60,7 +60,7 @@ export const EditFormAds = ({adsId}) => {
       priceFipe: globalModelSelected.value,
       price: Number(data.price),
       year: Number(globalModelSelected.year),
-      images: [data.images],
+      images: [data.coverImage],
       fuel: fuel,
       km: Number(data.km),
       modelCar: globalModelSelected.name,
@@ -68,7 +68,6 @@ export const EditFormAds = ({adsId}) => {
     };
 
     delete newData.value;
-
     editAds(newData,adsId);
     // reset();
   };
@@ -181,8 +180,8 @@ export const EditFormAds = ({adsId}) => {
       />
       <p>Publicado</p>
       <div className="buttonsEdit">
-        <Button type={"submit"} text={"Sim"} classType="buttonPublicAds" />
-        <Button type={"submit"} text={"Não"} classType="buttonNotPublicAds" />
+        <Button type={"button"} text={"Sim"} classType="buttonPublicAds" />
+        <Button type={"button"} text={"Não"} classType="buttonNotPublicAds" />
       </div>
 
       <Input
@@ -193,7 +192,7 @@ export const EditFormAds = ({adsId}) => {
         error={errors.coverImage?.message}
       />
 
-      <Input
+      {/* <Input
         label="1º Imagem da galeria"
         type="string"
         placeholder="http://image.com"
@@ -206,7 +205,7 @@ export const EditFormAds = ({adsId}) => {
         placeholder="http://image.com"
         register={register("coverImage")}
         error={errors.coverImage?.message}
-      />
+      /> */}
 
       {/* <ButtonAdsCreateImageGallery /> */}
       <div className="buttonsEdit">
