@@ -19,7 +19,7 @@ export const RoutesMain = () => {
       <Route path="/Advertiser" element={<AdvertiserPage />} />
       <Route path="/RecoverPassword" element={<RecoverPassword />} />
       <Route path="/ConfirmationPassword" element={<ConfirmationPassword />} />
-      <Route path="/Announcement" element={<Announcement />} />
+      <Route path="/Announcement/:id" element={<Announcement />} />
     </Routes>
   );
 };

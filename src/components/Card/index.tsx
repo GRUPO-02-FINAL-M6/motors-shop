@@ -1,8 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AdsContext, iAds } from "../../providers/adsProvider";
 import { UserIcon } from "../User-icon";
 import { StyledCard } from "./style";
-import { Button } from "../Buttons";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../providers/userProvider";
 import { Modal } from "../Modal/Modal";
@@ -13,19 +12,14 @@ interface CardProps {
   user?: any;
 }
 
-
 export const Card = ({ ads, user }: CardProps) => {
   const card404 = "../../assets/card-404.jpg";
   const stamp = ads.price <= ads.priceFip * 0.95 ? true : false;
+  const navigate = useNavigate();
 
   const { modalIsOpen, setModalIsOpen } = useContext(AdsContext);
 
-
-
-
-
   return (
-
     <StyledCard>
       {modalIsOpen && (
         <Modal toggleModal={() => setModalIsOpen(false)}>
@@ -79,7 +73,11 @@ export const Card = ({ ads, user }: CardProps) => {
             >
               Editar
             </button>
-            <button>Ver detalhes</button>
+
+            <div onClick={() => navigate(`/Announcement/${ads.id}`)}>
+              <button >Ver detalhes</button>
+            </div>
+
           </div>
         )}
       </div>

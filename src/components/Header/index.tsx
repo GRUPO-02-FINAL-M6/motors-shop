@@ -35,7 +35,7 @@ export const Header = () => {
     <StyledHeader>
       {modalIsOpenEditProfile && (
         <Modal toggleModal={() => setModalIsOpenEditProfile(false)}>
-          <EditFormAds
+          <EditProfileForm
             modalStatus={modalIsOpenEditProfile}
             setModalStatus={setModalIsOpenEditProfile}
           />
