@@ -1,47 +1,47 @@
-import { BsDot } from 'react-icons/bs';
-import { getInitiations, randomColor } from '../../../utils';
-import { StyledComments, StyledCommentsList, Comment } from './styled';
+import { BsDot } from "react-icons/bs";
+import { getInitiations, randomColor } from "../../../utils";
+import { StyledComments, StyledCommentsList, Comment } from "./styled";
 
+export interface iComment {
+  id: number;
+  user: {
+    id: number;
+    email: string;
+    name: string;
+  };
+  description: string;
+  createdAt: string;
+}
+export interface iComments {
+  comments: Array<iComment>;
+}
 
-
-
-export const Comments = ({...res}) => {
+export const Comments = ({comments}: iComments) => {
   return (
-    <StyledComments {...res}>
+    <>
+     { comments && 
+    <StyledComments className="content">
       <h2>Comentários</h2>
 
       <StyledCommentsList>
-        <Comment $primary={randomColor()}>
-          <span className="user">
-            <span className="icon">{getInitiations("Júlia Lima")}</span>
-            <p>Júlia Lima</p>
-            <BsDot className="dot" />
-            <p className="time">há 3 dias</p>
-          </span>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae qui placeat dignissimos voluptatibus, saepe hic recusandae vitae dolor, illo fuga atque accusamus est impedit accusantium laborum maiores corrupti quidem aliquam.</p>
-        </Comment>
-        
-        <Comment $primary={randomColor()}>
-          <span className="user">
-            <span className="icon">{getInitiations("Marcos Antônio")}</span>
-            <p>Marcos Antônio</p>
-            <BsDot className="dot"/>
-            <p className="time">há 7 dias</p>
-          </span>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae qui placeat dignissimos voluptatibus, saepe hic recusandae vitae dolor, illo fuga atque accusamus est impedit accusantium laborum maiores corrupti quidem aliquam.</p>
-        </Comment>
-        
-        <Comment $primary={randomColor()}>
-          <span className="user">
-            <span className="icon">{getInitiations("Camila Silva")}</span>
-            <p>Camila Silva</p>
-            <BsDot className="dot" />
-            <p className="time">há 3 dias</p>
-          </span>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae qui placeat dignissimos voluptatibus, saepe hic recusandae vitae dolor, illo fuga atque accusamus est impedit accusantium laborum maiores corrupti quidem aliquam.</p>
-        </Comment>
+        {comments.map((commentData) => {
+          return (
+            <Comment $primary={randomColor()}>
+              <span className="user">
+                <span className="icon">
+                  {getInitiations(commentData.user.name)}
+                </span>
+                <p>(commentData.user.name)</p>
+                <BsDot className="dot" />
+                <p className="time"> {commentData.createdAt}</p>
+              </span>
+              <p>{commentData.description}</p>
+            </Comment>
+          );
+        })}
       </StyledCommentsList>
-
-    </StyledComments>
-  )
-}
+    </StyledComments>}
+    </>
+   
+  );
+};
