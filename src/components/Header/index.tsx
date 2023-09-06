@@ -1,33 +1,141 @@
-import { useState } from "react";
-import logo from "../../assets/logo.svg";
-import { StyledContainer } from "../../styles/grid";
-import { HamburgerIcon, StyledHeader } from "./style";
-import { LoginButtons } from "../Button";
-
+import { useState, useContext, useEffect, SetStateAction } from "react";
+import { HeaderLinksStyled, StyledHeader, StyledHeaderDiv } from "./style";
+import { TfiClose, TfiMenu } from "react-icons/tfi";
+import { Button } from "../Buttons";
+import { UserContext } from "../../providers/userProvider";
+import { useNavigate } from "react-router-dom";
+import { UserIcon } from "../User-icon";
+import { FiLogOut } from "react-icons/fi";
+import { Link } from "../Link";
+import { ModalCreateAds } from "../Modal/ModalCreateAds";
+import { EditProfileForm } from "../Form/FormEditProfile";
+import { EditAddressForm } from "../Form/FormEditAddress";
+import { Modal } from "../Modal/Modal";
+import { EditFormAds } from "../Form/FormEditAds";
+import { DeleteModalAds } from "../Form/FormDeleteAds";
 
 export const Header = () => {
-    
-    const [menuOpen, setMenuOpen] = useState(false);
+  const logo = "../../../public/logo.svg";
+  const [menuStatus, setMenuStatus] = useState(false);
+  const [desktopMenuStatus, setDesktopMenuStatus] = useState(false);
+  const token = localStorage.getItem("token");
+  const [modalIsOpenEditProfile, setModalIsOpenEditProfile] = useState(false);
+  const [modalIsOpenEditAddress, setModalIsOpenEditAddress] = useState(false);
+  const { logout, user, getMyProfile } = useContext(UserContext);
+  const navigate = useNavigate();
 
-    const toggleMenu = () => {
-      setMenuOpen(!menuOpen);
+  useEffect(() => {
+    const getUser = async () => {
+      await getMyProfile();
     };
-    
+    getUser();
+  }, []);
+
   return (
-    <StyledHeader menuOpen={menuOpen}>
-      <StyledContainer>
-        <div className="flexGrid">
-          <img src={logo} className="logo" />
-          <nav>
-            <div className="buttons">
-              <LoginButtons menuOpen={menuOpen} />
-              <HamburgerIcon onClick={toggleMenu}>
-                {menuOpen ? <h2>X</h2> : <h2>☰</h2>}
-              </HamburgerIcon>
+    <StyledHeader>
+      {modalIsOpenEditProfile && (
+        <Modal toggleModal={() => setModalIsOpenEditProfile(false)}>
+          <EditProfileForm
+            modalStatus={modalIsOpenEditProfile}
+            setModalStatus={setModalIsOpenEditProfile}
+          />
+        </Modal>
+      )}
+      {modalIsOpenEditAddress && (
+        <Modal toggleModal={() => setModalIsOpenEditAddress(false)}>
+          <EditAddressForm />
+        </Modal>
+      )}
+      <StyledHeaderDiv>
+        <div id="header-nav">
+          <Link go={"/"}>
+            <img src={logo} alt="motors shop" />
+          </Link>
+          <div id="header-btns">
+            {user ? (
+              <div onClick={() => setDesktopMenuStatus(!desktopMenuStatus)}>
+                <UserIcon name={user!.name} />
+                {desktopMenuStatus ? (
+                  <div id="desktop-menu">
+                    <button onClick={() => setModalIsOpenEditProfile(true)}>
+                      Editar perfil
+                    </button>
+                    <button onClick={() => setModalIsOpenEditAddress(true)}>
+                      Editar endereço
+                    </button>
+                    {user.is_seller && (
+                      <button>
+                        <Link go={`/advertiser/${user.id}`}>Meus anúncios</Link>
+                      </button>
+                    )}
+                    <button onClick={logout}>Sair</button>
+                  </div>
+                ) : null}
+              </div>
+            ) : (
+              <div>
+                <div onClick={() => navigate("/login")}>
+                  <Button
+                    type={"submit"}
+                    text={"Fazer login"}
+                    classType="buttonMakeLogin"
+                  />
+                </div>
+                <div onClick={() => navigate("/register")}>
+                  <Button
+                    type={"submit"}
+                    text={"Cadastrar"}
+                    classType="buttonMakeRegister"
+                  />
+                </div>
+              </div>
+            )}
+          </div>
+          {menuStatus ? (
+            <div className="menu" onClick={() => setMenuStatus(!menuStatus)}>
+              <TfiClose size={24} />
             </div>
-          </nav>
+          ) : (
+            <div className="menu" onClick={() => setMenuStatus(!menuStatus)}>
+              <TfiMenu size={24} />
+            </div>
+          )}
         </div>
-      </StyledContainer>
+      </StyledHeaderDiv>
+      {menuStatus &&
+        (!token ? (
+          <HeaderLinksStyled>
+            <div>
+              <Button
+                type={"submit"}
+                text={"Fazer login"}
+                classType="buttonMakeLogin"
+                click={() => navigate("/login")}
+              />
+            </div>
+            <div>
+              <Button
+                type={"submit"}
+                text={"Cadastro"}
+                classType="buttonMakeRegister"
+                click={() => navigate("/register")}
+              />
+            </div>
+          </HeaderLinksStyled>
+        ) : (
+          <HeaderLinksStyled>
+            <button onClick={() => navigate("/dashboard")}>
+              Editar Perfil
+            </button>
+            <button>Editar endereço</button>
+            {user?.is_seller && (
+              <button onClick={() => navigate(`/advertiser/${user.id}`)}>
+                Meus Anúncios
+              </button>
+            )}
+            <button onClick={logout}>Sair</button>
+          </HeaderLinksStyled>
+        ))}
     </StyledHeader>
   );
 };

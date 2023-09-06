@@ -65,6 +65,10 @@ export const GlobalStyle = createGlobalStyle`
         --text--body-2-400: 14px;
         --text--body-2-500: 14px;
 
+        & ::-webkit-scrollbar{
+            display: none;
+        }
+
     }
 
 
