@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export const api = axios.create({
-    baseURL: "http://localhost:3001",
-    timeout:3000
+    baseURL: "https://motors-shop-api-xigc.onrender.com",
+    timeout:5000
 })
 
 export const apiFipe = axios.create({
