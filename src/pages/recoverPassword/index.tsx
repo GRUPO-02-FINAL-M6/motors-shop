@@ -8,6 +8,7 @@ import { z } from "zod";
 // import { UserContext } from "../../providers/userProvider";
 import { useForm } from "react-hook-form";
 import { Button } from "../../components/Buttons";
+import { api } from "../../services/api";
 
 export const RecoverPassword = () => {
   const registerUserSchema = z.object({
@@ -18,8 +19,15 @@ export const RecoverPassword = () => {
   });
   type TRegisterUserEmail = z.infer<typeof registerUserSchema>;
 
+const submit = async (data:any) =>{
+  const dataApi  = await api.post("/recoveryPass",{email:data.email})
+  console.log(dataApi)
+}
+  
+
   const {
     register,
+    handleSubmit,
     formState: { errors },
   } = useForm<TRegisterUserEmail>({
     resolver: zodResolver(registerUserSchema),
@@ -31,7 +39,7 @@ export const RecoverPassword = () => {
       <Header />
       <MainStyled>
         <div className="containerPassword">
-          <form className="recoverPasswordform">
+          <form className="recoverPasswordform" onSubmit={handleSubmit(submit)}>
             <h2>Recuperação de Senha</h2>
             <p>Informe o seu email associado à conta para redefinir a senha.</p>
 
@@ -46,7 +54,7 @@ export const RecoverPassword = () => {
               type={"submit"}
               text={"Enviar"}
               classType="buttonPassword"
-              onClick={()=>{("")}}
+              click={()=>{("")}}
       />
           </form>
         </div>

@@ -5,6 +5,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { Button } from "../../components/Buttons";
+import { useNavigate } from "react-router-dom";
+
 import {
   Main,
   StyledContainerFormLoginButtons,
@@ -17,6 +19,8 @@ import { loginSchema, tLogin } from "./validator";
 
 const LoginPage = () => {
   const { login } = useContext(UserContext);
+  const navigate = useNavigate();
+
 
   const {
     register,
@@ -49,7 +53,12 @@ const LoginPage = () => {
               register={register("password")}
               error={errors.password?.message}
             />
-            <a>Esqueci minha senha</a>
+
+            <div onClick={() => navigate(`/RecoverPassword`)}>
+              <a>Esqueci minha senha</a>
+            </div>
+
+       
 
             <StyledDivButtonsLoginForm>
               <Button

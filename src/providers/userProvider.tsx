@@ -146,16 +146,45 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
     }
   };
 
-  const registerUser = async (payload: iRegisterUser) => {
-    try {
-      await api.post(`/users`, payload);
+  // const registerUser = async (payload: iRegisterUser) => {
+  //   try {
+  //     await api.post(`/users`, payload);
+  //     navigate("/login");
+  //     toast.success("Conta criada com sucesso!");
+  //   } catch (error: any) {
+  //     toast.error(error.response.data.message);
+  //     console.log(error.response.data.message);
+  //   }
+  // };
+  // userProvider.tsx
+async function registerUser(userData) {
+  try {
+    const response = await api.post('http://localhost:3001/users', userData);
+
+    if (response.status === 201) {
+      
       navigate("/login");
       toast.success("Conta criada com sucesso!");
-    } catch (error: any) {
-      toast.error(error.response.data.message);
-      console.log(error.response.data.message);
+    } else {
+      console.error(`Erro ao criar conta. Status: ${response.status}`);
+      toast.error("Erro ao criar conta. Tente novamente.");
     }
-  };
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      if (error.response?.status === 409) {
+        console.error("O e-mail fornecido já está em uso.");
+        toast.error("O e-mail fornecido já está em uso.");
+      } else {
+        console.error("Erro ao criar conta. Tente novamente.");
+        toast.error("Erro ao criar conta. Tente novamente.");
+      }
+    } else {
+      console.error("Erro desconhecido ao criar conta. Tente novamente.");
+      toast.error("Erro desconhecido ao criar conta. Tente novamente.");
+    }
+  }
+}
+
 
   const updateUser = async (payload: iUpdateUser) => {
     try {
